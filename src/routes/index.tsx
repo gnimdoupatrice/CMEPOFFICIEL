@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Check, Users, Target, Briefcase, GraduationCap, Sparkles, Zap, Leaf, Quote, TrendingUp, Heart, Compass, Award, Calendar, MapPin, HelpCircle, Newspaper, Megaphone, Clock, Flame, ArrowUpRight } from "lucide-react";
 import { Layout } from "@/components/site/Layout";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { OPPORTUNITIES } from "@/lib/cmep-data";
+
 
 import partnerUK from "@/assets/partners/universite-kara.jpg.asset.json";
 import partnerA3E from "@/assets/partners/ong-a3e.jpg.asset.json";
