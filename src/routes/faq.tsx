@@ -17,7 +17,13 @@ import {
   Minus,
   ShieldCheck,
   Clock,
+  Quote,
+  Compass,
+  Sparkles,
 } from "lucide-react";
+import faqHero from "@/assets/hero-student.jpg";
+import voiceImg from "@/assets/testimonial-2.jpg";
+import editorialImg from "@/assets/workshop.jpg";
 
 export const Route = createFileRoute("/faq")({
   head: () => ({
