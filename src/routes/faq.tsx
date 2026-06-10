@@ -348,8 +348,33 @@ function FAQPage() {
         </div>
       </section>
 
+      {/* HUMAN VOICE — testimonial */}
+      <section className="bg-white py-20 px-6 border-t border-ngo-navy/5">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-12 gap-10 items-center">
+          <div className="md:col-span-4 relative aspect-square rounded-3xl overflow-hidden">
+            <img src={voiceImg} alt="Bénéficiaire CMEP" className="absolute inset-0 size-full object-cover" />
+            <div className="absolute inset-0 bg-gradient-to-t from-ngo-navy/70 to-transparent" />
+          </div>
+          <div className="md:col-span-8">
+            <Quote size={40} className="text-ngo-gold mb-6" />
+            <p className="text-2xl md:text-3xl font-extrabold text-ngo-navy leading-tight tracking-tight">
+              « J'ai écrit à la coordination un samedi soir. Le lundi matin, j'avais un rendez-vous fixé.
+              Ce n'est pas une plateforme, c'est une équipe. »
+            </p>
+            <div className="mt-8 flex items-center gap-4">
+              <div className="h-px flex-1 bg-ngo-navy/10" />
+              <div>
+                <div className="font-extrabold text-ngo-navy">Aïcha B.</div>
+                <div className="text-[11px] uppercase tracking-[0.22em] text-ngo-slate font-semibold mt-1">Promotion 2024 — Kara</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* COORDINATOR / HUMAN CONTACT BLOCK */}
       <section className="bg-ngo-pearl py-24 px-6">
+
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-12 gap-10 items-stretch">
             <div className="lg:col-span-5 p-10 md:p-12 bg-ngo-navy rounded-3xl text-white relative overflow-hidden">
