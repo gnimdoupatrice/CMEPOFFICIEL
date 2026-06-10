@@ -32,24 +32,70 @@ const PARTNER_LOGOS = [
   { name: "ONG A Nous La Planète (ANLP)", logo: partnerANLP.url },
 ];
 
+// Actualité phare (featured story hero)
+const FEATURED_STORY = {
+  date: "15 mai 2025",
+  category: "Reportage terrain",
+  location: "Université de Kara",
+  readTime: "6 min de lecture",
+  title: "À Kara, 120 jeunes ouvrent une nouvelle page du CMEP.",
+  kicker: "Promotion 2025 — Cohorte annuelle",
+  excerpt:
+    "Sous les voûtes de l'amphithéâtre de l'Université de Kara, mentors, partenaires institutionnels et bénéficiaires ont scellé l'engagement d'une promotion qui marquera l'année. Récit d'une cérémonie où la jeunesse togolaise a repris la parole.",
+};
+
+// Actualités secondaires éditoriales (magazine)
 const ACTUALITES = [
-  {
-    date: "15 mai 2025",
-    category: "Événement",
-    title: "Lancement officiel de la Promotion 2025 à Kara",
-    excerpt: "La cérémonie d'ouverture de la nouvelle cohorte de l'Académie CMEP a réuni mentors, partenaires et bénéficiaires à l'Université de Kara.",
-  },
   {
     date: "28 avril 2025",
     category: "Partenariat",
-    title: "Signature d'une convention avec Don Bosco",
-    excerpt: "Un nouvel accord-cadre étend nos parcours de formation technique à 60 jeunes supplémentaires sur l'année.",
+    location: "Kara, Togo",
+    title: "Convention historique avec le Centre Don Bosco",
+    excerpt: "Un accord-cadre qui ouvre les ateliers techniques à 60 jeunes supplémentaires et installe le mentorat au cœur des métiers manuels.",
   },
   {
     date: "10 avril 2025",
     category: "Impact",
-    title: "Premier démo-day de l'Incubateur d'Entreprises Sociales",
-    excerpt: "Huit projets portés par de jeunes entrepreneurs de la Kara ont été présentés devant un jury de partenaires et de financeurs.",
+    location: "Incubateur CMEP",
+    title: "Démo-day : huit projets, une génération qui entreprend",
+    excerpt: "Agro-transformation, micro-services numériques, économie circulaire — la première promo d'incubés a défendu ses projets devant un jury exigeant.",
+  },
+];
+
+// Opportunités premium — parcours d'excellence
+const FEATURED_OPPORTUNITIES = [
+  {
+    badge: "Programme phare",
+    type: "Appel à candidatures",
+    title: "Promotion 2025 — Mentorat Entrepreneurial",
+    duration: "6 mois · Janvier → Juin",
+    seats: "12 places restantes",
+    deadline: "30 juin 2025",
+    location: "Kara, Togo",
+    urgency: "Clôture imminente",
+    perks: ["Mentor 1:1 dédié", "Fonds de micro-amorçage", "Réseau international"],
+  },
+  {
+    badge: "Tech intensif",
+    type: "Formation",
+    title: "Bootcamp Innovation Numérique",
+    duration: "4 semaines intensives",
+    seats: "20 places",
+    deadline: "15 juillet 2025",
+    location: "Kara, Togo",
+    urgency: "Inscriptions ouvertes",
+    perks: ["Hackathon final", "Mise en relation employeurs", "Certification"],
+  },
+  {
+    badge: "Insertion pro",
+    type: "Stage conventionné",
+    title: "Programme d'insertion 2025",
+    duration: "Permanent",
+    seats: "Cohortes rolling",
+    deadline: "Candidature continue",
+    location: "Région de la Kara",
+    urgency: "Toute l'année",
+    perks: ["Stage rémunéré", "Suivi 6 mois", "Forum employeurs"],
   },
 ];
 
