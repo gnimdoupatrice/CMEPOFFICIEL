@@ -154,7 +154,7 @@ const AXES = [
   },
   {
     num: "04",
-    title: "Innovation Numérique",
+    title: "Innovation Numérique    ",
     image: axisDigital,
     context: "Le numérique est l'opportunité économique la plus accessible pour les jeunes togolais — à condition de disposer des compétences et des outils. Or la fracture numérique reste profonde, surtout hors de Lomé.",
     problem: "Manque d'accès aux équipements, absence de formations qualifiantes, faible exposition aux métiers du futur : les jeunes de la Kara restent à l'écart de la révolution numérique africaine.",
@@ -164,7 +164,7 @@ const AXES = [
   },
   {
     num: "05",
-    title: "Citoyenneté & Écologie",
+    title: "Citoyenneté & Écologie  ",
     image: axisCitizenship,
     context: "Les défis climatiques et environnementaux frappent durement la région de la Kara : dégradation des sols, déforestation, gestion des déchets. La jeunesse est en première ligne, et porteuse de solutions.",
     problem: "Sans formation, sans cadre, sans reconnaissance, l'engagement écologique des jeunes reste fragmenté et peu visible. Le lien entre citoyenneté et action environnementale est encore peu structuré.",
@@ -176,7 +176,7 @@ const AXES = [
 
 const PROGRAMS = [
   {
-    title: "Académie CMEP — Cohorte Annuelle",
+    title: "Académie CMEP — Cohorte Annuelle    ",
     image: axisWorkshop,
     description: "Le programme phare du CMEP : un parcours intensif de 6 mois combinant formation technique, mentorat individuel et projet collectif.",
     objectives: "Former 120 jeunes par an aux compétences clés de l'employabilité et du leadership.",
