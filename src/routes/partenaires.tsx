@@ -261,8 +261,49 @@ function PartnersPage() {
         </div>
       </section>
 
+      {/* FEATURED PARTNERSHIP SPOTLIGHT */}
+      <section className="relative overflow-hidden bg-ngo-navy text-white py-24 px-6">
+        <img src={workshop} alt="" className="absolute inset-0 size-full object-cover opacity-15" />
+        <div className="absolute inset-0 bg-gradient-to-br from-ngo-navy via-ngo-navy/95 to-ngo-navy/70" />
+        <div className="relative max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 items-center">
+          <div className="lg:col-span-7 animate-fade-in">
+            <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-ngo-gold/15 border border-ngo-gold/30 text-[10px] uppercase tracking-[0.25em] font-bold text-ngo-gold mb-7">
+              <Sparkles size={11} /> Partenariat phare
+            </span>
+            <h2 className="text-3xl md:text-5xl font-extrabold leading-[1.05] tracking-tight">
+              Université de Kara&nbsp;: <span className="text-ngo-gold">trois ans</span> d'ancrage scientifique.
+            </h2>
+            <p className="mt-7 text-white/75 text-[15px] leading-relaxed max-w-xl">
+              Une convention pluriannuelle qui structure la recherche-action, accueille les cohortes
+              de mentorat sur le campus et garantit la rigueur pédagogique de chaque parcours CMEP.
+            </p>
+            <div className="mt-10 grid grid-cols-3 gap-5">
+              {[
+                { v: "3 ans", l: "Convention active" },
+                { v: "450+", l: "Étudiants impliqués" },
+                { v: "12", l: "Enseignants mobilisés" },
+              ].map((s) => (
+                <div key={s.l} className="p-5 bg-white/5 border border-white/10 rounded-xl">
+                  <div className="text-3xl font-extrabold text-ngo-gold leading-none">{s.v}</div>
+                  <div className="text-[10px] uppercase tracking-[0.22em] text-white/55 mt-3 font-semibold leading-snug">{s.l}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="lg:col-span-5 relative aspect-[4/5] rounded-3xl overflow-hidden group">
+            <img src={solidarity} alt="Coopération Université de Kara et CMEP" className="absolute inset-0 size-full object-cover transition-transform duration-700 group-hover:scale-105" />
+            <div className="absolute inset-0 bg-gradient-to-t from-ngo-navy/60 to-transparent" />
+            <div className="absolute bottom-6 left-6 right-6">
+              <span className="inline-block px-2.5 py-1 bg-ngo-gold text-ngo-navy text-[10px] uppercase tracking-[0.22em] font-extrabold rounded mb-3">Depuis 2022</span>
+              <p className="text-white font-extrabold text-xl leading-tight">Une coalition académique au service de la jeunesse de Kara.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* SDG ALIGNMENT */}
       <section className="bg-white py-24 px-6">
+
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-12 gap-12">
             <div className="lg:col-span-5">
