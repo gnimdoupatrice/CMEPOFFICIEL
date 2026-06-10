@@ -881,178 +881,121 @@ function Home() {
       </section>
 
 
-      {/* ============ PARTENAIRES — écosystème institutionnel premium ============ */}
-      <section className="relative py-28 md:py-32 px-6 bg-white overflow-hidden">
-        {/* Halo gold décoratif */}
-        <div className="absolute top-40 -right-40 w-[520px] h-[520px] bg-ngo-gold/8 rounded-full blur-3xl pointer-events-none" />
-
-        <div className="relative max-w-7xl mx-auto">
-          {/* En-tête éditorial */}
+      {/* ============ PARTENAIRES — mur de logos institutionnel ============ */}
+      <section className="py-28 md:py-32 px-6 bg-white">
+        <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-12 gap-10 mb-16 items-end">
             <div className="lg:col-span-7">
               <div className="flex items-center gap-4 mb-6">
                 <span className="h-px w-12 bg-ngo-gold" />
-                <span className="text-ngo-gold text-[10px] uppercase tracking-[0.35em] font-bold">Coalition d'impact</span>
+                <span className="text-ngo-gold text-[10px] uppercase tracking-[0.35em] font-bold">Nos Partenaires</span>
               </div>
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-ngo-navy leading-[1.02] tracking-tight">
-                Un <span className="text-ngo-gold">écosystème</span> d'institutions, d'ONG et de collectifs.
+                Une coalition d'acteurs <span className="text-ngo-gold">engagés</span> pour la jeunesse.
               </h2>
             </div>
             <div className="lg:col-span-5">
               <p className="text-ngo-slate text-base md:text-lg leading-relaxed font-light border-l border-ngo-navy/15 pl-6">
-                Universités, organisations internationales, ONG locales et collectifs citoyens : chaque partenaire engage des ressources, une expertise ou un réseau au service des cohortes du CMEP.
+                Institutions académiques, ONG internationales, collectifs citoyens et entreprises locales : ces partenaires rendent possible chaque cohorte du CMEP.
               </p>
             </div>
           </div>
 
-          {/* Strip de confiance — KPI institutionnels */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-ngo-navy/10 rounded-2xl overflow-hidden mb-20">
-            {[
-              { v: "12", l: "Partenaires actifs" },
-              { v: "04", l: "Institutions académiques" },
-              { v: "05", l: "ONG & collectifs" },
-              { v: "2018", l: "Premières alliances" },
-            ].map((s) => (
-              <div key={s.l} className="bg-white p-7 md:p-8">
-                <div className="text-4xl md:text-5xl font-extrabold text-ngo-navy tabular-nums leading-none mb-3 tracking-tight">{s.v}</div>
-                <div className="text-[10px] uppercase tracking-[0.25em] font-bold text-ngo-slate">{s.l}</div>
-              </div>
-            ))}
-          </div>
-
-          {/* Anchor partners — featured trio éditorial */}
-          <div className="mb-20">
-            <h3 className="text-[11px] uppercase tracking-[0.3em] font-bold text-ngo-navy flex items-center gap-3 mb-10 pb-5 border-b border-ngo-navy/15">
-              <Award size={14} className="text-ngo-gold" /> Partenaires fondateurs
-            </h3>
-            <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
-              {[
-                { logo: partnerUK.url, name: "Université de Kara", role: "Hôte académique des cohortes annuelles et partenaire scientifique du suivi-évaluation.", since: "Depuis 2019" },
-                { logo: partnerFV.url, name: "France Volontaires", role: "Appui technique et déploiement de volontaires internationaux sur les programmes de mentorat.", since: "Depuis 2021" },
-                { logo: partnerYouth.url, name: "Plan International — Youth Panel", role: "Co-construction des programmes leadership et plaidoyer auprès des institutions jeunesse.", since: "Depuis 2022" },
-              ].map((p) => (
-                <article key={p.name} className="group relative bg-ngo-pearl/60 border border-ngo-navy/8 rounded-2xl p-8 hover:border-ngo-gold/40 hover:bg-white hover:shadow-[0_20px_50px_-25px_rgba(15,42,95,0.25)] transition-all duration-500">
-                  <div className="h-20 mb-7 flex items-start">
-                    <img src={p.logo} alt={p.name} className="h-full w-auto max-w-[140px] object-contain object-left grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500" loading="lazy" />
-                  </div>
-                  <span className="inline-block text-[10px] uppercase tracking-[0.25em] font-bold text-ngo-gold mb-3">{p.since}</span>
-                  <h4 className="text-xl font-extrabold text-ngo-navy leading-tight tracking-tight mb-4">{p.name}</h4>
-                  <p className="text-[14px] text-ngo-slate leading-relaxed font-light">{p.role}</p>
-                </article>
+          {/* Mur de partenaires éditorial — typographie institutionnelle, filets sobres */}
+          <div className="border-y border-ngo-navy/15">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
+              {PARTNER_LOGOS.map((p, i) => (
+                <div
+                  key={p.name}
+                  className={`group relative flex flex-col items-center justify-center text-center px-6 py-12 min-h-[160px] border-ngo-navy/10 transition-colors hover:bg-ngo-pearl ${
+                    (i + 1) % 2 !== 0 ? "border-r sm:border-r" : ""
+                  } ${(i + 1) % 3 !== 0 ? "sm:border-r" : "sm:border-r-0"} ${
+                    (i + 1) % 4 !== 0 ? "lg:border-r" : "lg:border-r-0"
+                  } ${i < PARTNER_LOGOS.length - (PARTNER_LOGOS.length % 4 || 4) ? "lg:border-b" : ""} border-b last:border-b-0`}
+                >
+                  <span className="text-[10px] tabular-nums text-ngo-gold font-bold tracking-[0.35em] mb-4 opacity-60 group-hover:opacity-100 transition-opacity">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="text-sm md:text-base font-bold text-ngo-navy leading-snug tracking-tight group-hover:text-ngo-gold transition-colors">
+                    {p.name}
+                  </span>
+                </div>
               ))}
             </div>
           </div>
 
-          {/* Mur de partenaires — logos compacts avec image */}
-          <h3 className="text-[11px] uppercase tracking-[0.3em] font-bold text-ngo-navy flex items-center gap-3 mb-10 pb-5 border-b border-ngo-navy/15">
-            <Users size={14} className="text-ngo-gold" /> Réseau étendu
-          </h3>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-5">
-            {PARTNER_LOGOS.map((p) => (
-              <div
-                key={p.name}
-                className="group relative aspect-[4/3] bg-white border border-ngo-navy/10 rounded-xl flex items-center justify-center p-6 hover:border-ngo-gold/40 hover:shadow-[0_15px_40px_-20px_rgba(15,42,95,0.2)] hover:-translate-y-0.5 transition-all duration-400"
-              >
-                <img
-                  src={p.logo}
-                  alt={p.name}
-                  className="max-h-full max-w-full object-contain grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
-                  loading="lazy"
-                />
-                <span className="absolute inset-x-0 -bottom-7 text-center text-[10px] uppercase tracking-[0.18em] font-semibold text-ngo-slate opacity-0 group-hover:opacity-100 transition-opacity">
-                  {p.name}
-                </span>
-              </div>
-            ))}
-          </div>
-
-          {/* CTA partenaire */}
-          <div className="mt-20 grid md:grid-cols-[1fr_auto] gap-8 items-center pt-10 border-t border-ngo-navy/15">
-            <p className="text-ngo-slate text-base md:text-lg font-light leading-relaxed max-w-2xl">
-              Vous représentez une institution, une entreprise ou un collectif et souhaitez engager des ressources auprès des jeunes togolais ?
+          <div className="mt-14 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+            <p className="text-[11px] uppercase tracking-[0.3em] font-bold text-ngo-slate">
+              {PARTNER_LOGOS.length} partenaires institutionnels · Région de la Kara, Togo
             </p>
-            <Link to="/partenaires" className="inline-flex items-center gap-2.5 bg-ngo-navy text-white hover:bg-ngo-gold hover:text-ngo-navy px-7 py-4 rounded-xl font-bold text-[11px] uppercase tracking-[0.22em] transition-colors shadow-xl">
+            <Link to="/partenaires" className="inline-flex items-center gap-2 text-ngo-navy hover:text-ngo-gold font-bold text-[11px] uppercase tracking-[0.3em] border-b border-ngo-navy/20 hover:border-ngo-gold pb-1.5 transition-colors">
               Devenir partenaire <ArrowRight size={13} />
             </Link>
           </div>
         </div>
       </section>
 
-      {/* ============ FAQ — magazine éditorial deux colonnes ============ */}
-      <section className="relative py-28 md:py-32 px-6 bg-ngo-pearl overflow-hidden">
-        <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-ngo-gold/5 rounded-full blur-3xl pointer-events-none" />
-
-        <div className="relative max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 lg:gap-20">
-          {/* Colonne gauche sticky — éditoriale */}
+      {/* ============ FAQ — éditorial deux colonnes ============ */}
+      <section className="py-28 md:py-32 px-6 bg-ngo-pearl">
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 lg:gap-16">
           <div className="lg:col-span-5">
             <div className="lg:sticky lg:top-32">
               <div className="flex items-center gap-4 mb-6">
                 <span className="h-px w-12 bg-ngo-gold" />
-                <span className="text-ngo-gold text-[10px] uppercase tracking-[0.35em] font-bold">Centre de réponses</span>
+                <span className="text-ngo-gold text-[10px] uppercase tracking-[0.35em] font-bold">Questions fréquentes</span>
               </div>
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-ngo-navy leading-[1.02] tracking-tight mb-8">
-                Les <span className="text-ngo-gold">réponses</span> avant les questions.
+                L'essentiel pour bien <span className="text-ngo-gold">comprendre</span> le CMEP.
               </h2>
               <p className="text-ngo-slate text-base md:text-lg leading-relaxed font-light border-l border-ngo-navy/15 pl-6 mb-10">
-                Candidats, partenaires, donateurs : l'essentiel du CMEP, condensé. Pour aller plus loin, la page FAQ ou la coordination — réponse sous 48h.
+                Candidats, partenaires, donateurs : voici les réponses aux questions que l'on nous pose le plus souvent. Pour aller plus loin, consultez la page dédiée ou contactez notre équipe.
               </p>
-
-              {/* Stats de support */}
-              <div className="grid grid-cols-3 gap-px bg-ngo-navy/10 rounded-xl overflow-hidden mb-10">
-                {[
-                  { v: "48h", l: "Réponse" },
-                  { v: "100%", l: "Gratuit" },
-                  { v: "FR/EN", l: "Langues" },
-                ].map((s) => (
-                  <div key={s.l} className="bg-white p-4 text-center">
-                    <div className="text-2xl font-extrabold text-ngo-navy tabular-nums leading-none mb-1.5">{s.v}</div>
-                    <div className="text-[9px] uppercase tracking-[0.2em] font-bold text-ngo-slate">{s.l}</div>
-                  </div>
-                ))}
-              </div>
-
-              <div className="flex flex-col gap-3">
-                <Link to="/faq" className="inline-flex items-center justify-center gap-2 bg-ngo-navy text-white hover:bg-ngo-gold hover:text-ngo-navy px-6 py-3.5 rounded-xl font-bold text-[11px] uppercase tracking-[0.22em] transition-colors">
-                  <HelpCircle size={13} /> Voir toutes les questions
-                </Link>
-                <Link to="/contact" className="inline-flex items-center justify-center gap-2 border border-ngo-navy/20 text-ngo-navy hover:border-ngo-gold hover:text-ngo-gold px-6 py-3.5 rounded-xl font-bold text-[11px] uppercase tracking-[0.22em] transition-colors">
-                  Contacter la coordination <ArrowRight size={12} />
-                </Link>
-              </div>
+              <Link to="/faq" className="inline-flex items-center gap-2 text-ngo-navy hover:text-ngo-gold font-bold text-[11px] uppercase tracking-[0.3em] border-b border-ngo-navy/20 hover:border-ngo-gold pb-1.5 transition-colors">
+                <HelpCircle size={13} /> Voir toutes les questions <ArrowRight size={13} />
+              </Link>
             </div>
           </div>
 
-          {/* Colonne droite — accordion magazine catégorisé */}
           <div className="lg:col-span-7">
-            <Accordion type="single" collapsible defaultValue="faq-home-0" className="space-y-3">
+            <Accordion type="single" collapsible className="divide-y divide-ngo-navy/15 border-y border-ngo-navy/15">
               {[
-                { cat: "Candidats", q: "Qui peut candidater au programme CMEP ?", a: "Tout jeune togolais entre 18 et 35 ans, diplômé ou non, résidant prioritairement dans la région de la Kara. Aucune expérience préalable n'est requise pour la majorité des programmes — la motivation et l'engagement comptent davantage que le diplôme." },
-                { cat: "Candidats", q: "Les formations sont-elles payantes ?", a: "Non. L'intégralité des programmes CMEP est gratuite pour les bénéficiaires sélectionnés. Les coûts sont couverts par nos partenaires institutionnels, donateurs et programmes de bourses." },
-                { cat: "Partenaires", q: "Quels types de partenariats le CMEP propose-t-il ?", a: "Partenariats techniques (formation, mentorat, experts), institutionnels (co-construction de programmes), financiers (soutien à une cohorte) ou en nature (équipements, locaux, services). Chaque partenariat fait l'objet d'une convention claire et mesurable." },
-                { cat: "Donateurs", q: "Comment le CMEP utilise-t-il les fonds reçus ?", a: "68% directement alloués aux programmes (formation, mentorat, bourses), 18% à la coordination et au suivi-évaluation, 9% à la communication et au plaidoyer, 5% aux frais administratifs. Chaque ligne est auditée annuellement." },
-                { cat: "Impact", q: "Comment mesurez-vous l'impact réel du programme ?", a: "Un dispositif de suivi-évaluation indépendant est en place : enquêtes à 6 et 12 mois après la formation, suivi de cohortes sur 3 ans, indicateurs alignés sur les ODD. Les résultats sont publiés dans notre rapport annuel." },
+                {
+                  q: "Qui peut candidater au programme CMEP ?",
+                  a: "Tout jeune togolais entre 18 et 35 ans, diplômé ou non, résidant prioritairement dans la région de la Kara. Aucune expérience préalable n'est requise pour la majorité des programmes — la motivation et l'engagement comptent davantage que le diplôme.",
+                },
+                {
+                  q: "Les formations sont-elles payantes ?",
+                  a: "Non. L'intégralité des programmes CMEP est gratuite pour les bénéficiaires sélectionnés. Les coûts sont couverts par nos partenaires institutionnels, donateurs et programmes de bourses.",
+                },
+                {
+                  q: "Quels types de partenariats le CMEP propose-t-il ?",
+                  a: "Partenariats techniques (formation, mentorat, experts), institutionnels (co-construction de programmes), financiers (soutien à une cohorte) ou en nature (équipements, locaux, services). Chaque partenariat fait l'objet d'une convention claire et mesurable.",
+                },
+                {
+                  q: "Comment le CMEP utilise-t-il les fonds reçus ?",
+                  a: "68% directement alloués aux programmes (formation, mentorat, bourses), 18% à la coordination et au suivi-évaluation, 9% à la communication et au plaidoyer, 5% aux frais administratifs. Chaque ligne est auditée annuellement.",
+                },
+                {
+                  q: "Comment mesurez-vous l'impact réel du programme ?",
+                  a: "Un dispositif de suivi-évaluation indépendant est en place : enquêtes à 6 et 12 mois après la formation, suivi de cohortes sur 3 ans, indicateurs alignés sur les ODD. Les résultats sont publiés dans notre rapport annuel.",
+                },
               ].map((item, i) => (
                 <AccordionItem
                   key={i}
                   value={`faq-home-${i}`}
-                  className="group bg-white border border-ngo-navy/8 rounded-2xl overflow-hidden hover:border-ngo-gold/30 transition-colors data-[state=open]:border-ngo-gold/50 data-[state=open]:shadow-[0_20px_50px_-25px_rgba(15,42,95,0.25)]"
+                  className="border-0"
                 >
-                  <AccordionTrigger className="text-left py-6 px-7 md:px-8 hover:no-underline group/trigger [&[data-state=open]_.faq-num]:text-ngo-gold [&[data-state=open]_.faq-cat]:bg-ngo-gold [&[data-state=open]_.faq-cat]:text-ngo-navy">
-                    <div className="grid grid-cols-[auto_1fr] gap-5 md:gap-6 items-start w-full pr-4">
-                      <span className="faq-num font-mono text-[11px] tracking-widest text-ngo-slate/50 tabular-nums pt-2 transition-colors">
+                  <AccordionTrigger className="text-left py-7 hover:no-underline group [&[data-state=open]_.faq-num]:text-ngo-gold">
+                    <div className="grid grid-cols-[auto_1fr] gap-6 items-start w-full pr-4">
+                      <span className="faq-num font-mono text-[11px] tracking-widest text-ngo-slate/60 tabular-nums pt-1 transition-colors">
                         {String(i + 1).padStart(2, "0")}
                       </span>
-                      <div className="min-w-0">
-                        <span className="faq-cat inline-block text-[9px] uppercase tracking-[0.25em] font-extrabold bg-ngo-navy/8 text-ngo-navy px-2.5 py-1 rounded-full mb-3 transition-colors">
-                          {item.cat}
-                        </span>
-                        <div className="text-lg md:text-xl font-extrabold text-ngo-navy leading-[1.25] tracking-tight group-hover/trigger:text-ngo-gold transition-colors">
-                          {item.q}
-                        </div>
-                      </div>
+                      <span className="text-lg md:text-xl font-extrabold text-ngo-navy leading-[1.25] tracking-tight group-hover:text-ngo-gold transition-colors">
+                        {item.q}
+                      </span>
                     </div>
                   </AccordionTrigger>
-                  <AccordionContent className="text-ngo-slate leading-relaxed text-[15px] font-light pb-7 pl-[60px] md:pl-[72px] pr-8">
+                  <AccordionContent className="text-ngo-slate leading-relaxed text-[15px] font-light pb-7 pl-[44px] pr-4">
                     {item.a}
                   </AccordionContent>
                 </AccordionItem>
@@ -1061,7 +1004,6 @@ function Home() {
           </div>
         </div>
       </section>
-
 
       {/* ============ CTA FINAL ============ */}
       <section className="py-24 px-6 bg-white">
