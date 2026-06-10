@@ -134,7 +134,7 @@ const AXES = [
   },
   {
     num: "02",
-    title: "Formation Technique & Professionnelle",
+    title: "Formation Technique & Professionnelle  ",
     image: axisFormation,
     context: "La fracture entre les formations académiques disponibles et les besoins réels du marché togolais reste l'un des principaux freins à l'insertion. Les métiers techniques recrutent — mais peinent à trouver des profils qualifiés.",
     problem: "Trop de jeunes sortent du système éducatif sans compétence directement valorisable. Les formations professionnelles existantes sont souvent saturées, coûteuses ou éloignées des zones rurales.",
@@ -144,7 +144,7 @@ const AXES = [
   },
   {
     num: "03",
-    title: "Leadership & Engagement Communautaire",
+    title: "Leadership & Engagement Communautaire  ",
     image: axisLeadership,
     context: "La jeunesse togolaise constitue plus de 60% de la population. Sans relais d'engagement structurés, son énergie reste sous-exploitée et son rôle dans la vie publique marginal.",
     problem: "Le déficit de figures inspirantes accessibles, le manque de formation au leadership et l'absence de cadres d'action communautaire freinent l'émergence d'une nouvelle élite engagée.",
