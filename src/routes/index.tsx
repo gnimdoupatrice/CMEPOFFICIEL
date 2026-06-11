@@ -3,20 +3,32 @@ import { ArrowRight, Check, Users, Target, Briefcase, GraduationCap, Sparkles, Z
 import { Layout } from "@/components/site/Layout";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
+import univKara from "@/assets/partners/universite-kara.jpg.asset.json";
+import franceVol from "@/assets/partners/france-volontaires.jpg.asset.json";
+import youthPanel from "@/assets/partners/youth-panel.jpg.asset.json";
+import a3e from "@/assets/partners/ong-a3e.jpg.asset.json";
+import kEmpire from "@/assets/partners/k-empire.jpg.asset.json";
+import stadd from "@/assets/partners/ong-stadd.jpg.asset.json";
+import cephal from "@/assets/partners/club-cephal.jpg.asset.json";
+import bege from "@/assets/partners/bege-shoot.jpg.asset.json";
+import anjped from "@/assets/partners/anjped-che.jpg.asset.json";
+import donBosco from "@/assets/partners/don-bosco.jpg.asset.json";
+import rotaract from "@/assets/partners/rotaract-kara.jpg.asset.json";
+import anlp from "@/assets/partners/anlp.jpg.asset.json";
 
 const PARTNER_LOGOS = [
-  { name: "Université de Kara", short: "UK", category: "Académique" },
-  { name: "ONG A3E", short: "A3E", category: "ONG" },
-  { name: "K-EMPIRE", short: "KE", category: "Entreprise" },
-  { name: "France Volontaires", short: "FV", category: "International" },
-  { name: "ONG STADD", short: "ST", category: "ONG" },
-  { name: "Youth Panel — Plan International Togo", short: "YP", category: "International" },
-  { name: "Club CEPHAL", short: "CC", category: "Associatif" },
-  { name: "BEGE SHOOT", short: "BS", category: "Entreprise" },
-  { name: "Association ANJPED-CHE", short: "AN", category: "Associatif" },
-  { name: "Centre Don Bosco", short: "DB", category: "Académique" },
-  { name: "Rotaract Club — Université de Kara", short: "RC", category: "Associatif" },
-  { name: "ONG A Nous La Planète (ANLP)", short: "ANLP", category: "ONG" },
+  { name: "Université de Kara", logo: univKara.url, category: "Académique" },
+  { name: "ONG A3E", logo: a3e.url, category: "ONG" },
+  { name: "K-EMPIRE", logo: kEmpire.url, category: "Entreprise" },
+  { name: "France Volontaires", logo: franceVol.url, category: "International" },
+  { name: "ONG STADD", logo: stadd.url, category: "ONG" },
+  { name: "Youth Panel — Plan International Togo", logo: youthPanel.url, category: "International" },
+  { name: "Club CEPHAL", logo: cephal.url, category: "Associatif" },
+  { name: "BEGE SHOOT", logo: bege.url, category: "Entreprise" },
+  { name: "Association ANJPED-CHE", logo: anjped.url, category: "Associatif" },
+  { name: "Centre Don Bosco", logo: donBosco.url, category: "Académique" },
+  { name: "Rotaract Club — Université de Kara", logo: rotaract.url, category: "Associatif" },
+  { name: "ONG A Nous La Planète (ANLP)", logo: anlp.url, category: "ONG" },
 ];
 
 // Actualité phare (featured story hero)
@@ -894,26 +906,29 @@ function Home() {
             </div>
           </div>
 
-          {/* Grille éditoriale — cartes monogrammes institutionnelles */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
+          {/* Grille éditoriale — logos réels institutionnels */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5">
             {PARTNER_LOGOS.map((p, i) => (
               <figure
                 key={p.name}
-                className="group relative bg-white/[0.04] backdrop-blur border border-white/10 rounded-2xl overflow-hidden hover:border-ngo-gold/60 hover:bg-white/[0.07] hover:-translate-y-1 transition-all duration-500"
+                className="group relative bg-white/[0.04] backdrop-blur border border-white/10 rounded-2xl overflow-hidden hover:border-ngo-gold/60 hover:bg-white/[0.08] hover:-translate-y-1 transition-all duration-500"
               >
-                <div className="relative aspect-[4/3] flex items-center justify-center p-8 overflow-hidden">
-                  <span className="absolute top-4 left-4 text-[10px] font-bold text-ngo-gold tabular-nums tracking-widest">
+                <div className="relative aspect-[4/3] flex items-center justify-center p-6 md:p-8 overflow-hidden bg-white/[0.02]">
+                  <span className="absolute top-3 left-4 text-[10px] font-bold text-ngo-gold tabular-nums tracking-widest">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <span className="absolute top-4 right-4 text-[9px] font-bold text-white/40 uppercase tracking-[0.18em]">
+                  <span className="absolute top-3 right-4 text-[9px] font-bold text-white/40 uppercase tracking-[0.18em]">
                     {p.category}
                   </span>
-                  <span className="font-extrabold text-5xl md:text-6xl tracking-tight text-white group-hover:text-ngo-gold transition-colors duration-500">
-                    {p.short}
-                  </span>
+                  <img
+                    src={p.logo}
+                    alt={`Logo ${p.name}`}
+                    loading="lazy"
+                    className="max-h-16 md:max-h-20 max-w-[80%] object-contain opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+                  />
                 </div>
-                <figcaption className="px-6 py-5 border-t border-white/10 bg-ngo-navy/40">
-                  <p className="text-sm md:text-base font-extrabold text-white leading-tight tracking-tight">
+                <figcaption className="px-5 py-4 border-t border-white/10 bg-ngo-navy/40">
+                  <p className="text-[13px] md:text-sm font-extrabold text-white leading-tight tracking-tight truncate">
                     {p.name}
                   </p>
                 </figcaption>
