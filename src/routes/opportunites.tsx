@@ -22,7 +22,7 @@ import heroImg from "@/assets/opportunities-hero.jpg";
 import featuredImg from "@/assets/hero-mentorship.jpg";
 import bootcampImg from "@/assets/axis-digital.jpg";
 import stageImg from "@/assets/entrepreneur.jpg";
-import bourseImg from "@/assets/axis-leadership.jpg.fallback";
+import bourseImg from "@/assets/solidarity.jpg";
 
 export const Route = createFileRoute("/opportunites")({
   head: () => ({
