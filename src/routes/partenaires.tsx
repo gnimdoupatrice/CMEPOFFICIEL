@@ -170,28 +170,29 @@ function PartnersPage() {
         </div>
       </section>
 
-      {/* LOGO WALL — premium harmonisé monochrome */}
-      <section className="bg-white py-20 px-6 border-b border-ngo-navy/5">
+      {/* LOGO WALL — grille responsive avec images réelles du PowerPoint */}
+      <section className="bg-white py-20 md:py-28 px-6 border-b border-ngo-navy/5">
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-2xl mx-auto mb-14">
             <span className="text-ngo-gold text-[10px] uppercase tracking-[0.25em] font-bold">Ils nous accompagnent</span>
-            <h2 className="text-2xl md:text-3xl font-extrabold text-ngo-navy mt-3 leading-tight tracking-tight">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-ngo-navy mt-3 leading-tight tracking-tight">
               Un écosystème de douze institutions partenaires.
             </h2>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-px bg-ngo-navy/8 border border-ngo-navy/8 rounded-2xl overflow-hidden">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-5">
             {CATEGORIES.flatMap((c) => c.partners).map((p) => (
               <div
                 key={p.name}
-                className="group relative aspect-[3/2] bg-ngo-pearl flex items-center justify-center p-5 hover:bg-white transition-colors"
+                className="group relative aspect-[4/3] bg-ngo-pearl border border-ngo-navy/8 rounded-xl flex items-center justify-center p-4 md:p-5 hover:bg-white hover:border-ngo-gold/30 hover:shadow-lg transition-all duration-300 overflow-hidden"
                 title={p.name}
               >
                 <img
                   src={p.logo}
-                  alt={p.name}
-                  className="max-h-14 max-w-[80%] object-contain grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
+                  alt={`Logo ${p.name}`}
+                  className="max-h-14 md:max-h-16 max-w-[85%] object-contain grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+                  loading="lazy"
                 />
-                <span className="absolute inset-x-0 bottom-2 text-center text-[9px] uppercase tracking-[0.18em] text-ngo-slate font-semibold opacity-0 group-hover:opacity-100 transition-opacity px-2 truncate">
+                <span className="absolute inset-x-0 bottom-0 text-center text-[9px] md:text-[10px] uppercase tracking-[0.18em] text-ngo-slate font-semibold opacity-0 group-hover:opacity-100 transition-opacity px-2 py-2 bg-gradient-to-t from-white/90 to-transparent truncate">
                   {p.name}
                 </span>
               </div>
