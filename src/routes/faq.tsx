@@ -309,7 +309,14 @@ function FAQPage() {
                     }`}
                   >
                     <button
-                      onClick={() => setOpenIdx(open ? null : i)}
+                      onClick={(e) => {
+                        const willOpen = !open;
+                        setOpenIdx(open ? null : i);
+                        if (willOpen) {
+                          const el = e.currentTarget.closest("article");
+                          setTimeout(() => el?.scrollIntoView({ behavior: "smooth", block: "start" }), 60);
+                        }
+                      }}
                       className="w-full text-left px-7 py-6 flex items-center justify-between gap-6 cursor-pointer"
                       aria-expanded={open}
                     >
