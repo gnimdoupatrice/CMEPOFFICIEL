@@ -920,12 +920,29 @@ function Home() {
                   <span className="absolute top-4 right-4 text-[9px] font-bold text-white/40 uppercase tracking-[0.18em]">
                     {p.category}
                   </span>
-                  <span className="font-extrabold text-5xl md:text-6xl tracking-tight text-white group-hover:text-ngo-gold transition-colors duration-500">
-                    {p.short}
+          {/* Grille éditoriale — logos réels institutionnels */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5">
+            {PARTNER_LOGOS.map((p, i) => (
+              <figure
+                key={p.name}
+                className="group relative bg-white/[0.04] backdrop-blur border border-white/10 rounded-2xl overflow-hidden hover:border-ngo-gold/60 hover:bg-white/[0.08] hover:-translate-y-1 transition-all duration-500"
+              >
+                <div className="relative aspect-[4/3] flex items-center justify-center p-6 md:p-8 overflow-hidden bg-white/[0.02]">
+                  <span className="absolute top-3 left-4 text-[10px] font-bold text-ngo-gold tabular-nums tracking-widest">
+                    {String(i + 1).padStart(2, "0")}
                   </span>
+                  <span className="absolute top-3 right-4 text-[9px] font-bold text-white/40 uppercase tracking-[0.18em]">
+                    {p.category}
+                  </span>
+                  <img
+                    src={p.logo}
+                    alt={`Logo ${p.name}`}
+                    loading="lazy"
+                    className="max-h-16 md:max-h-20 max-w-[80%] object-contain opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+                  />
                 </div>
-                <figcaption className="px-6 py-5 border-t border-white/10 bg-ngo-navy/40">
-                  <p className="text-sm md:text-base font-extrabold text-white leading-tight tracking-tight">
+                <figcaption className="px-5 py-4 border-t border-white/10 bg-ngo-navy/40">
+                  <p className="text-[13px] md:text-sm font-extrabold text-white leading-tight tracking-tight truncate">
                     {p.name}
                   </p>
                 </figcaption>
