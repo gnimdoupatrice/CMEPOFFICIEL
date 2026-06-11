@@ -18,15 +18,15 @@ import workshop from "@/assets/workshop.jpg";
 
 import univKara from "@/assets/partners/universite-kara.jpg.asset.json";
 import franceVol from "@/assets/partners/france-volontaires.jpg.asset.json";
-import youthPanel from "@/assets/partners/youth-panel.jpg.asset.json";
+import youthPanel from "@/assets/partners/youth-panel.png.asset.json";
 import a3e from "@/assets/partners/ong-a3e.jpg.asset.json";
-import kEmpire from "@/assets/partners/k-empire.jpg.asset.json";
+import kEmpire from "@/assets/partners/k-empire.png.asset.json";
 import stadd from "@/assets/partners/ong-stadd.jpg.asset.json";
 import cephal from "@/assets/partners/club-cephal.jpg.asset.json";
-import bege from "@/assets/partners/bege-shoot.jpg.asset.json";
+import bege from "@/assets/partners/bege-shoot.png.asset.json";
 import anjped from "@/assets/partners/anjped-che.jpg.asset.json";
 import donBosco from "@/assets/partners/don-bosco.jpg.asset.json";
-import rotaract from "@/assets/partners/rotaract-kara.jpg.asset.json";
+import rotaract from "@/assets/partners/rotaract-kara.png.asset.json";
 import anlp from "@/assets/partners/anlp.jpg.asset.json";
 
 export const Route = createFileRoute("/partenaires")({
@@ -179,20 +179,22 @@ function PartnersPage() {
               Un écosystème de douze institutions partenaires.
             </h2>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-5">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-px bg-ngo-navy/8 border border-ngo-navy/8 rounded-2xl overflow-hidden">
             {CATEGORIES.flatMap((c) => c.partners).map((p) => (
               <div
                 key={p.name}
-                className="group relative aspect-[4/3] bg-ngo-pearl border border-ngo-navy/8 rounded-xl flex items-center justify-center p-4 md:p-5 hover:bg-white hover:border-ngo-gold/30 hover:shadow-lg transition-all duration-300 overflow-hidden"
+                className="group relative aspect-square bg-white flex flex-col items-center justify-center p-5 md:p-6 hover:bg-ngo-pearl transition-all duration-300"
                 title={p.name}
               >
-                <img
-                  src={p.logo}
-                  alt={`Logo ${p.name}`}
-                  className="max-h-14 md:max-h-16 max-w-[85%] object-contain grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
-                  loading="lazy"
-                />
-                <span className="absolute inset-x-0 bottom-0 text-center text-[9px] md:text-[10px] uppercase tracking-[0.18em] text-ngo-slate font-semibold opacity-0 group-hover:opacity-100 transition-opacity px-2 py-2 bg-gradient-to-t from-white/90 to-transparent truncate">
+                <div className="flex-1 w-full flex items-center justify-center">
+                  <img
+                    src={p.logo}
+                    alt={`Logo ${p.name}`}
+                    className="max-h-20 md:max-h-24 max-w-full object-contain transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                </div>
+                <span className="mt-3 text-center text-[10px] md:text-[11px] uppercase tracking-[0.16em] text-ngo-navy/70 font-semibold leading-tight line-clamp-2">
                   {p.name}
                 </span>
               </div>
