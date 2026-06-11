@@ -4,19 +4,32 @@ import { Layout } from "@/components/site/Layout";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 
+import univKara from "@/assets/partners/universite-kara.jpg.asset.json";
+import franceVol from "@/assets/partners/france-volontaires.jpg.asset.json";
+import youthPanel from "@/assets/partners/youth-panel.png.asset.json";
+import a3e from "@/assets/partners/ong-a3e.jpg.asset.json";
+import kEmpire from "@/assets/partners/k-empire.png.asset.json";
+import stadd from "@/assets/partners/ong-stadd.jpg.asset.json";
+import cephal from "@/assets/partners/club-cephal.jpg.asset.json";
+import bege from "@/assets/partners/bege-shoot.png.asset.json";
+import anjped from "@/assets/partners/anjped-che.jpg.asset.json";
+import donBosco from "@/assets/partners/don-bosco.jpg.asset.json";
+import rotaract from "@/assets/partners/rotaract-kara.png.asset.json";
+import anlp from "@/assets/partners/anlp.jpg.asset.json";
+
 const PARTNER_LOGOS = [
-  { name: "Université de Kara", short: "UK", category: "Académique" },
-  { name: "ONG A3E", short: "A3E", category: "ONG" },
-  { name: "K-EMPIRE", short: "KE", category: "Entreprise" },
-  { name: "France Volontaires", short: "FV", category: "International" },
-  { name: "ONG STADD", short: "ST", category: "ONG" },
-  { name: "Youth Panel — Plan International Togo", short: "YP", category: "International" },
-  { name: "Club CEPHAL", short: "CC", category: "Associatif" },
-  { name: "BEGE SHOOT", short: "BS", category: "Entreprise" },
-  { name: "Association ANJPED-CHE", short: "AN", category: "Associatif" },
-  { name: "Centre Don Bosco", short: "DB", category: "Académique" },
-  { name: "Rotaract Club — Université de Kara", short: "RC", category: "Associatif" },
-  { name: "ONG A Nous La Planète (ANLP)", short: "ANLP", category: "ONG" },
+  { name: "Université de Kara", logo: univKara.url, category: "Académique" },
+  { name: "ONG A3E", logo: a3e.url, category: "ONG" },
+  { name: "K-EMPIRE", logo: kEmpire.url, category: "Entreprise" },
+  { name: "France Volontaires", logo: franceVol.url, category: "International" },
+  { name: "ONG STADD", logo: stadd.url, category: "ONG" },
+  { name: "Youth Panel — Plan International Togo", logo: youthPanel.url, category: "International" },
+  { name: "Club CEPHAL", logo: cephal.url, category: "Associatif" },
+  { name: "BEGE SHOOT", logo: bege.url, category: "Entreprise" },
+  { name: "Association ANJPED-CHE", logo: anjped.url, category: "Associatif" },
+  { name: "Centre Don Bosco", logo: donBosco.url, category: "Académique" },
+  { name: "Rotaract Club — Université de Kara", logo: rotaract.url, category: "Associatif" },
+  { name: "ONG A Nous La Planète (ANLP)", logo: anlp.url, category: "ONG" },
 ];
 
 // Actualité phare (featured story hero)
