@@ -906,20 +906,6 @@ function Home() {
             </div>
           </div>
 
-          {/* Grille éditoriale — cartes monogrammes institutionnelles */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
-            {PARTNER_LOGOS.map((p, i) => (
-              <figure
-                key={p.name}
-                className="group relative bg-white/[0.04] backdrop-blur border border-white/10 rounded-2xl overflow-hidden hover:border-ngo-gold/60 hover:bg-white/[0.07] hover:-translate-y-1 transition-all duration-500"
-              >
-                <div className="relative aspect-[4/3] flex items-center justify-center p-8 overflow-hidden">
-                  <span className="absolute top-4 left-4 text-[10px] font-bold text-ngo-gold tabular-nums tracking-widest">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <span className="absolute top-4 right-4 text-[9px] font-bold text-white/40 uppercase tracking-[0.18em]">
-                    {p.category}
-                  </span>
           {/* Grille éditoriale — logos réels institutionnels */}
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5">
             {PARTNER_LOGOS.map((p, i) => (
