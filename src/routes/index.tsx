@@ -4,32 +4,19 @@ import { Layout } from "@/components/site/Layout";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 
-import partnerUK from "@/assets/partners/universite-kara.jpg.asset.json";
-import partnerA3E from "@/assets/partners/ong-a3e.jpg.asset.json";
-import partnerKEmpire from "@/assets/partners/k-empire.jpg.asset.json";
-import partnerFV from "@/assets/partners/france-volontaires.jpg.asset.json";
-import partnerSTADD from "@/assets/partners/ong-stadd.jpg.asset.json";
-import partnerYouth from "@/assets/partners/youth-panel.jpg.asset.json";
-import partnerCephal from "@/assets/partners/club-cephal.jpg.asset.json";
-import partnerBege from "@/assets/partners/bege-shoot.jpg.asset.json";
-import partnerAnjped from "@/assets/partners/anjped-che.jpg.asset.json";
-import partnerDonBosco from "@/assets/partners/don-bosco.jpg.asset.json";
-import partnerRotaract from "@/assets/partners/rotaract-kara.jpg.asset.json";
-import partnerANLP from "@/assets/partners/anlp.jpg.asset.json";
-
 const PARTNER_LOGOS = [
-  { name: "Université de Kara", logo: partnerUK.url },
-  { name: "ONG A3E", logo: partnerA3E.url },
-  { name: "K-EMPIRE", logo: partnerKEmpire.url },
-  { name: "France Volontaires", logo: partnerFV.url },
-  { name: "ONG STADD", logo: partnerSTADD.url },
-  { name: "Youth Panel — Plan International Togo", logo: partnerYouth.url },
-  { name: "Club CEPHAL", logo: partnerCephal.url },
-  { name: "BEGE SHOOT", logo: partnerBege.url },
-  { name: "Association ANJPED-CHE", logo: partnerAnjped.url },
-  { name: "Centre Don Bosco", logo: partnerDonBosco.url },
-  { name: "Rotaract Club — Université de Kara", logo: partnerRotaract.url },
-  { name: "ONG A Nous La Planète (ANLP)", logo: partnerANLP.url },
+  { name: "Université de Kara", short: "UK", category: "Académique" },
+  { name: "ONG A3E", short: "A3E", category: "ONG" },
+  { name: "K-EMPIRE", short: "KE", category: "Entreprise" },
+  { name: "France Volontaires", short: "FV", category: "International" },
+  { name: "ONG STADD", short: "ST", category: "ONG" },
+  { name: "Youth Panel — Plan International Togo", short: "YP", category: "International" },
+  { name: "Club CEPHAL", short: "CC", category: "Associatif" },
+  { name: "BEGE SHOOT", short: "BS", category: "Entreprise" },
+  { name: "Association ANJPED-CHE", short: "AN", category: "Associatif" },
+  { name: "Centre Don Bosco", short: "DB", category: "Académique" },
+  { name: "Rotaract Club — Université de Kara", short: "RC", category: "Associatif" },
+  { name: "ONG A Nous La Planète (ANLP)", short: "ANLP", category: "ONG" },
 ];
 
 // Actualité phare (featured story hero)
@@ -882,45 +869,51 @@ function Home() {
 
 
       {/* ============ PARTENAIRES — mur de logos institutionnel ============ */}
-      <section className="py-28 md:py-32 px-6 bg-white">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-28 md:py-32 px-6 bg-ngo-navy text-white relative overflow-hidden">
+        {/* Décor subtil */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute -top-32 -left-32 size-96 rounded-full bg-ngo-gold/10 blur-3xl" />
+          <div className="absolute -bottom-32 -right-32 size-96 rounded-full bg-white/5 blur-3xl" />
+        </div>
+
+        <div className="relative max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-12 gap-10 mb-16 items-end">
             <div className="lg:col-span-7">
               <div className="flex items-center gap-4 mb-6">
                 <span className="h-px w-12 bg-ngo-gold" />
                 <span className="text-ngo-gold text-[10px] uppercase tracking-[0.35em] font-bold">Nos Partenaires</span>
               </div>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-ngo-navy leading-[1.02] tracking-tight">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.02] tracking-tight">
                 Une coalition d'acteurs <span className="text-ngo-gold">engagés</span> pour la jeunesse.
               </h2>
             </div>
             <div className="lg:col-span-5">
-              <p className="text-ngo-slate text-base md:text-lg leading-relaxed font-light border-l border-ngo-navy/15 pl-6">
+              <p className="text-white/70 text-base md:text-lg leading-relaxed font-light border-l border-white/20 pl-6">
                 Institutions académiques, ONG internationales, collectifs citoyens et entreprises locales : ces partenaires rendent possible chaque cohorte du CMEP.
               </p>
             </div>
           </div>
 
-          {/* Grille éditoriale — cartes partenaires grand format */}
+          {/* Grille éditoriale — cartes monogrammes institutionnelles */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
             {PARTNER_LOGOS.map((p, i) => (
               <figure
                 key={p.name}
-                className="group relative bg-ngo-pearl border border-ngo-navy/10 rounded-2xl overflow-hidden hover:border-ngo-gold/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-500"
+                className="group relative bg-white/[0.04] backdrop-blur border border-white/10 rounded-2xl overflow-hidden hover:border-ngo-gold/60 hover:bg-white/[0.07] hover:-translate-y-1 transition-all duration-500"
               >
-                <div className="relative aspect-[4/3] flex items-center justify-center p-8 md:p-10 bg-white overflow-hidden">
+                <div className="relative aspect-[4/3] flex items-center justify-center p-8 overflow-hidden">
                   <span className="absolute top-4 left-4 text-[10px] font-bold text-ngo-gold tabular-nums tracking-widest">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <img
-                    src={p.logo}
-                    alt={`Logo ${p.name}`}
-                    className="max-h-32 md:max-h-36 max-w-[80%] object-contain group-hover:scale-105 transition-transform duration-700"
-                    loading="lazy"
-                  />
+                  <span className="absolute top-4 right-4 text-[9px] font-bold text-white/40 uppercase tracking-[0.18em]">
+                    {p.category}
+                  </span>
+                  <span className="font-extrabold text-5xl md:text-6xl tracking-tight text-white group-hover:text-ngo-gold transition-colors duration-500">
+                    {p.short}
+                  </span>
                 </div>
-                <figcaption className="px-6 py-5 border-t border-ngo-navy/10 bg-ngo-pearl">
-                  <p className="text-sm md:text-base font-extrabold text-ngo-navy leading-tight tracking-tight">
+                <figcaption className="px-6 py-5 border-t border-white/10 bg-ngo-navy/40">
+                  <p className="text-sm md:text-base font-extrabold text-white leading-tight tracking-tight">
                     {p.name}
                   </p>
                 </figcaption>
@@ -928,11 +921,12 @@ function Home() {
             ))}
           </div>
 
+
           <div className="mt-14 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
-            <p className="text-[11px] uppercase tracking-[0.3em] font-bold text-ngo-slate">
+            <p className="text-[11px] uppercase tracking-[0.3em] font-bold text-white/60">
               {PARTNER_LOGOS.length} partenaires institutionnels · Région de la Kara, Togo
             </p>
-            <Link to="/partenaires" className="inline-flex items-center gap-2 text-ngo-navy hover:text-ngo-gold font-bold text-[11px] uppercase tracking-[0.3em] border-b border-ngo-navy/20 hover:border-ngo-gold pb-1.5 transition-colors">
+            <Link to="/partenaires" className="inline-flex items-center gap-2 text-white hover:text-ngo-gold font-bold text-[11px] uppercase tracking-[0.3em] border-b border-white/30 hover:border-ngo-gold pb-1.5 transition-colors">
               Devenir partenaire <ArrowRight size={13} />
             </Link>
           </div>
