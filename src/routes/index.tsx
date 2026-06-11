@@ -901,27 +901,25 @@ function Home() {
             </div>
           </div>
 
-          {/* Mur de partenaires éditorial — typographie institutionnelle, filets sobres */}
-          <div className="border-y border-ngo-navy/15">
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
-              {PARTNER_LOGOS.map((p, i) => (
-                <div
-                  key={p.name}
-                  className={`group relative flex flex-col items-center justify-center text-center px-6 py-12 min-h-[160px] border-ngo-navy/10 transition-colors hover:bg-ngo-pearl ${
-                    (i + 1) % 2 !== 0 ? "border-r sm:border-r" : ""
-                  } ${(i + 1) % 3 !== 0 ? "sm:border-r" : "sm:border-r-0"} ${
-                    (i + 1) % 4 !== 0 ? "lg:border-r" : "lg:border-r-0"
-                  } ${i < PARTNER_LOGOS.length - (PARTNER_LOGOS.length % 4 || 4) ? "lg:border-b" : ""} border-b last:border-b-0`}
-                >
-                  <span className="text-[10px] tabular-nums text-ngo-gold font-bold tracking-[0.35em] mb-4 opacity-60 group-hover:opacity-100 transition-opacity">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <span className="text-sm md:text-base font-bold text-ngo-navy leading-snug tracking-tight group-hover:text-ngo-gold transition-colors">
-                    {p.name}
-                  </span>
-                </div>
-              ))}
-            </div>
+          {/* Grille de logos partenaires — responsive, images réelles */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-6">
+            {PARTNER_LOGOS.map((p) => (
+              <div
+                key={p.name}
+                className="group relative aspect-[4/3] bg-white border border-ngo-navy/8 rounded-xl flex items-center justify-center p-4 md:p-5 hover:border-ngo-gold/40 hover:shadow-lg transition-all duration-300 overflow-hidden"
+                title={p.name}
+              >
+                <img
+                  src={p.logo}
+                  alt={`Logo ${p.name}`}
+                  className="max-h-14 md:max-h-16 max-w-[85%] object-contain grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+                  loading="lazy"
+                />
+                <span className="absolute inset-x-0 bottom-0 text-center text-[9px] md:text-[10px] uppercase tracking-[0.18em] text-ngo-slate font-semibold opacity-0 group-hover:opacity-100 transition-opacity px-2 py-2 bg-gradient-to-t from-white/90 to-transparent truncate">
+                  {p.name}
+                </span>
+              </div>
+            ))}
           </div>
 
           <div className="mt-14 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
