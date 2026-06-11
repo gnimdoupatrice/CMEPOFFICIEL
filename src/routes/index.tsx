@@ -901,24 +901,30 @@ function Home() {
             </div>
           </div>
 
-          {/* Grille de logos partenaires — responsive, images réelles */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-6">
-            {PARTNER_LOGOS.map((p) => (
-              <div
+          {/* Grille éditoriale — cartes partenaires grand format */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
+            {PARTNER_LOGOS.map((p, i) => (
+              <figure
                 key={p.name}
-                className="group relative aspect-[4/3] bg-white border border-ngo-navy/8 rounded-xl flex items-center justify-center p-4 md:p-5 hover:border-ngo-gold/40 hover:shadow-lg transition-all duration-300 overflow-hidden"
-                title={p.name}
+                className="group relative bg-ngo-pearl border border-ngo-navy/10 rounded-2xl overflow-hidden hover:border-ngo-gold/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-500"
               >
-                <img
-                  src={p.logo}
-                  alt={`Logo ${p.name}`}
-                  className="max-h-14 md:max-h-16 max-w-[85%] object-contain grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
-                  loading="lazy"
-                />
-                <span className="absolute inset-x-0 bottom-0 text-center text-[9px] md:text-[10px] uppercase tracking-[0.18em] text-ngo-slate font-semibold opacity-0 group-hover:opacity-100 transition-opacity px-2 py-2 bg-gradient-to-t from-white/90 to-transparent truncate">
-                  {p.name}
-                </span>
-              </div>
+                <div className="relative aspect-[4/3] flex items-center justify-center p-8 md:p-10 bg-white overflow-hidden">
+                  <span className="absolute top-4 left-4 text-[10px] font-bold text-ngo-gold tabular-nums tracking-widest">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <img
+                    src={p.logo}
+                    alt={`Logo ${p.name}`}
+                    className="max-h-32 md:max-h-36 max-w-[80%] object-contain group-hover:scale-105 transition-transform duration-700"
+                    loading="lazy"
+                  />
+                </div>
+                <figcaption className="px-6 py-5 border-t border-ngo-navy/10 bg-ngo-pearl">
+                  <p className="text-sm md:text-base font-extrabold text-ngo-navy leading-tight tracking-tight">
+                    {p.name}
+                  </p>
+                </figcaption>
+              </figure>
             ))}
           </div>
 
