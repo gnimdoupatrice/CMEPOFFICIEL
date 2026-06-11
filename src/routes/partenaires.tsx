@@ -18,15 +18,15 @@ import workshop from "@/assets/workshop.jpg";
 
 import univKara from "@/assets/partners/universite-kara.jpg.asset.json";
 import franceVol from "@/assets/partners/france-volontaires.jpg.asset.json";
-import youthPanel from "@/assets/partners/youth-panel.jpg.asset.json";
+import youthPanel from "@/assets/partners/youth-panel.png.asset.json";
 import a3e from "@/assets/partners/ong-a3e.jpg.asset.json";
-import kEmpire from "@/assets/partners/k-empire.jpg.asset.json";
+import kEmpire from "@/assets/partners/k-empire.png.asset.json";
 import stadd from "@/assets/partners/ong-stadd.jpg.asset.json";
 import cephal from "@/assets/partners/club-cephal.jpg.asset.json";
-import bege from "@/assets/partners/bege-shoot.jpg.asset.json";
+import bege from "@/assets/partners/bege-shoot.png.asset.json";
 import anjped from "@/assets/partners/anjped-che.jpg.asset.json";
 import donBosco from "@/assets/partners/don-bosco.jpg.asset.json";
-import rotaract from "@/assets/partners/rotaract-kara.jpg.asset.json";
+import rotaract from "@/assets/partners/rotaract-kara.png.asset.json";
 import anlp from "@/assets/partners/anlp.jpg.asset.json";
 
 export const Route = createFileRoute("/partenaires")({
