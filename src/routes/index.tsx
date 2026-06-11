@@ -923,10 +923,10 @@ function Home() {
 
 
           <div className="mt-14 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
-            <p className="text-[11px] uppercase tracking-[0.3em] font-bold text-ngo-slate">
+            <p className="text-[11px] uppercase tracking-[0.3em] font-bold text-white/60">
               {PARTNER_LOGOS.length} partenaires institutionnels · Région de la Kara, Togo
             </p>
-            <Link to="/partenaires" className="inline-flex items-center gap-2 text-ngo-navy hover:text-ngo-gold font-bold text-[11px] uppercase tracking-[0.3em] border-b border-ngo-navy/20 hover:border-ngo-gold pb-1.5 transition-colors">
+            <Link to="/partenaires" className="inline-flex items-center gap-2 text-white hover:text-ngo-gold font-bold text-[11px] uppercase tracking-[0.3em] border-b border-white/30 hover:border-ngo-gold pb-1.5 transition-colors">
               Devenir partenaire <ArrowRight size={13} />
             </Link>
           </div>
