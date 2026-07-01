@@ -3,9 +3,9 @@ import { Mail, Phone, MapPin } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="bg-ngo-navy text-white pt-20 pb-10">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid md:grid-cols-4 gap-12 mb-16">
+    <footer className="bg-ngo-navy text-white pt-14 sm:pt-20 pb-8 sm:pb-10" style={{ paddingBottom: "max(2rem, env(safe-area-inset-bottom))" }}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-10 sm:gap-12 mb-12 sm:mb-16">
           <div className="md:col-span-2">
             <div className="flex items-center gap-2.5 mb-6">
               <div className="size-10 bg-ngo-gold rounded-lg flex items-center justify-center text-white font-extrabold text-lg">C</div>
@@ -25,14 +25,14 @@ export function Footer() {
 
           <div>
             <h5 className="font-serif text-base mb-5 text-white">Navigation</h5>
-            <ul className="space-y-2.5 text-sm text-white/60">
-              <li><Link to="/a-propos" className="hover:text-ngo-gold transition-colors">À propos</Link></li>
-              <li><Link to="/programmes" className="hover:text-ngo-gold transition-colors">Programmes</Link></li>
-              <li><Link to="/impact" className="hover:text-ngo-gold transition-colors">Impact</Link></li>
-              <li><Link to="/partenaires" className="hover:text-ngo-gold transition-colors">Partenaires</Link></li>
-              <li><Link to="/actualites" className="hover:text-ngo-gold transition-colors">Actualités & Opportunités</Link></li>
-              <li><Link to="/faq" className="hover:text-ngo-gold transition-colors">FAQ</Link></li>
-              <li><Link to="/contact" className="hover:text-ngo-gold transition-colors">Contact</Link></li>
+            <ul className="grid grid-cols-2 sm:block sm:space-y-2.5 gap-y-1 text-sm text-white/70">
+              <li><Link to="/a-propos" className="inline-flex items-center min-h-11 hover:text-ngo-gold transition-colors">À propos</Link></li>
+              <li><Link to="/programmes" className="inline-flex items-center min-h-11 hover:text-ngo-gold transition-colors">Programmes</Link></li>
+              <li><Link to="/impact" className="inline-flex items-center min-h-11 hover:text-ngo-gold transition-colors">Impact</Link></li>
+              <li><Link to="/partenaires" className="inline-flex items-center min-h-11 hover:text-ngo-gold transition-colors">Partenaires</Link></li>
+              <li><Link to="/actualites" className="inline-flex items-center min-h-11 hover:text-ngo-gold transition-colors">Actualités</Link></li>
+              <li><Link to="/faq" className="inline-flex items-center min-h-11 hover:text-ngo-gold transition-colors">FAQ</Link></li>
+              <li><Link to="/contact" className="inline-flex items-center min-h-11 hover:text-ngo-gold transition-colors">Contact</Link></li>
             </ul>
           </div>
 
