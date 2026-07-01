@@ -25,14 +25,14 @@ export function Footer() {
 
           <div>
             <h5 className="font-serif text-base mb-5 text-white">Navigation</h5>
-            <ul className="space-y-2.5 text-sm text-white/60">
-              <li><Link to="/a-propos" className="hover:text-ngo-gold transition-colors">À propos</Link></li>
-              <li><Link to="/programmes" className="hover:text-ngo-gold transition-colors">Programmes</Link></li>
-              <li><Link to="/impact" className="hover:text-ngo-gold transition-colors">Impact</Link></li>
-              <li><Link to="/partenaires" className="hover:text-ngo-gold transition-colors">Partenaires</Link></li>
-              <li><Link to="/actualites" className="hover:text-ngo-gold transition-colors">Actualités & Opportunités</Link></li>
-              <li><Link to="/faq" className="hover:text-ngo-gold transition-colors">FAQ</Link></li>
-              <li><Link to="/contact" className="hover:text-ngo-gold transition-colors">Contact</Link></li>
+            <ul className="grid grid-cols-2 sm:block sm:space-y-2.5 gap-y-1 text-sm text-white/70">
+              <li><Link to="/a-propos" className="inline-flex items-center min-h-11 hover:text-ngo-gold transition-colors">À propos</Link></li>
+              <li><Link to="/programmes" className="inline-flex items-center min-h-11 hover:text-ngo-gold transition-colors">Programmes</Link></li>
+              <li><Link to="/impact" className="inline-flex items-center min-h-11 hover:text-ngo-gold transition-colors">Impact</Link></li>
+              <li><Link to="/partenaires" className="inline-flex items-center min-h-11 hover:text-ngo-gold transition-colors">Partenaires</Link></li>
+              <li><Link to="/actualites" className="inline-flex items-center min-h-11 hover:text-ngo-gold transition-colors">Actualités</Link></li>
+              <li><Link to="/faq" className="inline-flex items-center min-h-11 hover:text-ngo-gold transition-colors">FAQ</Link></li>
+              <li><Link to="/contact" className="inline-flex items-center min-h-11 hover:text-ngo-gold transition-colors">Contact</Link></li>
             </ul>
           </div>
 
