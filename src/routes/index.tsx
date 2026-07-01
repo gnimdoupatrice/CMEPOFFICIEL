@@ -335,7 +335,7 @@ function Home() {
           </div>
 
           <div className="lg:col-span-5">
-            <span className="text-ngo-gold text-[10px] uppercase tracking-[0.25em] font-bold">Pourquoi le CMEP existe</span>
+            <span className="text-ngo-gold text-[10px] uppercase tracking-[0.25em] font-bold">Pourquoi le CMEP </span>
             <h2 className="text-4xl md:text-5xl font-extrabold text-ngo-navy mt-4 mb-6 leading-[1.05] tracking-tight">
               Une génération en attente d'opportunités réelles.
             </h2>
@@ -381,7 +381,7 @@ function Home() {
           </p>
           <div className="space-y-5 text-white/85 text-lg leading-relaxed font-light max-w-3xl">
             <p>
-              Nous projetons un Togo où chaque jeune, quel que soit son point de départ, accède à un mentor qualifié, à une formation reconnue et à un réseau d'opportunités concrètes.
+              Nous projetons un Togo où chaque jeune, quel que soit son point de départ, accède à un mentorat qualifié, à une formation pratique et à un réseau d'opportunités concrètes.
             </p>
             <p>
               Un Togo où la région de la Kara devient un foyer de talents reconnus, exportant ses entrepreneurs, ses ingénieurs, ses leaders dans toute la sous-région ouest-africaine.
@@ -406,7 +406,7 @@ function Home() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               { icon: Compass, label: "Ce que nous faisons", text: "Nous combinons mentorat individuel, formation technique, accompagnement entrepreneurial et engagement communautaire dans un parcours intégré et mesurable." },
-              { icon: Heart, label: "Pour qui", text: "Pour les jeunes togolais de 18 à 35 ans, qu'ils soient diplômés en quête d'emploi, porteurs de projet ou en rupture éducative, particulièrement dans la région de la Kara." },
+              { icon: Heart, label: "Pour qui", text: "Pour les jeunes togolais de 18 à 35 ans, qu'ils soient diplômés en quête d'emploi, porteurs de projet ou en rupture éducative, particulièrement dans la région de la Kara ou partout au ." },
               { icon: Sparkles, label: "Comment", text: "Par une approche holistique mêlant cohortes de formation, mentorat 1:1, incubation, projets communautaires et mise en relation avec un réseau d'acteurs engagés." },
               { icon: Award, label: "Pourquoi", text: "Parce que l'autonomisation économique de la jeunesse est le levier le plus puissant de transformation sociale, et que chaque jeune mérite un mentor et une chance." },
             ].map((b) => (
