@@ -216,7 +216,7 @@ function NewsroomPage() {
               </span>
             </div>
             <h1 className="font-extrabold text-5xl md:text-7xl lg:text-[5.5rem] leading-[0.98] tracking-tight max-w-4xl">
-              Une génération qui ne <span className="text-ngo-gold italic font-light">subit</span> plus.
+              Une génération qui ne            <span className="text-ngo-gold italic font-light">subit</span> plus.
             </h1>
             <p className="mt-8 text-lg md:text-xl text-white/80 leading-relaxed max-w-2xl font-light">
               84 jeunes intègrent le parcours mentorat-entrepreneuriat-citoyenneté.
