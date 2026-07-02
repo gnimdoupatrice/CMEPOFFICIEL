@@ -107,7 +107,7 @@ export function Navigation() {
             to="/opportunites"
             className="inline-flex items-center gap-2 px-4 xl:px-5 py-2.5 min-h-11 bg-ngo-gold text-ngo-navy text-[12.5px] font-bold uppercase tracking-wider rounded-md hover:bg-ngo-navy hover:text-white transition-colors shadow-sm whitespace-nowrap"
           >
-            {lang === "fr" ? "Rejoindre" : "Apply"} <ArrowRight size={13} aria-hidden="true" />
+            {lang === "fr" ? "Rejoindre          " : "Apply"} <ArrowRight size={13} aria-hidden="true" />
           </Link>
         </div>
 
