@@ -199,7 +199,7 @@ function NewsroomPage() {
               </span>
             </div>
             <div className="flex items-center gap-2 text-white/60 text-[11px] uppercase tracking-[0.22em] font-semibold">
-              <Globe2 size={13} className="text-ngo-gold" /> Région de la Kara · Togo
+              <Globe2 size={13} className="text-ngo-gold" />Togo
             </div>
           </div>
         </div>
