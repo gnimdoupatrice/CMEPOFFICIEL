@@ -5,10 +5,10 @@ import { Menu, X, ArrowRight, Globe, ChevronDown } from "lucide-react";
 const primaryLinks = [
   { to: "/" as const, label: { fr: "Accueil", en: "Home" } },
   { to: "/a-propos" as const, label: { fr: "À propos", en: "About" } },
-  { to: "/programmes" as const, label: { fr: "Axes & Programmes", en: "Programs" } },
-  { to: "/impact" as const, label: { fr: "Impact", en: "Impact" } },
-  { to: "/actualites" as const, label: { fr: "Actualités & Opportunités", en: "News & Opportunities" } },
-  { to: "/partenaires" as const, label: { fr: "Partenaires", en: "Partners" } },
+  { to: "/programmes" as const, label: { fr: "Axes", en: "Programs" } },
+  { to: "/impact" as const, label: { fr: "Magazine", en: "Impact" } },
+  { to: "/actualites" as const, label: { fr: "Opportunités", en: "News & Opportunities" } },
+  { to: "/partenaires" as const, label: { fr: "Collaborations", en: "Partners" } },
 ];
 
 export function Navigation() {

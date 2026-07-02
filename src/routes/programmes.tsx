@@ -72,23 +72,7 @@ function ProgrammesPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-24 px-6 bg-ngo-navy text-white text-center">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-extrabold mb-5 leading-tight tracking-tight">
-            Un plan d'action annuel structuré.
-          </h2>
-          <p className="text-white/70 mb-10 leading-relaxed">
-            Nous publions chaque année un rapport d'activités et un plan opérationnel détaillé,
-            adossé aux axes stratégiques et à la planification quinquennale.
-          </p>
-          <Link
-            to="/contact"
-            className="inline-flex items-center gap-2 bg-ngo-gold text-ngo-navy px-8 py-4 font-bold uppercase tracking-widest text-xs hover:scale-105 transition-transform rounded-md"
-          >
-            Demander le plan d'action <ArrowRight size={14} />
-          </Link>
-        </div>
-      </section>
+      
     </Layout>
   );
 }

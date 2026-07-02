@@ -85,22 +85,6 @@ function ImpactPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-24 px-6 bg-ngo-navy text-white text-center">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-extrabold mb-5 leading-tight tracking-tight">
-            Recevoir le rapport d'impact.
-          </h2>
-          <p className="text-white/70 mb-10 leading-relaxed">
-            Indicateurs détaillés, méthodologie, cas d'études : disponible sur demande auprès de la coordination.
-          </p>
-          <Link
-            to="/contact"
-            className="inline-flex items-center gap-2 bg-ngo-gold text-ngo-navy px-8 py-4 font-bold uppercase tracking-widest text-xs hover:scale-105 transition-transform rounded-md"
-          >
-            Demander le rapport <ArrowRight size={14} />
-          </Link>
-        </div>
-      </section>
     </Layout>
   );
 }

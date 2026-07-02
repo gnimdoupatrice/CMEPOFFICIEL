@@ -38,7 +38,7 @@ export const Route = createFileRoute("/partenaires")({
         content:
           "Une coalition institutionnelle pour la jeunesse togolaise : universités, ONG, mouvements citoyens et partenaires internationaux engagés aux côtés du CMEP.",
       },
-      { property: "og:title", content: "Coalition partenaire — CMEP Togo" },
+      { property: "og:title", content: "Coalition de collaboration — CMEP Togo" },
       {
         property: "og:description",
         content:
@@ -152,7 +152,7 @@ function PartnersPage() {
           </h1>
           <p className="mt-8 text-lg text-white/75 leading-relaxed max-w-2xl">
             Universités, ONG, mouvements citoyens, plateformes jeunesse et acteurs internationaux.
-            Une alliance plurielle qui structure, finance et amplifie ce que le CMEP construit dans la région de Kara.
+            Une alliance plurielle qui structure, finance et amplifie ce que le CMEP construit.
           </p>
 
           <div className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -214,7 +214,7 @@ function PartnersPage() {
               </h2>
             </div>
             <p className="lg:col-span-4 text-ngo-slate leading-relaxed text-[15px]">
-              Chaque partenaire occupe une fonction précise dans la chaîne d'autonomisation : recherche,
+              Chaque Collaboration occupe une fonction précise dans la chaîne d'autonomisation : recherche,
               opérationnel, mobilisation, plaidoyer.
             </p>
           </div>
@@ -265,44 +265,7 @@ function PartnersPage() {
       </section>
 
       {/* FEATURED PARTNERSHIP SPOTLIGHT */}
-      <section className="relative overflow-hidden bg-ngo-navy text-white py-24 px-6">
-        <img src={workshop} alt="" className="absolute inset-0 size-full object-cover opacity-15" />
-        <div className="absolute inset-0 bg-gradient-to-br from-ngo-navy via-ngo-navy/95 to-ngo-navy/70" />
-        <div className="relative max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 items-center">
-          <div className="lg:col-span-7 animate-fade-in">
-            <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-ngo-gold/15 border border-ngo-gold/30 text-[10px] uppercase tracking-[0.25em] font-bold text-ngo-gold mb-7">
-              <Sparkles size={11} /> Partenariat phare
-            </span>
-            <h2 className="text-3xl md:text-5xl font-extrabold leading-[1.05] tracking-tight">
-              Université de Kara&nbsp;: <span className="text-ngo-gold">trois ans</span> d'ancrage scientifique.
-            </h2>
-            <p className="mt-7 text-white/75 text-[15px] leading-relaxed max-w-xl">
-              Une convention pluriannuelle qui structure la recherche-action, accueille les cohortes
-              de mentorat sur le campus et garantit la rigueur pédagogique de chaque parcours CMEP.
-            </p>
-            <div className="mt-10 grid grid-cols-3 gap-5">
-              {[
-                { v: "3 ans", l: "Convention active" },
-                { v: "450+", l: "Étudiants impliqués" },
-                { v: "12", l: "Enseignants mobilisés" },
-              ].map((s) => (
-                <div key={s.l} className="p-5 bg-white/5 border border-white/10 rounded-xl">
-                  <div className="text-3xl font-extrabold text-ngo-gold leading-none">{s.v}</div>
-                  <div className="text-[10px] uppercase tracking-[0.22em] text-white/55 mt-3 font-semibold leading-snug">{s.l}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="lg:col-span-5 relative aspect-[4/5] rounded-3xl overflow-hidden group">
-            <img src={solidarity} alt="Coopération Université de Kara et CMEP" className="absolute inset-0 size-full object-cover transition-transform duration-700 group-hover:scale-105" />
-            <div className="absolute inset-0 bg-gradient-to-t from-ngo-navy/60 to-transparent" />
-            <div className="absolute bottom-6 left-6 right-6">
-              <span className="inline-block px-2.5 py-1 bg-ngo-gold text-ngo-navy text-[10px] uppercase tracking-[0.22em] font-extrabold rounded mb-3">Depuis 2022</span>
-              <p className="text-white font-extrabold text-xl leading-tight">Une coalition académique au service de la jeunesse de Kara.</p>
-            </div>
-          </div>
-        </div>
-      </section>
+      
 
       {/* SDG ALIGNMENT */}
       <section className="bg-white py-24 px-6">
@@ -343,39 +306,7 @@ function PartnersPage() {
       </section>
 
       {/* QUOTES from partners */}
-      <section className="bg-ngo-pearl py-24 px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="max-w-2xl mb-14">
-            <span className="text-ngo-gold text-[10px] uppercase tracking-[0.25em] font-bold">Voix des partenaires</span>
-            <h2 className="text-3xl md:text-5xl font-extrabold text-ngo-navy mt-3 leading-[1.05] tracking-tight">
-              Ce qu'ils disent du CMEP.
-            </h2>
-          </div>
-          <div className="grid md:grid-cols-2 gap-6">
-            {QUOTES.map((q) => (
-              <article
-                key={q.name}
-                className="group grid sm:grid-cols-12 gap-0 bg-white border border-ngo-navy/8 rounded-2xl overflow-hidden hover:shadow-2xl transition-shadow"
-              >
-                <div className="sm:col-span-4 relative min-h-[200px]">
-                  <img src={q.img} alt={q.name} className="absolute inset-0 size-full object-cover" />
-                  <div className="absolute inset-0 bg-gradient-to-tr from-ngo-navy/60 to-transparent" />
-                </div>
-                <div className="sm:col-span-8 p-8 md:p-10 flex flex-col justify-between">
-                  <div>
-                    <Quote size={28} className="text-ngo-gold mb-5" />
-                    <p className="text-ngo-navy text-[15px] leading-relaxed font-medium">“{q.quote}”</p>
-                  </div>
-                  <div className="mt-6 pt-5 border-t border-ngo-navy/8">
-                    <div className="font-extrabold text-ngo-navy">{q.name}</div>
-                    <div className="text-[11px] uppercase tracking-[0.22em] text-ngo-slate font-semibold mt-1.5">{q.role}</div>
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+      
 
       {/* CTA — devenir partenaire */}
       <section className="bg-white py-24 px-6">

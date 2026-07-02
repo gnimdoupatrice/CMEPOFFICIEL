@@ -108,14 +108,9 @@ function AboutPage() {
               </div>
             </div>
             <div className="md:col-span-10">
-              <span className="text-ngo-gold text-[10px] uppercase tracking-[0.25em] font-bold">Zone pilote</span>
-              <h2 className="text-3xl md:text-4xl font-extrabold mt-3 mb-5 leading-tight tracking-tight">
-                Région de la Kara.
-              </h2>
-              <p className="text-white/70 text-base leading-relaxed">
-                Le programme met l'accent sur la région de la Kara comme zone pilote avant son extension à d'autres régions du pays.
-                Une stratégie ancrée localement, pensée pour essaimer nationalement.
-              </p>
+              <h1 className="text-3xl md:text-4xl font-extrabold mt-3 mb-5 leading-tight tracking-tight">
+                Rejoingez nous maintenant.
+              </h1>
             </div>
           </div>
         </div>
