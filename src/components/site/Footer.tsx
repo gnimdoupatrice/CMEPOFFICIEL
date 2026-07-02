@@ -18,9 +18,6 @@ export function Footer() {
               Compétences — Habilitation — Résilience — Insertion socio-économique.
               Une initiative collective portée par un réseau de jeunes leaders togolais.
             </p>
-            <p className="text-xs uppercase tracking-[0.2em] text-ngo-gold font-bold">
-              Zone pilote : Région de Kara
-            </p>
           </div>
 
           <div>
@@ -49,7 +46,7 @@ export function Footer() {
               </li>
               <li className="flex items-start gap-3">
                 <Phone size={16} className="mt-0.5 text-ngo-gold shrink-0" />
-                <span>+228 90 51 00 88<br/>WhatsApp : 96 89 87 17</span>
+                <span>+228 90 51 00 88 </span>
               </li>
             </ul>
           </div>

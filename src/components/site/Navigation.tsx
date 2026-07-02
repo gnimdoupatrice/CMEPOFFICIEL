@@ -40,22 +40,6 @@ export function Navigation() {
       style={{ paddingTop: "env(safe-area-inset-top)" }}
     >
       {/* Top utility bar — desktop only */}
-      <div
-        className={`hidden lg:block border-b border-ngo-navy/5 bg-ngo-navy text-white/85 transition-all overflow-hidden ${
-          scrolled ? "max-h-0 opacity-0" : "max-h-12 opacity-100"
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-6 h-9 flex items-center justify-between text-[11px]">
-          <span className="uppercase tracking-[0.25em] font-semibold text-white/70">
-            CMEP — Compétences · Habilitation · Résilience · Insertion
-          </span>
-          <div className="flex items-center gap-6">
-            <a href="mailto:chrismentorshipempowermentprog@gmail.com" className="text-white/70 hover:text-white">
-              chrismentorshipempowermentprog@gmail.com
-            </a>
-          </div>
-        </div>
-      </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-[72px] flex items-center justify-between gap-3">
         {/* Brand */}
@@ -66,7 +50,6 @@ export function Navigation() {
           <div className="hidden sm:flex flex-col leading-none">
             <span className="font-extrabold tracking-tight text-[16px] sm:text-[17px] text-ngo-navy">CMEP</span>
             <span className="text-[9px] uppercase tracking-[0.22em] text-ngo-slate font-semibold mt-1">
-              Mentorship · Empowerment
             </span>
           </div>
         </Link>
@@ -122,7 +105,7 @@ export function Navigation() {
             to="/opportunites"
             className="inline-flex items-center gap-2 px-4 xl:px-5 py-2.5 min-h-11 bg-ngo-gold text-ngo-navy text-[12.5px] font-bold uppercase tracking-wider rounded-md hover:bg-ngo-navy hover:text-white transition-colors shadow-sm whitespace-nowrap"
           >
-            {lang === "fr" ? "Candidater" : "Apply"} <ArrowRight size={13} />
+            {lang === "fr" ? "Rejoindre la communauté " : "Apply"} <ArrowRight size={13} />
           </Link>
         </div>
 

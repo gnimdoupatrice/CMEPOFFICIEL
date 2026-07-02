@@ -142,10 +142,10 @@ const OBJECTIVES = [
     num: "02",
     icon: Users,
     title: "Promouvoir le mentorat intergénérationnel",
-    desc: "Connecter chaque jeune à un mentor qualifié, capable de partager son expérience, d'ouvrir son réseau et de l'aider à éviter les écueils du parcours professionnel.",
-    activities: ["Mise en relation 1:1 jeune / mentor", "Sessions collectives de mentorat thématique", "Communauté d'entraide en continu"],
+    desc: "Connecter chaque jeune à un réseau qualifié, capable de partager son expérience, d'ouvrir son réseau et de l'aider à éviter les écueils du parcours professionnel.",
+    activities: ["Mise en relation jeune / mentor / Incubateur", "Sessions collectives de mentorat thématique", "Communauté d'entraide en continu"],
     beneficiaries: "Tous les bénéficiaires des cohortes CMEP",
-    results: "100 binômes mentor/mentoré actifs par an",
+    results: "1 000 binômes mentor/mentoré actifs par an",
   },
   {
     num: "03",
@@ -160,10 +160,10 @@ const OBJECTIVES = [
     num: "04",
     icon: Leaf,
     title: "Ancrer un développement durable",
-    desc: "Inscrire chaque action du programme dans une logique d'impact social, environnemental et territorial mesurable, au service des communautés de la région.",
+    desc: "Inscrire chaque action du programme dans une logique d'impact social, environnemental et territorial mesurable, au service des communautés.",
     activities: ["Projets communautaires pilotés par les jeunes", "Formations à l'écocitoyenneté", "Suivi d'indicateurs ODD"],
     beneficiaries: "Communautés rurales et périurbaines de la Kara",
-    results: "20 projets communautaires structurants par an",
+    results: "Plus de 200 projets communautaires structurants par an",
   },
 ] as const;
 
@@ -172,11 +172,10 @@ const AXES = [
     num: "01",
     title: "Entrepreneuriat & Emploi",
     image: axisEntrepreneur,
-    context: "Au Togo, plus de 30% des jeunes diplômés peinent à accéder à un premier emploi stable. Dans la région de la Kara, ce chiffre grimpe encore davantage du fait du déficit d'opportunités structurées.",
+    context: "Au Togo, plus de 30% des jeunes diplômés peinent à accéder à un premier emploi stable, ces chiffres grimpeent encore davantage chaque année du fait du déficit d'opportunités structurées.",
     problem: "Le manque d'accompagnement, l'absence de capital de départ et la faible exposition aux écosystèmes économiques privent une génération entière de la possibilité d'entreprendre.",
     approach: "Le CMEP active un parcours en trois temps : sensibilisation à l'entrepreneuriat, incubation des projets viables, puis post-incubation avec mentorat et mise en relation avec des financeurs locaux et internationaux.",
-    activities: ["Bootcamps d'idéation (5 jours)", "Programme d'incubation (12 semaines)", "Mentorat individuel mensuel", "Accès à un fonds de micro-amorçage"],
-    indicators: "Nombre d'entreprises créées, chiffre d'affaires généré, emplois indirects, taux de survie à 24 mois.",
+    activities: ["Bootcamps d'idéation", "Programme d'incubation", "Mentorat individuel mensuel", "Accès à un fonds de micro-amorçage"]
   },
   {
     num: "02",
@@ -202,19 +201,19 @@ const AXES = [
     num: "04",
     title: "Innovation Numérique",
     image: axisDigital,
-    context: "Le numérique est l'opportunité économique la plus accessible pour les jeunes togolais — à condition de disposer des compétences et des outils. Or la fracture numérique reste profonde, surtout hors de Lomé.",
-    problem: "Manque d'accès aux équipements, absence de formations qualifiantes, faible exposition aux métiers du futur : les jeunes de la Kara restent à l'écart de la révolution numérique africaine.",
+    context: "Le numérique est l'opportunité économique la plus accessible pour les jeunes togolais à condition de disposer des compétences et des outils. Or la fracture numérique reste profonde, surtout hors de Lomé.",
+    problem: "Manque d'accès aux équipements, absence de formations qualifiantes, faible exposition aux métiers du futur.",
     approach: "Le CMEP installe des parcours intensifs sur les compétences numériques recherchées : développement web, marketing digital, design, data, IA appliquée. Objectif : connecter les talents locaux à l'économie numérique mondiale.",
-    activities: ["Bootcamps tech (4 à 16 semaines)", "Hackathons régionaux", "Mise en relation avec employeurs distants", "Accompagnement freelance"],
+    activities: ["Bootcamps tech ", "Hackathons", "Mise en relation avec employeurs distants", "Accompagnement freelance"],
     indicators: "Compétences certifiées, contrats freelance signés, emplois numériques décrochés.",
   },
   {
     num: "05",
     title: "Citoyenneté & Écologie",
     image: axisCitizenship,
-    context: "Les défis climatiques et environnementaux frappent durement la région de la Kara : dégradation des sols, déforestation, gestion des déchets. La jeunesse est en première ligne, et porteuse de solutions.",
+    context: "Les défis climatiques et environnementaux frappent durement notre patrimoine commun : dégradation des sols, déforestation, gestion des déchets. La jeunesse est en première ligne, et porteuse de solutions.",
     problem: "Sans formation, sans cadre, sans reconnaissance, l'engagement écologique des jeunes reste fragmenté et peu visible. Le lien entre citoyenneté et action environnementale est encore peu structuré.",
-    approach: "Le CMEP fédère les initiatives écocitoyennes des jeunes, leur donne des outils méthodologiques et finance des projets pilotes à fort impact local : reboisement, économie circulaire, sensibilisation scolaire.",
+    approach: "Le CMEP fédère les initiatives écocitoyennes des jeunes, leur donner des outils méthodologiques et soutenir des projets pilotes à fort impact local : reboisement, économie circulaire, sensibilisation scolaire.",
     activities: ["Brigades vertes locales", "Formations à l'écocitoyenneté", "Projets de reboisement et de gestion des déchets", "Campagnes de sensibilisation"],
     indicators: "Hectares reboisés, tonnes de déchets traités, jeunes mobilisés, écoles sensibilisées.",
   },
@@ -290,13 +289,13 @@ function Home() {
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 rounded-full mb-8">
               <span className="w-1.5 h-1.5 rounded-full bg-ngo-gold animate-pulse"></span>
-              <span className="text-[10px] uppercase tracking-[0.25em] font-bold text-white">Chris Mentorship & Empowerment Program</span>
+              <span className="text-[10px] uppercase tracking-[0.25em] font-bold text-white">CHRIS Mentorship & Empowerment Program</span>
             </div>
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.02] tracking-tight mb-8">
-              Propulser une génération togolaise vers <span className="text-ngo-gold">l'autonomie</span>, l'emploi et le leadership.
+              Propulser une génération togolaise vers <span className="text-ngo-gold">l'autonomie</span>, l'emploi, le leadership et le développement durable.
             </h1>
             <p className="text-lg md:text-xl text-white/85 leading-relaxed mb-10 max-w-2xl font-light">
-              Le <strong className="text-white font-semibold">Chris Mentorship & Empowerment Program</strong> accompagner chaque année <strong className="text-ngo-gold font-semibold">100 jeunes togolais</strong> par le mentorat, la formation, l'innovation et l'engagement communautaire.
+              Le <strong className="text-white font-semibold">CHRIS Mentorship & Empowerment Program</strong> accompagner et renforcer chaque année <strong className="text-ngo-gold font-semibold"> plus de 1 000 jeunes togolais</strong> par le mentorat, la formation, l'innovation et l'engagement communautaire.
             </p>
             <div className="flex flex-wrap gap-4 mb-14">
               <Link to="/opportunites" className="bg-ngo-gold text-ngo-navy px-8 py-4 rounded-xl font-bold flex items-center gap-2 hover:bg-white transition-all shadow-2xl shadow-ngo-gold/30">
@@ -309,7 +308,7 @@ function Home() {
 
             <div className="grid grid-cols-3 gap-6 max-w-2xl pt-10 border-t border-white/20">
               {[
-                { v: "100+", l: "Jeunes/an" },
+                { v: "1 000+", l: "Jeunes/an" },
                 { v: "60%", l: "Insertion ciblée" },
                 { v: "12", l: "Partenaires" },
               ].map((s) => (
@@ -344,7 +343,7 @@ function Home() {
                 Au Togo, plus de <strong className="text-ngo-navy">60% de la population a moins de 25 ans</strong>. Cette force démographique est aussi un défi : sans accompagnement structuré, des milliers de jeunes terminent leur formation sans débouché clair, sans mentor pour les guider, sans réseau pour les propulser.
               </p>
               <p>
-                Dans la région de la Kara, le déficit d'opportunités économiques se conjugue à l'éloignement des écosystèmes nationaux. Les talents existent — mais restent invisibles, sous-exploités, fragmentés.
+                Le déficit d'opportunités économiques se conjugue au faussé qui exixte entre jeunes et  les écosystèmes nationaux d'accompgnement. Les talents existent — mais restent invisibles, sous-exploités, fragmentés.
               </p>
               <p>
                 Le CMEP est né d'un constat simple : <strong className="text-ngo-navy">aucun programme ne peut transformer une vie aussi puissamment que le mentorat, la formation et l'accompagnement combinés.</strong>
@@ -524,10 +523,6 @@ function Home() {
                         ))}
                       </ul>
                     </div>
-                    <div>
-                      <div className="text-[10px] uppercase tracking-widest font-bold text-ngo-navy mb-2">Indicateurs de réussite</div>
-                      <p className="text-xs text-ngo-slate leading-relaxed">{axis.indicators}</p>
-                    </div>
                   </div>
                 </div>
               </article>
@@ -595,7 +590,7 @@ function Home() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
             {[
-              { icon: Users, num: "100+", title: "Jeunes formés / an", desc: "Cohortes annuelles déployées en région de la Kara, sélectionnées sur dossier et entretien." },
+              { icon: Users, num: "1 000+", title: "Jeunes formés / an", desc: "Cohortes annuelles déployées en région de la Kara, sélectionnées sur dossier et entretien." },
               { icon: TrendingUp, num: "60%", title: "Taux d'insertion ciblé", desc: "Emploi salarié, micro-entreprise ou poursuite d'études supérieures dans les 12 mois." },
               { icon: Sparkles, num: "1", title: "Plateforme de mentorat", desc: "Infrastructure pérenne de mise en relation jeunes/mentors, structurante pour le territoire." },
               { icon: Award, num: "12+", title: "Partenariats structurants", desc: "Universités, ONG, entreprises et institutions publiques engagées dans la durée." },
@@ -655,7 +650,7 @@ function Home() {
                 <span className="text-ngo-gold text-[10px] uppercase tracking-[0.35em] font-bold">Le magazine du programme</span>
               </div>
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-ngo-navy leading-[1.02] tracking-tight">
-                Reportages, parcours, cohortes — <span className="text-ngo-gold">la jeunesse togolaise en mouvement.</span>
+                Reportages, parcours, cohortes <span className="text-ngo-gold">la jeunesse togolaise en mouvement.</span>
               </h2>
             </div>
             <div className="lg:col-span-5">
@@ -962,11 +957,11 @@ function Home() {
               {[
                 {
                   q: "Qui peut candidater au programme CMEP ?",
-                  a: "Tout jeune togolais entre 18 et 35 ans, diplômé ou non, résidant prioritairement dans la région de la Kara. Aucune expérience préalable n'est requise pour la majorité des programmes — la motivation et l'engagement comptent davantage que le diplôme.",
+                  a: "Tout jeune togolais entre 18 et 35 ans, diplômé ou non. Aucune expérience préalable n'est requise pour la majorité des programmes  la motivation et l'engagement comptent davantage que le diplôme.",
                 },
                 {
                   q: "Les formations sont-elles payantes ?",
-                  a: "Non. L'intégralité des programmes CMEP est gratuite pour les bénéficiaires sélectionnés. Les coûts sont couverts par nos partenaires institutionnels, donateurs et programmes de bourses.",
+                  a: "Non. L'intégralité des programmes CMEP est gratuite.",
                 },
                 {
                   q: "Quels types de partenariats le CMEP propose-t-il ?",
@@ -1036,7 +1031,7 @@ function Home() {
 
           <div className="relative z-10 grid grid-cols-2 gap-4">
             {[
-              { num: "100+", l: "Jeunes accompagnés" },
+              { num: "1 000+", l: "Jeunes accompagnés" },
               { num: "60%", l: "Insertion ciblée" },
               { num: "12", l: "Partenaires actifs" },
               { num: "5", l: "Axes stratégiques" },
