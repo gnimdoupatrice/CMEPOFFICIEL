@@ -2,15 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Layout } from "@/components/site/Layout";
 import { useMemo, useState } from "react";
 import { ArrowRight, ArrowUpRight, Search, Clock, MapPin, TrendingUp, Newspaper, Radio, Bookmark } from "lucide-react";
-import heroStory from "@/assets/hero-mentorship.jpg";
-import featureA from "@/assets/entrepreneur.jpg";
-import featureB from "@/assets/axis-digital.jpg";
-import featureC from "@/assets/solidarity.jpg";
-import featureD from "@/assets/workshop.jpg";
-import featureE from "@/assets/axis-formation.jpg";
-import featureF from "@/assets/axis-citizenship.jpg";
-import featureG from "@/assets/challenge-youth.jpg";
-import featureH from "@/assets/vision-banner.jpg";
+import { EDITORIAL_ARTICLES, type EditorialArticle } from "@/lib/editorial";
 
 export const Route = createFileRoute("/impact")({
   head: () => ({
@@ -26,31 +18,11 @@ export const Route = createFileRoute("/impact")({
   component: MagazinePage,
 });
 
-type Article = {
-  id: string;
-  title: string;
-  excerpt: string;
-  category: string;
-  date: string;
-  readTime: string;
-  location: string;
-  image: string;
-  featured?: boolean;
-};
+type Article = EditorialArticle;
 
-const CATEGORIES = ["Toutes", "Reportage", "Portrait", "Analyse", "Partenariat", "Impact", "Événement"] as const;
+const CATEGORIES = ["Toutes", "Institutionnel", "Formation", "Écologie", "Événement", "Analyse", "Communauté", "Développement durable", "Éditorial"] as const;
 
-const ARTICLES: Article[] = [
-  { id: "a1", featured: true, title: "À Kara, 120 jeunes ouvrent une nouvelle page du CMEP.", excerpt: "Sous les voûtes de l'amphithéâtre de l'Université de Kara, mentors, partenaires institutionnels et bénéficiaires ont scellé l'engagement d'une promotion qui marquera l'année.", category: "Reportage", date: "15 mai 2025", readTime: "6 min", location: "Kara", image: heroStory },
-  { id: "a2", title: "Convention historique avec le Centre Don Bosco", excerpt: "Un accord-cadre qui ouvre les ateliers techniques à 60 jeunes supplémentaires et installe le mentorat au cœur des métiers manuels.", category: "Partenariat", date: "28 avril 2025", readTime: "4 min", location: "Kara", image: featureA },
-  { id: "a3", title: "Démo-day : huit projets, une génération qui entreprend", excerpt: "Agro-transformation, micro-services numériques, économie circulaire — la première promo d'incubés a défendu ses projets devant un jury exigeant.", category: "Événement", date: "10 avril 2025", readTime: "5 min", location: "Kara", image: featureB },
-  { id: "a4", title: "Portrait : Aïcha, du diplôme à l'atelier de couture", excerpt: "Six mois après la formation, elle emploie deux apprenties et fournit deux boutiques de Lomé. Récit d'une ascension méthodique.", category: "Portrait", date: "2 avril 2025", readTime: "7 min", location: "Kara", image: featureC },
-  { id: "a5", title: "Analyse : la jeunesse togolaise face à l'IA générative", excerpt: "Formation, garde-fous, opportunités professionnelles — la position CMEP sur l'entrée du Togo dans l'ère de l'intelligence artificielle.", category: "Analyse", date: "25 mars 2025", readTime: "9 min", location: "Togo", image: featureD },
-  { id: "a6", title: "500 jeunes accompagnés : le bilan chiffré de l'année", excerpt: "Le rapport annuel d'impact du CMEP dévoile 500 bénéficiaires, 60% d'insertion et 12 partenariats structurants.", category: "Impact", date: "18 mars 2025", readTime: "5 min", location: "Kara", image: featureE },
-  { id: "a7", title: "Brigades vertes : reboiser en même temps qu'on forme", excerpt: "Comment le CMEP articule engagement écologique et employabilité — une méthode qui essaime dans quatre préfectures.", category: "Reportage", date: "10 mars 2025", readTime: "6 min", location: "Région Kara", image: featureF },
-  { id: "a8", title: "France Volontaires renouvelle son engagement pour trois ans", excerpt: "Mobilité, échange d'expertises, financement de cohortes : le nouveau protocole ouvre une décennie de coopération.", category: "Partenariat", date: "4 mars 2025", readTime: "4 min", location: "Lomé", image: featureG },
-  { id: "a9", title: "Éditorial : la mentorat, une infrastructure sociale", excerpt: "Le mot du fondateur : pourquoi le mentorat structuré est aujourd'hui aussi vital que l'école et l'hôpital.", category: "Analyse", date: "25 février 2025", readTime: "3 min", location: "Togo", image: featureH },
-];
+const ARTICLES: Article[] = EDITORIAL_ARTICLES;
 
 function MagazinePage() {
   const [q, setQ] = useState("");

@@ -17,20 +17,8 @@ import {
   BookOpen,
   ChevronRight,
 } from "lucide-react";
-import newsFeatured from "@/assets/news-featured.jpg";
-import newsBrigade from "@/assets/news-brigade.jpg";
-import newsEntrepreneur from "@/assets/news-entrepreneur.jpg";
-import newsPartnership from "@/assets/news-partnership.jpg";
-import workshop from "@/assets/workshop.jpg";
-import solidarity from "@/assets/solidarity.jpg";
-import entrepreneurImg from "@/assets/entrepreneur.jpg";
-import heroMentorship from "@/assets/hero-mentorship.jpg";
-import heroStudent from "@/assets/hero-student.jpg";
-import opportunitiesHero from "@/assets/opportunities-hero.jpg";
-import challengeYouth from "@/assets/challenge-youth.jpg";
-import t1 from "@/assets/testimonial-1.jpg";
-import t2 from "@/assets/testimonial-2.jpg";
-import t3 from "@/assets/testimonial-3.jpg";
+import { CMEP_MEDIA } from "@/lib/media";
+import { EDITORIAL_ARTICLES } from "@/lib/editorial";
 
 export const Route = createFileRoute("/actualites")({
   head: () => ({
@@ -39,7 +27,7 @@ export const Route = createFileRoute("/actualites")({
       {
         name: "description",
         content:
-          "Récits du terrain, portraits de jeunes leaders, annonces de partenariat et appels à candidatures du programme CMEP dans la région de Kara.",
+          "Récits du terrain, portraits de jeunes leaders, annonces de partenariat et appels à candidatures du programme CMEP au Togo.",
       },
       { property: "og:title", content: "Newsroom — CMEP Togo" },
       {
@@ -47,7 +35,7 @@ export const Route = createFileRoute("/actualites")({
         content:
           "Histoires d'impact, opportunités, mises à jour de terrain et annonces institutionnelles du CMEP.",
       },
-      { property: "og:image", content: newsFeatured },
+      { property: "og:image", content: CMEP_MEDIA.team },
       { property: "og:url", content: "/actualites" },
     ],
     links: [{ rel: "canonical", href: "/actualites" }],
@@ -55,123 +43,86 @@ export const Route = createFileRoute("/actualites")({
   component: NewsroomPage,
 });
 
-const EDITORIAL_NEWS = [
-  {
-    img: newsBrigade,
-    category: "Récit de terrain",
-    kicker: "Mobilisation citoyenne",
-    title: "Trois jours, 142 jeunes, deux quartiers : la brigade qui a réveillé Kara.",
-    excerpt:
-      "À Tomdè et Kpéwa, la promotion 2024 a transformé un week-end de salubrité en démonstration collective de citoyenneté active.",
-    date: "12 mai 2025",
-    location: "Kara · Tomdè & Kpéwa",
-    readTime: "6 min",
-    size: "wide",
-  },
-  {
-    img: newsEntrepreneur,
-    category: "Portrait",
-    kicker: "Trajectoire",
-    title: "Aïcha B. : six mois pour passer du mentorat à son atelier.",
-    excerpt:
-      "Comment l'accompagnement entrepreneurial a transformé un savoir-faire artisanal en micro-entreprise qui emploie trois apprenties.",
-    date: "28 avril 2025",
-    location: "Kara",
-    readTime: "8 min",
-    size: "tall",
-  },
-  {
-    img: newsPartnership,
-    category: "Partenariat",
-    kicker: "Coopération",
-    title: "France Volontaires et CMEP signent trois ans d'engagement structuré.",
-    excerpt:
-      "Une convention-cadre qui structure mentorat, mobilités et insertion professionnelle jusqu'en 2028.",
-    date: "15 avril 2025",
-    location: "Lomé",
-    readTime: "4 min",
-    size: "square",
-  },
-  {
-    img: workshop,
-    category: "Bootcamp",
-    kicker: "En cours",
-    title: "Agro-transformation : la session de Pya forme 28 jeunes en quatre semaines.",
-    excerpt:
-      "Maraîchage, conservation, packaging et mise en marché — le bootcamp qui ancre l'économie locale dans des compétences réelles.",
-    date: "08 juin 2025",
-    location: "Pya",
-    readTime: "5 min",
-    size: "square",
-  },
-];
+const newsFeatured = CMEP_MEDIA.team;
+
+const EDITORIAL_NEWS = EDITORIAL_ARTICLES.slice(0, 4).map((article, index) => ({
+  img: article.image,
+  category: article.category,
+  kicker: index === 0 ? "Dossier institutionnel" : "À lire",
+  title: article.title,
+  excerpt: article.excerpt,
+  date: article.date,
+  location: article.location,
+  readTime: article.readTime,
+  size: index === 0 ? "wide" : index === 1 ? "tall" : "square",
+}));
 
 const OPPORTUNITIES = [
   {
-    img: heroMentorship,
-    type: "Promotion 2025",
-    title: "Mentorat entrepreneurial — Cohorte de septembre",
+    img: CMEP_MEDIA.opportunities.animateurProjet,
+    type: "Formation certifiante",
+    title: "Animateur de projet",
     pitch:
-      "Six mois d'accompagnement individuel pour structurer une activité génératrice de revenus et lever ses premiers financements.",
-    deadline: "30 juin 2025",
-    duration: "6 mois",
-    location: "Kara, Togo",
+      "Un parcours complet pour cadrer, planifier, animer et évaluer un projet avec des modules sur la sauvegarde, la VBG et la protection.",
+    deadline: "Mai 2026",
+    duration: "11 modules",
+    location: "Togo",
     urgency: "high",
-    progress: 78,
-    spots: "12 places restantes",
-    benefits: ["Mentor dédié", "Capital d'amorçage", "Mise en réseau", "Diplôme CMEP"],
+    progress: 72,
+    spots: "Cohortes ouvertes",
+    benefits: ["Certification", "Intervenants confirmés", "Méthodes projet", "Suivi terrain"],
   },
   {
-    img: opportunitiesHero,
-    type: "Bootcamp intensif",
-    title: "Innovation numérique — Quatre semaines de transformation",
+    img: CMEP_MEDIA.opportunities.certificatEies,
+    type: "Certificat professionnel",
+    title: "Expert en Évaluation d'Impact Environnemental et Social",
     pitch:
-      "Design, code, prototypage et présentation devant un jury d'investisseurs. Une immersion totale pour basculer dans le numérique.",
-    deadline: "15 juillet 2025",
-    duration: "4 semaines",
-    location: "Kara · Campus CMEP",
+      "Une formation avancée pour maîtriser cadres réglementaires, standards internationaux et méthodologie EIES.",
+    deadline: "Février 2026",
+    duration: "3 journées intensives",
+    location: "Togo",
     urgency: "medium",
-    progress: 45,
-    spots: "22 places restantes",
-    benefits: ["Bourse complète", "Équipement fourni", "Pitch devant jury", "Stage garanti"],
+    progress: 58,
+    spots: "Places limitées",
+    benefits: ["Études de cas", "Outils EIES", "Projet final", "Attestation"],
   },
 ];
 
 const STORIES = [
   {
-    img: t1,
-    name: "Aïcha B.",
-    role: "Promotion 2023",
-    program: "Atelier de couture",
+    img: CMEP_MEDIA.team,
+    name: "Bénéficiaires CMEP",
+    role: "Cohortes nationales",
+    program: "Mentorat & leadership",
     quote:
-      "Le mentorat m'a appris à structurer ce que je savais déjà faire. Mon atelier emploie aujourd'hui trois apprenties.",
-    metric: "+3 emplois créés",
+      "Le programme nous aide à transformer nos ambitions en trajectoires structurées, avec des mentors et des partenaires accessibles.",
+    metric: "Jeunes accompagnés",
   },
   {
-    img: t2,
-    name: "Komlan A.",
-    role: "Promotion 2024",
-    program: "Agro-transformation",
+    img: CMEP_MEDIA.opportunities.animateurProjetIntervenants,
+    name: "Intervenants CMEP",
+    role: "Pool de formateurs",
+    program: "Renforcement de capacités",
     quote:
-      "Six mois après la formation, j'ai lancé ma ligne de jus naturels distribuée dans cinq points de vente.",
-    metric: "5 points de vente",
+      "Les sessions sont pensées pour produire des compétences immédiatement utilisables dans les projets, les organisations et les territoires.",
+    metric: "Formations certifiantes",
   },
   {
-    img: t3,
-    name: "Mawunyo D.",
-    role: "Promotion 2024",
-    program: "Service numérique",
+    img: CMEP_MEDIA.logo,
+    name: "Coordination CMEP",
+    role: "Programme national",
+    program: "Insertion & impact",
     quote:
-      "Le bootcamp a ouvert une voie que je n'imaginais pas. Je suis aujourd'hui développeur junior dans une scale-up.",
-    metric: "Poste obtenu",
+      "Notre priorité est de connecter la jeunesse togolaise à des opportunités crédibles, documentées et durables.",
+    metric: "Portée nationale",
   },
 ];
 
 const FIELD_DISPATCHES = [
-  { date: "08 juin", tag: "Terrain", text: "Démarrage de la session formation en agro-transformation à Pya.", img: workshop },
-  { date: "02 juin", tag: "Annonce", text: "Lancement officiel du comité jeunesse CMEP de Kozah.", img: solidarity },
-  { date: "24 mai", tag: "Média", text: "Reportage Radio Kara : retour sur 18 mois d'accompagnement.", img: entrepreneurImg },
-  { date: "10 mai", tag: "Mission", text: "Visite institutionnelle du Youth Panel — Plan International.", img: newsPartnership },
+  { date: "Juin", tag: "Institutionnel", text: "Échanges CMEP–ANVT autour du volontariat et de l'engagement des jeunes.", img: CMEP_MEDIA.team },
+  { date: "Juin", tag: "Formation", text: "Renforcement de capacités en gestion de projet, leadership et développement durable.", img: CMEP_MEDIA.opportunities.animateurProjetIntervenants },
+  { date: "Mai", tag: "Événement", text: "SIKA Tour et universités : connecter les talents aux écosystèmes.", img: CMEP_MEDIA.partners.universiteKara },
+  { date: "Fév.", tag: "Impact", text: "Management de projet et évaluation environnementale au service de projets finançables.", img: CMEP_MEDIA.opportunities.certificatEies },
 ];
 
 function NewsroomPage() {
@@ -181,7 +132,7 @@ function NewsroomPage() {
       <section className="relative min-h-[92vh] flex items-end overflow-hidden bg-ngo-navy">
         <img
           src={newsFeatured}
-          alt="Promotion 2025 du CMEP en cérémonie d'ouverture à Kara"
+          alt="Équipe et bénéficiaires du CMEP au Togo"
           className="absolute inset-0 size-full object-cover opacity-70 scale-105"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-ngo-navy via-ngo-navy/80 to-ngo-navy/30" />
@@ -220,13 +171,12 @@ function NewsroomPage() {
             </h1>
             <p className="mt-8 text-lg md:text-xl text-white/80 leading-relaxed max-w-2xl font-light">
               84 jeunes intègrent le parcours mentorat-entrepreneuriat-citoyenneté.
-              Plus grande cohorte depuis le lancement, célébrée aux côtés de l'Université de Kara,
-              du Youth Panel et de Don Bosco.
+              Une dynamique nationale portée avec des partenaires académiques, institutionnels, associatifs et communautaires.
             </p>
 
             <div className="mt-10 flex items-center gap-5 text-[11px] uppercase tracking-[0.22em] text-white/60 font-semibold">
               <span className="flex items-center gap-1.5"><Calendar size={12} className="text-ngo-gold" /> 04 juin 2025</span>
-              <span className="flex items-center gap-1.5"><MapPin size={12} className="text-ngo-gold" /> Kara</span>
+              <span className="flex items-center gap-1.5"><MapPin size={12} className="text-ngo-gold" /> Togo</span>
               <span className="flex items-center gap-1.5"><Clock size={12} className="text-ngo-gold" /> 12 min de lecture</span>
             </div>
 
@@ -286,7 +236,7 @@ function NewsroomPage() {
             </div>
             <div className="lg:col-span-5 lg:text-right">
               <p className="text-ngo-slate text-[15px] leading-relaxed max-w-md lg:ml-auto mb-5">
-                Récits, portraits, partenariats. Une fenêtre éditoriale sur ce que le programme construit chaque semaine dans la région de Kara.
+                Récits, portraits, partenariats. Une fenêtre éditoriale sur ce que le programme construit chaque semaine au Togo.
               </p>
               <Link
                 to="/impact"
@@ -465,7 +415,7 @@ function NewsroomPage() {
                       <div>
                         <div className="text-[9px] uppercase tracking-[0.25em] text-white/45 font-semibold mb-1.5">Lieu</div>
                         <div className="text-sm font-bold text-white flex items-center gap-1.5">
-                          <MapPin size={12} className="text-ngo-gold" /> Kara
+                          <MapPin size={12} className="text-ngo-gold" /> Togo
                         </div>
                       </div>
                     </div>
