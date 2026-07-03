@@ -1,156 +1,136 @@
-# Refonte Mobile First — Recyc Hub Togo
 
-Audit complet + refonte progressive de la home en Mobile First, sans casser l'identité visuelle actuelle (glassmorphism vert/or, hero premium, sections WordPress).
+# Refonte complète CMEP — Plan d'exécution
 
----
+Refonte intégrale du site CMEP en un seul chantier, avec standards inspirés des organisations internationales (ONU, PNUD, GIZ). Le plan couvre les 10 chantiers demandés.
 
-## 1. Audit Responsive (à confirmer après passage Playwright)
+## 1. Extraction & préparation des assets
 
-Zones à instrumenter en 375px / 414px / 768px / 1024px / 1440px / 2560px :
+- Parser `Présentation_du_CMEP_1.pptx` avec `document--parse_document` pour extraire tous les logos partenaires + visuels institutionnels.
+- Nettoyer les logos (fond blanc/transparent uniformisé via `imagegen--edit_image` si nécessaire) et les uploader en `.asset.json` via `lovable-assets`.
+- Uploader `logo_cmep_well.jpg` (logo officiel) et `team_cmep.jpg` (image équipe complète) comme assets CDN.
+- Remplacer le placeholder "C" par le vrai logo CMEP dans Navbar + Footer.
 
-- **Navbar** : liens condensés, pills serrées, risque d'overflow sur 360–390px, hamburger déjà présent mais menu à revoir (hiérarchie, tap targets 44px).
-- **Hero** : hauteur `100vh` probable → passer en `100dvh`, slideshow — vérifier ratio image + lisibilité titre sur 360px, boutons CTA empilés.
-- **Section "Pourquoi"** : 3 cartes défis + onglets Vision/Mission → sur mobile les onglets se compressent, image badge peut déborder.
-- **Comment ça marche** : layout image gauche + checklist droite → doit devenir stack vertical <768px avec indicateurs de progression tactiles.
-- **Impact (dark)** : grille stats — passer 4 → 2 colonnes <640px, compteurs lisibles.
-- **Academy / Événements / Alerte / Témoignages / Partenaires / CTA / Footer** : vérifier gouttières, tailles typos, alignements.
-- **Global** : `overflow-x`, images sans `max-width:100%`, textes en `px` fixes, boutons < 44px, focus states manquants.
+## 2. Optimisation performances (Core Web Vitals)
 
----
+- Créer un composant `<ResponsiveImage>` réutilisable produisant `<picture>` avec sources AVIF + WebP + JPG fallback, `srcset` multi-tailles (480/768/1200/1920), `sizes` contextuel, `loading="lazy"` par défaut (`eager` pour LCP), `decoding="async"`, `fetchpriority` explicite.
+- Utiliser `vite-imagetools` (`bun add -d vite-imagetools`) pour générer les variantes formats/tailles au build.
+- Précharger le hero LCP dans le `head()` de la route concernée.
+- Auditer et supprimer imports non utilisés, code-split lourd, activer `defaultPreloadStaleTime` déjà en place.
+- Ajouter `Cache-Control` implicite via assets CDN.
 
-## 2. Stratégie Mobile First
+## 3. Refonte Magazine (`/impact` → repositionné)
 
-- **Philosophie** : base = 360px. Media queries uniquement pour **ajouter** de la respiration, jamais pour "réparer".
-- **Priorités UX** : lisibilité (>16px body), pouce-friendly (CTA principaux dans la zone basse ou sticky), hiérarchie claire (1 action par écran), performance (LCP hero <2.5s).
-- **Architecture** : conteneur fluide `w-full max-w-7xl px-4 sm:px-6 lg:px-8`, grilles `grid-cols-1 md:grid-cols-2 lg:grid-cols-3`, typo `clamp()`.
+Transformer en portail éditorial de type BBC Afrique / Jeune Afrique :
 
----
+- **Structure éditoriale** : Hero News plein largeur (article vedette) · rangée 2 articles secondaires · grille catégorielle (À la Une, Terrain, Portraits, Analyses, Vidéos) · derniers articles (feed) · sidebar catégories + tags populaires.
+- **Recherche** : barre de recherche filtrant par titre/catégorie (client-side sur les données).
+- **Structure de données** : `src/lib/magazine-data.ts` exposant `Article[]` avec champs (slug, titre, chapô, auteur, date, catégorie, image, contenu, tags, isFeatured, readTime). Placeholder de 12 articles crédibles en attendant les vrais textes utilisateur.
+- **Cartes articles** : élégantes, ratio image homogène, catégorie colorée, date + temps de lecture, hover subtil.
+- **Route dynamique** : `src/routes/magazine.$slug.tsx` (page article) avec head SEO complet (og:image = image de l'article).
+- Renommer le lien nav "Magazine" au lieu de "Impact" et route `/magazine`.
 
-## 3. Breakpoints (Tailwind v4, alignés sur défauts)
+## 4. Section Partenaires
 
-| Alias | min-width | Cible |
-|---|---|---|
-| (base) | 0 | Petits smartphones 320–390px |
-| `sm` | 640px | Grands smartphones / tablette portrait étroite |
-| `md` | 768px | Tablettes portrait |
-| `lg` | 1024px | Tablettes paysage / petits laptops |
-| `xl` | 1280px | Laptops / desktop standard |
-| `2xl` | 1536px | Desktop large / 2K |
+- Nouveau composant `PartnersGrid` : grille responsive (2 → 3 → 5 → 6 col), niveau de gris + saturation au hover, `aspect-square` uniforme, fond blanc.
+- Intégré sur Homepage (bande "Ils nous font confiance") + page `/partenaires` remaniée (par catégories : institutionnels, ONG, académiques, techniques).
 
-Ajout d'un token `3xl` (1920px) dans `styles.css` pour 4K si besoin (typo cap + largeur max container).
+## 5. Page À propos
 
----
+- Refonte institutionnelle : Hero → Mission/Vision → Notre histoire → Valeurs → **Notre équipe** (affichage de `team_cmep.jpg` en pleine image, encadrée élégamment avec titre "Notre équipe" et légende) → Gouvernance → CTA.
 
-## 4. Grille & conteneurs
+## 6. Réorganisation ODD
 
-- Container : `w-full mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl` (avec `max-w-[1600px]` sur `3xl`).
-- Gouttières : `gap-4 sm:gap-6 lg:gap-8`.
-- Sections verticales : `py-16 sm:py-20 md:py-24 lg:py-28`.
+- Retirer la section "Alignement aux 17 ODD" de `/partenaires`.
+- L'intégrer dans `/programmes` (Axes), adaptée au design de la page : grille des 17 ODD avec icônes officielles ou tuiles colorées, mise en relation avec les axes CMEP.
 
----
+## 7. Refonte Opportunités (`/opportunites`)
 
-## 5. Comportement par section (résumé)
+Portail dédié uniquement aux opportunités :
+- Filtres : type (bourse, formation, appel à projets, concours, événement, appel à candidatures), statut (ouvert/clôturé), date limite.
+- Cartes opportunité : titre, type (badge coloré), deadline, description courte, CTA "Postuler".
+- Structure `src/lib/opportunities-data.ts`.
+- Supprimer tout contenu non lié.
 
-- **Header/Navbar** : logo + hamburger <lg. Menu plein écran mobile avec accordéon "Découvrir", CTA sticky bas, tap 48px. ≥lg = layout actuel affiné.
-- **Hero** : `min-h-dvh`, titre `clamp(2rem, 8vw, 4.5rem)`, CTAs en colonne <sm, ligne >sm. Slideshow : swipe tactile + dots 44px.
-- **Pourquoi** : cartes défis en carousel horizontal snap <md, grille 3 col ≥md. Onglets en select natif <sm (meilleure UX), pills ≥sm.
-- **Comment ça marche** : stepper vertical <md (image en haut, checklist dessous), split 2 col ≥md. Indicateurs numérotés cliquables 44px.
-- **Impact** : 2×2 <sm, 4×1 ≥md. Compteurs `clamp(2rem, 10vw, 3.5rem)`.
-- **Academy/Events/Alerte** : cartes stack <md, grid ≥md.
-- **Témoignages** : carousel snap <md, grid ≥lg.
-- **Partenaires** : marquee/scroller <md, grille logos ≥md.
-- **FAQ** (si présent) : accordion pleine largeur, tap 48px.
-- **Footer** : accordéons collapsibles <md, 4 colonnes ≥md. Newsletter form stack <sm.
+## 8. Système de CTA
 
----
+- Composant `<CtaBanner variant="join|partner|donate|apply|contact|discover">` réutilisable.
+- Chaque route reçoit un CTA final pertinent selon son contexte.
+- Bouton `Button` shadcn étendu avec variantes `gold` (primaire CMEP) et `outline-gold`.
 
-## 6. Typographie responsive
+## 9. Refonte Footer
 
-Tokens dans `src/index.css` :
+Nouveau footer 5 colonnes desktop, empilé mobile :
+1. Bloc identité (logo, mission courte, réseaux sociaux avec vraies icônes → LinkedIn + Facebook fournis + placeholders).
+2. Liens rapides (À propos, Axes, Magazine, Opportunités, Partenaires).
+3. Programmes / Axes clés.
+4. Contact (adresse, tel, mail) + Newsletter (input + bouton, action stockée localement pour l'instant).
+5. Bas de footer : mentions légales, politique de confidentialité (routes stubs à créer), copyright.
 
-```css
---fs-body: clamp(1rem, 0.95rem + 0.25vw, 1.0625rem);
---fs-h4: clamp(1.125rem, 1rem + 0.5vw, 1.375rem);
---fs-h3: clamp(1.375rem, 1.1rem + 1vw, 1.875rem);
---fs-h2: clamp(1.75rem, 1.2rem + 2vw, 3rem);
---fs-h1: clamp(2.25rem, 1.4rem + 4vw, 4.5rem);
---lh-tight: 1.1;
---lh-body: 1.6;
-```
+Ajout des routes `/mentions-legales` et `/confidentialite` (contenu institutionnel type).
 
-Line-height serrée sur titres, aérée sur body. Suppression des tailles fixes `text-6xl` non gardées.
+## 10. Accessibilité WCAG 2.2 AA
 
----
+- Audit contraste (tous les tokens `text-*` sur fonds respectifs).
+- `alt` sur toutes les images (décoratives : `alt=""`).
+- `aria-label` sur boutons icône, focus-visible déjà global → vérifier partout.
+- Un seul `<main>` par route, hiérarchie H1→H2→H3 respectée.
+- Tap targets ≥44px déjà en place.
+- Navigation clavier complète (dropdown langue, menu mobile, dropdowns programmes).
+- `lang="fr"` déjà OK au root.
+- Ajouter skip-link "Aller au contenu principal".
 
-## 7. Composants (règles transversales)
+## 11. Navigation
 
-- **Boutons** : `min-h-11 min-w-11` (44px), padding fluide, focus ring visible (`focus-visible:ring-2 ring-secondary`).
-- **Cartes** : `rounded-2xl`, padding fluide `p-5 sm:p-6 md:p-8`.
-- **Images** : `w-full h-auto`, `loading="lazy"` sauf hero, `decoding="async"`, `aspect-*` sur wrappers.
-- **Modales/menus** : bottom-sheet <md, dialog centré ≥md.
-- **Tables** : scroll horizontal contenu dans un wrapper `overflow-x-auto` avec ombre indicative.
+Réordonner et clarifier : Accueil · À propos · Axes · Magazine · Opportunités · Partenaires · Contact. CTA "Rejoindre" reste doré. Logo CMEP officiel remplace le carré "C".
 
----
+## 12. SEO
 
-## 8. Performance
-
-- Hero image : preload dans `head()`, WebP/AVIF via `vite-imagetools`.
-- `loading="lazy"` + `decoding="async"` sur toutes les images hors LCP.
-- `content-visibility: auto` sur sections hors viewport.
-- Réduction des animations `prefers-reduced-motion`.
-- Purge CSS Tailwind (auto en v4).
+- Head unique par route (title + description + og:* + twitter:*), og:image absolu quand pertinent (article, hero).
+- JSON-LD Organization sur `__root` ou home.
+- Sitemap déjà présent, vérifier qu'il liste les nouvelles routes.
 
 ---
 
-## 9. UX Mobile
+## Détails techniques
 
-- Zone tactile 44px min partout.
-- CTA principal Hero atteignable au pouce (bas de fold).
-- Swipe natif sur carousels (snap CSS).
-- Pas d'hover-only, tous les états ont un équivalent tactile.
-- Menu mobile avec animation < 250ms, close on route change.
+**Dépendances à installer** :
+- `vite-imagetools` (transformation d'images build-time)
 
----
+**Nouveaux fichiers principaux** :
+- `src/components/site/ResponsiveImage.tsx`
+- `src/components/site/PartnersGrid.tsx`
+- `src/components/site/CtaBanner.tsx`
+- `src/components/magazine/*` (HeroNews, ArticleCard, CategoryPills, SearchBar)
+- `src/components/opportunities/OpportunityCard.tsx`
+- `src/lib/magazine-data.ts` (12 articles placeholder)
+- `src/lib/opportunities-data.ts`
+- `src/lib/team-data.ts`
+- `src/routes/magazine.tsx` + `src/routes/magazine.$slug.tsx`
+- `src/routes/mentions-legales.tsx`, `src/routes/confidentialite.tsx`
+- Assets : `src/assets/logo-cmep.jpg.asset.json`, `src/assets/team-cmep.jpg.asset.json`, `src/assets/partners/*.asset.json` (extraits du .pptx)
 
-## 10. Accessibilité (WCAG 2.2 AA)
+**Fichiers refondus** :
+- `src/components/site/Navigation.tsx` (logo + ordre + magazine)
+- `src/components/site/Footer.tsx` (refonte complète)
+- `src/routes/__root.tsx` (SEO + skip-link + JSON-LD)
+- `src/routes/impact.tsx` → renommé `magazine.tsx`
+- `src/routes/a-propos.tsx` (section équipe)
+- `src/routes/programmes.tsx` (ODD)
+- `src/routes/partenaires.tsx` (grille partenaires, sans ODD)
+- `src/routes/opportunites.tsx` (portail opportunités)
+- `src/routes/index.tsx` (bande partenaires + CTAs cohérents)
+- `src/styles.css` (tokens CTA gold, éventuels ajustements)
 
-- Contrastes vérifiés (jaune secondary sur navy = OK, vérifier sur pearl).
-- `aria-label` sur tous les boutons icônes.
-- Focus visible partout.
-- `<main>` unique, hiérarchie H1→H2→H3 respectée.
-- `prefers-reduced-motion` honoré.
-- Alt text descriptifs sur images de contenu, `alt=""` sur décoratives.
+**Ordre d'exécution** :
+1. Parser .pptx + upload assets (logos + équipe)
+2. Installer `vite-imagetools`, créer `ResponsiveImage`
+3. Refonte Navigation + Footer (impacte toutes les pages)
+4. Refonte Homepage (partenaires + CTAs)
+5. Magazine (portail + route article)
+6. À propos (équipe)
+7. Opportunités (portail)
+8. Axes (+ODD) et Partenaires (–ODD)
+9. Routes légales + skip-link + JSON-LD SEO
+10. Audit a11y final + vérif build
 
----
-
-## 11. Tests
-
-Playwright headless : screenshots 375 / 414 / 768 / 1024 / 1440 / 2560px avant/après, vérification console (0 erreur) et absence d'overflow horizontal (`document.documentElement.scrollWidth <= innerWidth`).
-
----
-
-## 12. Fichiers touchés (estimation)
-
-- `src/index.css` — tokens typo fluides, container, focus, reduced-motion.
-- `src/components/Navbar.tsx` — menu mobile refondu.
-- `src/components/HeroSection.tsx` — dvh, clamp, swipe.
-- `src/components/AboutSection.tsx` — carousel cartes défis, onglets → select mobile.
-- `src/components/HowItWorksSection.tsx` — stepper vertical mobile.
-- `src/components/ImpactSection.tsx` — grille 2×2 mobile.
-- `src/components/{Academy,Events,Alert,Testimonials,Partners,Cta,Footer}Section.tsx` — passes ciblées.
-- Ajout d'un utilitaire `.no-scrollbar` et `.snap-x-mandatory` si absent.
-
----
-
-## Ordre d'exécution proposé
-
-1. Audit Playwright (avant) — capture 6 viewports.
-2. Tokens globaux (`index.css`) — typo fluide, container, focus, motion.
-3. Navbar mobile.
-4. Hero + sections dans l'ordre de la page.
-5. Audit Playwright (après) — même 6 viewports + diff.
-6. Rapport final structuré selon le TEMPLATE demandé.
-
----
-
-**Question avant de lancer** : je fais tout en un seul batch (long, ~30-40 éditions) ou tu préfères que je livre par étapes (1. tokens + navbar → tu valides → 2. hero + pourquoi → etc.) pour pouvoir arbitrer en cours de route ?
+Chantier long : je préviendrai à chaque grande étape franchie.
