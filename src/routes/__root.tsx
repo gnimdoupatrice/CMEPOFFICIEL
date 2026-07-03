@@ -17,7 +17,7 @@ export const Route = createRootRouteWithContext<RouterContext>()({
       {
         name: "description",
         content:
-          "CMEP : programme d'autonomisation, de mentorat et d'insertion socio-économique des jeunes togolais. Région pilote : Kara.",
+          "CMEP : programme national d'autonomisation, de mentorat et d'insertion socio-économique des jeunes togolais.",
       },
     ],
     links: [
@@ -38,9 +38,9 @@ export const Route = createRootRouteWithContext<RouterContext>()({
           name: "Chris Mentorship & Empowerment Program",
           alternateName: "CMEP",
           url: "/",
-          logo: "/__l5e/assets-v1/b4de6f6d-57f6-4cc2-a0de-ccfb8c4a8663/logo-cmep.jpg",
+          logo: "/",
           areaServed: "Togo",
-          address: { "@type": "PostalAddress", addressLocality: "Kara", addressCountry: "TG" },
+          address: { "@type": "PostalAddress", addressCountry: "TG" },
           email: "chrismentorshipempowermentprog@gmail.com",
           telephone: "+228 90 51 00 88",
           sameAs: [

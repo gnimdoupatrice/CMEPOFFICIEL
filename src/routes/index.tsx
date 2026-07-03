@@ -4,44 +4,19 @@ import { Layout } from "@/components/site/Layout";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 
-import univKara from "@/assets/partners/universite-kara.jpg.asset.json";
-import franceVol from "@/assets/partners/france-volontaires.jpg.asset.json";
-import youthPanel from "@/assets/partners/youth-panel.png.asset.json";
-import a3e from "@/assets/partners/ong-a3e.jpg.asset.json";
-import kEmpire from "@/assets/partners/k-empire.png.asset.json";
-import stadd from "@/assets/partners/ong-stadd.jpg.asset.json";
-import cephal from "@/assets/partners/club-cephal.jpg.asset.json";
-import bege from "@/assets/partners/bege-shoot.png.asset.json";
-import anjped from "@/assets/partners/anjped-che.jpg.asset.json";
-import donBosco from "@/assets/partners/don-bosco.jpg.asset.json";
-import rotaract from "@/assets/partners/rotaract-kara.png.asset.json";
-import anlp from "@/assets/partners/anlp.jpg.asset.json";
-
-const PARTNER_LOGOS = [
-  { name: "Université de Kara", logo: univKara.url, category: "Académique" },
-  { name: "ONG A3E", logo: a3e.url, category: "ONG" },
-  { name: "K-EMPIRE", logo: kEmpire.url, category: "Entreprise" },
-  { name: "France Volontaires", logo: franceVol.url, category: "International" },
-  { name: "ONG STADD", logo: stadd.url, category: "ONG" },
-  { name: "Youth Panel — Plan International Togo", logo: youthPanel.url, category: "International" },
-  { name: "Club CEPHAL", logo: cephal.url, category: "Associatif" },
-  { name: "BEGE SHOOT", logo: bege.url, category: "Entreprise" },
-  { name: "Association ANJPED-CHE", logo: anjped.url, category: "Associatif" },
-  { name: "Centre Don Bosco", logo: donBosco.url, category: "Académique" },
-  { name: "Rotaract Club — Université de Kara", logo: rotaract.url, category: "Associatif" },
-  { name: "ONG A Nous La Planète (ANLP)", logo: anlp.url, category: "ONG" },
-];
+import { CMEP_MEDIA, PARTNER_LOGOS } from "@/lib/media";
+import { createWhatsAppHref } from "@/lib/contact";
 
 // Actualité phare (featured story hero)
 const FEATURED_STORY = {
   date: "15 mai 2025",
   category: "Reportage terrain",
-  location: "Université de Kara",
+  location: "Togo",
   readTime: "6 min de lecture",
-  title: "À Kara, 120 jeunes ouvrent une nouvelle page du CMEP.",
+  title: "Au Togo, les jeunes ouvrent une nouvelle page du CMEP.",
   kicker: "Promotion 2025 — Cohorte annuelle",
   excerpt:
-    "Sous les voûtes de l'amphithéâtre de l'Université de Kara, mentors, partenaires institutionnels et bénéficiaires ont scellé l'engagement d'une promotion qui marquera l'année. Récit d'une cérémonie où la jeunesse togolaise a repris la parole.",
+    "Aux côtés de partenaires académiques, institutionnels et communautaires, les bénéficiaires du CMEP installent une dynamique nationale de mentorat, de leadership et d’insertion.",
 };
 
 // Actualités secondaires éditoriales (magazine)
@@ -49,7 +24,7 @@ const ACTUALITES = [
   {
     date: "28 avril 2025",
     category: "Partenariat",
-    location: "Kara, Togo",
+    location: "Togo",
     title: "Convention historique avec le Centre Don Bosco",
     excerpt: "Un accord-cadre qui ouvre les ateliers techniques à 60 jeunes supplémentaires et installe le mentorat au cœur des métiers manuels.",
   },
@@ -69,9 +44,9 @@ const FEATURED_OPPORTUNITIES = [
     type: "Formation certifiante",
     title: "Animateur de projet",
     duration: "11 modules · Sessions de 4 jours",
-    seats: "Cohortes Lomé & Kara",
+    seats: "Cohortes nationales",
     deadline: "Mai 2026",
-    location: "Lomé & Kara",
+    location: "Togo",
     urgency: "Inscriptions ouvertes",
     perks: ["Certification à l'issue", "Intervenants confirmés", "Modules incluant sauvegarde & VBG"],
   },
@@ -82,7 +57,7 @@ const FEATURED_OPPORTUNITIES = [
     duration: "8 modules · 3 journées intensives",
     seats: "Places limitées",
     deadline: "12 – 14 Février",
-    location: "Kara",
+    location: "Togo",
     urgency: "Inscriptions ouvertes",
     perks: ["Cadres réglementaires", "Standards internationaux", "Étude de cas & projet final"],
   },
@@ -93,31 +68,31 @@ const FEATURED_OPPORTUNITIES = [
     duration: "3 journées intensives",
     seats: "Places limitées",
     deadline: "Clôture 22 Mars 2026",
-    location: "Kara",
+    location: "Togo",
     urgency: "Inscriptions ouvertes",
     perks: ["Canevas d'ONG internationales", "TDR bancables", "Documents de formation inclus"],
   },
 ];
 
-import heroImg from "@/assets/hero-mentorship.jpg";
-import challengeImg from "@/assets/challenge-youth.jpg";
-import visionImg from "@/assets/vision-banner.jpg";
-import impactImg from "@/assets/impact-banner.jpg";
-import axisEntrepreneur from "@/assets/entrepreneur.jpg";
-import axisWorkshop from "@/assets/workshop.jpg";
-import axisLeadership from "@/assets/solidarity.jpg";
-import axisFormation from "@/assets/axis-formation.jpg";
-import axisDigital from "@/assets/axis-digital.jpg";
-import axisCitizenship from "@/assets/axis-citizenship.jpg";
-import testimonial1 from "@/assets/testimonial-1.jpg";
-import testimonial2 from "@/assets/testimonial-2.jpg";
-import testimonial3 from "@/assets/testimonial-3.jpg";
+const heroImg = CMEP_MEDIA.team;
+const challengeImg = CMEP_MEDIA.opportunities.animateurProjetIntervenants;
+const visionImg = CMEP_MEDIA.team;
+const impactImg = CMEP_MEDIA.opportunities.animateurProjetIntervenants;
+const axisEntrepreneur = CMEP_MEDIA.opportunities.redactionTdr;
+const axisWorkshop = CMEP_MEDIA.opportunities.animateurProjetIntervenants;
+const axisLeadership = CMEP_MEDIA.team;
+const axisFormation = CMEP_MEDIA.opportunities.animateurProjet;
+const axisDigital = CMEP_MEDIA.opportunities.certificatEies;
+const axisCitizenship = CMEP_MEDIA.team;
+const testimonial1 = CMEP_MEDIA.team;
+const testimonial2 = CMEP_MEDIA.opportunities.animateurProjetIntervenants;
+const testimonial3 = CMEP_MEDIA.team;
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "CMEP Togo — Mentorat et autonomisation de la jeunesse togolaise" },
-      { name: "description", content: "Le Chris Mentorship & Empowerment Program accompagne chaque année 500+ jeunes togolais vers l'emploi, l'entrepreneuriat et le leadership. Région pilote : Kara." },
+      { name: "description", content: "Le Chris Mentorship & Empowerment Program accompagne chaque année les jeunes togolais vers l'emploi, l'entrepreneuriat et le leadership à l'échelle nationale." },
       { property: "og:title", content: "CMEP Togo — Propulser une génération vers l'autonomie" },
       { property: "og:description", content: "Mentorat, formation, leadership, innovation, citoyenneté : cinq leviers au service de la jeunesse togolaise." },
       { property: "og:image", content: heroImg },
@@ -152,7 +127,7 @@ const OBJECTIVES = [
     icon: Target,
     title: "Favoriser l'insertion professionnelle",
     desc: "Construire des passerelles concrètes vers l'emploi par la formation aux métiers porteurs, l'accompagnement à la candidature et le placement en stage ou en alternance.",
-    activities: ["Ateliers CV, entretien, posture professionnelle", "Stages conventionnés avec les partenaires", "Forums emploi en région de la Kara"],
+    activities: ["Ateliers CV, entretien, posture professionnelle", "Stages conventionnés avec les partenaires", "Forums emploi et carrière au Togo"],
     beneficiaries: "Jeunes diplômés et déscolarisés",
     results: "60% des bénéficiaires en emploi ou activité 12 mois après",
   },
@@ -162,7 +137,7 @@ const OBJECTIVES = [
     title: "Ancrer un développement durable",
     desc: "Inscrire chaque action du programme dans une logique d'impact social, environnemental et territorial mesurable, au service des communautés.",
     activities: ["Projets communautaires pilotés par les jeunes", "Formations à l'écocitoyenneté", "Suivi d'indicateurs ODD"],
-    beneficiaries: "Communautés rurales et périurbaines de la Kara",
+    beneficiaries: "Communautés rurales, périurbaines et urbaines du Togo",
     results: "Plus de 200 projets communautaires structurants par an",
   },
 ] as const;
@@ -182,7 +157,7 @@ const AXES = [
     title: "Formation Technique & Professionnelle",
     image: axisFormation,
     context: "La fracture entre les formations académiques disponibles et les besoins réels du marché togolais reste l'un des principaux freins à l'insertion. Les métiers techniques recrutent — mais peinent à trouver des profils qualifiés.",
-    problem: "Trop de jeunes sortent du système éducatif sans compétence directement valorisable. Les formations professionnelles existantes sont souvent saturées, coûteuses ou éloignées des zones rurales.",
+    problem: "Trop de jeunes sortent du système éducatif sans compétence directement valorisable. Les formations professionnelles existantes sont souvent saturées, coûteuses ou éloignées des territoires moins desservis.",
     approach: "Le CMEP déploie des modules courts, intensifs et certifiants sur les métiers porteurs : maintenance, agro-transformation, BTP, services numériques. Les sessions sont co-construites avec les employeurs partenaires.",
     activities: ["Modules certifiants de 4 à 12 semaines", "Mise en situation professionnelle", "Stages conventionnés", "Suivi post-formation pendant 6 mois"],
     indicators: "Taux de certification, taux d'insertion à 6 et 12 mois, satisfaction employeur.",
@@ -201,7 +176,7 @@ const AXES = [
     num: "04",
     title: "Innovation Numérique",
     image: axisDigital,
-    context: "Le numérique est l'opportunité économique la plus accessible pour les jeunes togolais à condition de disposer des compétences et des outils. Or la fracture numérique reste profonde, surtout hors de Lomé.",
+    context: "Le numérique est l'opportunité économique la plus accessible pour les jeunes togolais à condition de disposer des compétences et des outils. Or la fracture numérique reste profonde, dans plusieurs territoires.",
     problem: "Manque d'accès aux équipements, absence de formations qualifiantes, faible exposition aux métiers du futur.",
     approach: "Le CMEP installe des parcours intensifs sur les compétences numériques recherchées : développement web, marketing digital, design, data, IA appliquée. Objectif : connecter les talents locaux à l'économie numérique mondiale.",
     activities: ["Bootcamps tech ", "Hackathons", "Mise en relation avec employeurs distants", "Accompagnement freelance"],
@@ -213,7 +188,7 @@ const AXES = [
     image: axisCitizenship,
     context: "Les défis climatiques et environnementaux frappent durement notre patrimoine commun : dégradation des sols, déforestation, gestion des déchets. La jeunesse est en première ligne, et porteuse de solutions.",
     problem: "Sans formation, sans cadre, sans reconnaissance, l'engagement écologique des jeunes reste fragmenté et peu visible. Le lien entre citoyenneté et action environnementale est encore peu structuré.",
-    approach: "Le CMEP fédère les initiatives écocitoyennes des jeunes, leur donner des outils méthodologiques et soutenir des projets pilotes à fort impact local : reboisement, économie circulaire, sensibilisation scolaire.",
+    approach: "Le CMEP fédère les initiatives écocitoyennes des jeunes, leur donner des outils méthodologiques et soutenir des projets à fort impact local et national : reboisement, économie circulaire, sensibilisation scolaire.",
     activities: ["Brigades vertes locales", "Formations à l'écocitoyenneté", "Projets de reboisement et de gestion des déchets", "Campagnes de sensibilisation"],
     indicators: "Hectares reboisés, tonnes de déchets traités, jeunes mobilisés, écoles sensibilisées.",
   },
@@ -226,7 +201,7 @@ const PROGRAMS = [
     description: "Le programme phare du CMEP : un parcours intensif de 6 mois combinant formation technique, mentorat individuel et projet collectif.",
     objectives: "Former 120 jeunes par an aux compétences clés de l'employabilité et du leadership.",
     activities: "Modules présentiels, ateliers de pratique, mentorat 1:1, séminaire résidentiel de clôture.",
-    beneficiaries: "Jeunes de 18 à 30 ans, région de la Kara, sélectionnés sur dossier et entretien.",
+    beneficiaries: "Jeunes de 18 à 30 ans, Togo, sélectionnés sur dossier et entretien.",
     duration: "6 mois — Janvier à juin",
     results: "80% des diplômés en emploi, en formation supérieure ou créateurs d'activité à 12 mois.",
   },
@@ -243,7 +218,7 @@ const PROGRAMS = [
   {
     title: "Incubateur d'Entreprises Sociales",
     image: axisEntrepreneur,
-    description: "Un programme d'incubation de 12 semaines pour les jeunes porteurs de projets à impact social ou environnemental dans la région de la Kara.",
+    description: "Un programme d'incubation de 12 semaines pour les jeunes porteurs de projets à impact social ou environnemental au Togo.",
     objectives: "Accompagner 30 projets par an de l'idée au lancement effectif.",
     activities: "Coaching individuel, ateliers business model, mentorat par entrepreneurs confirmés, démo-day final.",
     beneficiaries: "Jeunes entrepreneurs ayant une idée structurée ou un MVP.",
@@ -257,13 +232,13 @@ const TESTIMONIALS = [
     quote: "Le mentorat reçu au CMEP a transformé ma vision. J'ai lancé mon atelier de couture six mois après la formation, et j'emploie aujourd'hui deux apprenties.",
     name: "Aïcha B.",
     role: "Entrepreneuse — Promotion 2023",
-    journey: "Diplômée en couture, sans débouché. Aujourd'hui à la tête de son atelier à Kara.",
+    journey: "Diplômée en couture, sans débouché. Aujourd'hui à la tête de son atelier au Togo.",
     image: testimonial1,
   },
   {
     quote: "Le CMEP m'a donné les outils pour transformer mon idée en activité. Sans ce programme, mon entreprise n'existerait pas.",
     name: "Kossi A.",
-    role: "Fondateur, AgriTech Kara",
+    role: "Fondateur, AgriTech Togo",
     journey: "Diplômé en agronomie, incubé par le CMEP, a lancé une plateforme de mise en marché agricole.",
     image: testimonial2,
   },
@@ -281,7 +256,7 @@ function Home() {
     <Layout>
       {/* ============ HERO IMMERSIF ============ */}
       <section className="relative min-h-[92vh] flex items-end overflow-hidden">
-        <img src={heroImg} alt="Jeunes togolais en session de mentorat à Kara" className="absolute inset-0 w-full h-full object-cover" width={1920} height={1280} />
+        <img src={CMEP_MEDIA.team} alt="Jeunes togolais en session de mentorat au Togo" className="absolute inset-0 w-full h-full object-cover" width={1920} height={1280} />
         <div className="absolute inset-0 bg-gradient-to-t from-ngo-navy via-ngo-navy/70 to-ngo-navy/20"></div>
         <div className="absolute inset-0 bg-gradient-to-r from-ngo-navy/80 via-ngo-navy/30 to-transparent"></div>
 
@@ -301,9 +276,9 @@ function Home() {
               <Link to="/opportunites" className="bg-ngo-gold text-ngo-navy px-8 py-4 rounded-xl font-bold flex items-center gap-2 hover:bg-white transition-all shadow-2xl shadow-ngo-gold/30">
                 Rejoindre le programme <ArrowRight size={16} />
               </Link>
-              <Link to="/contact" className="border-2 border-white/40 text-white px-8 py-4 rounded-xl font-semibold hover:bg-white/10 backdrop-blur-sm transition-colors">
+              <a href={createWhatsAppHref("Bonjour CMEP, je souhaite devenir mentor.")} target="_blank" rel="noreferrer noopener" className="border-2 border-white/40 text-white px-8 py-4 rounded-xl font-semibold hover:bg-white/10 backdrop-blur-sm transition-colors">
                 Devenir mentor
-              </Link>
+              </a>
             </div>
 
             <div className="grid grid-cols-3 gap-6 max-w-2xl pt-10 border-t border-white/20">
@@ -326,7 +301,7 @@ function Home() {
       <section className="py-24 px-6 bg-white">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-7 relative">
-            <img src={challengeImg} alt="Jeune entrepreneuse togolaise dans son atelier à Kara" loading="lazy" className="w-full h-[560px] object-cover rounded-3xl shadow-2xl" />
+            <img src={CMEP_MEDIA.opportunities.animateurProjetIntervenants} alt="Jeune entrepreneuse togolaise dans son atelier au Togo" loading="lazy" className="w-full h-[560px] object-cover rounded-3xl shadow-2xl" />
             <div className="absolute -bottom-6 -right-6 hidden md:block bg-ngo-navy text-white p-6 rounded-2xl shadow-xl max-w-[240px]">
               <div className="text-4xl font-black text-ngo-gold mb-1">+30%</div>
               <div className="text-xs uppercase tracking-widest font-bold text-white/70">de chômage chez les jeunes diplômés togolais</div>
@@ -369,7 +344,7 @@ function Home() {
 
       {/* ============ NOTRE VISION — Bannière immersive ============ */}
       <section className="relative py-32 px-6 overflow-hidden">
-        <img src={visionImg} alt="Jeunes togolais regardant l'horizon au coucher du soleil" loading="lazy" className="absolute inset-0 w-full h-full object-cover" />
+        <img src={CMEP_MEDIA.team} alt="Équipe officielle du CMEP" loading="lazy" className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-r from-ngo-navy via-ngo-navy/85 to-ngo-navy/40"></div>
 
         <div className="relative z-10 max-w-5xl mx-auto">
@@ -383,7 +358,7 @@ function Home() {
               Nous projetons un Togo où chaque jeune, quel que soit son point de départ, accède à un mentorat qualifié, à une formation pratique et à un réseau d'opportunités concrètes.
             </p>
             <p>
-              Un Togo où la région de la Kara devient un foyer de talents reconnus, exportant ses entrepreneurs, ses ingénieurs, ses leaders dans toute la sous-région ouest-africaine.
+              Un Togo où chaque région devient un foyer de talents reconnus, capable de faire émerger entrepreneurs, ingénieurs, leaders et acteurs de changement.
             </p>
             <p>
               Un Togo où le mentorat n'est plus un privilège, mais un droit accessible à toutes et à tous.
@@ -405,7 +380,7 @@ function Home() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               { icon: Compass, label: "Ce que nous faisons", text: "Nous combinons mentorat individuel, formation technique, accompagnement entrepreneurial et engagement communautaire dans un parcours intégré et mesurable." },
-              { icon: Heart, label: "Pour qui", text: "Pour les jeunes togolais de 18 à 35 ans, qu'ils soient diplômés en quête d'emploi, porteurs de projet ou en rupture éducative, particulièrement dans la région de la Kara ou partout au ." },
+              { icon: Heart, label: "Pour qui", text: "Pour les jeunes togolais de 18 à 35 ans, qu'ils soient diplômés en quête d'emploi, porteurs de projet ou en rupture éducative, particulièrement au Togo ou partout au ." },
               { icon: Sparkles, label: "Comment", text: "Par une approche holistique mêlant cohortes de formation, mentorat 1:1, incubation, projets communautaires et mise en relation avec un réseau d'acteurs engagés." },
               { icon: Award, label: "Pourquoi", text: "Parce que l'autonomisation économique de la jeunesse est le levier le plus puissant de transformation sociale, et que chaque jeune mérite un mentor et une chance." },
             ].map((b) => (
@@ -590,7 +565,7 @@ function Home() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
             {[
-              { icon: Users, num: "1 000+", title: "Jeunes formés / an", desc: "Cohortes annuelles déployées en région de la Kara, sélectionnées sur dossier et entretien." },
+              { icon: Users, num: "1 000+", title: "Jeunes formés / an", desc: "Cohortes annuelles déployées au Togo, sélectionnées sur dossier et entretien." },
               { icon: TrendingUp, num: "60%", title: "Taux d'insertion ciblé", desc: "Emploi salarié, micro-entreprise ou poursuite d'études supérieures dans les 12 mois." },
               { icon: Sparkles, num: "1", title: "Plateforme de mentorat", desc: "Infrastructure pérenne de mise en relation jeunes/mentors, structurante pour le territoire." },
               { icon: Award, num: "12+", title: "Partenariats structurants", desc: "Universités, ONG, entreprises et institutions publiques engagées dans la durée." },
@@ -669,7 +644,7 @@ function Home() {
               <div className="relative lg:col-span-7 min-h-[340px] lg:min-h-[600px] overflow-hidden">
                 <img
                   src={axisWorkshop}
-                  alt="Cérémonie de lancement de la Promotion 2025 du CMEP à l'Université de Kara"
+                  alt="Cérémonie de lancement de la Promotion 2025 du CMEP au Togo"
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
                   loading="lazy"
                 />
@@ -922,7 +897,7 @@ function Home() {
 
           <div className="mt-14 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
             <p className="text-[11px] uppercase tracking-[0.3em] font-bold text-ngo-slate">
-              {PARTNER_LOGOS.length} partenaires institutionnels · Région de la Kara, Togo
+              {PARTNER_LOGOS.length} partenaires institutionnels · Togo
             </p>
             <Link to="/partenaires" className="inline-flex items-center gap-2 text-ngo-navy hover:text-ngo-gold font-bold text-[11px] uppercase tracking-[0.3em] border-b border-ngo-navy/30 hover:border-ngo-gold pb-1.5 transition-colors">
               Devenir partenaire <ArrowRight size={13} />

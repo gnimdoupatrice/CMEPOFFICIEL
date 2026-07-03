@@ -21,9 +21,8 @@ import {
   Compass,
   Sparkles,
 } from "lucide-react";
-import faqHero from "@/assets/hero-student.jpg";
-import voiceImg from "@/assets/testimonial-2.jpg";
-import editorialImg from "@/assets/workshop.jpg";
+import { CMEP_MEDIA } from "@/lib/media";
+import { createWhatsAppHref } from "@/lib/contact";
 
 export const Route = createFileRoute("/faq")({
   head: () => ({
@@ -60,7 +59,7 @@ const FAQ: Record<Category, { q: string; a: string }[]> = {
   jeunes: [
     {
       q: "Qui peut candidater au programme CMEP ?",
-      a: "Tout jeune togolais âgé de 16 à 35 ans, motivé par un projet entrepreneurial, professionnel ou citoyen. La région de Kara est notre zone pilote, mais des candidatures d'autres régions sont étudiées au cas par cas.",
+      a: "Tout jeune togolais âgé de 16 à 35 ans, motivé par un projet entrepreneurial, professionnel ou citoyen. Le programme s’inscrit dans une dynamique nationale et étudie les candidatures selon les cohortes et les besoins d’accompagnement.",
     },
     {
       q: "Les formations sont-elles payantes ?",
@@ -86,7 +85,7 @@ const FAQ: Record<Category, { q: string; a: string }[]> = {
     },
     {
       q: "Quel est l'engagement attendu ?",
-      a: "En moyenne 4 heures par mois sur un cycle de 6 mois. Format hybride : sessions en présentiel à Kara et accompagnement à distance.",
+      a: "En moyenne 4 heures par mois sur un cycle de 6 mois. Format hybride : sessions en présentiel selon les cohortes et accompagnement à distance.",
     },
     {
       q: "Le mentorat est-il rémunéré ?",
@@ -108,7 +107,7 @@ const FAQ: Record<Category, { q: string; a: string }[]> = {
     },
     {
       q: "Le CMEP est-il une structure légalement constituée ?",
-      a: "Le programme est porté par un consortium d'acteurs locaux et opère sous une gouvernance partagée. La structuration juridique formelle est en cours de finalisation avec l'Université de Kara.",
+      a: "Le programme est porté par un consortium d'acteurs locaux et opère sous une gouvernance partagée. La structuration juridique formelle est en cours de finalisation avec les partenaires institutionnels.",
     },
     {
       q: "Travaillez-vous avec des entreprises privées ?",
@@ -126,7 +125,7 @@ const FAQ: Record<Category, { q: string; a: string }[]> = {
     },
     {
       q: "Acceptez-vous les financements affectés ?",
-      a: "Oui. Nous structurons des programmes-projets sur-mesure (genre, jeunesse rurale, climat, numérique) avec indicateurs co-définis et reporting dédié.",
+      a: "Oui. Nous structurons des programmes-projets sur-mesure (genre, jeunesse, territoires, climat, numérique) avec indicateurs co-définis et reporting dédié.",
     },
     {
       q: "Comment évaluer l'impact de votre programme ?",
@@ -152,7 +151,7 @@ function FAQPage() {
       {/* HERO — immersive editorial */}
       <section className="relative overflow-hidden bg-ngo-navy text-white">
         <img
-          src={faqHero}
+          src={CMEP_MEDIA.team}
           alt="Jeunes bénéficiaires du CMEP en session d'orientation"
           className="absolute inset-0 size-full object-cover opacity-30"
         />
@@ -205,7 +204,7 @@ function FAQPage() {
       <section className="bg-white py-20 px-6">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-10 items-center">
           <div className="lg:col-span-5 relative aspect-[4/5] rounded-3xl overflow-hidden group">
-            <img loading="lazy" decoding="async" src={editorialImg} alt="Coordination CMEP en atelier" className="absolute inset-0 size-full object-cover transition-transform duration-700 group-hover:scale-105" />
+            <img loading="lazy" decoding="async" src={CMEP_MEDIA.opportunities.animateurProjetIntervenants} alt="Coordination CMEP en atelier" className="absolute inset-0 size-full object-cover transition-transform duration-700 group-hover:scale-105" />
             <div className="absolute inset-0 bg-gradient-to-t from-ngo-navy/80 via-ngo-navy/10 to-transparent" />
             <div className="absolute bottom-6 left-6 right-6 text-white">
               <span className="text-[10px] uppercase tracking-[0.25em] font-bold text-ngo-gold">Édito</span>
@@ -359,7 +358,7 @@ function FAQPage() {
       <section className="bg-white py-20 px-6 border-t border-ngo-navy/5">
         <div className="max-w-6xl mx-auto grid md:grid-cols-12 gap-10 items-center">
           <div className="md:col-span-4 relative aspect-square rounded-3xl overflow-hidden">
-            <img loading="lazy" decoding="async" src={voiceImg} alt="Bénéficiaire CMEP" className="absolute inset-0 size-full object-cover" />
+            <img loading="lazy" decoding="async" src={CMEP_MEDIA.team} alt="Bénéficiaire CMEP" className="absolute inset-0 size-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-ngo-navy/70 to-transparent" />
           </div>
           <div className="md:col-span-8">
@@ -372,7 +371,7 @@ function FAQPage() {
               <div className="h-px flex-1 bg-ngo-navy/10" />
               <div>
                 <div className="font-extrabold text-ngo-navy">Aïcha B.</div>
-                <div className="text-[11px] uppercase tracking-[0.22em] text-ngo-slate font-semibold mt-1">Promotion 2024 — Kara</div>
+                <div className="text-[11px] uppercase tracking-[0.22em] text-ngo-slate font-semibold mt-1">Promotion 2024 — Togo</div>
               </div>
             </div>
           </div>
@@ -423,7 +422,7 @@ function FAQPage() {
                     <ArrowUpRight size={16} className="text-white/40 group-hover:text-ngo-gold transition-colors shrink-0" />
                   </a>
                   <a
-                    href="https://wa.me/22896898717"
+                    href={createWhatsAppHref("Bonjour CMEP, je souhaite échanger avec la coordination.")}
                     target="_blank"
                     rel="noreferrer"
                     className="flex items-center gap-4 p-4 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 hover:border-ngo-gold/40 transition-all group"
@@ -432,7 +431,7 @@ function FAQPage() {
                       <MessageCircle size={18} />
                     </span>
                     <div className="min-w-0 flex-1">
-                      <div className="text-[10px] uppercase tracking-[0.22em] text-white/55 font-bold">WhatsApp</div>
+                      <div className="text-[10px] uppercase tracking-[0.22em] text-white/55 font-bold">Échange direct</div>
                       <div className="text-[14px] font-semibold">+228 96 89 87 17</div>
                     </div>
                     <ArrowUpRight size={16} className="text-white/40 group-hover:text-ngo-gold transition-colors shrink-0" />

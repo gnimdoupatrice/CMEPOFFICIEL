@@ -1,14 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Layout } from "@/components/site/Layout";
 import { Mail, Phone, MapPin, MessageCircle } from "lucide-react";
+import { createWhatsAppHref } from "@/lib/contact";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
       { title: "Contact — CMEP Togo" },
-      { name: "description", content: "Contactez la coordination CMEP à Kara, Togo. Email, téléphone, WhatsApp — partenariats, candidatures, presse." },
+      { name: "description", content: "Contactez la coordination CMEP au Togo. Email, téléphone et échange direct — partenariats, candidatures, presse." },
       { property: "og:title", content: "Contact — CMEP Togo" },
-      { property: "og:description", content: "Joignez l'équipe du Chris Mentorship & Empowerment Program à Kara, Togo." },
+      { property: "og:description", content: "Joignez l'équipe du Chris Mentorship & Empowerment Program au Togo." },
       { property: "og:url", content: "/contact" },
     ],
     links: [{ rel: "canonical", href: "/contact" }],
@@ -19,8 +20,8 @@ export const Route = createFileRoute("/contact")({
 const CHANNELS = [
   { icon: Mail, label: "Email", value: "chrismentorshipempowermentprog@gmail.com", href: "mailto:chrismentorshipempowermentprog@gmail.com" },
   { icon: Phone, label: "Téléphone", value: "+228 90 51 00 88", href: "tel:+22890510088" },
-  { icon: MessageCircle, label: "WhatsApp", value: "+228 96 89 87 17", href: "https://wa.me/22896898717" },
-  { icon: MapPin, label: "Adresse", value: "Coordination CMEP\nKara, République Togolaise" },
+  { icon: MessageCircle, label: "Échange direct", value: "+228 96 89 87 17", href: createWhatsAppHref("Bonjour CMEP, je souhaite échanger avec la coordination.") },
+  { icon: MapPin, label: "Adresse", value: "Coordination CMEP\nRépublique Togolaise" },
 ];
 
 function ContactPage() {
@@ -35,7 +36,7 @@ function ContactPage() {
           </h1>
           <p className="text-lg text-ngo-slate leading-relaxed max-w-2xl">
             Une question, une candidature, un partenariat, une demande presse ? L'équipe de coordination
-            CMEP basée à Kara vous répond sous 48 heures ouvrées.
+            CMEP vous répond sous 48 heures ouvrées, où que vous soyez au Togo.
           </p>
         </div>
       </section>

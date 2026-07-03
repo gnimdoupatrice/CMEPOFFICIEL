@@ -1,7 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Layout } from "@/components/site/Layout";
 import { ArrowRight, Target, Compass, Sparkles, MapPin, Users } from "lucide-react";
-import teamAsset from "@/assets/team/team-cmep.jpg.asset.json";
+import { CMEP_MEDIA } from "@/lib/media";
+import { createWhatsAppHref } from "@/lib/contact";
 
 export const Route = createFileRoute("/a-propos")({
   head: () => ({
@@ -69,7 +70,7 @@ function AboutPage() {
               <Users size={12} aria-hidden="true" /> Notre équipe
             </div>
             <h2 id="team-heading" className="font-extrabold text-3xl md:text-5xl text-ngo-navy leading-[1.05] tracking-tight">
-              Une gouvernance jeune, engagée, ancrée à Kara.
+              Une gouvernance jeune, engagée, au service du Togo.
             </h2>
             <p className="mt-5 text-ngo-slate leading-relaxed">
               Six membres portent l'exécutif du CMEP : direction, coordination des programmes,
@@ -80,7 +81,7 @@ function AboutPage() {
 
           <figure className="relative rounded-3xl overflow-hidden border border-ngo-navy/10 shadow-xl bg-ngo-navy">
             <img
-              src={teamAsset.url}
+              src={CMEP_MEDIA.team}
               alt="L'équipe officielle du CMEP — six membres présentés avec leurs noms et fonctions respectives."
               width={1600}
               height={1000}
@@ -117,7 +118,7 @@ function AboutPage() {
         </div>
       </section>
 
-      {/* ZONE PILOTE */}
+      {/* ANCRAGE NATIONAL */}
       <section className="py-20 md:py-24 px-4 sm:px-6 bg-ngo-pearl">
         <div className="max-w-5xl mx-auto">
           <div className="grid md:grid-cols-12 gap-8 md:gap-10 items-center p-8 sm:p-10 md:p-14 bg-ngo-navy rounded-3xl text-white">
@@ -127,13 +128,13 @@ function AboutPage() {
               </div>
             </div>
             <div className="md:col-span-10">
-              <span className="text-ngo-gold text-[10px] uppercase tracking-[0.25em] font-bold">Région pilote</span>
+              <span className="text-ngo-gold text-[10px] uppercase tracking-[0.25em] font-bold">Ancrage national</span>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mt-3 mb-4 leading-tight tracking-tight">
-                Kara — l'ancrage territorial du programme.
+                Un programme togolais, pensé pour passer à l'échelle.
               </h2>
               <p className="text-white/70 leading-relaxed">
-                Nos actions se déploient d'abord dans la région de la Kara, avec l'ambition
-                d'un modèle reproductible dans les cinq régions du Togo.
+                Nos actions s'inscrivent dans une dynamique nationale : former, mentorer et connecter les jeunes
+                partout où les besoins d'accompagnement, d'emploi et de leadership sont prioritaires.
               </p>
             </div>
           </div>
@@ -150,12 +151,14 @@ function AboutPage() {
           <p className="text-ngo-slate mb-10 leading-relaxed">
             Jeune talent, mentor, partenaire institutionnel : il y a une place pour vous dans cette aventure collective.
           </p>
-          <Link
-            to="/contact"
+          <a
+            href={createWhatsAppHref("Bonjour CMEP, je souhaite rejoindre l’écosystème CMEP.")}
+            target="_blank"
+            rel="noreferrer noopener"
             className="inline-flex items-center gap-2 bg-ngo-gold text-ngo-navy px-8 py-4 min-h-12 font-bold uppercase tracking-widest text-xs hover:scale-105 transition-transform rounded-md"
           >
             Nous contacter <ArrowRight size={14} aria-hidden="true" />
-          </Link>
+          </a>
         </div>
       </section>
     </Layout>

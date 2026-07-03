@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Mail, Phone, MapPin, Facebook, Linkedin, ArrowRight } from "lucide-react";
-import logoAsset from "@/assets/brand/logo-cmep.jpg.asset.json";
+import { CMEP_MEDIA } from "@/lib/media";
+import { createWhatsAppHref } from "@/lib/contact";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -17,7 +18,7 @@ export function Footer() {
           <div className="md:col-span-5">
             <Link to="/" className="inline-flex items-center gap-3 mb-6" aria-label="CMEP — Accueil">
               <img
-                src={logoAsset.url}
+                src={CMEP_MEDIA.logo}
                 alt=""
                 width={48}
                 height={48}
@@ -101,8 +102,8 @@ export function Footer() {
             <ul className="space-y-3 text-sm text-white/65">
               <li><Link to="/opportunites" className="hover:text-ngo-gold transition-colors">Opportunités</Link></li>
               <li><Link to="/opportunites" className="hover:text-ngo-gold transition-colors">Postuler</Link></li>
-              <li><Link to="/contact" className="hover:text-ngo-gold transition-colors">Devenir partenaire</Link></li>
-              <li><Link to="/contact" className="hover:text-ngo-gold transition-colors">Faire un don</Link></li>
+              <li><a href={createWhatsAppHref("Bonjour CMEP, je souhaite échanger sur un partenariat.")} target="_blank" rel="noreferrer noopener" className="hover:text-ngo-gold transition-colors">Devenir partenaire</a></li>
+              <li><a href={createWhatsAppHref("Bonjour CMEP, je souhaite soutenir le programme.")} target="_blank" rel="noreferrer noopener" className="hover:text-ngo-gold transition-colors">Soutenir le programme</a></li>
               <li><Link to="/faq" className="hover:text-ngo-gold transition-colors">FAQ</Link></li>
             </ul>
           </nav>
@@ -112,7 +113,7 @@ export function Footer() {
             <ul className="space-y-4 text-sm text-white/65">
               <li className="flex items-start gap-3">
                 <MapPin size={16} className="mt-0.5 text-ngo-gold shrink-0" aria-hidden="true" />
-                <span>Coordination CMEP<br />Kara, Togo</span>
+                <span>Coordination CMEP<br />Togo</span>
               </li>
               <li className="flex items-start gap-3">
                 <Mail size={16} className="mt-0.5 text-ngo-gold shrink-0" aria-hidden="true" />

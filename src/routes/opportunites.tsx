@@ -20,11 +20,8 @@ import {
   Download,
   Phone,
 } from "lucide-react";
-import heroImg from "@/assets/opportunities-hero.jpg";
-import animateurAffiche from "@/assets/programs-animateur-projet-lome.jpg.asset.json";
-import animateurIntervenants from "@/assets/programs-animateur-projet-intervenants.jpg.asset.json";
-import eiesAffiche from "@/assets/programs-certificat-eies.jpg.asset.json";
-import redactionAffiche from "@/assets/programs-redaction-tdr.jpg.asset.json";
+import { CMEP_MEDIA } from "@/lib/media";
+import { createWhatsAppHref } from "@/lib/contact";
 
 export const Route = createFileRoute("/opportunites")({
   head: () => ({
@@ -33,15 +30,15 @@ export const Route = createFileRoute("/opportunites")({
       {
         name: "description",
         content:
-          "Formations certifiantes CMEP : Animateur de projet, Expert en Évaluation d'Impact Environnemental et Social, Rédaction et Gestion de projet & TDR. Sessions à Lomé et Kara.",
+          "Formations certifiantes CMEP : Animateur de projet, Expert en Évaluation d'Impact Environnemental et Social, Rédaction et Gestion de projet & TDR. Sessions et cohortes ouvertes au Togo.",
       },
       { property: "og:title", content: "Opportunités & Formations certifiantes — CMEP Togo" },
       {
         property: "og:description",
         content:
-          "Trois parcours certifiants ouverts à la jeunesse togolaise. Sessions présentielles à Lomé et Kara — inscriptions en ligne.",
+          "Trois parcours certifiants ouverts à la jeunesse togolaise — inscriptions et accompagnement par la coordination.",
       },
-      { property: "og:image", content: animateurAffiche.url },
+      { property: "og:image", content: CMEP_MEDIA.opportunities.animateurProjet },
       { property: "og:url", content: "/opportunites" },
     ],
     links: [{ rel: "canonical", href: "/opportunites" }],
@@ -75,9 +72,9 @@ const PROGRAMS: Program[] = [
   {
     id: "animateur-projet",
     slug: "animateur-de-projet",
-    poster: animateurAffiche.url,
+    poster: CMEP_MEDIA.opportunities.animateurProjet,
     posterAlt: "Affiche officielle — Formation certifiante Animateur de projet",
-    secondary: { url: animateurIntervenants.url, alt: "Intervenants de la formation Animateur de projet" },
+    secondary: { url: CMEP_MEDIA.opportunities.animateurProjetIntervenants, alt: "Intervenants de la formation Animateur de projet" },
     badge: "Formation phare",
     category: "Formation certifiante",
     title: "Animateur de projet",
@@ -107,14 +104,14 @@ const PROGRAMS: Program[] = [
       { city: "Lomé", dates: "05 – 08 Mai 2026", venue: "Salle de formation AUF — Université de Lomé" },
       { city: "Kara", dates: "12 – 15 Mai 2026" },
     ],
-    registerUrl: "https://bit.ly/animateur-projet-certifie",
+    registerUrl: createWhatsAppHref("Bonjour CMEP, je souhaite candidater à la formation Animateur de projet."),
     status: "featured",
     accent: "from-ngo-navy via-ngo-navy/95 to-ngo-navy/70",
   },
   {
     id: "eies",
     slug: "expert-evaluation-impact",
-    poster: eiesAffiche.url,
+    poster: CMEP_MEDIA.opportunities.certificatEies,
     posterAlt: "Affiche officielle — Certificat Expert en Évaluation d'Impact Environnemental et Social",
     badge: "Certification",
     category: "Formation certifiante",
@@ -139,14 +136,14 @@ const PROGRAMS: Program[] = [
     sessions: [
       { city: "Kara", dates: "12, 13 & 14 Février", venue: "Commune Kozah 1" },
     ],
-    registerUrl: "mailto:chrismentorshipempowermentprog@gmail.com?subject=Inscription%20Certificat%20EIES",
+    registerUrl: createWhatsAppHref("Bonjour CMEP, je souhaite candidater au certificat EIES."),
     status: "open",
     accent: "from-ngo-navy/95 via-ngo-navy/80 to-ngo-navy/50",
   },
   {
     id: "redaction-tdr",
     slug: "redaction-gestion-projet-tdr",
-    poster: redactionAffiche.url,
+    poster: CMEP_MEDIA.opportunities.redactionTdr,
     posterAlt: "Affiche officielle — Atelier Rédaction et Gestion de projet & TDR",
     badge: "Atelier certifiant",
     category: "Atelier de formation",
@@ -171,7 +168,7 @@ const PROGRAMS: Program[] = [
       { city: "Kara", dates: "24, 25 & 26 Mars", venue: "Commune Kozah 1" },
     ],
     deadline: "Clôture des inscriptions : 22 Mars 2026",
-    registerUrl: "https://bit.ly/formation-redaction-tdr",
+    registerUrl: createWhatsAppHref("Bonjour CMEP, je souhaite candidater à l’atelier Rédaction et Gestion de projet & TDR."),
     status: "open",
     accent: "from-ngo-navy/90 via-ngo-navy/70 to-ngo-navy/40",
   },
@@ -220,7 +217,7 @@ function OpportunitiesPage() {
       {/* HERO */}
       <section className="relative overflow-hidden bg-ngo-navy text-white">
         <img
-          src={heroImg}
+          src={CMEP_MEDIA.team}
           alt=""
           aria-hidden="true"
           className="absolute inset-0 size-full object-cover opacity-25"
@@ -397,8 +394,8 @@ function OpportunitiesPage() {
                   <div className="mt-8 flex flex-wrap gap-3">
                     <a
                       href={p.registerUrl}
-                      target={p.registerUrl.startsWith("http") ? "_blank" : undefined}
-                      rel={p.registerUrl.startsWith("http") ? "noreferrer noopener" : undefined}
+                      target="_blank"
+                      rel="noreferrer noopener"
                       className="inline-flex items-center gap-2 bg-ngo-navy text-white px-6 py-3.5 min-h-12 font-bold uppercase tracking-widest text-[11px] hover:bg-ngo-gold hover:text-ngo-navy transition-colors rounded-md"
                     >
                       Candidater maintenant <ArrowUpRight size={13} aria-hidden="true" />
@@ -410,12 +407,14 @@ function OpportunitiesPage() {
                     >
                       <Download size={13} aria-hidden="true" /> Affiche
                     </a>
-                    <Link
-                      to="/contact"
+                    <a
+                      href={createWhatsAppHref("Bonjour CMEP, j’ai une question sur les opportunités ouvertes.")}
+                      target="_blank"
+                      rel="noreferrer noopener"
                       className="inline-flex items-center gap-2 border border-ngo-navy/15 text-ngo-navy px-5 py-3.5 min-h-12 font-bold uppercase tracking-widest text-[11px] hover:border-ngo-gold transition-colors rounded-md"
                     >
                       Poser une question
-                    </Link>
+                    </a>
                   </div>
                 </div>
               </article>
@@ -509,12 +508,12 @@ function OpportunitiesPage() {
               <Mail size={13} aria-hidden="true" /> Email
             </a>
             <a
-              href="https://wa.me/22896898717"
+              href={createWhatsAppHref("Bonjour CMEP, j’ai une question sur les opportunités ouvertes.")}
               target="_blank"
               rel="noreferrer noopener"
               className="inline-flex items-center gap-2 border border-ngo-navy/15 text-ngo-navy px-5 sm:px-6 py-4 min-h-12 font-bold uppercase tracking-widest text-xs hover:border-ngo-gold transition-colors rounded-md bg-white"
             >
-              <MessageCircle size={13} aria-hidden="true" /> WhatsApp
+              <MessageCircle size={13} aria-hidden="true" /> Échange direct
             </a>
           </div>
         </div>
