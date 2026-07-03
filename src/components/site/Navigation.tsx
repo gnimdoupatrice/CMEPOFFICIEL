@@ -1,14 +1,16 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Menu, X, ArrowRight, Globe, ChevronDown } from "lucide-react";
+import logoAsset from "@/assets/brand/logo-cmep.jpg.asset.json";
 
 const primaryLinks = [
   { to: "/" as const, label: { fr: "Accueil", en: "Home" } },
   { to: "/a-propos" as const, label: { fr: "À propos", en: "About" } },
   { to: "/programmes" as const, label: { fr: "Axes", en: "Programs" } },
-  { to: "/impact" as const, label: { fr: "Magazine", en: "Impact" } },
-  { to: "/actualites" as const, label: { fr: "Opportunités", en: "News & Opportunities" } },
-  { to: "/partenaires" as const, label: { fr: "Collaborations", en: "Partners" } },
+  { to: "/impact" as const, label: { fr: "Magazine", en: "Magazine" } },
+  { to: "/opportunites" as const, label: { fr: "Opportunités", en: "Opportunities" } },
+  { to: "/partenaires" as const, label: { fr: "Partenaires", en: "Partners" } },
+  { to: "/contact" as const, label: { fr: "Contact", en: "Contact" } },
 ];
 
 export function Navigation() {
@@ -24,7 +26,6 @@ export function Navigation() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Lock body scroll when mobile menu open
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
@@ -34,28 +35,30 @@ export function Navigation() {
     <nav
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-white/90 backdrop-blur-xl border-b border-ngo-navy/8 shadow-[0_1px_24px_-12px_rgba(15,42,95,0.18)]"
-          : "bg-white/70 backdrop-blur-md border-b border-transparent"
+          ? "bg-white/95 backdrop-blur-xl border-b border-ngo-navy/8 shadow-[0_1px_24px_-12px_rgba(15,42,95,0.18)]"
+          : "bg-white/80 backdrop-blur-md border-b border-transparent"
       }`}
       style={{ paddingTop: "env(safe-area-inset-top)" }}
+      aria-label="Navigation principale"
     >
-      {/* Top utility bar — desktop only */}
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-[72px] flex items-center justify-between gap-3">
-        {/* Brand */}
-        <Link to="/" className="flex items-center gap-2.5 group shrink-0" aria-label="CMEP — Accueil">
-          <div className="size-9 sm:size-10 bg-ngo-navy rounded-md flex items-center justify-center text-white font-black text-base group-hover:bg-ngo-gold group-hover:text-ngo-navy transition-colors">
-            C
-          </div>
-          <div className="hidden sm:flex flex-col leading-none">
-            <span className="font-extrabold tracking-tight text-[16px] sm:text-[17px] text-ngo-navy">CMEP</span>
-            <span className="text-[9px] uppercase tracking-[0.22em] text-ngo-slate font-semibold mt-1">
-            </span>
-          </div>
+        {/* Brand — real logo */}
+        <Link to="/" className="flex items-center gap-3 group shrink-0" aria-label="CMEP — Retour à l'accueil">
+          <img
+            src={logoAsset.url}
+            alt=""
+            width={40}
+            height={40}
+            fetchPriority="high"
+            decoding="async"
+            className="size-9 sm:size-10 rounded-md object-cover ring-1 ring-ngo-navy/10 group-hover:ring-ngo-gold transition-all"
+          />
+          <span className="hidden md:inline font-extrabold tracking-tight text-[15px] text-ngo-navy leading-none">
+            CMEP<span className="text-ngo-gold">.</span>
+          </span>
         </Link>
 
-        {/* Primary nav */}
-        <div className="hidden xl:flex items-center gap-6 2xl:gap-7 text-[13px] font-medium">
+        <div className="hidden xl:flex items-center gap-5 2xl:gap-7 text-[13px] font-medium">
           {primaryLinks.map((l) => (
             <Link
               key={l.to}
@@ -69,7 +72,6 @@ export function Navigation() {
           ))}
         </div>
 
-        {/* Right cluster — desktop */}
         <div className="hidden lg:flex items-center gap-3">
           <div className="relative">
             <button
@@ -78,9 +80,9 @@ export function Navigation() {
               aria-label="Changer de langue"
               aria-expanded={langOpen}
             >
-              <Globe size={14} />
+              <Globe size={14} aria-hidden="true" />
               {lang.toUpperCase()}
-              <ChevronDown size={12} className={`transition-transform ${langOpen ? "rotate-180" : ""}`} />
+              <ChevronDown size={12} className={`transition-transform ${langOpen ? "rotate-180" : ""}`} aria-hidden="true" />
             </button>
             {langOpen && (
               <div className="absolute right-0 top-full mt-2 w-28 bg-white border border-ngo-navy/10 rounded-lg shadow-xl overflow-hidden">
@@ -99,17 +101,16 @@ export function Navigation() {
             )}
           </div>
 
-          <span className="h-6 w-px bg-ngo-navy/10" />
+          <span className="h-6 w-px bg-ngo-navy/10" aria-hidden="true" />
 
           <Link
             to="/opportunites"
             className="inline-flex items-center gap-2 px-4 xl:px-5 py-2.5 min-h-11 bg-ngo-gold text-ngo-navy text-[12.5px] font-bold uppercase tracking-wider rounded-md hover:bg-ngo-navy hover:text-white transition-colors shadow-sm whitespace-nowrap"
           >
-            {lang === "fr" ? "Rejoindre la communauté " : "Apply"} <ArrowRight size={13} />
+            {lang === "fr" ? "Rejoindre" : "Apply"} <ArrowRight size={13} aria-hidden="true" />
           </Link>
         </div>
 
-        {/* Mobile toggle — 44×44 tap target */}
         <button
           onClick={() => setOpen(!open)}
           className="xl:hidden inline-flex items-center justify-center size-11 -mr-2 text-ngo-navy rounded-md hover:bg-ngo-pearl transition-colors"
@@ -117,11 +118,10 @@ export function Navigation() {
           aria-expanded={open}
           aria-controls="mobile-menu"
         >
-          {open ? <X size={24} /> : <Menu size={24} />}
+          {open ? <X size={24} aria-hidden="true" /> : <Menu size={24} aria-hidden="true" />}
         </button>
       </div>
 
-      {/* Mobile panel — full-height sheet */}
       <div
         id="mobile-menu"
         className={`xl:hidden fixed inset-x-0 top-16 sm:top-[72px] bottom-0 bg-white border-t border-ngo-navy/8 transition-transform duration-300 ease-out ${
@@ -141,13 +141,12 @@ export function Navigation() {
                   activeProps={{ className: "text-ngo-gold font-semibold" }}
                 >
                   <span>{l.label[lang]}</span>
-                  <ArrowRight size={18} className="text-ngo-slate" />
+                  <ArrowRight size={18} className="text-ngo-slate" aria-hidden="true" />
                 </Link>
               </li>
             ))}
           </ul>
 
-          {/* Language switch mobile */}
           <div className="mt-6 flex items-center gap-2" role="group" aria-label="Langue">
             {(["fr", "en"] as const).map((l) => (
               <button
@@ -163,14 +162,13 @@ export function Navigation() {
             ))}
           </div>
 
-          {/* Sticky CTA at bottom — thumb-friendly */}
           <div className="mt-auto pt-6">
             <Link
               to="/opportunites"
               onClick={() => setOpen(false)}
               className="flex items-center justify-center gap-2 w-full px-5 py-4 min-h-12 bg-ngo-gold text-ngo-navy text-[15px] font-bold rounded-lg uppercase tracking-wider shadow-lg active:scale-[0.98] transition-transform"
             >
-              {lang === "fr" ? "Candidater" : "Apply Now"} <ArrowRight size={16} />
+              {lang === "fr" ? "Candidater" : "Apply Now"} <ArrowRight size={16} aria-hidden="true" />
             </Link>
             <p className="text-center text-[11px] text-ngo-slate mt-3 uppercase tracking-widest">
               Programme CMEP · Togo
