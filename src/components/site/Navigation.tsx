@@ -1,7 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Menu, X, ArrowRight, Globe, ChevronDown } from "lucide-react";
-import logoAsset from "@/assets/brand/logo-cmep.jpg.asset.json";
+import { CMEP_MEDIA } from "@/lib/media";
+import { createWhatsAppHref } from "@/lib/contact";
 
 const primaryLinks = [
   { to: "/" as const, label: { fr: "Accueil", en: "Home" } },
@@ -45,7 +46,7 @@ export function Navigation() {
         {/* Brand — real logo */}
         <Link to="/" className="flex items-center gap-3 group shrink-0" aria-label="CMEP — Retour à l'accueil">
           <img
-            src={logoAsset.url}
+            src={CMEP_MEDIA.logo}
             alt=""
             width={40}
             height={40}
@@ -103,12 +104,14 @@ export function Navigation() {
 
           <span className="h-6 w-px bg-ngo-navy/10" aria-hidden="true" />
 
-          <Link
-            to="/opportunites"
+          <a
+            href={createWhatsAppHref("Bonjour CMEP, je souhaite rejoindre le programme.")}
+            target="_blank"
+            rel="noreferrer noopener"
             className="inline-flex items-center gap-2 px-4 xl:px-5 py-2.5 min-h-11 bg-ngo-gold text-ngo-navy text-[12.5px] font-bold uppercase tracking-wider rounded-md hover:bg-ngo-navy hover:text-white transition-colors shadow-sm whitespace-nowrap"
           >
-            {lang === "fr" ? "Rejoindre          " : "Apply"} <ArrowRight size={13} aria-hidden="true" />
-          </Link>
+            {lang === "fr" ? "Rejoindre" : "Apply"} <ArrowRight size={13} aria-hidden="true" />
+          </a>
         </div>
 
         <button
@@ -173,13 +176,15 @@ export function Navigation() {
             ))}
           </div>
 
-          <Link
-            to="/opportunites"
+          <a
+            href={createWhatsAppHref("Bonjour CMEP, je souhaite rejoindre le programme.")}
+            target="_blank"
+            rel="noreferrer noopener"
             onClick={() => setOpen(false)}
             className="mt-5 flex items-center justify-center gap-2 w-full px-5 py-4 min-h-12 bg-ngo-gold text-ngo-navy text-[15px] font-bold rounded-lg uppercase tracking-wider shadow-lg active:scale-[0.98] transition-transform"
           >
             {lang === "fr" ? "Candidater" : "Apply Now"} <ArrowRight size={16} aria-hidden="true" />
-          </Link>
+          </a>
           <p className="text-center text-[11px] text-ngo-slate mt-3 uppercase tracking-widest">
             Programme CMEP · Togo
           </p>

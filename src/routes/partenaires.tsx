@@ -16,18 +16,8 @@ import partnersHero from "@/assets/partners-hero.jpg";
 import solidarity from "@/assets/solidarity.jpg";
 import workshop from "@/assets/workshop.jpg";
 
-import univKara from "@/assets/partners/universite-kara.jpg.asset.json";
-import franceVol from "@/assets/partners/france-volontaires.jpg.asset.json";
-import youthPanel from "@/assets/partners/youth-panel.png.asset.json";
-import a3e from "@/assets/partners/ong-a3e.jpg.asset.json";
-import kEmpire from "@/assets/partners/k-empire.png.asset.json";
-import stadd from "@/assets/partners/ong-stadd.jpg.asset.json";
-import cephal from "@/assets/partners/club-cephal.jpg.asset.json";
-import bege from "@/assets/partners/bege-shoot.png.asset.json";
-import anjped from "@/assets/partners/anjped-che.jpg.asset.json";
-import donBosco from "@/assets/partners/don-bosco.jpg.asset.json";
-import rotaract from "@/assets/partners/rotaract-kara.png.asset.json";
-import anlp from "@/assets/partners/anlp.jpg.asset.json";
+import { CMEP_MEDIA } from "@/lib/media";
+import { createWhatsAppHref } from "@/lib/contact";
 
 export const Route = createFileRoute("/partenaires")({
   head: () => ({
@@ -59,8 +49,8 @@ const CATEGORIES = [
     label: "Institutions académiques",
     desc: "Encadrement scientifique, ancrage universitaire et accompagnement pédagogique des cohortes.",
     partners: [
-      { name: "Université de Kara", logo: univKara.url, role: "Partenaire scientifique principal" },
-      { name: "Centre de formation Don Bosco", logo: donBosco.url, role: "Formation technique & professionnelle" },
+      { name: "Université de Kara", logo: CMEP_MEDIA.partners.universiteKara, role: "Partenaire scientifique principal" },
+      { name: "Centre de formation Don Bosco", logo: CMEP_MEDIA.partners.donBosco, role: "Formation technique & professionnelle" },
     ],
   },
   {
@@ -69,8 +59,8 @@ const CATEGORIES = [
     label: "Partenaires internationaux",
     desc: "Coopération technique, programmes structurants et mobilisation de la jeunesse à l'échelle régionale.",
     partners: [
-      { name: "France Volontaires", logo: franceVol.url, role: "Mobilité & engagement volontaire" },
-      { name: "Plan International — Youth Panel", logo: youthPanel.url, role: "Plateforme jeunesse internationale" },
+      { name: "France Volontaires", logo: CMEP_MEDIA.partners.franceVolontaires, role: "Mobilité & engagement volontaire" },
+      { name: "Plan International — Youth Panel", logo: CMEP_MEDIA.partners.youthPanel, role: "Plateforme jeunesse internationale" },
     ],
   },
   {
@@ -79,10 +69,10 @@ const CATEGORIES = [
     label: "Société civile & ONG",
     desc: "Ancrage communautaire, expertise sectorielle et déploiement opérationnel sur le terrain.",
     partners: [
-      { name: "ONG A3E", logo: a3e.url, role: "Éducation, environnement, emploi" },
-      { name: "ONG STADD", logo: stadd.url, role: "Action territoriale & développement durable" },
-      { name: "ANLP — À Nous La Planète", logo: anlp.url, role: "Plaidoyer écologique" },
-      { name: "ANJPED-CHE", logo: anjped.url, role: "Jeunesse, paix, éducation" },
+      { name: "ONG A3E", logo: CMEP_MEDIA.partners.ongA3e, role: "Éducation, environnement, emploi" },
+      { name: "ONG STADD", logo: CMEP_MEDIA.partners.ongStadd, role: "Action territoriale & développement durable" },
+      { name: "ANLP — À Nous La Planète", logo: CMEP_MEDIA.partners.anlp, role: "Plaidoyer écologique" },
+      { name: "ANJPED-CHE", logo: CMEP_MEDIA.partners.anjpedChe, role: "Jeunesse, paix, éducation" },
     ],
   },
   {
@@ -91,10 +81,10 @@ const CATEGORIES = [
     label: "Mouvements citoyens & jeunesse",
     desc: "Pairs, réseaux étudiants et clubs qui portent l'élan communautaire du programme.",
     partners: [
-      { name: "K-EMPIRE", logo: kEmpire.url, role: "Culture & créativité jeunesse" },
-      { name: "Club CEPHAL", logo: cephal.url, role: "Leadership citoyen" },
-      { name: "BEGE SHOOT", logo: bege.url, role: "Récit, image & narration de terrain" },
-      { name: "Rotaract Club — Université de Kara", logo: rotaract.url, role: "Engagement étudiant" },
+      { name: "K-EMPIRE", logo: CMEP_MEDIA.partners.kEmpire, role: "Culture & créativité jeunesse" },
+      { name: "Club CEPHAL", logo: CMEP_MEDIA.partners.clubCephal, role: "Leadership citoyen" },
+      { name: "BEGE SHOOT", logo: CMEP_MEDIA.partners.begeShoot, role: "Récit, image & narration de terrain" },
+      { name: "Rotaract Club — Université de Kara", logo: CMEP_MEDIA.partners.rotaractKara, role: "Engagement étudiant" },
     ],
   },
 ];
@@ -125,7 +115,7 @@ const QUOTES = [
   },
   {
     quote:
-      "Une coalition lucide, ancrée dans la région, qui pose les bases d'un modèle reproductible pour la jeunesse togolaise.",
+      "Une coalition lucide, ancrée au Togo, qui pose les bases d'un modèle utile à toute la jeunesse togolaise.",
     name: "M. Yawo D.",
     role: "Partenaire institutionnel",
     img: solidarity,
@@ -139,7 +129,7 @@ function PartnersPage() {
       <section className="relative overflow-hidden bg-ngo-navy text-white">
         <img
           src={partnersHero}
-          alt="Coalition de partenaires CMEP réunis lors d'une rencontre institutionnelle à Kara"
+          alt="Coalition de partenaires CMEP mobilisés autour de la jeunesse togolaise"
           className="absolute inset-0 size-full object-cover opacity-25"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-ngo-navy via-ngo-navy/85 to-ngo-navy/40" />
@@ -289,12 +279,14 @@ function PartnersPage() {
               </p>
             </div>
             <div className="md:col-span-4 relative md:text-right">
-              <Link
-                to="/contact"
+              <a
+                href={createWhatsAppHref("Bonjour CMEP, je souhaite échanger sur un partenariat.")}
+                target="_blank"
+                rel="noreferrer noopener"
                 className="inline-flex items-center gap-2 bg-ngo-gold text-ngo-navy px-7 py-4 font-bold uppercase tracking-widest text-xs hover:scale-105 transition-transform rounded-md"
               >
                 Devenir partenaire <ArrowRight size={14} />
-              </Link>
+              </a>
             </div>
           </div>
         </div>
