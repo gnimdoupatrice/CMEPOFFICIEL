@@ -11,12 +11,12 @@ import { createWhatsAppHref } from "@/lib/contact";
 const FEATURED_STORY = {
   date: "15 mai 2025",
   category: "Reportage terrain",
-  location: "Université de Kara",
+  location: "Togo",
   readTime: "6 min de lecture",
-  title: "À Kara, 120 jeunes ouvrent une nouvelle page du CMEP.",
+  title: "Au Togo, les jeunes ouvrent une nouvelle page du CMEP.",
   kicker: "Promotion 2025 — Cohorte annuelle",
   excerpt:
-    "Sous les voûtes de l'amphithéâtre de l'Université de Kara, mentors, partenaires institutionnels et bénéficiaires ont scellé l'engagement d'une promotion qui marquera l'année. Récit d'une cérémonie où la jeunesse togolaise a repris la parole.",
+    "Aux côtés de partenaires académiques, institutionnels et communautaires, les bénéficiaires du CMEP installent une dynamique nationale de mentorat, de leadership et d’insertion.",
 };
 
 // Actualités secondaires éditoriales (magazine)
@@ -74,19 +74,19 @@ const FEATURED_OPPORTUNITIES = [
   },
 ];
 
-import heroImg from "@/assets/hero-mentorship.jpg";
-import challengeImg from "@/assets/challenge-youth.jpg";
-import visionImg from "@/assets/vision-banner.jpg";
-import impactImg from "@/assets/impact-banner.jpg";
-import axisEntrepreneur from "@/assets/entrepreneur.jpg";
-import axisWorkshop from "@/assets/workshop.jpg";
-import axisLeadership from "@/assets/solidarity.jpg";
-import axisFormation from "@/assets/axis-formation.jpg";
-import axisDigital from "@/assets/axis-digital.jpg";
-import axisCitizenship from "@/assets/axis-citizenship.jpg";
-import testimonial1 from "@/assets/testimonial-1.jpg";
-import testimonial2 from "@/assets/testimonial-2.jpg";
-import testimonial3 from "@/assets/testimonial-3.jpg";
+const heroImg = CMEP_MEDIA.team;
+const challengeImg = CMEP_MEDIA.opportunities.animateurProjetIntervenants;
+const visionImg = CMEP_MEDIA.team;
+const impactImg = CMEP_MEDIA.opportunities.animateurProjetIntervenants;
+const axisEntrepreneur = CMEP_MEDIA.opportunities.redactionTdr;
+const axisWorkshop = CMEP_MEDIA.opportunities.animateurProjetIntervenants;
+const axisLeadership = CMEP_MEDIA.team;
+const axisFormation = CMEP_MEDIA.opportunities.animateurProjet;
+const axisDigital = CMEP_MEDIA.opportunities.certificatEies;
+const axisCitizenship = CMEP_MEDIA.team;
+const testimonial1 = CMEP_MEDIA.team;
+const testimonial2 = CMEP_MEDIA.opportunities.animateurProjetIntervenants;
+const testimonial3 = CMEP_MEDIA.team;
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -565,7 +565,7 @@ function Home() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
             {[
-              { icon: Users, num: "1 000+", title: "Jeunes formés / an", desc: "Cohortes annuelles déployées en région de la Kara, sélectionnées sur dossier et entretien." },
+              { icon: Users, num: "1 000+", title: "Jeunes formés / an", desc: "Cohortes annuelles déployées au Togo, sélectionnées sur dossier et entretien." },
               { icon: TrendingUp, num: "60%", title: "Taux d'insertion ciblé", desc: "Emploi salarié, micro-entreprise ou poursuite d'études supérieures dans les 12 mois." },
               { icon: Sparkles, num: "1", title: "Plateforme de mentorat", desc: "Infrastructure pérenne de mise en relation jeunes/mentors, structurante pour le territoire." },
               { icon: Award, num: "12+", title: "Partenariats structurants", desc: "Universités, ONG, entreprises et institutions publiques engagées dans la durée." },
@@ -644,7 +644,7 @@ function Home() {
               <div className="relative lg:col-span-7 min-h-[340px] lg:min-h-[600px] overflow-hidden">
                 <img
                   src={axisWorkshop}
-                  alt="Cérémonie de lancement de la Promotion 2025 du CMEP à l'Université de Kara"
+                  alt="Cérémonie de lancement de la Promotion 2025 du CMEP au Togo"
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
                   loading="lazy"
                 />
@@ -897,7 +897,7 @@ function Home() {
 
           <div className="mt-14 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
             <p className="text-[11px] uppercase tracking-[0.3em] font-bold text-ngo-slate">
-              {PARTNER_LOGOS.length} partenaires institutionnels · Région de la Kara, Togo
+              {PARTNER_LOGOS.length} partenaires institutionnels · Togo
             </p>
             <Link to="/partenaires" className="inline-flex items-center gap-2 text-ngo-navy hover:text-ngo-gold font-bold text-[11px] uppercase tracking-[0.3em] border-b border-ngo-navy/30 hover:border-ngo-gold pb-1.5 transition-colors">
               Devenir partenaire <ArrowRight size={13} />
