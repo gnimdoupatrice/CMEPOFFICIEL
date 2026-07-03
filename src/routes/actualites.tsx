@@ -362,7 +362,7 @@ function NewsroomPage() {
               <article key={n.title} className="md:col-span-6 group cursor-pointer">
                 <div className="grid sm:grid-cols-5 gap-5 items-stretch p-5 border border-ngo-navy/10 rounded-2xl hover:border-ngo-gold/40 hover:shadow-xl transition-all duration-500">
                   <div className="sm:col-span-2 relative aspect-[4/3] sm:aspect-auto overflow-hidden rounded-xl">
-                    <img src={n.img} alt={n.title} className="absolute inset-0 size-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                    <img loading="lazy" decoding="async" src={n.img} alt={n.title} className="absolute inset-0 size-full object-cover group-hover:scale-105 transition-transform duration-700" />
                   </div>
                   <div className="sm:col-span-3 flex flex-col">
                     <div className="flex items-center gap-2 mb-3">
@@ -545,7 +545,7 @@ function NewsroomPage() {
                 }`}
               >
                 <div className="relative aspect-[3/4]">
-                  <img src={s.img} alt={s.name} className="absolute inset-0 size-full object-cover group-hover:scale-[1.06] transition-transform duration-[1200ms] ease-out" />
+                  <img loading="lazy" decoding="async" src={s.img} alt={s.name} className="absolute inset-0 size-full object-cover group-hover:scale-[1.06] transition-transform duration-[1200ms] ease-out" />
                   <div className="absolute inset-0 bg-gradient-to-t from-ngo-navy via-ngo-navy/60 to-transparent" />
 
                   <span className="absolute top-5 left-5 text-[10px] uppercase tracking-[0.25em] font-bold text-ngo-navy bg-ngo-gold px-3 py-1.5 rounded">
@@ -586,7 +586,7 @@ function NewsroomPage() {
                 tenue par les coordinateurs CMEP semaine après semaine.
               </p>
               <div className="aspect-[4/5] rounded-2xl overflow-hidden">
-                <img src={challengeYouth} alt="Jeunes en action sur le terrain" className="size-full object-cover" />
+                <img loading="lazy" decoding="async" src={challengeYouth} alt="Jeunes en action sur le terrain" className="size-full object-cover" />
               </div>
             </div>
 
@@ -597,7 +597,7 @@ function NewsroomPage() {
                     <article className="grid sm:grid-cols-12 gap-6 items-center p-5 bg-ngo-pearl/50 hover:bg-ngo-pearl border border-transparent hover:border-ngo-gold/30 rounded-2xl transition-all duration-500">
                       <div className="sm:col-span-4">
                         <div className="aspect-[4/3] rounded-xl overflow-hidden">
-                          <img src={u.img} alt="" className="size-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                          <img loading="lazy" decoding="async" src={u.img} alt="" className="size-full object-cover group-hover:scale-105 transition-transform duration-700" />
                         </div>
                       </div>
                       <div className="sm:col-span-8">
@@ -627,7 +627,7 @@ function NewsroomPage() {
       <section className="bg-ngo-pearl pb-28 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="relative overflow-hidden rounded-[2rem] bg-ngo-navy">
-            <img src={heroStudent} alt="" className="absolute inset-0 size-full object-cover opacity-25" />
+            <img loading="lazy" decoding="async" src={heroStudent} alt="" className="absolute inset-0 size-full object-cover opacity-25" />
             <div className="absolute inset-0 bg-gradient-to-r from-ngo-navy via-ngo-navy/90 to-ngo-navy/50" />
             <div className="absolute -top-32 -left-32 size-80 rounded-full bg-ngo-gold/15 blur-3xl" />
 

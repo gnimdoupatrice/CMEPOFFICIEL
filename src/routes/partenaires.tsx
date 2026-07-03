@@ -248,7 +248,7 @@ function PartnersPage() {
                       className="group p-5 border border-ngo-navy/8 rounded-xl hover:border-ngo-gold/40 hover:bg-ngo-pearl transition-all flex items-center gap-5"
                     >
                       <div className="size-16 rounded-lg bg-white border border-ngo-navy/8 flex items-center justify-center shrink-0 overflow-hidden">
-                        <img src={p.logo} alt={p.name} className="max-h-12 max-w-12 object-contain" />
+                        <img loading="lazy" decoding="async" src={p.logo} alt={p.name} className="max-h-12 max-w-12 object-contain" />
                       </div>
                       <div className="min-w-0 flex-1">
                         <div className="font-extrabold text-ngo-navy text-[15px] leading-tight truncate">{p.name}</div>

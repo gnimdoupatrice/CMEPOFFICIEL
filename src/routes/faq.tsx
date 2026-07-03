@@ -205,7 +205,7 @@ function FAQPage() {
       <section className="bg-white py-20 px-6">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-10 items-center">
           <div className="lg:col-span-5 relative aspect-[4/5] rounded-3xl overflow-hidden group">
-            <img src={editorialImg} alt="Coordination CMEP en atelier" className="absolute inset-0 size-full object-cover transition-transform duration-700 group-hover:scale-105" />
+            <img loading="lazy" decoding="async" src={editorialImg} alt="Coordination CMEP en atelier" className="absolute inset-0 size-full object-cover transition-transform duration-700 group-hover:scale-105" />
             <div className="absolute inset-0 bg-gradient-to-t from-ngo-navy/80 via-ngo-navy/10 to-transparent" />
             <div className="absolute bottom-6 left-6 right-6 text-white">
               <span className="text-[10px] uppercase tracking-[0.25em] font-bold text-ngo-gold">Édito</span>
@@ -359,7 +359,7 @@ function FAQPage() {
       <section className="bg-white py-20 px-6 border-t border-ngo-navy/5">
         <div className="max-w-6xl mx-auto grid md:grid-cols-12 gap-10 items-center">
           <div className="md:col-span-4 relative aspect-square rounded-3xl overflow-hidden">
-            <img src={voiceImg} alt="Bénéficiaire CMEP" className="absolute inset-0 size-full object-cover" />
+            <img loading="lazy" decoding="async" src={voiceImg} alt="Bénéficiaire CMEP" className="absolute inset-0 size-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-ngo-navy/70 to-transparent" />
           </div>
           <div className="md:col-span-8">

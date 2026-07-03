@@ -191,7 +191,7 @@ function OpportunitiesPage() {
 
           <article className="grid lg:grid-cols-12 gap-10 items-stretch">
             <div className="lg:col-span-6 relative aspect-[4/3] lg:aspect-auto rounded-3xl overflow-hidden group">
-              <img src={featuredImg} alt="Mentor et jeune entrepreneur en session de travail" className="absolute inset-0 size-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              <img loading="lazy" decoding="async" src={featuredImg} alt="Mentor et jeune entrepreneur en session de travail" className="absolute inset-0 size-full object-cover transition-transform duration-700 group-hover:scale-105" />
               <div className="absolute inset-0 bg-gradient-to-t from-ngo-navy/70 via-ngo-navy/10 to-transparent" />
               <div className="absolute top-6 left-6 flex flex-col gap-2">
                 <span className="px-3 py-1.5 bg-ngo-gold text-ngo-navy text-[10px] uppercase tracking-[0.22em] font-extrabold rounded">
@@ -284,7 +284,7 @@ function OpportunitiesPage() {
                 className="group bg-white border border-ngo-navy/8 rounded-2xl overflow-hidden hover:shadow-2xl hover:-translate-y-1 hover:border-ngo-gold/40 transition-all flex flex-col"
               >
                 <div className="relative aspect-[5/4] overflow-hidden">
-                  <img src={o.image} alt={o.title} className="absolute inset-0 size-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                  <img loading="lazy" decoding="async" src={o.image} alt={o.title} className="absolute inset-0 size-full object-cover transition-transform duration-700 group-hover:scale-105" />
                   <div className={`absolute inset-0 bg-gradient-to-t ${o.accent} via-ngo-navy/20 to-transparent`} />
                   <div className="absolute top-4 left-4 flex flex-col gap-2">
                     <span className="px-2.5 py-1 bg-ngo-gold text-ngo-navy text-[10px] uppercase tracking-[0.22em] font-extrabold rounded">
