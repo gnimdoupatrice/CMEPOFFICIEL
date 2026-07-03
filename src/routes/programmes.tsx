@@ -1,15 +1,15 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Layout } from "@/components/site/Layout";
 import { STRATEGIC_AXES } from "@/lib/cmep-data";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Target } from "lucide-react";
 
 export const Route = createFileRoute("/programmes")({
   head: () => ({
     meta: [
-      { title: "Programmes & Axes Stratégiques — CMEP Togo" },
-      { name: "description", content: "Les cinq axes stratégiques du CMEP : entrepreneuriat, formation technique, leadership, innovation numérique, citoyenneté et écologie." },
-      { property: "og:title", content: "Programmes & Axes Stratégiques — CMEP Togo" },
-      { property: "og:description", content: "Découvrez les cinq axes d'intervention du CMEP pour l'autonomisation des jeunes." },
+      { title: "Axes stratégiques — CMEP Togo" },
+      { name: "description", content: "Les cinq axes stratégiques du CMEP alignés sur six Objectifs de Développement Durable des Nations Unies." },
+      { property: "og:title", content: "Axes stratégiques — CMEP Togo" },
+      { property: "og:description", content: "Cinq axes, six ODD, une seule ambition : l'autonomisation de la jeunesse togolaise." },
       { property: "og:url", content: "/programmes" },
     ],
     links: [{ rel: "canonical", href: "/programmes" }],
@@ -17,14 +17,23 @@ export const Route = createFileRoute("/programmes")({
   component: ProgrammesPage,
 });
 
+const SDGS = [
+  { num: "04", label: "Éducation de qualité" },
+  { num: "05", label: "Égalité entre les sexes" },
+  { num: "08", label: "Travail décent & croissance" },
+  { num: "10", label: "Inégalités réduites" },
+  { num: "13", label: "Mesures climatiques" },
+  { num: "17", label: "Partenariats" },
+];
+
 function ProgrammesPage() {
   return (
     <Layout>
       {/* HERO */}
-      <section className="pt-32 pb-20 px-6 bg-ngo-pearl border-b border-ngo-navy/5">
+      <section className="pt-20 md:pt-24 pb-16 md:pb-20 px-4 sm:px-6 bg-ngo-pearl border-b border-ngo-navy/5">
         <div className="max-w-7xl mx-auto">
-          <span className="text-ngo-gold font-bold uppercase tracking-[0.25em] text-[11px]">Nos Programmes</span>
-          <h1 className="font-extrabold text-5xl md:text-7xl mt-5 mb-8 leading-[1.02] tracking-tight text-ngo-navy max-w-4xl">
+          <span className="text-ngo-gold font-bold uppercase tracking-[0.25em] text-[11px]">Nos axes d'intervention</span>
+          <h1 className="font-extrabold text-4xl sm:text-5xl md:text-7xl mt-5 mb-8 leading-[1.02] tracking-tight text-ngo-navy max-w-4xl">
             Cinq axes pour une <span className="text-ngo-gold">autonomisation</span> réelle.
           </h1>
           <p className="text-lg text-ngo-slate leading-relaxed max-w-2xl">
@@ -35,18 +44,18 @@ function ProgrammesPage() {
       </section>
 
       {/* AXES */}
-      <section className="py-24 px-6 bg-white">
+      <section className="py-20 md:py-24 px-4 sm:px-6 bg-white">
         <div className="max-w-7xl mx-auto space-y-5">
           {STRATEGIC_AXES.map((axis, i) => (
             <article
               key={axis.num}
-              className="group grid md:grid-cols-12 gap-8 p-10 md:p-12 bg-ngo-pearl border border-ngo-navy/10 rounded-2xl hover:border-ngo-gold hover:shadow-2xl transition-all"
+              className="group grid md:grid-cols-12 gap-6 md:gap-8 p-8 sm:p-10 md:p-12 bg-ngo-pearl border border-ngo-navy/10 rounded-2xl hover:border-ngo-gold hover:shadow-2xl transition-all"
             >
               <div className="md:col-span-3 flex md:flex-col items-start gap-4">
-                <span className="text-6xl md:text-7xl font-black text-ngo-gold tabular-nums leading-none">
+                <span className="text-5xl sm:text-6xl md:text-7xl font-black text-ngo-gold tabular-nums leading-none">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <span className="inline-block text-[10px] uppercase tracking-[0.25em] font-bold text-ngo-navy/50">
+                <span className="inline-block text-[10px] uppercase tracking-[0.25em] font-bold text-ngo-navy/50 mt-2">
                   Axe {i + 1}
                 </span>
               </div>
@@ -71,8 +80,63 @@ function ProgrammesPage() {
         </div>
       </section>
 
+      {/* ALIGNEMENT ODD (déplacé depuis /partenaires) */}
+      <section className="bg-ngo-pearl py-20 md:py-24 px-4 sm:px-6" aria-labelledby="sdg-heading">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-12 gap-12">
+            <div className="lg:col-span-5">
+              <div className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.28em] font-bold text-ngo-gold mb-4">
+                <Target size={12} aria-hidden="true" /> Agenda 2030
+              </div>
+              <h2 id="sdg-heading" className="text-3xl md:text-5xl font-extrabold text-ngo-navy leading-[1.05] tracking-tight mb-6">
+                Alignement aux 17 Objectifs de Développement Durable au cœur de l'action.
+              </h2>
+              <p className="text-ngo-slate leading-relaxed text-[15px] mb-8">
+                Le CMEP structure ses cinq axes stratégiques selon le référentiel ONU 2030.
+                Chaque axe est explicitement ancré dans un ou plusieurs ODD prioritaires
+                pour le Togo, garantissant cohérence, mesurabilité et redevabilité.
+              </p>
+              <Link
+                to="/impact"
+                className="inline-flex items-center gap-2 text-ngo-navy font-bold text-[13px] uppercase tracking-widest hover:text-ngo-gold transition-colors"
+              >
+                Lire notre magazine <ArrowRight size={14} aria-hidden="true" />
+              </Link>
+            </div>
+            <ul className="lg:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-3">
+              {SDGS.map((s) => (
+                <li
+                  key={s.num}
+                  className="group aspect-square p-5 bg-white border border-ngo-navy/8 rounded-xl flex flex-col justify-between hover:bg-ngo-navy hover:border-ngo-navy transition-all"
+                >
+                  <span className="text-4xl font-extrabold text-ngo-gold tabular-nums leading-none">{s.num}</span>
+                  <span className="text-[11px] uppercase tracking-[0.18em] font-bold text-ngo-navy group-hover:text-white leading-snug">
+                    {s.label}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
-      
+      <section className="py-20 md:py-24 px-4 sm:px-6 bg-white">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-ngo-navy mb-5 leading-tight tracking-tight">
+            Prêt à rejoindre un axe d'intervention ?
+          </h2>
+          <p className="text-ngo-slate mb-10 leading-relaxed">
+            Découvrez nos appels à candidatures ouverts dès aujourd'hui.
+          </p>
+          <Link
+            to="/opportunites"
+            className="inline-flex items-center gap-2 bg-ngo-gold text-ngo-navy px-8 py-4 min-h-12 font-bold uppercase tracking-widest text-xs rounded-md hover:bg-ngo-navy hover:text-white transition-colors"
+          >
+            Voir les opportunités <ArrowRight size={14} aria-hidden="true" />
+          </Link>
+        </div>
+      </section>
     </Layout>
   );
 }

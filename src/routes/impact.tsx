@@ -1,90 +1,262 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Layout } from "@/components/site/Layout";
-import { ArrowRight, ShieldCheck } from "lucide-react";
+import { useMemo, useState } from "react";
+import { ArrowRight, ArrowUpRight, Search, Clock, MapPin, TrendingUp, Newspaper, Radio, Bookmark } from "lucide-react";
+import heroStory from "@/assets/hero-mentorship.jpg";
+import featureA from "@/assets/entrepreneur.jpg";
+import featureB from "@/assets/axis-digital.jpg";
+import featureC from "@/assets/solidarity.jpg";
+import featureD from "@/assets/workshop.jpg";
+import featureE from "@/assets/axis-formation.jpg";
+import featureF from "@/assets/axis-citizenship.jpg";
+import featureG from "@/assets/challenge-youth.jpg";
+import featureH from "@/assets/vision-banner.jpg";
 
 export const Route = createFileRoute("/impact")({
   head: () => ({
     meta: [
-      { title: "Impact & Résultats — CMEP Togo" },
-      { name: "description", content: "500 jeunes formés par an, 60% d'insertion socio-économique, plateforme de mentorat durable — les résultats attendus du CMEP." },
-      { property: "og:title", content: "Impact & Résultats — CMEP Togo" },
-      { property: "og:description", content: "Découvrez l'impact mesurable du Chris Mentorship & Empowerment Program." },
+      { title: "Magazine CMEP — Le média de la jeunesse togolaise" },
+      { name: "description", content: "Reportages, analyses, portraits et actualités du Chris Mentorship & Empowerment Program. L'information institutionnelle sur la jeunesse togolaise." },
+      { property: "og:title", content: "Magazine CMEP — Le média de la jeunesse togolaise" },
+      { property: "og:description", content: "Un portail éditorial dédié à la jeunesse togolaise et à l'écosystème CMEP." },
       { property: "og:url", content: "/impact" },
     ],
     links: [{ rel: "canonical", href: "/impact" }],
   }),
-  component: ImpactPage,
+  component: MagazinePage,
 });
 
-const RESULTS = [
-  { number: "500", suffix: "+", label: "Jeunes formés & mentorés / an", desc: "Entrepreneuriat, technique, numérique, leadership — un suivi rigoureux à chaque étape." },
-  { number: "60", suffix: "%", label: "Taux d'insertion ciblé", desc: "Bénéficiaires en emploi ou ayant lancé une activité génératrice de revenus à 12 mois." },
-  { number: "1", suffix: "", label: "Plateforme de mentorat", desc: "Opérationnelle et durable, mettant en relation mentors confirmés et jeunes talents." },
-  { number: "10", suffix: "+", label: "Partenariats structurants", desc: "Institutions publiques, ONG internationales, universités, secteur privé local et diaspora." },
+type Article = {
+  id: string;
+  title: string;
+  excerpt: string;
+  category: string;
+  date: string;
+  readTime: string;
+  location: string;
+  image: string;
+  featured?: boolean;
+};
+
+const CATEGORIES = ["Toutes", "Reportage", "Portrait", "Analyse", "Partenariat", "Impact", "Événement"] as const;
+
+const ARTICLES: Article[] = [
+  { id: "a1", featured: true, title: "À Kara, 120 jeunes ouvrent une nouvelle page du CMEP.", excerpt: "Sous les voûtes de l'amphithéâtre de l'Université de Kara, mentors, partenaires institutionnels et bénéficiaires ont scellé l'engagement d'une promotion qui marquera l'année.", category: "Reportage", date: "15 mai 2025", readTime: "6 min", location: "Kara", image: heroStory },
+  { id: "a2", title: "Convention historique avec le Centre Don Bosco", excerpt: "Un accord-cadre qui ouvre les ateliers techniques à 60 jeunes supplémentaires et installe le mentorat au cœur des métiers manuels.", category: "Partenariat", date: "28 avril 2025", readTime: "4 min", location: "Kara", image: featureA },
+  { id: "a3", title: "Démo-day : huit projets, une génération qui entreprend", excerpt: "Agro-transformation, micro-services numériques, économie circulaire — la première promo d'incubés a défendu ses projets devant un jury exigeant.", category: "Événement", date: "10 avril 2025", readTime: "5 min", location: "Kara", image: featureB },
+  { id: "a4", title: "Portrait : Aïcha, du diplôme à l'atelier de couture", excerpt: "Six mois après la formation, elle emploie deux apprenties et fournit deux boutiques de Lomé. Récit d'une ascension méthodique.", category: "Portrait", date: "2 avril 2025", readTime: "7 min", location: "Kara", image: featureC },
+  { id: "a5", title: "Analyse : la jeunesse togolaise face à l'IA générative", excerpt: "Formation, garde-fous, opportunités professionnelles — la position CMEP sur l'entrée du Togo dans l'ère de l'intelligence artificielle.", category: "Analyse", date: "25 mars 2025", readTime: "9 min", location: "Togo", image: featureD },
+  { id: "a6", title: "500 jeunes accompagnés : le bilan chiffré de l'année", excerpt: "Le rapport annuel d'impact du CMEP dévoile 500 bénéficiaires, 60% d'insertion et 12 partenariats structurants.", category: "Impact", date: "18 mars 2025", readTime: "5 min", location: "Kara", image: featureE },
+  { id: "a7", title: "Brigades vertes : reboiser en même temps qu'on forme", excerpt: "Comment le CMEP articule engagement écologique et employabilité — une méthode qui essaime dans quatre préfectures.", category: "Reportage", date: "10 mars 2025", readTime: "6 min", location: "Région Kara", image: featureF },
+  { id: "a8", title: "France Volontaires renouvelle son engagement pour trois ans", excerpt: "Mobilité, échange d'expertises, financement de cohortes : le nouveau protocole ouvre une décennie de coopération.", category: "Partenariat", date: "4 mars 2025", readTime: "4 min", location: "Lomé", image: featureG },
+  { id: "a9", title: "Éditorial : la mentorat, une infrastructure sociale", excerpt: "Le mot du fondateur : pourquoi le mentorat structuré est aujourd'hui aussi vital que l'école et l'hôpital.", category: "Analyse", date: "25 février 2025", readTime: "3 min", location: "Togo", image: featureH },
 ];
 
-function ImpactPage() {
+function MagazinePage() {
+  const [q, setQ] = useState("");
+  const [cat, setCat] = useState<(typeof CATEGORIES)[number]>("Toutes");
+
+  const filtered = useMemo(() => {
+    const norm = q.trim().toLowerCase();
+    return ARTICLES.filter((a) => (cat === "Toutes" || a.category === cat))
+      .filter((a) => !norm || a.title.toLowerCase().includes(norm) || a.excerpt.toLowerCase().includes(norm));
+  }, [q, cat]);
+
+  const featured = filtered.find((a) => a.featured) ?? filtered[0];
+  const rest = filtered.filter((a) => a.id !== featured?.id);
+  const highlighted = rest.slice(0, 3);
+  const latest = rest.slice(3);
+
   return (
     <Layout>
-      {/* HERO */}
-      <section className="pt-32 pb-20 px-6 bg-ngo-pearl border-b border-ngo-navy/5">
-        <div className="max-w-7xl mx-auto">
-          <span className="text-ngo-gold font-bold uppercase tracking-[0.25em] text-[11px]">Impact & Résultats Attendus</span>
-          <h1 className="font-extrabold text-5xl md:text-7xl mt-5 mb-8 leading-[1.02] tracking-tight text-ngo-navy max-w-4xl">
-            Mesurer ce qui <span className="text-ngo-gold">compte</span> vraiment.
-          </h1>
-          <p className="text-lg text-ngo-slate leading-relaxed max-w-2xl">
-            Le CMEP ne se mesure pas en activités, mais en vies transformées.
-            Voici nos engagements chiffrés à l'horizon annuel.
-          </p>
-        </div>
-      </section>
-
-      {/* RESULTS GRID */}
-      <section className="py-24 px-6 bg-white">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-5">
-          {RESULTS.map((r) => (
-            <article
-              key={r.label}
-              className="group relative p-10 md:p-12 bg-ngo-navy text-white rounded-2xl overflow-hidden hover:shadow-2xl transition-shadow"
-            >
-              <div className="absolute -top-8 -right-8 size-40 rounded-full bg-ngo-gold/10 blur-2xl pointer-events-none" />
-              <div className="relative">
-                <div className="flex items-baseline gap-1 mb-6">
-                  <span className="text-7xl md:text-8xl font-black tabular-nums leading-none tracking-tight">{r.number}</span>
-                  <span className="text-4xl font-black text-ngo-gold">{r.suffix}</span>
-                </div>
-                <h3 className="text-xl md:text-2xl font-extrabold mb-3 leading-tight tracking-tight">{r.label}</h3>
-                <p className="text-white/65 text-sm leading-relaxed">{r.desc}</p>
+      {/* Masthead */}
+      <section className="border-b border-ngo-navy/8 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-14 pb-8">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <div>
+              <div className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.28em] font-bold text-ngo-gold mb-4">
+                <Radio size={12} aria-hidden="true" /> Édition {new Date().toLocaleDateString("fr-FR", { day: "2-digit", month: "long", year: "numeric" })}
               </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      {/* PROOF */}
-      <section className="py-24 px-6 bg-ngo-pearl">
-        <div className="max-w-5xl mx-auto grid md:grid-cols-12 gap-10 items-center">
-          <div className="md:col-span-2">
-            <div className="size-14 rounded-2xl bg-ngo-navy text-white grid place-items-center">
-              <ShieldCheck size={22} strokeWidth={2.2} />
+              <h1 className="font-serif text-5xl md:text-7xl font-black tracking-tight text-ngo-navy leading-none">
+                Le Magazine <span className="text-ngo-gold italic">CMEP</span>
+              </h1>
+              <p className="mt-4 text-ngo-slate max-w-2xl leading-relaxed">
+                Reportages de terrain, portraits, analyses institutionnelles et actualités
+                de l'écosystème de la jeunesse togolaise.
+              </p>
             </div>
+            <label className="relative w-full md:w-80">
+              <span className="sr-only">Rechercher un article</span>
+              <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-ngo-slate" aria-hidden="true" />
+              <input
+                value={q}
+                onChange={(e) => setQ(e.target.value)}
+                placeholder="Rechercher un article…"
+                className="w-full pl-10 pr-4 py-3 min-h-11 bg-ngo-pearl border border-ngo-navy/10 rounded-md text-sm text-ngo-navy placeholder:text-ngo-slate focus:outline-none focus:ring-2 focus:ring-ngo-gold"
+              />
+            </label>
           </div>
-          <div className="md:col-span-10">
-            <span className="text-ngo-gold text-[10px] uppercase tracking-[0.25em] font-bold">Redevabilité</span>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-ngo-navy mt-3 mb-5 leading-tight tracking-tight">
-              Une approche fondée sur la preuve.
-            </h2>
-            <p className="text-ngo-slate text-base leading-relaxed">
-              Chaque cohorte fait l'objet d'un suivi rigoureux à 3, 6 et 12 mois. Les indicateurs sont publiés
-              dans notre rapport annuel d'impact, garantissant transparence et redevabilité envers nos partenaires
-              et bénéficiaires.
-            </p>
-          </div>
+
+          <nav aria-label="Catégories" className="mt-8 -mx-4 sm:mx-0 overflow-x-auto">
+            <ul className="flex items-center gap-2 px-4 sm:px-0">
+              {CATEGORIES.map((c) => (
+                <li key={c}>
+                  <button
+                    onClick={() => setCat(c)}
+                    className={`whitespace-nowrap px-4 py-2 min-h-10 text-[12px] uppercase tracking-widest font-bold rounded-full border transition-colors ${
+                      cat === c
+                        ? "bg-ngo-navy text-white border-ngo-navy"
+                        : "bg-white text-ngo-slate border-ngo-navy/15 hover:border-ngo-gold hover:text-ngo-navy"
+                    }`}
+                    aria-pressed={cat === c}
+                  >
+                    {c}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </nav>
         </div>
       </section>
 
-      {/* CTA */}
+      {/* Hero story */}
+      {featured && (
+        <section className="bg-white pb-16 pt-10 px-4 sm:px-6">
+          <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-10">
+            <article className="lg:col-span-8 group">
+              <Link to="/impact" className="block relative aspect-[16/10] rounded-2xl overflow-hidden bg-ngo-pearl">
+                <img
+                  src={featured.image}
+                  alt={featured.title}
+                  width={1280}
+                  height={800}
+                  loading="eager"
+                  fetchPriority="high"
+                  decoding="async"
+                  className="absolute inset-0 size-full object-cover group-hover:scale-[1.02] transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-ngo-navy/85 via-ngo-navy/20 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 p-6 md:p-10 text-white">
+                  <div className="flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] font-bold mb-4">
+                    <span className="bg-ngo-gold text-ngo-navy px-2.5 py-1 rounded">À la une</span>
+                    <span className="opacity-80">{featured.category}</span>
+                    <span className="opacity-60 hidden sm:inline">• {featured.date}</span>
+                  </div>
+                  <h2 className="font-serif text-3xl md:text-5xl font-extrabold leading-[1.05] tracking-tight max-w-3xl">
+                    {featured.title}
+                  </h2>
+                  <p className="mt-4 text-white/85 max-w-2xl text-[15px] leading-relaxed line-clamp-2">
+                    {featured.excerpt}
+                  </p>
+                  <div className="mt-5 flex items-center gap-5 text-[12px] text-white/70">
+                    <span className="inline-flex items-center gap-1.5"><Clock size={12} aria-hidden="true" /> {featured.readTime}</span>
+                    <span className="inline-flex items-center gap-1.5"><MapPin size={12} aria-hidden="true" /> {featured.location}</span>
+                  </div>
+                </div>
+              </Link>
+            </article>
+
+            {/* Trending column */}
+            <aside className="lg:col-span-4">
+              <div className="flex items-center gap-2 mb-5">
+                <TrendingUp size={16} className="text-ngo-gold" aria-hidden="true" />
+                <h2 className="text-[11px] uppercase tracking-[0.28em] font-bold text-ngo-navy">Les plus lus</h2>
+              </div>
+              <ol className="divide-y divide-ngo-navy/10 border-y border-ngo-navy/10">
+                {highlighted.map((a, i) => (
+                  <li key={a.id} className="py-5 flex gap-4 group">
+                    <span className="font-serif text-4xl font-black text-ngo-gold/70 tabular-nums leading-none shrink-0">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <div>
+                      <div className="text-[10px] uppercase tracking-[0.22em] font-bold text-ngo-slate mb-2">{a.category} · {a.date}</div>
+                      <h3 className="font-serif text-[17px] font-bold text-ngo-navy leading-snug group-hover:text-ngo-gold transition-colors">
+                        <Link to="/impact">{a.title}</Link>
+                      </h3>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </aside>
+          </div>
+        </section>
+      )}
+
+      {/* Latest grid */}
+      <section className="bg-ngo-pearl py-16 md:py-24 px-4 sm:px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex items-end justify-between mb-10">
+            <div>
+              <span className="text-[10px] uppercase tracking-[0.28em] font-bold text-ngo-gold">Dernières publications</span>
+              <h2 className="font-serif text-3xl md:text-4xl font-extrabold text-ngo-navy mt-2 leading-tight">
+                {filtered.length} article{filtered.length > 1 ? "s" : ""}{cat !== "Toutes" && <> dans <em className="text-ngo-gold not-italic">{cat}</em></>}
+              </h2>
+            </div>
+            <Newspaper size={28} className="text-ngo-navy/30 hidden md:block" aria-hidden="true" />
+          </div>
+
+          {latest.length === 0 ? (
+            <p className="text-ngo-slate text-center py-16">Aucun article ne correspond à votre recherche.</p>
+          ) : (
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {latest.map((a) => (
+                <article key={a.id} className="group bg-white border border-ngo-navy/8 rounded-2xl overflow-hidden hover:shadow-xl hover:border-ngo-gold/40 transition-all">
+                  <Link to="/impact" className="block">
+                    <div className="relative aspect-[16/10] overflow-hidden bg-ngo-pearl">
+                      <img
+                        src={a.image}
+                        alt={a.title}
+                        width={640}
+                        height={400}
+                        loading="lazy"
+                        decoding="async"
+                        className="absolute inset-0 size-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                      <span className="absolute top-3 left-3 bg-white/90 backdrop-blur text-ngo-navy text-[10px] uppercase tracking-widest font-bold px-2.5 py-1 rounded">
+                        {a.category}
+                      </span>
+                    </div>
+                    <div className="p-6">
+                      <div className="text-[10px] uppercase tracking-[0.22em] font-bold text-ngo-slate mb-3 flex items-center gap-3">
+                        <span>{a.date}</span>
+                        <span aria-hidden="true">•</span>
+                        <span className="inline-flex items-center gap-1"><Clock size={11} aria-hidden="true" /> {a.readTime}</span>
+                      </div>
+                      <h3 className="font-serif text-xl font-bold text-ngo-navy leading-snug group-hover:text-ngo-gold transition-colors mb-3">
+                        {a.title}
+                      </h3>
+                      <p className="text-ngo-slate text-sm leading-relaxed line-clamp-3">{a.excerpt}</p>
+                      <div className="mt-5 pt-5 border-t border-ngo-navy/8 flex items-center justify-between text-[11px] uppercase tracking-widest font-bold text-ngo-navy">
+                        Lire l'article
+                        <ArrowUpRight size={14} className="text-ngo-gold group-hover:rotate-12 transition-transform" aria-hidden="true" />
+                      </div>
+                    </div>
+                  </Link>
+                </article>
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* Newsletter CTA */}
+      <section className="bg-ngo-navy text-white py-20 px-4 sm:px-6">
+        <div className="max-w-4xl mx-auto text-center">
+          <Bookmark size={28} className="text-ngo-gold mx-auto mb-5" aria-hidden="true" />
+          <h2 className="font-serif text-3xl md:text-5xl font-extrabold leading-tight tracking-tight mb-5">
+            Recevez le meilleur du <span className="text-ngo-gold italic">Magazine CMEP</span>.
+          </h2>
+          <p className="text-white/70 max-w-xl mx-auto leading-relaxed mb-8">
+            Une lettre éditoriale trimestrielle : reportages, portraits, analyses et opportunités.
+          </p>
+          <Link
+            to="/contact"
+            className="inline-flex items-center gap-2 bg-ngo-gold text-ngo-navy px-8 py-4 min-h-12 font-bold uppercase tracking-widest text-xs rounded-md hover:bg-white transition-colors"
+          >
+            S'abonner à la newsletter <ArrowRight size={14} aria-hidden="true" />
+          </Link>
+        </div>
+      </section>
     </Layout>
   );
 }

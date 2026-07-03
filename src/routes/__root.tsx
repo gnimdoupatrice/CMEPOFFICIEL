@@ -11,7 +11,8 @@ export const Route = createRootRouteWithContext<RouterContext>()({
   head: () => ({
     meta: [
       { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { name: "viewport", content: "width=device-width, initial-scale=1, viewport-fit=cover" },
+      { name: "theme-color", content: "#0F2A5F" },
       { title: "CMEP — Chris Mentorship & Empowerment Program" },
       {
         name: "description",
@@ -26,6 +27,26 @@ export const Route = createRootRouteWithContext<RouterContext>()({
       {
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Cormorant+Garamond:wght@500;600;700&display=swap",
+      },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "NGO",
+          name: "Chris Mentorship & Empowerment Program",
+          alternateName: "CMEP",
+          url: "/",
+          logo: "/__l5e/assets-v1/b4de6f6d-57f6-4cc2-a0de-ccfb8c4a8663/logo-cmep.jpg",
+          areaServed: "Togo",
+          address: { "@type": "PostalAddress", addressLocality: "Kara", addressCountry: "TG" },
+          email: "chrismentorshipempowermentprog@gmail.com",
+          telephone: "+228 90 51 00 88",
+          sameAs: [
+            "https://www.linkedin.com/company/chris-mentorship-empowerment-program-cmep/about/",
+          ],
+        }),
       },
     ],
   }),

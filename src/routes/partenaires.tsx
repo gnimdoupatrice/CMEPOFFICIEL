@@ -248,7 +248,7 @@ function PartnersPage() {
                       className="group p-5 border border-ngo-navy/8 rounded-xl hover:border-ngo-gold/40 hover:bg-ngo-pearl transition-all flex items-center gap-5"
                     >
                       <div className="size-16 rounded-lg bg-white border border-ngo-navy/8 flex items-center justify-center shrink-0 overflow-hidden">
-                        <img src={p.logo} alt={p.name} className="max-h-12 max-w-12 object-contain" />
+                        <img loading="lazy" decoding="async" src={p.logo} alt={p.name} className="max-h-12 max-w-12 object-contain" />
                       </div>
                       <div className="min-w-0 flex-1">
                         <div className="font-extrabold text-ngo-navy text-[15px] leading-tight truncate">{p.name}</div>
@@ -267,43 +267,8 @@ function PartnersPage() {
       {/* FEATURED PARTNERSHIP SPOTLIGHT */}
       
 
-      {/* SDG ALIGNMENT */}
-      <section className="bg-white py-24 px-6">
+      {/* La section « Alignement ODD » a été déplacée vers /programmes (page Axes) */}
 
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-12 gap-12">
-            <div className="lg:col-span-5">
-              <span className="text-ngo-gold text-[10px] uppercase tracking-[0.25em] font-bold">Alignement ODD</span>
-              <h2 className="text-3xl md:text-5xl font-extrabold text-ngo-navy mt-3 leading-[1.05] tracking-tight mb-6">
-                Six Objectifs de développement durable au cœur de l'action.
-              </h2>
-              <p className="text-ngo-slate leading-relaxed text-[15px] mb-8">
-                Le CMEP structure ses programmes selon le référentiel ONU 2030. Chaque axe stratégique
-                est explicitement ancré dans un ou plusieurs ODD prioritaires pour le Togo.
-              </p>
-              <Link
-                to="/impact"
-                className="inline-flex items-center gap-2 text-ngo-navy font-bold text-[13px] uppercase tracking-widest hover:text-ngo-gold transition-colors"
-              >
-                Voir notre rapport d'impact <ArrowRight size={14} />
-              </Link>
-            </div>
-            <div className="lg:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-3">
-              {SDGS.map((s) => (
-                <div
-                  key={s.num}
-                  className="group aspect-square p-5 bg-ngo-pearl border border-ngo-navy/8 rounded-xl flex flex-col justify-between hover:bg-ngo-navy hover:border-ngo-navy transition-all"
-                >
-                  <span className="text-4xl font-extrabold text-ngo-gold tabular-nums leading-none">{s.num}</span>
-                  <span className="text-[11px] uppercase tracking-[0.18em] font-bold text-ngo-navy group-hover:text-white leading-snug">
-                    {s.label}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* QUOTES from partners */}
       
