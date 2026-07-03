@@ -13,9 +13,11 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ProgrammesRouteImport } from './routes/programmes'
 import { Route as PartenairesRouteImport } from './routes/partenaires'
 import { Route as OpportunitesRouteImport } from './routes/opportunites'
+import { Route as MentionsLegalesRouteImport } from './routes/mentions-legales'
 import { Route as ImpactRouteImport } from './routes/impact'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as ConfidentialiteRouteImport } from './routes/confidentialite'
 import { Route as ActualitesRouteImport } from './routes/actualites'
 import { Route as AProposRouteImport } from './routes/a-propos'
 import { Route as IndexRouteImport } from './routes/index'
@@ -40,6 +42,11 @@ const OpportunitesRoute = OpportunitesRouteImport.update({
   path: '/opportunites',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MentionsLegalesRoute = MentionsLegalesRouteImport.update({
+  id: '/mentions-legales',
+  path: '/mentions-legales',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ImpactRoute = ImpactRouteImport.update({
   id: '/impact',
   path: '/impact',
@@ -53,6 +60,11 @@ const FaqRoute = FaqRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConfidentialiteRoute = ConfidentialiteRouteImport.update({
+  id: '/confidentialite',
+  path: '/confidentialite',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ActualitesRoute = ActualitesRouteImport.update({
@@ -75,9 +87,11 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/a-propos': typeof AProposRoute
   '/actualites': typeof ActualitesRoute
+  '/confidentialite': typeof ConfidentialiteRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/impact': typeof ImpactRoute
+  '/mentions-legales': typeof MentionsLegalesRoute
   '/opportunites': typeof OpportunitesRoute
   '/partenaires': typeof PartenairesRoute
   '/programmes': typeof ProgrammesRoute
@@ -87,9 +101,11 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/a-propos': typeof AProposRoute
   '/actualites': typeof ActualitesRoute
+  '/confidentialite': typeof ConfidentialiteRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/impact': typeof ImpactRoute
+  '/mentions-legales': typeof MentionsLegalesRoute
   '/opportunites': typeof OpportunitesRoute
   '/partenaires': typeof PartenairesRoute
   '/programmes': typeof ProgrammesRoute
@@ -100,9 +116,11 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/a-propos': typeof AProposRoute
   '/actualites': typeof ActualitesRoute
+  '/confidentialite': typeof ConfidentialiteRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/impact': typeof ImpactRoute
+  '/mentions-legales': typeof MentionsLegalesRoute
   '/opportunites': typeof OpportunitesRoute
   '/partenaires': typeof PartenairesRoute
   '/programmes': typeof ProgrammesRoute
@@ -114,9 +132,11 @@ export interface FileRouteTypes {
     | '/'
     | '/a-propos'
     | '/actualites'
+    | '/confidentialite'
     | '/contact'
     | '/faq'
     | '/impact'
+    | '/mentions-legales'
     | '/opportunites'
     | '/partenaires'
     | '/programmes'
@@ -126,9 +146,11 @@ export interface FileRouteTypes {
     | '/'
     | '/a-propos'
     | '/actualites'
+    | '/confidentialite'
     | '/contact'
     | '/faq'
     | '/impact'
+    | '/mentions-legales'
     | '/opportunites'
     | '/partenaires'
     | '/programmes'
@@ -138,9 +160,11 @@ export interface FileRouteTypes {
     | '/'
     | '/a-propos'
     | '/actualites'
+    | '/confidentialite'
     | '/contact'
     | '/faq'
     | '/impact'
+    | '/mentions-legales'
     | '/opportunites'
     | '/partenaires'
     | '/programmes'
@@ -151,9 +175,11 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AProposRoute: typeof AProposRoute
   ActualitesRoute: typeof ActualitesRoute
+  ConfidentialiteRoute: typeof ConfidentialiteRoute
   ContactRoute: typeof ContactRoute
   FaqRoute: typeof FaqRoute
   ImpactRoute: typeof ImpactRoute
+  MentionsLegalesRoute: typeof MentionsLegalesRoute
   OpportunitesRoute: typeof OpportunitesRoute
   PartenairesRoute: typeof PartenairesRoute
   ProgrammesRoute: typeof ProgrammesRoute
@@ -190,6 +216,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OpportunitesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/mentions-legales': {
+      id: '/mentions-legales'
+      path: '/mentions-legales'
+      fullPath: '/mentions-legales'
+      preLoaderRoute: typeof MentionsLegalesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/impact': {
       id: '/impact'
       path: '/impact'
@@ -209,6 +242,13 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/confidentialite': {
+      id: '/confidentialite'
+      path: '/confidentialite'
+      fullPath: '/confidentialite'
+      preLoaderRoute: typeof ConfidentialiteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/actualites': {
@@ -239,9 +279,11 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AProposRoute: AProposRoute,
   ActualitesRoute: ActualitesRoute,
+  ConfidentialiteRoute: ConfidentialiteRoute,
   ContactRoute: ContactRoute,
   FaqRoute: FaqRoute,
   ImpactRoute: ImpactRoute,
+  MentionsLegalesRoute: MentionsLegalesRoute,
   OpportunitesRoute: OpportunitesRoute,
   PartenairesRoute: PartenairesRoute,
   ProgrammesRoute: ProgrammesRoute,
