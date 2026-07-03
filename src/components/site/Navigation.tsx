@@ -122,15 +122,26 @@ export function Navigation() {
         </button>
       </div>
 
+      {/* Backdrop */}
+      <button
+        type="button"
+        aria-label="Fermer le menu"
+        onClick={() => setOpen(false)}
+        className={`xl:hidden fixed inset-0 top-16 sm:top-[72px] bg-ngo-navy/40 backdrop-blur-sm transition-opacity duration-200 ${
+          open ? "opacity-100" : "opacity-0 pointer-events-none"
+        }`}
+      />
+
+      {/* Dropdown panel */}
       <div
         id="mobile-menu"
-        className={`xl:hidden fixed inset-x-0 top-16 sm:top-[72px] bottom-0 bg-white border-t border-ngo-navy/8 transition-transform duration-300 ease-out ${
-          open ? "translate-x-0" : "translate-x-full pointer-events-none"
+        className={`xl:hidden absolute inset-x-0 top-full origin-top bg-white border-t border-ngo-navy/10 shadow-2xl transition-all duration-200 ease-out ${
+          open ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2 pointer-events-none"
         }`}
         style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
         aria-hidden={!open}
       >
-        <div className="h-full overflow-y-auto px-5 pt-4 pb-8 flex flex-col">
+        <div className="max-h-[calc(100dvh-4rem)] overflow-y-auto px-5 pt-3 pb-6">
           <ul className="flex flex-col divide-y divide-ngo-navy/8">
             {primaryLinks.map((l) => (
               <li key={l.to}>
@@ -147,7 +158,7 @@ export function Navigation() {
             ))}
           </ul>
 
-          <div className="mt-6 flex items-center gap-2" role="group" aria-label="Langue">
+          <div className="mt-5 flex items-center gap-2" role="group" aria-label="Langue">
             {(["fr", "en"] as const).map((l) => (
               <button
                 key={l}
@@ -162,18 +173,16 @@ export function Navigation() {
             ))}
           </div>
 
-          <div className="mt-auto pt-6">
-            <Link
-              to="/opportunites"
-              onClick={() => setOpen(false)}
-              className="flex items-center justify-center gap-2 w-full px-5 py-4 min-h-12 bg-ngo-gold text-ngo-navy text-[15px] font-bold rounded-lg uppercase tracking-wider shadow-lg active:scale-[0.98] transition-transform"
-            >
-              {lang === "fr" ? "Candidater" : "Apply Now"} <ArrowRight size={16} aria-hidden="true" />
-            </Link>
-            <p className="text-center text-[11px] text-ngo-slate mt-3 uppercase tracking-widest">
-              Programme CMEP · Togo
-            </p>
-          </div>
+          <Link
+            to="/opportunites"
+            onClick={() => setOpen(false)}
+            className="mt-5 flex items-center justify-center gap-2 w-full px-5 py-4 min-h-12 bg-ngo-gold text-ngo-navy text-[15px] font-bold rounded-lg uppercase tracking-wider shadow-lg active:scale-[0.98] transition-transform"
+          >
+            {lang === "fr" ? "Candidater" : "Apply Now"} <ArrowRight size={16} aria-hidden="true" />
+          </Link>
+          <p className="text-center text-[11px] text-ngo-slate mt-3 uppercase tracking-widest">
+            Programme CMEP · Togo
+          </p>
         </div>
       </div>
     </nav>
