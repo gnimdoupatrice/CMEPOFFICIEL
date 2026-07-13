@@ -55,6 +55,24 @@ export const CMEP_MEDIA = {
     rotaractKara,
     anlp,
   },
+  home: {
+    hero: homeHeroAsset.url,
+    vision: homeVisionAsset.url,
+    defis: homeDefis,
+    impact: homeImpact,
+    axes: {
+      entrepreneuriat: homeAxeEntrepreneuriat,
+      formation: homeAxeFormation,
+      leadership: homeAxeLeadership,
+      numerique: homeAxeNumerique,
+      ecologie: homeAxeEcologie,
+    },
+    portraits: {
+      aicha: homePortraitAicha,
+      kossi: homePortraitKossi,
+      professeur: homePortraitProfesseur,
+    },
+  },
 } as const;
 
 export const PARTNER_LOGOS = [

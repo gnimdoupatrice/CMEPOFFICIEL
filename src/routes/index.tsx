@@ -74,19 +74,19 @@ const FEATURED_OPPORTUNITIES = [
   },
 ];
 
-const heroImg = CMEP_MEDIA.team;
-const challengeImg = CMEP_MEDIA.opportunities.animateurProjetIntervenants;
-const visionImg = CMEP_MEDIA.team;
-const impactImg = CMEP_MEDIA.opportunities.animateurProjetIntervenants;
-const axisEntrepreneur = CMEP_MEDIA.opportunities.redactionTdr;
-const axisWorkshop = CMEP_MEDIA.opportunities.animateurProjetIntervenants;
-const axisLeadership = CMEP_MEDIA.team;
-const axisFormation = CMEP_MEDIA.opportunities.animateurProjet;
-const axisDigital = CMEP_MEDIA.opportunities.certificatEies;
-const axisCitizenship = CMEP_MEDIA.team;
-const testimonial1 = CMEP_MEDIA.team;
-const testimonial2 = CMEP_MEDIA.opportunities.animateurProjetIntervenants;
-const testimonial3 = CMEP_MEDIA.team;
+const heroImg = CMEP_MEDIA.home.hero;
+const challengeImg = CMEP_MEDIA.home.defis;
+const visionImg = CMEP_MEDIA.home.vision;
+const impactImg = CMEP_MEDIA.home.impact;
+const axisEntrepreneur = CMEP_MEDIA.home.axes.entrepreneuriat;
+const axisWorkshop = CMEP_MEDIA.home.axes.formation;
+const axisLeadership = CMEP_MEDIA.home.axes.leadership;
+const axisFormation = CMEP_MEDIA.home.axes.formation;
+const axisDigital = CMEP_MEDIA.home.axes.numerique;
+const axisCitizenship = CMEP_MEDIA.home.axes.ecologie;
+const testimonial1 = CMEP_MEDIA.home.portraits.aicha;
+const testimonial2 = CMEP_MEDIA.home.portraits.kossi;
+const testimonial3 = CMEP_MEDIA.home.portraits.professeur;
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -256,7 +256,7 @@ function Home() {
     <Layout>
       {/* ============ HERO IMMERSIF ============ */}
       <section className="relative min-h-[92vh] flex items-end overflow-hidden">
-        <img src={CMEP_MEDIA.team} alt="Jeunes togolais en session de mentorat au Togo" className="absolute inset-0 w-full h-full object-cover" width={1920} height={1280} />
+        <img src={heroImg} alt="Rencontre CMEP : jeunes professionnels togolais en session stratégique" className="absolute inset-0 w-full h-full object-cover" width={1920} height={1280} loading="eager" fetchPriority="high" decoding="async" />
         <div className="absolute inset-0 bg-gradient-to-t from-ngo-navy via-ngo-navy/70 to-ngo-navy/20"></div>
         <div className="absolute inset-0 bg-gradient-to-r from-ngo-navy/80 via-ngo-navy/30 to-transparent"></div>
 
