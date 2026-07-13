@@ -5,6 +5,20 @@ import animateurProjetIntervenants from "@/assets/opportunities/animateur-projet
 import certificatEies from "@/assets/opportunities/certificat-eies.jpg";
 import redactionTdr from "@/assets/opportunities/redaction-tdr.jpg";
 
+// Homepage — visuels sectoriels
+import homeHeroAsset from "@/assets/home/hero-cmep.png.asset.json";
+import homeVisionAsset from "@/assets/home/vision-cmep.png.asset.json";
+import homeDefis from "@/assets/home/defis.jpg";
+import homeImpact from "@/assets/home/impact.jpg";
+import homeAxeEntrepreneuriat from "@/assets/home/axe-entrepreneuriat.jpg";
+import homeAxeFormation from "@/assets/home/axe-formation.jpg";
+import homeAxeLeadership from "@/assets/home/axe-leadership.jpg";
+import homeAxeNumerique from "@/assets/home/axe-numerique.jpg";
+import homeAxeEcologie from "@/assets/home/axe-ecologie.jpg";
+import homePortraitAicha from "@/assets/home/portrait-aicha.jpg";
+import homePortraitKossi from "@/assets/home/portrait-kossi.jpg";
+import homePortraitProfesseur from "@/assets/home/portrait-professeur.jpg";
+
 import universiteKara from "@/assets/partners-local/universite-kara.jpg";
 import franceVolontaires from "@/assets/partners-local/france-volontaires.jpg";
 import youthPanel from "@/assets/partners-local/youth-panel.jpg";
@@ -40,6 +54,24 @@ export const CMEP_MEDIA = {
     donBosco,
     rotaractKara,
     anlp,
+  },
+  home: {
+    hero: homeHeroAsset.url,
+    vision: homeVisionAsset.url,
+    defis: homeDefis,
+    impact: homeImpact,
+    axes: {
+      entrepreneuriat: homeAxeEntrepreneuriat,
+      formation: homeAxeFormation,
+      leadership: homeAxeLeadership,
+      numerique: homeAxeNumerique,
+      ecologie: homeAxeEcologie,
+    },
+    portraits: {
+      aicha: homePortraitAicha,
+      kossi: homePortraitKossi,
+      professeur: homePortraitProfesseur,
+    },
   },
 } as const;
 
