@@ -536,7 +536,7 @@ function NewsroomPage() {
                 tenue par les coordinateurs CMEP semaine après semaine.
               </p>
               <div className="aspect-[4/5] rounded-2xl overflow-hidden">
-                <img loading="lazy" decoding="async" src={challengeYouth} alt="Jeunes en action sur le terrain" className="size-full object-cover" />
+                <img loading="lazy" decoding="async" src={CMEP_MEDIA.opportunities.animateurProjetIntervenants} alt="Jeunes en action sur le terrain" className="size-full object-cover" />
               </div>
             </div>
 
@@ -577,7 +577,7 @@ function NewsroomPage() {
       <section className="bg-ngo-pearl pb-28 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="relative overflow-hidden rounded-[2rem] bg-ngo-navy">
-            <img loading="lazy" decoding="async" src={heroStudent} alt="" className="absolute inset-0 size-full object-cover opacity-25" />
+            <img loading="lazy" decoding="async" src={CMEP_MEDIA.team} alt="" className="absolute inset-0 size-full object-cover opacity-25" />
             <div className="absolute inset-0 bg-gradient-to-r from-ngo-navy via-ngo-navy/90 to-ngo-navy/50" />
             <div className="absolute -top-32 -left-32 size-80 rounded-full bg-ngo-gold/15 blur-3xl" />
 
