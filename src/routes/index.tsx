@@ -592,25 +592,36 @@ function Home() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
-            {TESTIMONIALS.map((t) => (
-              <figure key={t.name} className="bg-white rounded-3xl overflow-hidden border border-ngo-navy/5 shadow-sm hover:shadow-2xl transition-shadow">
-                <div className="aspect-[5/4] overflow-hidden">
-                  <img src={t.image} alt={t.name} loading="lazy" className="w-full h-full object-cover" />
-                </div>
-                <div className="p-7">
-                  <Quote size={28} className="text-ngo-gold mb-3" strokeWidth={1.5} />
-                  <blockquote className="text-ngo-navy text-base leading-relaxed mb-5 font-medium">
+            {TESTIMONIALS.map((t) => {
+              const initials = t.name
+                .split(" ")
+                .map((s) => s[0])
+                .filter(Boolean)
+                .slice(0, 2)
+                .join("");
+              return (
+                <figure key={t.name} className="bg-white rounded-3xl overflow-hidden border border-ngo-navy/8 shadow-sm hover:shadow-2xl hover:border-ngo-gold/40 transition-all p-8 md:p-10 flex flex-col">
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="size-14 rounded-full bg-ngo-navy text-ngo-gold grid place-items-center font-black text-lg tracking-tight shrink-0" aria-hidden="true">
+                      {initials}
+                    </div>
+                    <div>
+                      <div className="font-extrabold text-ngo-navy leading-tight">{t.name}</div>
+                      <div className="text-[10px] text-ngo-gold uppercase tracking-[0.22em] mt-1 font-bold">{t.role}</div>
+                    </div>
+                  </div>
+                  <Quote size={32} className="text-ngo-gold/70 mb-4" strokeWidth={1.4} />
+                  <blockquote className="text-ngo-navy text-[15px] leading-relaxed mb-6 font-medium flex-1">
                     « {t.quote} »
                   </blockquote>
                   <figcaption className="pt-5 border-t border-ngo-navy/10">
-                    <div className="font-bold text-base text-ngo-navy">{t.name}</div>
-                    <div className="text-[11px] text-ngo-gold uppercase tracking-widest mt-1 font-bold">{t.role}</div>
-                    <p className="text-xs text-ngo-slate mt-3 leading-relaxed">{t.journey}</p>
+                    <p className="text-xs text-ngo-slate leading-relaxed">{t.journey}</p>
                   </figcaption>
-                </div>
-              </figure>
-            ))}
+                </figure>
+              );
+            })}
           </div>
+
         </div>
       </section>
 
