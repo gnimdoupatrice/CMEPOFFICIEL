@@ -250,29 +250,6 @@ const TESTIMONIALS = [
   },
 ] as const;
 
-const TESTIMONIALS = [
-  {
-    quote: "Le mentorat reçu au CMEP a transformé ma vision. J'ai lancé mon atelier de couture six mois après la formation, et j'emploie aujourd'hui deux apprenties.",
-    name: "Aïcha B.",
-    role: "Entrepreneuse — Promotion 2023",
-    journey: "Diplômée en couture, sans débouché. Aujourd'hui à la tête de son atelier au Togo.",
-    image: testimonial1,
-  },
-  {
-    quote: "Le CMEP m'a donné les outils pour transformer mon idée en activité. Sans ce programme, mon entreprise n'existerait pas.",
-    name: "Kossi A.",
-    role: "Fondateur, AgriTech Togo",
-    journey: "Diplômé en agronomie, incubé par le CMEP, a lancé une plateforme de mise en marché agricole.",
-    image: testimonial2,
-  },
-  {
-    quote: "CMEP comble un vide criant : celui de l'accompagnement réel des jeunes vers l'autonomie économique. Un partenaire d'avenir pour notre région.",
-    name: "Pr. K. Tchassona",
-    role: "Université de Kara",
-    journey: "Partenaire institutionnel du programme depuis sa création.",
-    image: testimonial3,
-  },
-] as const;
 
 function Home() {
   return (
