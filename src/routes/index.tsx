@@ -344,7 +344,7 @@ function Home() {
 
       {/* ============ NOTRE VISION — Bannière immersive ============ */}
       <section className="relative py-32 px-6 overflow-hidden">
-        <img src={CMEP_MEDIA.team} alt="Équipe officielle du CMEP" loading="lazy" className="absolute inset-0 w-full h-full object-cover" />
+        <img src={visionImg} alt="Vision CMEP : jeunesse togolaise tournée vers l'horizon" loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-r from-ngo-navy via-ngo-navy/85 to-ngo-navy/40"></div>
 
         <div className="relative z-10 max-w-5xl mx-auto">
