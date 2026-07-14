@@ -1,58 +1,76 @@
+# Plan — Remplacement des images par correspondance sémantique
 
-## Diagnostic — incohérences actuelles sur la homepage
+Voici pour chaque section le fichier uploadé que je vais utiliser. Aucune image ne sera générée par IA sur les témoignages ni là où une image réelle est disponible.
 
-Toutes les sections utilisent en boucle **3 photos** seulement (`team-cmep`, `animateur-projet-intervenants`, `redaction-tdr`), sans lien avec le contenu :
+## 1. Homepage (`src/routes/index.tsx`)
 
-| Section | Image actuelle | Problème |
-|---|---|---|
-| Hero | `team.jpg` (photo de groupe posée) | Statique, ne traduit pas le dynamisme / la jeunesse |
-| Pourquoi / Défis | `animateurProjetIntervenants` | Photo d'atelier générique |
-| Vision | `team.jpg` (répétée) | Doublon avec le hero, aucune symbolique |
-| Impact | `animateurProjetIntervenants` (répétée) | Doublon, pas d'idée de réussite collective |
-| Axe 01 Entrepreneuriat | `redactionTdr` | Photo de documents, pas d'entrepreneuriat |
-| Axe 02 Formation | `animateurProjet` | Correct mais réutilisé |
-| Axe 03 Leadership | `team.jpg` (répétée) | Doublon |
-| Axe 04 Innovation numérique | `certificatEies` (papier) | **Contresens** total avec le numérique |
-| Axe 05 Citoyenneté & Écologie | `team.jpg` (répétée) | Aucun lien avec l'écologie |
-| Témoignage 1 (Aïcha, couturière) | `team.jpg` | Pas un portrait |
-| Témoignage 2 (Kossi, AgriTech) | `animateurProjetIntervenants` | Pas un portrait |
-| Témoignage 3 (Pr Tchassona) | `team.jpg` | Pas un portrait |
 
-## Sources d'images
+| Section                                                                                  | Image à utiliser                                                                        | Source | &nbsp; |
+| ---------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | ------ | ------ |
+| **Hero**                                                                                 | `HERO.jfif` (panel de conférence CMEP)                                                  | upload | &nbsp; |
+| **Vision**                                                                               | `vision.webp` (homme face horizon)                                                      | upload | &nbsp; |
+| **Pourquoi CMEP / Défis**                                                                | `generationenattentedesopportunite.png` (jeunes en attente d'entretien PNUD Togo)       | upload | &nbsp; |
+| &nbsp;                                                                                   | &nbsp;                                                                                  | &nbsp; | &nbsp; |
+| **Axe 01 — Emploi & Entrepreneuriat****Axe 02 — Formation technique & professionnelle** | `entrpreprenariat.jfif` (atelier confection Togo)                                       | upload | &nbsp; |
+| **Axe 01 — Emploi & Entrepreneuriat**                                                    | important : POUR CECI JE VAIS T4ENVOYER L'image                                         | &nbsp; | &nbsp; |
+| **Axe 03 — Leadership & engagement communautaire**                                       | `engagementcommunautairecitoyen.png` (cercle de jeunes en discussion)                   | upload | &nbsp; |
+| **Axe 04 — Innovation numérique**                                                        | *(inchangé — l'utilisateur ne l'a pas mentionné ; je garde `axe-numerique.jpg` actuel)* | —      | &nbsp; |
+| **Axe 05 — Citoyenneté & écologie**                                                      | `engagement_citoyen.jpg` (plantation d'arbre officielle)                                | upload | &nbsp; |
 
-1. **Images fournies par l'utilisateur** (uploads) :
-   - `Gemini_Generated_Image_vj9re2...png` → **Section Hero** (réunion CMEP moderne)
-   - `Gemini_Generated_Image_c0267...png` → **Section Vision** (homme regardant l'horizon / phare)
-2. **Images à générer** via `imagegen` (fast) selon les mots-clés Unsplash du PDF ASPECCT, adaptées au contexte togolais / ouest-africain, HD, réalistes :
-   - Défis : jeunes togolais en réflexion / recherche d'emploi
-   - Impact : équipe de jeunes africains en réussite collective
-   - Axe 01 Entrepreneuriat : jeunes entrepreneurs africains en réunion de startup
-   - Axe 02 Formation : formation professionnelle technique (atelier)
-   - Axe 03 Leadership : leadership communautaire jeunesse Afrique
-   - Axe 04 Innovation numérique : hub tech africain, coding
-   - Axe 05 Écologie : reboisement / action environnementale Afrique
-   - Témoignages : 3 portraits (femme entrepreneuse, homme fondateur tech, professeur senior) — headshots pros souriants
 
-## Étapes d'exécution
+### Programmes phares (bloc 3 cartes homepage)
 
-1. **Uploader les 2 images utilisateur** via `lovable-assets create` depuis `/mnt/user-uploads/` :
-   - `src/assets/home/hero-cmep.jpg.asset.json`
-   - `src/assets/home/vision-cmep.jpg.asset.json`
-2. **Générer 10 images HD** dans `src/assets/home/` :
-   - `defis.jpg`, `impact.jpg`
-   - `axe-entrepreneuriat.jpg`, `axe-formation.jpg`, `axe-leadership.jpg`, `axe-numerique.jpg`, `axe-ecologie.jpg`
-   - `portrait-aicha.jpg`, `portrait-kossi.jpg`, `portrait-professeur.jpg`
-3. **Étendre `src/lib/media.ts`** : ajouter un bloc `home: { hero, vision, defis, impact, axes: {...}, portraits: {...} }` en important les nouveaux `.asset.json`.
-4. **Mettre à jour `src/routes/index.tsx`** :
-   - Remplacer les constantes `heroImg`, `challengeImg`, `visionImg`, `impactImg`, `axis*`, `testimonial*` par les nouvelles références `CMEP_MEDIA.home.*`
-   - Mettre à jour l'`og:image` du hero
-   - Corriger l'`alt` du hero (sujet réel)
-   - Conserver `loading="eager" fetchPriority="high"` sur le hero LCP, `loading="lazy" decoding="async"` sur les autres
-5. **Ne pas toucher** aux autres pages, à la structure, au style ou à la logique — refonte strictement visuelle sur la homepage.
+Remplacer les 3 cartes actuelles par :
 
-## Détails techniques
+1. **Rédaction & gestion de projets (TDR)** → `redaction_de_proget.jpg`
+2. **Animateur de projet — formation certifiante** → `683603371_...jpg`
+3. **Expert en Évaluation d'Impact Environnemental & Social (EIES)** → `cerifica.jpg`
 
-- Toutes les images générées : format `.jpg`, 1600×1000 (axes/impact/défis) et 800×800 (portraits carrés pour cartes témoignages).
-- Prompts en anglais suivant les mots-clés du PDF, avec ajout systématique de « West African / Togolese, natural lighting, documentary photography, no text overlay ».
-- Aucune modification du `styles.css`, des composants shadcn, ou du contenu textuel.
-- Résultat attendu : chaque section porte un visuel unique, cohérent avec son message, sans doublon.
+### Témoignages
+
+Les 3 portraits actuellement générés par IA (`portrait-aicha`, `portrait-kossi`, `portrait-professeur`) sont **supprimés** faute de vraies photos fournies. Options possibles à trancher avant implémentation :
+
+- (A) Retirer les visuels et garder uniquement le texte + initiales stylisées (recommandé, conforme à votre demande "pas d'IA")
+- (B) Attendre que vous fournissiez de vraies photos
+
+→ Je pars sur l'option **A** sauf indication contraire.
+
+## 2. Magazine (`src/routes/impact.tsx`)
+
+- **Article à la Une** : `LANCEMENT_OFFICIELLE.jfif` (Cérémonie de présentation & lancement CMEP)
+- **Dernières dépêches** — remplacer les 3 items existants par **2 seuls** :
+  1. Lancement officiel du programme CMEP → `LANCEMENT_OFFICIELLE.jfif`
+  2. locavor de tourisme  → `engagement_citoyen.jpg` (visuel terrain / paysage togolais)
+
+## 3. Opportunités (`src/routes/opportunites.tsx`)
+
+
+| Opportunité                                             | Image                     |
+| ------------------------------------------------------- | ------------------------- |
+| Formation en animation de terrain / Animateur de projet | `683603371_...jpg`        |
+| Expert en évaluation d'impact environnemental et social | `cerifica.jpg`            |
+| Atelier — Rédaction & gestion des projets (TDR)         | `redaction_de_proget.jpg` |
+
+
+## Exécution technique (après validation)
+
+1. Uploader chaque fichier via `lovable-assets create` depuis `/mnt/user-uploads/` → un `.asset.json` par image dans `src/assets/home/` (ou `src/assets/opportunities/` selon usage).
+2. Étendre `src/lib/media.ts` :
+  - Remplacer `home.hero`, `home.vision`, `home.defis`, `home.impact`
+  - Remplacer `home.axes.entrepreneuriat`, `formation`, `leadership`, `ecologie`
+  - Remplacer les 4 images `opportunities.*` par les nouvelles versions officielles CMEP
+3. Mettre à jour `src/routes/index.tsx` : `alt` réels, `loading="eager"` sur hero, `loading="lazy" decoding="async"` ailleurs, bloc « Programmes phares » réécrit avec les 3 nouveaux programmes.
+4. Mettre à jour `src/routes/impact.tsx` : article à la Une + réduire dépêches à 2 items.
+5. Mettre à jour `src/routes/opportunites.tsx` : les 3 opportunités pointent vers les nouveaux `.asset.json`.
+6. Supprimer les anciens portraits IA (`portrait-aicha.jpg`, `portrait-kossi.jpg`, `portrait-professeur.jpg`) et refondre le bloc témoignages en version typographique (initiales + nom + citation).
+7. Vérification visuelle après build via Playwright sur `/`, `/impact`, `/opportunites`.
+
+**Aucun changement** de structure, couleurs ou typo — refonte strictement visuelle.
+
+&nbsp;
+
+important: 
+
+Au niveau des, des axes. Pour le axe un, il y a pas l'image là. Pour le... Oui, pour le axe un, y a pas l'image. Donc je vais te réenvoyer l'image du axe un. 
+
+Confirmez-vous ce mapping (notamment l'option A pour les témoignages sans photo IA) ?
