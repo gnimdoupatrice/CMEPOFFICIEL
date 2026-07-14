@@ -722,7 +722,7 @@ function Home() {
               <article key={a.title} className="group cursor-pointer">
                 <div className="relative aspect-[16/10] overflow-hidden rounded-2xl mb-6 bg-ngo-navy/5">
                   <img
-                    src={i === 0 ? challengeImg : axisEntrepreneur}
+                    src={a.image}
                     alt={a.title}
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-[900ms] group-hover:scale-[1.04]"
                     loading="lazy"
