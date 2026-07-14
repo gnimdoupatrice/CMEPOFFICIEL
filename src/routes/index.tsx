@@ -19,21 +19,23 @@ const FEATURED_STORY = {
     "Aux côtés de partenaires académiques, institutionnels et communautaires, les bénéficiaires du CMEP installent une dynamique nationale de mentorat, de leadership et d’insertion.",
 };
 
-// Actualités secondaires éditoriales (magazine)
+// Actualités — évènements CMEP réels
 const ACTUALITES = [
   {
-    date: "28 avril 2025",
-    category: "Partenariat",
+    date: "2026",
+    category: "Institutionnel",
     location: "Togo",
-    title: "Convention historique avec le Centre Don Bosco",
-    excerpt: "Un accord-cadre qui ouvre les ateliers techniques à 60 jeunes supplémentaires et installe le mentorat au cœur des métiers manuels.",
+    title: "Lancement officiel du programme CMEP",
+    excerpt: "Cérémonie de présentation et de lancement du Chris Mentorship & Empowerment Program : une génération outillée, responsable et engagée.",
+    image: CMEP_MEDIA.home.lancement,
   },
   {
-    date: "10 avril 2025",
-    category: "Impact",
-    location: "Incubateur CMEP",
-    title: "Démo-day : huit projets, une génération qui entreprend",
-    excerpt: "Agro-transformation, micro-services numériques, économie circulaire — la première promo d'incubés a défendu ses projets devant un jury exigeant.",
+    date: "Avril 2026",
+    category: "Analyse",
+    location: "Togo",
+    title: "Locavore, tourisme et développement durable",
+    excerpt: "CMEP met en avant des modèles économiques locaux, responsables et capables de créer de la valeur dans les chaînes touristiques et alimentaires.",
+    image: CMEP_MEDIA.home.axes.ecologie,
   },
 ];
 
@@ -49,6 +51,7 @@ const FEATURED_OPPORTUNITIES = [
     location: "Togo",
     urgency: "Inscriptions ouvertes",
     perks: ["Certification à l'issue", "Intervenants confirmés", "Modules incluant sauvegarde & VBG"],
+    image: CMEP_MEDIA.opportunities.animateurProjet,
   },
   {
     badge: "Certification",
@@ -60,6 +63,7 @@ const FEATURED_OPPORTUNITIES = [
     location: "Togo",
     urgency: "Inscriptions ouvertes",
     perks: ["Cadres réglementaires", "Standards internationaux", "Étude de cas & projet final"],
+    image: CMEP_MEDIA.opportunities.certificatEies,
   },
   {
     badge: "Atelier certifiant",
@@ -71,6 +75,7 @@ const FEATURED_OPPORTUNITIES = [
     location: "Togo",
     urgency: "Inscriptions ouvertes",
     perks: ["Canevas d'ONG internationales", "TDR bancables", "Documents de formation inclus"],
+    image: CMEP_MEDIA.opportunities.redactionTdr,
   },
 ];
 
@@ -84,9 +89,6 @@ const axisLeadership = CMEP_MEDIA.home.axes.leadership;
 const axisFormation = CMEP_MEDIA.home.axes.formation;
 const axisDigital = CMEP_MEDIA.home.axes.numerique;
 const axisCitizenship = CMEP_MEDIA.home.axes.ecologie;
-const testimonial1 = CMEP_MEDIA.home.portraits.aicha;
-const testimonial2 = CMEP_MEDIA.home.portraits.kossi;
-const testimonial3 = CMEP_MEDIA.home.portraits.professeur;
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -196,34 +198,34 @@ const AXES = [
 
 const PROGRAMS = [
   {
-    title: "Académie CMEP — Cohorte Annuelle ",
-    image: axisWorkshop,
-    description: "Le programme phare du CMEP : un parcours intensif de 6 mois combinant formation technique, mentorat individuel et projet collectif.",
-    objectives: "Former 120 jeunes par an aux compétences clés de l'employabilité et du leadership.",
-    activities: "Modules présentiels, ateliers de pratique, mentorat 1:1, séminaire résidentiel de clôture.",
-    beneficiaries: "Jeunes de 18 à 30 ans, Togo, sélectionnés sur dossier et entretien.",
-    duration: "6 mois — Janvier à juin",
-    results: "80% des diplômés en emploi, en formation supérieure ou créateurs d'activité à 12 mois.",
+    title: "Rédaction & Gestion de projet — TDR",
+    image: CMEP_MEDIA.opportunities.redactionTdr,
+    description: "Atelier certifiant de 3 journées intensives pour rédiger des projets bancables et des Termes de Références (TDR) conformes aux exigences des bailleurs internationaux.",
+    objectives: "Outiller 40 jeunes par session à structurer, rédiger et gérer un projet du cadrage à la clôture.",
+    activities: "Structuration de projet, rédaction professionnelle de TDR, canevas d'ONG internationales, étude de cas.",
+    beneficiaries: "Étudiants, jeunes professionnels et membres d'OSC.",
+    duration: "3 journées intensives — 24-26 mars 2026, Kara",
+    results: "Chaque participant repart avec un TDR opérationnel et l'accès aux canevas d'organisations internationales.",
   },
   {
-    title: "Bootcamp Innovation Numérique",
-    image: axisDigital,
-    description: "Un parcours intensif de 4 semaines pour former de jeunes Togolais aux métiers du numérique recherchés sur le marché africain et international.",
-    objectives: "Faire émerger 60 talents numériques par an, employables immédiatement.",
-    activities: "Cours, projets en équipe, hackathon final, mise en relation avec employeurs distants.",
-    beneficiaries: "Jeunes de 18 à 35 ans, motivation et logique de base requises — aucune expérience préalable.",
-    duration: "4 semaines intensives",
-    results: "70% des participants décrochent un premier contrat tech (CDI, freelance, stage) sous 6 mois.",
+    title: "Animateur de projet — Formation certifiante",
+    image: CMEP_MEDIA.opportunities.animateurProjet,
+    description: "Parcours phare en 11 modules pour cadrer, planifier, animer et évaluer un projet, avec un accent sur les politiques de sauvegarde, la VBG et la protection.",
+    objectives: "Certifier chaque année une cohorte nationale d'animateurs de projet capables d'intervenir dans les ONG et les collectivités.",
+    activities: "Cadrage, planification, tableau de bord, gestion des risques, animation d'équipe, communication, capitalisation.",
+    beneficiaries: "Étudiants et jeunes professionnels du Togo (18-35 ans).",
+    duration: "Sessions de 4 jours — Lomé (mai 2026) & Kara (mai 2026)",
+    results: "Certification officielle CMEP à l'issue du parcours, 11 modules validés dont sauvegarde & VBG.",
   },
   {
-    title: "Incubateur d'Entreprises Sociales",
-    image: axisEntrepreneur,
-    description: "Un programme d'incubation de 12 semaines pour les jeunes porteurs de projets à impact social ou environnemental au Togo.",
-    objectives: "Accompagner 30 projets par an de l'idée au lancement effectif.",
-    activities: "Coaching individuel, ateliers business model, mentorat par entrepreneurs confirmés, démo-day final.",
-    beneficiaries: "Jeunes entrepreneurs ayant une idée structurée ou un MVP.",
-    duration: "12 semaines",
-    results: "50% des projets passent en phase de commercialisation, 25% lèvent un premier financement.",
+    title: "Expert en Évaluation d'Impact Environnemental & Social",
+    image: CMEP_MEDIA.opportunities.certificatEies,
+    description: "Certification avancée en 8 modules pour maîtriser les cadres réglementaires, standards internationaux et méthodologie complète d'Évaluation d'Impact Environnemental (EIE).",
+    objectives: "Former des experts capables de conduire une EIES conforme aux exigences nationales et internationales.",
+    activities: "Fondamentaux durabilité, cadres réglementaires, standards internationaux, méthodologie EIE, étude de cas et projet final.",
+    beneficiaries: "Professionnels du secteur environnemental, étudiants avancés et membres d'OSC engagés.",
+    duration: "3 journées intensives — 12, 13 & 14 février, Kara (Commune Kozah 1)",
+    results: "Certificat d'expert reconnu, capable de piloter des évaluations d'impact environnemental et social.",
   },
 ] as const;
 
@@ -233,23 +235,21 @@ const TESTIMONIALS = [
     name: "Aïcha B.",
     role: "Entrepreneuse — Promotion 2023",
     journey: "Diplômée en couture, sans débouché. Aujourd'hui à la tête de son atelier au Togo.",
-    image: testimonial1,
   },
   {
     quote: "Le CMEP m'a donné les outils pour transformer mon idée en activité. Sans ce programme, mon entreprise n'existerait pas.",
     name: "Kossi A.",
     role: "Fondateur, AgriTech Togo",
     journey: "Diplômé en agronomie, incubé par le CMEP, a lancé une plateforme de mise en marché agricole.",
-    image: testimonial2,
   },
   {
     quote: "CMEP comble un vide criant : celui de l'accompagnement réel des jeunes vers l'autonomie économique. Un partenaire d'avenir pour notre région.",
     name: "Pr. K. Tchassona",
     role: "Université de Kara",
     journey: "Partenaire institutionnel du programme depuis sa création.",
-    image: testimonial3,
   },
 ] as const;
+
 
 function Home() {
   return (
@@ -301,7 +301,7 @@ function Home() {
       <section className="py-24 px-6 bg-white">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-7 relative">
-            <img src={CMEP_MEDIA.opportunities.animateurProjetIntervenants} alt="Jeune entrepreneuse togolaise dans son atelier au Togo" loading="lazy" className="w-full h-[560px] object-cover rounded-3xl shadow-2xl" />
+            <img src={challengeImg} alt="Jeunes diplômés togolais en attente d'entretien de recrutement" loading="lazy" decoding="async" className="w-full h-[560px] object-cover rounded-3xl shadow-2xl" />
             <div className="absolute -bottom-6 -right-6 hidden md:block bg-ngo-navy text-white p-6 rounded-2xl shadow-xl max-w-[240px]">
               <div className="text-4xl font-black text-ngo-gold mb-1">+30%</div>
               <div className="text-xs uppercase tracking-widest font-bold text-white/70">de chômage chez les jeunes diplômés togolais</div>
@@ -344,7 +344,7 @@ function Home() {
 
       {/* ============ NOTRE VISION — Bannière immersive ============ */}
       <section className="relative py-32 px-6 overflow-hidden">
-        <img src={CMEP_MEDIA.team} alt="Équipe officielle du CMEP" loading="lazy" className="absolute inset-0 w-full h-full object-cover" />
+        <img src={visionImg} alt="Vision CMEP : jeunesse togolaise tournée vers l'horizon" loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-r from-ngo-navy via-ngo-navy/85 to-ngo-navy/40"></div>
 
         <div className="relative z-10 max-w-5xl mx-auto">
@@ -592,25 +592,36 @@ function Home() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
-            {TESTIMONIALS.map((t) => (
-              <figure key={t.name} className="bg-white rounded-3xl overflow-hidden border border-ngo-navy/5 shadow-sm hover:shadow-2xl transition-shadow">
-                <div className="aspect-[5/4] overflow-hidden">
-                  <img src={t.image} alt={t.name} loading="lazy" className="w-full h-full object-cover" />
-                </div>
-                <div className="p-7">
-                  <Quote size={28} className="text-ngo-gold mb-3" strokeWidth={1.5} />
-                  <blockquote className="text-ngo-navy text-base leading-relaxed mb-5 font-medium">
+            {TESTIMONIALS.map((t) => {
+              const initials = t.name
+                .split(" ")
+                .map((s) => s[0])
+                .filter(Boolean)
+                .slice(0, 2)
+                .join("");
+              return (
+                <figure key={t.name} className="bg-white rounded-3xl overflow-hidden border border-ngo-navy/8 shadow-sm hover:shadow-2xl hover:border-ngo-gold/40 transition-all p-8 md:p-10 flex flex-col">
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="size-14 rounded-full bg-ngo-navy text-ngo-gold grid place-items-center font-black text-lg tracking-tight shrink-0" aria-hidden="true">
+                      {initials}
+                    </div>
+                    <div>
+                      <div className="font-extrabold text-ngo-navy leading-tight">{t.name}</div>
+                      <div className="text-[10px] text-ngo-gold uppercase tracking-[0.22em] mt-1 font-bold">{t.role}</div>
+                    </div>
+                  </div>
+                  <Quote size={32} className="text-ngo-gold/70 mb-4" strokeWidth={1.4} />
+                  <blockquote className="text-ngo-navy text-[15px] leading-relaxed mb-6 font-medium flex-1">
                     « {t.quote} »
                   </blockquote>
                   <figcaption className="pt-5 border-t border-ngo-navy/10">
-                    <div className="font-bold text-base text-ngo-navy">{t.name}</div>
-                    <div className="text-[11px] text-ngo-gold uppercase tracking-widest mt-1 font-bold">{t.role}</div>
-                    <p className="text-xs text-ngo-slate mt-3 leading-relaxed">{t.journey}</p>
+                    <p className="text-xs text-ngo-slate leading-relaxed">{t.journey}</p>
                   </figcaption>
-                </div>
-              </figure>
-            ))}
+                </figure>
+              );
+            })}
           </div>
+
         </div>
       </section>
 
@@ -643,11 +654,13 @@ function Home() {
               {/* Image plein-cadre */}
               <div className="relative lg:col-span-7 min-h-[340px] lg:min-h-[600px] overflow-hidden">
                 <img
-                  src={axisWorkshop}
-                  alt="Cérémonie de lancement de la Promotion 2025 du CMEP au Togo"
+                  src={CMEP_MEDIA.home.lancement}
+                  alt="Cérémonie officielle de lancement du programme CMEP"
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
                   loading="lazy"
+                  decoding="async"
                 />
+
                 <div className="absolute inset-0 bg-gradient-to-t from-ngo-navy/85 via-ngo-navy/20 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-ngo-navy/40" />
                 {/* Badge live */}
                 <div className="absolute top-6 left-6 inline-flex items-center gap-2 bg-white/95 backdrop-blur-md px-4 py-2 rounded-full">
@@ -709,7 +722,7 @@ function Home() {
               <article key={a.title} className="group cursor-pointer">
                 <div className="relative aspect-[16/10] overflow-hidden rounded-2xl mb-6 bg-ngo-navy/5">
                   <img
-                    src={i === 0 ? challengeImg : axisEntrepreneur}
+                    src={a.image}
                     alt={a.title}
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-[900ms] group-hover:scale-[1.04]"
                     loading="lazy"
@@ -762,8 +775,7 @@ function Home() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-7">
-              {FEATURED_OPPORTUNITIES.map((opp, i) => {
-                const images = [axisEntrepreneur, axisDigital, axisFormation];
+              {FEATURED_OPPORTUNITIES.map((opp) => {
                 const isUrgent = opp.urgency.toLowerCase().includes("imminente");
                 return (
                   <article
@@ -773,7 +785,7 @@ function Home() {
                     {/* Cohort image */}
                     <div className="relative aspect-[16/10] overflow-hidden">
                       <img
-                        src={images[i]}
+                        src={opp.image}
                         alt={opp.title}
                         className="absolute inset-0 w-full h-full object-cover transition-transform duration-[900ms] group-hover:scale-[1.05]"
                         loading="lazy"

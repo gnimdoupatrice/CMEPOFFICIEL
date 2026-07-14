@@ -15,18 +15,18 @@ export type EditorialArticle = {
 
 export const EDITORIAL_ARTICLES: EditorialArticle[] = [
   {
-    id: "anvt-cmep",
+    id: "lancement-cmep",
     featured: true,
-    title: "CMEP et ANVT : une passerelle nationale pour l'engagement des jeunes.",
+    title: "Lancement officiel du programme CMEP.",
     excerpt:
-      "À travers les échanges menés avec l'Agence Nationale du Volontariat au Togo, le programme consolide une approche où mentorat, volontariat et insertion professionnelle se répondent.",
+      "Cérémonie de présentation et de lancement du Chris Mentorship & Empowerment Program : préparer ensemble une génération de jeunes outillés, responsables et engagés.",
     category: "Institutionnel",
-    date: "Juin 2026",
-    readTime: "7 min",
+    date: "2026",
+    readTime: "6 min",
     location: "Togo",
-    image: CMEP_MEDIA.team,
+    image: CMEP_MEDIA.home.lancement,
     source:
-      "https://www.linkedin.com/posts/chris-mentorship-empowerment-program-cmep_cmep-anvt-kara-activity-7477382452274184194-rILI",
+      "https://www.linkedin.com/company/chris-mentorship-empowerment-program-cmep/",
   },
   {
     id: "renforcement-capacites",

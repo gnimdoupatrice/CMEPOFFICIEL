@@ -5,19 +5,21 @@ import animateurProjetIntervenants from "@/assets/opportunities/animateur-projet
 import certificatEies from "@/assets/opportunities/certificat-eies.jpg";
 import redactionTdr from "@/assets/opportunities/redaction-tdr.jpg";
 
-// Homepage — visuels sectoriels
-import homeHeroAsset from "@/assets/home/hero-cmep.png.asset.json";
-import homeVisionAsset from "@/assets/home/vision-cmep.png.asset.json";
-import homeDefis from "@/assets/home/defis.jpg";
-import homeImpact from "@/assets/home/impact.jpg";
-import homeAxeEntrepreneuriat from "@/assets/home/axe-entrepreneuriat.jpg";
-import homeAxeFormation from "@/assets/home/axe-formation.jpg";
-import homeAxeLeadership from "@/assets/home/axe-leadership.jpg";
+// Homepage — visuels sectoriels (uploads officiels CMEP)
+import homeHeroAsset from "@/assets/home/hero-cmep.jpg.asset.json";
+import homeVisionAsset from "@/assets/home/vision-cmep.webp.asset.json";
+import homeDefisAsset from "@/assets/home/defis-cmep.png.asset.json";
+import homeLancementAsset from "@/assets/home/lancement-cmep.jpg.asset.json";
+import homeAxeEntrepreneuriatAsset from "@/assets/home/axe-entrepreneuriat.jpg.asset.json";
+import homeAxeFormationAsset from "@/assets/home/axe-formation.jpg.asset.json";
+import homeAxeLeadershipAsset from "@/assets/home/axe-leadership.png.asset.json";
+import homeAxeEcologieAsset from "@/assets/home/axe-ecologie.jpg.asset.json";
 import homeAxeNumerique from "@/assets/home/axe-numerique.jpg";
-import homeAxeEcologie from "@/assets/home/axe-ecologie.jpg";
-import homePortraitAicha from "@/assets/home/portrait-aicha.jpg";
-import homePortraitKossi from "@/assets/home/portrait-kossi.jpg";
-import homePortraitProfesseur from "@/assets/home/portrait-professeur.jpg";
+
+// Opportunités — affiches officielles CMEP (uploads utilisateur)
+import oppRedactionAsset from "@/assets/opportunities/opp-redaction-tdr.jpg.asset.json";
+import oppEiesAsset from "@/assets/opportunities/opp-eies.jpg.asset.json";
+import oppAnimateurAsset from "@/assets/opportunities/opp-animateur-projet.jpg.asset.json";
 
 import universiteKara from "@/assets/partners-local/universite-kara.jpg";
 import franceVolontaires from "@/assets/partners-local/france-volontaires.jpg";
@@ -36,10 +38,10 @@ export const CMEP_MEDIA = {
   logo: logoCmep,
   team: teamCmep,
   opportunities: {
-    animateurProjet,
+    animateurProjet: oppAnimateurAsset.url,
     animateurProjetIntervenants,
-    certificatEies,
-    redactionTdr,
+    certificatEies: oppEiesAsset.url,
+    redactionTdr: oppRedactionAsset.url,
   },
   partners: {
     universiteKara,
@@ -58,19 +60,15 @@ export const CMEP_MEDIA = {
   home: {
     hero: homeHeroAsset.url,
     vision: homeVisionAsset.url,
-    defis: homeDefis,
-    impact: homeImpact,
+    defis: homeDefisAsset.url,
+    impact: homeLancementAsset.url,
+    lancement: homeLancementAsset.url,
     axes: {
-      entrepreneuriat: homeAxeEntrepreneuriat,
-      formation: homeAxeFormation,
-      leadership: homeAxeLeadership,
+      entrepreneuriat: homeAxeEntrepreneuriatAsset.url,
+      formation: homeAxeFormationAsset.url,
+      leadership: homeAxeLeadershipAsset.url,
       numerique: homeAxeNumerique,
-      ecologie: homeAxeEcologie,
-    },
-    portraits: {
-      aicha: homePortraitAicha,
-      kossi: homePortraitKossi,
-      professeur: homePortraitProfesseur,
+      ecologie: homeAxeEcologieAsset.url,
     },
   },
 } as const;
