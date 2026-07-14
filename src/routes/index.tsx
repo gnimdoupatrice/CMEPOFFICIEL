@@ -654,11 +654,13 @@ function Home() {
               {/* Image plein-cadre */}
               <div className="relative lg:col-span-7 min-h-[340px] lg:min-h-[600px] overflow-hidden">
                 <img
-                  src={axisWorkshop}
-                  alt="Cérémonie de lancement de la Promotion 2025 du CMEP au Togo"
+                  src={CMEP_MEDIA.home.lancement}
+                  alt="Cérémonie officielle de lancement du programme CMEP"
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
                   loading="lazy"
+                  decoding="async"
                 />
+
                 <div className="absolute inset-0 bg-gradient-to-t from-ngo-navy/85 via-ngo-navy/20 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-ngo-navy/40" />
                 {/* Badge live */}
                 <div className="absolute top-6 left-6 inline-flex items-center gap-2 bg-white/95 backdrop-blur-md px-4 py-2 rounded-full">
