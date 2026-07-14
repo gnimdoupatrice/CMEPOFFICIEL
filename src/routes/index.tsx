@@ -19,21 +19,23 @@ const FEATURED_STORY = {
     "Aux côtés de partenaires académiques, institutionnels et communautaires, les bénéficiaires du CMEP installent une dynamique nationale de mentorat, de leadership et d’insertion.",
 };
 
-// Actualités secondaires éditoriales (magazine)
+// Actualités — évènements CMEP réels
 const ACTUALITES = [
   {
-    date: "28 avril 2025",
-    category: "Partenariat",
+    date: "2026",
+    category: "Institutionnel",
     location: "Togo",
-    title: "Convention historique avec le Centre Don Bosco",
-    excerpt: "Un accord-cadre qui ouvre les ateliers techniques à 60 jeunes supplémentaires et installe le mentorat au cœur des métiers manuels.",
+    title: "Lancement officiel du programme CMEP",
+    excerpt: "Cérémonie de présentation et de lancement du Chris Mentorship & Empowerment Program : une génération outillée, responsable et engagée.",
+    image: CMEP_MEDIA.home.lancement,
   },
   {
-    date: "10 avril 2025",
-    category: "Impact",
-    location: "Incubateur CMEP",
-    title: "Démo-day : huit projets, une génération qui entreprend",
-    excerpt: "Agro-transformation, micro-services numériques, économie circulaire — la première promo d'incubés a défendu ses projets devant un jury exigeant.",
+    date: "Avril 2026",
+    category: "Analyse",
+    location: "Togo",
+    title: "Locavore, tourisme et développement durable",
+    excerpt: "CMEP met en avant des modèles économiques locaux, responsables et capables de créer de la valeur dans les chaînes touristiques et alimentaires.",
+    image: CMEP_MEDIA.home.axes.ecologie,
   },
 ];
 
@@ -49,6 +51,7 @@ const FEATURED_OPPORTUNITIES = [
     location: "Togo",
     urgency: "Inscriptions ouvertes",
     perks: ["Certification à l'issue", "Intervenants confirmés", "Modules incluant sauvegarde & VBG"],
+    image: CMEP_MEDIA.opportunities.animateurProjet,
   },
   {
     badge: "Certification",
@@ -60,6 +63,7 @@ const FEATURED_OPPORTUNITIES = [
     location: "Togo",
     urgency: "Inscriptions ouvertes",
     perks: ["Cadres réglementaires", "Standards internationaux", "Étude de cas & projet final"],
+    image: CMEP_MEDIA.opportunities.certificatEies,
   },
   {
     badge: "Atelier certifiant",
@@ -71,6 +75,7 @@ const FEATURED_OPPORTUNITIES = [
     location: "Togo",
     urgency: "Inscriptions ouvertes",
     perks: ["Canevas d'ONG internationales", "TDR bancables", "Documents de formation inclus"],
+    image: CMEP_MEDIA.opportunities.redactionTdr,
   },
 ];
 
@@ -84,9 +89,6 @@ const axisLeadership = CMEP_MEDIA.home.axes.leadership;
 const axisFormation = CMEP_MEDIA.home.axes.formation;
 const axisDigital = CMEP_MEDIA.home.axes.numerique;
 const axisCitizenship = CMEP_MEDIA.home.axes.ecologie;
-const testimonial1 = CMEP_MEDIA.home.portraits.aicha;
-const testimonial2 = CMEP_MEDIA.home.portraits.kossi;
-const testimonial3 = CMEP_MEDIA.home.portraits.professeur;
 
 export const Route = createFileRoute("/")({
   head: () => ({
