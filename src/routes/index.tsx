@@ -775,8 +775,7 @@ function Home() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-7">
-              {FEATURED_OPPORTUNITIES.map((opp, i) => {
-                const images = [axisEntrepreneur, axisDigital, axisFormation];
+              {FEATURED_OPPORTUNITIES.map((opp) => {
                 const isUrgent = opp.urgency.toLowerCase().includes("imminente");
                 return (
                   <article
@@ -786,7 +785,7 @@ function Home() {
                     {/* Cohort image */}
                     <div className="relative aspect-[16/10] overflow-hidden">
                       <img
-                        src={images[i]}
+                        src={opp.image}
                         alt={opp.title}
                         className="absolute inset-0 w-full h-full object-cover transition-transform duration-[900ms] group-hover:scale-[1.05]"
                         loading="lazy"
