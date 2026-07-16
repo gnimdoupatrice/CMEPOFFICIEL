@@ -5,16 +5,16 @@ import animateurProjetIntervenants from "@/assets/opportunities/animateur-projet
 import certificatEies from "@/assets/opportunities/certificat-eies.jpg";
 import redactionTdr from "@/assets/opportunities/redaction-tdr.jpg";
 
-// Homepage — visuels sectoriels
-import homeHeroAsset from "@/assets/hero-mentorship.jpg";
-import homeVisionAsset from "@/assets/vision-banner.jpg";
-import homeDefisAsset from "@/assets/challenge-youth.jpg";
-import homeLancementAsset from "@/assets/news-featured.jpg";
-import homeAxeEntrepreneuriatAsset from "@/assets/entrepreneur.jpg";
-import homeAxeFormationAsset from "@/assets/axis-formation.jpg";
-import homeAxeLeadershipAsset from "@/assets/hero-student.jpg";
-import homeAxeEcologieAsset from "@/assets/axis-citizenship.jpg";
-import homeAxeNumerique from "@/assets/axis-digital.jpg";
+// Homepage — visuels sectoriels (uploads officiels CMEP)
+import homeHeroAsset from "@/assets/home/hero-cmep.jpg.asset.json";
+import homeVisionAsset from "@/assets/home/vision-cmep.webp.asset.json";
+import homeDefisAsset from "@/assets/home/defis-cmep.png.asset.json";
+import homeLancementAsset from "@/assets/home/lancement-cmep.jpg.asset.json";
+import homeAxeEntrepreneuriatAsset from "@/assets/home/axe-entrepreneuriat.jpg.asset.json";
+import homeAxeFormationAsset from "@/assets/home/axe-formation.jpg.asset.json";
+import homeAxeLeadershipAsset from "@/assets/home/axe-leadership.png.asset.json";
+import homeAxeEcologieAsset from "@/assets/home/axe-ecologie.jpg.asset.json";
+import homeAxeNumerique from "@/assets/home/axe-numerique.jpg";
 
 // Opportunités — affiches officielles CMEP
 import oppRedactionAsset from "@/assets/news-brigade.jpg";

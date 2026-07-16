@@ -1,76 +1,61 @@
-# Plan — Remplacement des images par correspondance sémantique
+# Plan — Correction images axes stratégiques + élévation qualité niveau ONU/PNUD
 
-Voici pour chaque section le fichier uploadé que je vais utiliser. Aucune image ne sera générée par IA sur les témoignages ni là où une image réelle est disponible.
+## 1. Clarification importante sur les fichiers `.asset.json`
 
-## 1. Homepage (`src/routes/index.tsx`)
+Les fichiers `.asset.json` ne sont **pas** affichés comme images sur le site. Ce sont des **pointeurs CDN** (métadonnées JSON contenant l'URL réelle de l'image hébergée sur le CDN Cloudflare de Lovable).
 
+Dans le code, on importe le pointeur puis on utilise `.url` :
 
-| Section                                                                                  | Image à utiliser                                                                        | Source | &nbsp; |
-| ---------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | ------ | ------ |
-| **Hero**                                                                                 | `HERO.jfif` (panel de conférence CMEP)                                                  | upload | &nbsp; |
-| **Vision**                                                                               | `vision.webp` (homme face horizon)                                                      | upload | &nbsp; |
-| **Pourquoi CMEP / Défis**                                                                | `generationenattentedesopportunite.png` (jeunes en attente d'entretien PNUD Togo)       | upload | &nbsp; |
-| &nbsp;                                                                                   | &nbsp;                                                                                  | &nbsp; | &nbsp; |
-| **Axe 01 — Emploi & Entrepreneuriat****Axe 02 — Formation technique & professionnelle** | `entrpreprenariat.jfif` (atelier confection Togo)                                       | upload | &nbsp; |
-| **Axe 01 — Emploi & Entrepreneuriat**                                                    | important : POUR CECI JE VAIS T4ENVOYER L'image                                         | &nbsp; | &nbsp; |
-| **Axe 03 — Leadership & engagement communautaire**                                       | `engagementcommunautairecitoyen.png` (cercle de jeunes en discussion)                   | upload | &nbsp; |
-| **Axe 04 — Innovation numérique**                                                        | *(inchangé — l'utilisateur ne l'a pas mentionné ; je garde `axe-numerique.jpg` actuel)* | —      | &nbsp; |
-| **Axe 05 — Citoyenneté & écologie**                                                      | `engagement_citoyen.jpg` (plantation d'arbre officielle)                                | upload | &nbsp; |
+```tsx
+import heroAsset from "@/assets/home/hero-cmep.jpg.asset.json";
+<img src={heroAsset.url} alt="..." />  // → sert un vrai .jpg
+```
 
+Le navigateur reçoit une **vraie image JPG/PNG/WebP**, pas un JSON. C'est la méthode officielle Lovable pour éviter d'alourdir le dépôt avec des binaires.
 
-### Programmes phares (bloc 3 cartes homepage)
+→ Si vous voyez un rendu cassé quelque part, **dites-moi précisément où** (URL + section) — je corrigerai. Mais la structure actuelle est correcte.
 
-Remplacer les 3 cartes actuelles par :
-
-1. **Rédaction & gestion de projets (TDR)** → `redaction_de_proget.jpg`
-2. **Animateur de projet — formation certifiante** → `683603371_...jpg`
-3. **Expert en Évaluation d'Impact Environnemental & Social (EIES)** → `cerifica.jpg`
-
-### Témoignages
-
-Les 3 portraits actuellement générés par IA (`portrait-aicha`, `portrait-kossi`, `portrait-professeur`) sont **supprimés** faute de vraies photos fournies. Options possibles à trancher avant implémentation :
-
-- (A) Retirer les visuels et garder uniquement le texte + initiales stylisées (recommandé, conforme à votre demande "pas d'IA")
-- (B) Attendre que vous fournissiez de vraies photos
-
-→ Je pars sur l'option **A** sauf indication contraire.
-
-## 2. Magazine (`src/routes/impact.tsx`)
-
-- **Article à la Une** : `LANCEMENT_OFFICIELLE.jfif` (Cérémonie de présentation & lancement CMEP)
-- **Dernières dépêches** — remplacer les 3 items existants par **2 seuls** :
-  1. Lancement officiel du programme CMEP → `LANCEMENT_OFFICIELLE.jfif`
-  2. locavor de tourisme  → `engagement_citoyen.jpg` (visuel terrain / paysage togolais)
-
-## 3. Opportunités (`src/routes/opportunites.tsx`)
+## 2. Remplacements demandés (section « Axes stratégiques » — homepage)
 
 
-| Opportunité                                             | Image                     |
-| ------------------------------------------------------- | ------------------------- |
-| Formation en animation de terrain / Animateur de projet | `683603371_...jpg`        |
-| Expert en évaluation d'impact environnemental et social | `cerifica.jpg`            |
-| Atelier — Rédaction & gestion des projets (TDR)         | `redaction_de_proget.jpg` |
+| Axe                                   | Image AVANT                          | Image APRÈS (demande utilisateur)                                                      |
+| ------------------------------------- | ------------------------------------ | -------------------------------------------------------------------------------------- |
+| **Axe 01 — Emploi & Entrepreneuriat** | atelier confection (ancien axe 1)    | `generationenattentedesopportunite-2.png` (personnes assises en ligne, entretien PNUD) |
+| **Axe 02 — Formation technique**      | image générique actuelle             | atelier confection (l'ancienne image de l'axe 1)                                       |
+| **Axe 03 — Leadership & engagement**  | `engagementcommunautairecitoyen.png` | `engagement_com.jpg` (cercle de villageois en concertation)                            |
 
 
-## Exécution technique (après validation)
+Axes 04 (Numérique) et 05 (Écologie) : inchangés.
 
-1. Uploader chaque fichier via `lovable-assets create` depuis `/mnt/user-uploads/` → un `.asset.json` par image dans `src/assets/home/` (ou `src/assets/opportunities/` selon usage).
-2. Étendre `src/lib/media.ts` :
-  - Remplacer `home.hero`, `home.vision`, `home.defis`, `home.impact`
-  - Remplacer `home.axes.entrepreneuriat`, `formation`, `leadership`, `ecologie`
-  - Remplacer les 4 images `opportunities.*` par les nouvelles versions officielles CMEP
-3. Mettre à jour `src/routes/index.tsx` : `alt` réels, `loading="eager"` sur hero, `loading="lazy" decoding="async"` ailleurs, bloc « Programmes phares » réécrit avec les 3 nouveaux programmes.
-4. Mettre à jour `src/routes/impact.tsx` : article à la Une + réduire dépêches à 2 items.
-5. Mettre à jour `src/routes/opportunites.tsx` : les 3 opportunités pointent vers les nouveaux `.asset.json`.
-6. Supprimer les anciens portraits IA (`portrait-aicha.jpg`, `portrait-kossi.jpg`, `portrait-professeur.jpg`) et refondre le bloc témoignages en version typographique (initiales + nom + citation).
-7. Vérification visuelle après build via Playwright sur `/`, `/impact`, `/opportunites`.
+### Exécution technique
 
-**Aucun changement** de structure, couleurs ou typo — refonte strictement visuelle.
+1. Upload des 2 nouvelles images via `lovable-assets create` depuis `/mnt/user-uploads/` :
+  - `generationenattentedesopportunite-2.png` → `src/assets/home/axe-entrepreneuriat.png.asset.json` (remplace l'actuel)
+  - `engagement_com.jpg` → `src/assets/home/axe-leadership.jpg.asset.json` (remplace l'actuel `.png`)
+2. L'ancienne image « atelier confection » (actuellement `axe-entrepreneuriat.jpg`) est réaffectée à l'axe 02 → renommage logique : la clé `axes.formation` dans `src/lib/media.ts` pointera désormais vers l'ancienne image entrepreneuriat.
+3. Mise à jour de `src/lib/media.ts` (imports + clés `axes.entrepreneuriat`, `axes.formation`, `axes.leadership`).
+4. Suppression des anciens pointeurs `.asset.json` orphelins via `lovable-assets delete`.
+5. `alt` réels et descriptifs sur chaque `<img>` dans `src/routes/index.tsx`.
 
-&nbsp;
+## 3. Élévation qualité — standard ONU/PNUD
 
-important: 
+Passes de raffinement appliquées **sans changer la charte** (navy/gold/pearl conservée) :
 
-Au niveau des, des axes. Pour le axe un, il y a pas l'image là. Pour le... Oui, pour le axe un, y a pas l'image. Donc je vais te réenvoyer l'image du axe un. 
+- **Traitement image institutionnel** : chaque visuel des axes reçoit un overlay dégradé subtil (`from-ngo-navy/70 to-transparent`) + titre en surimpression typographique blanc/gold — signature visuelle PNUD/UN Women.
+- **Ratio & cadrage** : uniformisation en `aspect-[4/5]` portrait pour les cartes d'axes (cohérence éditoriale ONU) ; `object-cover object-center` avec `object-position` ajusté par image pour éviter les recadrages malheureux.
+- **Micro-typographie** : numéros d'axes en `tabular-nums` + kicker uppercase tracking `0.28em` (grille éditoriale UN).
+- **Densité & respirations** : espacement vertical entre sections aligné sur un rythme de 96 px (desktop) / 64 px (mobile) — grille UNDP.
+- **Accessibilité** : contraste AA vérifié sur overlays, `alt` descriptifs contextuels (pas de « image de » générique), `loading="lazy"` + `decoding="async"` sauf hero (`eager` + `fetchpriority="high"`).
+- **Cohérence des légendes** : chaque carte d'axe reçoit un mini-libellé ODD (ex. « ODD 8 · Travail décent ») en pied de card, référencé à l'Agenda 2030.
 
-Confirmez-vous ce mapping (notamment l'option A pour les témoignages sans photo IA) ?
+## 4. Vérification
+
+- Build + Playwright headless sur `/` : screenshot pleine page → contrôle visuel de chaque axe (bonne image, overlay lisible, alt correct).
+- Vérification que **toutes** les `<img src>` du site pointent vers des URLs CDN `/__l5e/assets-v1/...` (jamais vers un `.json`).
+- imoprtant : 
+  Le test au niveau de la section Hero doit être des tests du type center. C'est-à-dire que le test align doit être du type CENTER au niveau de la section Hero. Le text align doit être du type CENTER.
+
+## Points à confirmer avant implémentation
+
+1. OK pour l'affectation des 3 images ci-dessus ?
+2. OK pour l'overlay dégradé + titre en surimpression sur les cartes d'axes (style PNUD) ? Sinon je garde les cartes actuelles avec image séparée du texte.
