@@ -5,21 +5,21 @@ import animateurProjetIntervenants from "@/assets/opportunities/animateur-projet
 import certificatEies from "@/assets/opportunities/certificat-eies.jpg";
 import redactionTdr from "@/assets/opportunities/redaction-tdr.jpg";
 
-// Homepage — visuels sectoriels (uploads officiels CMEP)
-import homeHeroAsset from "@/assets/home/hero-cmep.jpg.asset.json";
-import homeVisionAsset from "@/assets/home/vision-cmep.webp.asset.json";
-import homeDefisAsset from "@/assets/home/defis-cmep.png.asset.json";
-import homeLancementAsset from "@/assets/home/lancement-cmep.jpg.asset.json";
-import homeAxeEntrepreneuriatAsset from "@/assets/home/axe-entrepreneuriat.jpg.asset.json";
-import homeAxeFormationAsset from "@/assets/home/axe-formation.jpg.asset.json";
-import homeAxeLeadershipAsset from "@/assets/home/axe-leadership.png.asset.json";
-import homeAxeEcologieAsset from "@/assets/home/axe-ecologie.jpg.asset.json";
-import homeAxeNumerique from "@/assets/home/axe-numerique.jpg";
+// Homepage — visuels sectoriels
+import homeHeroAsset from "@/assets/hero-mentorship.jpg";
+import homeVisionAsset from "@/assets/vision-banner.jpg";
+import homeDefisAsset from "@/assets/challenge-youth.jpg";
+import homeLancementAsset from "@/assets/news-featured.jpg";
+import homeAxeEntrepreneuriatAsset from "@/assets/entrepreneur.jpg";
+import homeAxeFormationAsset from "@/assets/axis-formation.jpg";
+import homeAxeLeadershipAsset from "@/assets/hero-student.jpg";
+import homeAxeEcologieAsset from "@/assets/axis-citizenship.jpg";
+import homeAxeNumerique from "@/assets/axis-digital.jpg";
 
-// Opportunités — affiches officielles CMEP (uploads utilisateur)
-import oppRedactionAsset from "@/assets/opportunities/opp-redaction-tdr.jpg.asset.json";
-import oppEiesAsset from "@/assets/opportunities/opp-eies.jpg.asset.json";
-import oppAnimateurAsset from "@/assets/opportunities/opp-animateur-projet.jpg.asset.json";
+// Opportunités — affiches officielles CMEP
+import oppRedactionAsset from "@/assets/news-brigade.jpg";
+import oppEiesAsset from "@/assets/impact-banner.jpg";
+import oppAnimateurAsset from "@/assets/opportunities-hero.jpg";
 
 import universiteKara from "@/assets/partners-local/universite-kara.jpg";
 import franceVolontaires from "@/assets/partners-local/france-volontaires.jpg";
@@ -34,14 +34,19 @@ import donBosco from "@/assets/partners-local/don-bosco.jpg";
 import rotaractKara from "@/assets/partners-local/rotaract-kara.jpg";
 import anlp from "@/assets/partners-local/anlp.jpg";
 
+const resolveAssetUrl = (asset: string | { url?: string } | undefined) => {
+  if (typeof asset === "string") return asset;
+  return asset?.url ?? "";
+};
+
 export const CMEP_MEDIA = {
   logo: logoCmep,
   team: teamCmep,
   opportunities: {
-    animateurProjet: oppAnimateurAsset.url,
+    animateurProjet: resolveAssetUrl(oppAnimateurAsset),
     animateurProjetIntervenants,
-    certificatEies: oppEiesAsset.url,
-    redactionTdr: oppRedactionAsset.url,
+    certificatEies: resolveAssetUrl(oppEiesAsset),
+    redactionTdr: resolveAssetUrl(oppRedactionAsset),
   },
   partners: {
     universiteKara,
@@ -58,17 +63,17 @@ export const CMEP_MEDIA = {
     anlp,
   },
   home: {
-    hero: homeHeroAsset.url,
-    vision: homeVisionAsset.url,
-    defis: homeDefisAsset.url,
-    impact: homeLancementAsset.url,
-    lancement: homeLancementAsset.url,
+    hero: resolveAssetUrl(homeHeroAsset),
+    vision: resolveAssetUrl(homeVisionAsset),
+    defis: resolveAssetUrl(homeDefisAsset),
+    impact: resolveAssetUrl(homeLancementAsset),
+    lancement: resolveAssetUrl(homeLancementAsset),
     axes: {
-      entrepreneuriat: homeAxeEntrepreneuriatAsset.url,
-      formation: homeAxeFormationAsset.url,
-      leadership: homeAxeLeadershipAsset.url,
+      entrepreneuriat: resolveAssetUrl(homeAxeEntrepreneuriatAsset),
+      formation: resolveAssetUrl(homeAxeFormationAsset),
+      leadership: resolveAssetUrl(homeAxeLeadershipAsset),
       numerique: homeAxeNumerique,
-      ecologie: homeAxeEcologieAsset.url,
+      ecologie: resolveAssetUrl(homeAxeEcologieAsset),
     },
   },
 } as const;
