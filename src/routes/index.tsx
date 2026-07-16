@@ -472,10 +472,17 @@ function Home() {
           <div className="space-y-20">
             {AXES.map((axis, i) => (
               <article key={axis.num} className={`grid lg:grid-cols-12 gap-10 items-center ${i % 2 === 1 ? "lg:[&>*:first-child]:order-2" : ""}`}>
-                <div className="lg:col-span-6 relative">
-                  <img src={axis.image} alt={`Axe ${axis.title}`} loading="lazy" className="w-full h-[460px] object-cover rounded-3xl shadow-xl" />
-                  <div className="absolute top-6 left-6 bg-white px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest text-ngo-navy shadow-lg">
-                    Axe {axis.num}
+                <div className="lg:col-span-6 relative group">
+                  <div className="relative overflow-hidden rounded-3xl shadow-xl ring-1 ring-ngo-navy/10">
+                    <img src={axis.image} alt={axis.imageAlt} loading="lazy" decoding="async" className="w-full h-[460px] object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-ngo-navy/75 via-ngo-navy/10 to-transparent"></div>
+                    <div className="absolute top-6 left-6 bg-white px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest text-ngo-navy shadow-lg tabular-nums">
+                      Axe {axis.num}
+                    </div>
+                    <div className="absolute bottom-6 left-6 right-6 flex items-center gap-2 text-[10px] uppercase tracking-[0.28em] font-bold text-ngo-gold">
+                      <span className="w-6 h-px bg-ngo-gold"></span>
+                      <span className="text-white/95">{axis.sdg}</span>
+                    </div>
                   </div>
                 </div>
 
