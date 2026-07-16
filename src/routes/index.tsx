@@ -261,7 +261,7 @@ function Home() {
         <div className="absolute inset-0 bg-gradient-to-r from-ngo-navy/80 via-ngo-navy/30 to-transparent"></div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 pb-20 pt-32 w-full">
-          <div className="max-w-3xl">
+          <div className="max-w-4xl mx-auto text-center">
             <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 rounded-full mb-8">
               <span className="w-1.5 h-1.5 rounded-full bg-ngo-gold animate-pulse"></span>
               <span className="text-[10px] uppercase tracking-[0.25em] font-bold text-white">CHRIS Mentorship & Empowerment Program</span>
@@ -269,10 +269,10 @@ function Home() {
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.02] tracking-tight mb-8">
               Propulser une génération togolaise vers <span className="text-ngo-gold">l'autonomie</span>, l'emploi, le leadership et le développement durable.
             </h1>
-            <p className="text-lg md:text-xl text-white/85 leading-relaxed mb-10 max-w-2xl font-light">
+            <p className="text-lg md:text-xl text-white/85 leading-relaxed mb-10 max-w-2xl mx-auto font-light">
               Le <strong className="text-white font-semibold">CHRIS Mentorship & Empowerment Program</strong> accompagner et renforcer chaque année <strong className="text-ngo-gold font-semibold"> plus de 1 000 jeunes togolais</strong> par le mentorat, la formation, l'innovation et l'engagement communautaire.
             </p>
-            <div className="flex flex-wrap gap-4 mb-14">
+            <div className="flex flex-wrap justify-center gap-4 mb-14">
               <Link to="/opportunites" className="bg-ngo-gold text-ngo-navy px-8 py-4 rounded-xl font-bold flex items-center gap-2 hover:bg-white transition-all shadow-2xl shadow-ngo-gold/30">
                 Rejoindre le programme <ArrowRight size={16} />
               </Link>
@@ -281,7 +281,7 @@ function Home() {
               </a>
             </div>
 
-            <div className="grid grid-cols-3 gap-6 max-w-2xl pt-10 border-t border-white/20">
+            <div className="grid grid-cols-3 gap-6 max-w-2xl mx-auto pt-10 border-t border-white/20">
               {[
                 { v: "1 000+", l: "Jeunes/an" },
                 { v: "60%", l: "Insertion ciblée" },
