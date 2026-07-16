@@ -149,6 +149,8 @@ const AXES = [
     num: "01",
     title: "Entrepreneuriat & Emploi",
     image: axisEntrepreneur,
+    imageAlt: "Jeunes diplômés togolais en file d'attente lors d'entretiens de recrutement PNUD à Lomé",
+    sdg: "ODD 8 · Travail décent & croissance",
     context: "Au Togo, plus de 30% des jeunes diplômés peinent à accéder à un premier emploi stable, ces chiffres grimpeent encore davantage chaque année du fait du déficit d'opportunités structurées.",
     problem: "Le manque d'accompagnement, l'absence de capital de départ et la faible exposition aux écosystèmes économiques privent une génération entière de la possibilité d'entreprendre.",
     approach: "Le CMEP active un parcours en trois temps : sensibilisation à l'entrepreneuriat, incubation des projets viables, puis post-incubation avec mentorat et mise en relation avec des financeurs locaux et internationaux.",
@@ -158,6 +160,8 @@ const AXES = [
     num: "02",
     title: "Formation Technique & Professionnelle",
     image: axisFormation,
+    imageAlt: "Atelier de formation technique en confection au Togo — bénéficiaires CMEP en session pratique",
+    sdg: "ODD 4 · Éducation de qualité",
     context: "La fracture entre les formations académiques disponibles et les besoins réels du marché togolais reste l'un des principaux freins à l'insertion. Les métiers techniques recrutent — mais peinent à trouver des profils qualifiés.",
     problem: "Trop de jeunes sortent du système éducatif sans compétence directement valorisable. Les formations professionnelles existantes sont souvent saturées, coûteuses ou éloignées des territoires moins desservis.",
     approach: "Le CMEP déploie des modules courts, intensifs et certifiants sur les métiers porteurs : maintenance, agro-transformation, BTP, services numériques. Les sessions sont co-construites avec les employeurs partenaires.",
@@ -168,6 +172,8 @@ const AXES = [
     num: "03",
     title: "Leadership & Engagement Communautaire",
     image: axisLeadership,
+    imageAlt: "Cercle de concertation communautaire villageoise au Togo — dialogue intergénérationnel CMEP",
+    sdg: "ODD 16 · Paix, justice & institutions efficaces",
     context: "La jeunesse togolaise constitue plus de 60% de la population. Sans relais d'engagement structurés, son énergie reste sous-exploitée et son rôle dans la vie publique marginal.",
     problem: "Le déficit de figures inspirantes accessibles, le manque de formation au leadership et l'absence de cadres d'action communautaire freinent l'émergence d'une nouvelle élite engagée.",
     approach: "Le CMEP forme une nouvelle génération de leaders capables de porter des projets collectifs, de prendre la parole publique et d'agir comme catalyseurs dans leur quartier, leur village, leur secteur.",
@@ -178,6 +184,8 @@ const AXES = [
     num: "04",
     title: "Innovation Numérique",
     image: axisDigital,
+    imageAlt: "Jeunes talents togolais en session numérique — compétences digitales CMEP",
+    sdg: "ODD 9 · Industrie, innovation & infrastructure",
     context: "Le numérique est l'opportunité économique la plus accessible pour les jeunes togolais à condition de disposer des compétences et des outils. Or la fracture numérique reste profonde, dans plusieurs territoires.",
     problem: "Manque d'accès aux équipements, absence de formations qualifiantes, faible exposition aux métiers du futur.",
     approach: "Le CMEP installe des parcours intensifs sur les compétences numériques recherchées : développement web, marketing digital, design, data, IA appliquée. Objectif : connecter les talents locaux à l'économie numérique mondiale.",
@@ -188,6 +196,8 @@ const AXES = [
     num: "05",
     title: "Citoyenneté & Écologie",
     image: axisCitizenship,
+    imageAlt: "Cérémonie officielle de plantation d'arbre au Togo — brigade verte CMEP",
+    sdg: "ODD 13 · Mesures climatiques",
     context: "Les défis climatiques et environnementaux frappent durement notre patrimoine commun : dégradation des sols, déforestation, gestion des déchets. La jeunesse est en première ligne, et porteuse de solutions.",
     problem: "Sans formation, sans cadre, sans reconnaissance, l'engagement écologique des jeunes reste fragmenté et peu visible. Le lien entre citoyenneté et action environnementale est encore peu structuré.",
     approach: "Le CMEP fédère les initiatives écocitoyennes des jeunes, leur donner des outils méthodologiques et soutenir des projets à fort impact local et national : reboisement, économie circulaire, sensibilisation scolaire.",
@@ -261,7 +271,7 @@ function Home() {
         <div className="absolute inset-0 bg-gradient-to-r from-ngo-navy/80 via-ngo-navy/30 to-transparent"></div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 pb-20 pt-32 w-full">
-          <div className="max-w-3xl">
+          <div className="max-w-4xl mx-auto text-center">
             <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 rounded-full mb-8">
               <span className="w-1.5 h-1.5 rounded-full bg-ngo-gold animate-pulse"></span>
               <span className="text-[10px] uppercase tracking-[0.25em] font-bold text-white">CHRIS Mentorship & Empowerment Program</span>
@@ -269,10 +279,10 @@ function Home() {
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.02] tracking-tight mb-8">
               Propulser une génération togolaise vers <span className="text-ngo-gold">l'autonomie</span>, l'emploi, le leadership et le développement durable.
             </h1>
-            <p className="text-lg md:text-xl text-white/85 leading-relaxed mb-10 max-w-2xl font-light">
+            <p className="text-lg md:text-xl text-white/85 leading-relaxed mb-10 max-w-2xl mx-auto font-light">
               Le <strong className="text-white font-semibold">CHRIS Mentorship & Empowerment Program</strong> accompagner et renforcer chaque année <strong className="text-ngo-gold font-semibold"> plus de 1 000 jeunes togolais</strong> par le mentorat, la formation, l'innovation et l'engagement communautaire.
             </p>
-            <div className="flex flex-wrap gap-4 mb-14">
+            <div className="flex flex-wrap justify-center gap-4 mb-14">
               <Link to="/opportunites" className="bg-ngo-gold text-ngo-navy px-8 py-4 rounded-xl font-bold flex items-center gap-2 hover:bg-white transition-all shadow-2xl shadow-ngo-gold/30">
                 Rejoindre le programme <ArrowRight size={16} />
               </Link>
@@ -281,7 +291,7 @@ function Home() {
               </a>
             </div>
 
-            <div className="grid grid-cols-3 gap-6 max-w-2xl pt-10 border-t border-white/20">
+            <div className="grid grid-cols-3 gap-6 max-w-2xl mx-auto pt-10 border-t border-white/20">
               {[
                 { v: "1 000+", l: "Jeunes/an" },
                 { v: "60%", l: "Insertion ciblée" },
@@ -462,10 +472,17 @@ function Home() {
           <div className="space-y-20">
             {AXES.map((axis, i) => (
               <article key={axis.num} className={`grid lg:grid-cols-12 gap-10 items-center ${i % 2 === 1 ? "lg:[&>*:first-child]:order-2" : ""}`}>
-                <div className="lg:col-span-6 relative">
-                  <img src={axis.image} alt={`Axe ${axis.title}`} loading="lazy" className="w-full h-[460px] object-cover rounded-3xl shadow-xl" />
-                  <div className="absolute top-6 left-6 bg-white px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest text-ngo-navy shadow-lg">
-                    Axe {axis.num}
+                <div className="lg:col-span-6 relative group">
+                  <div className="relative overflow-hidden rounded-3xl shadow-xl ring-1 ring-ngo-navy/10">
+                    <img src={axis.image} alt={axis.imageAlt} loading="lazy" decoding="async" className="w-full h-[460px] object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-ngo-navy/75 via-ngo-navy/10 to-transparent"></div>
+                    <div className="absolute top-6 left-6 bg-white px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest text-ngo-navy shadow-lg tabular-nums">
+                      Axe {axis.num}
+                    </div>
+                    <div className="absolute bottom-6 left-6 right-6 flex items-center gap-2 text-[10px] uppercase tracking-[0.28em] font-bold text-ngo-gold">
+                      <span className="w-6 h-px bg-ngo-gold"></span>
+                      <span className="text-white/95">{axis.sdg}</span>
+                    </div>
                   </div>
                 </div>
 
