@@ -1,61 +1,75 @@
-# Plan — Correction images axes stratégiques + élévation qualité niveau ONU/PNUD
+# Refonte qualité niveau ONU/PNUD — CMEP
 
-## 1. Clarification importante sur les fichiers `.asset.json`
+## 0. Situation actuelle (constat)
 
-Les fichiers `.asset.json` ne sont **pas** affichés comme images sur le site. Ce sont des **pointeurs CDN** (métadonnées JSON contenant l'URL réelle de l'image hébergée sur le CDN Cloudflare de Lovable).
+- **BLOCKER résolu** : le site renvoyait un `HTTP 500` à cause de deux imports d'assets manquants dans `src/lib/media.ts` (`axe-formation.jpg.asset.json`, `axe-leadership.png.asset.json`). Corrigé en pointant vers les vrais assets uploadés (`axe-entrepreneuriat-recrutement.png`, `axe-entrepreneuriat.jpg` réaffecté formation, `axe-leadership-communautaire.jpg`). Le site répond de nouveau en 200.
+- **Overflow mobile** détecté sur toutes les routes (une carte à 398px sur viewport 390px → 8px de débord).
+- La ref citée (`ribedu.saeicubetech.com`) sera consultée comme boussole visuelle, mais nous restons sur l'ADN CMEP (navy/gold/pearl, Inter + Cormorant).
 
-Dans le code, on importe le pointeur puis on utilise `.url` :
+## 1. Méthode (2 phases)
 
-```tsx
-import heroAsset from "@/assets/home/hero-cmep.jpg.asset.json";
-<img src={heroAsset.url} alt="..." />  // → sert un vrai .jpg
-```
+### Phase A — Audit systémique (lecture seule, 1 passe)
 
-Le navigateur reçoit une **vraie image JPG/PNG/WebP**, pas un JSON. C'est la méthode officielle Lovable pour éviter d'alourdir le dépôt avec des binaires.
+1. Capture Playwright des 7 routes × 3 viewports (mobile 390, tablet 834, desktop 1440) — déjà générées.
+2. Lecture ciblée de : `styles.css`, `Navigation.tsx`, `Footer.tsx`, `Layout.tsx`, `index.tsx`, `a-propos.tsx`, `programmes.tsx`, `impact.tsx`, `opportunites.tsx`, `partenaires.tsx`, `contact.tsx`, `media.ts`.
+3. Classement des trouvailles en 4 niveaux : **P0 blocker**, **P1 critique**, **P2 majeur**, **P3 polish**.
 
-→ Si vous voyez un rendu cassé quelque part, **dites-moi précisément où** (URL + section) — je corrigerai. Mais la structure actuelle est correcte.
+### Phase B — Corrections regroupées par thème (une passe par thème)
 
-## 2. Remplacements demandés (section « Axes stratégiques » — homepage)
+Chaque thème = un batch de fichiers édités en parallèle, puis re-vérification Playwright avant le suivant.
 
+**Thème 1 — Fondations (P0/P1)**
+- Éliminer l'overflow mobile (carte à 398px) — identifier la carte fautive et poser `min-w-0` + `max-w-full`.
+- Ajouter un vrai token `--color-ngo-ink` (texte body) + palette d'états success/warning/danger pour éviter les hex arbitraires dans les composants.
+- Vérifier tous les contrastes AA (WCAG 2.2) sur navy/gold/pearl/slate.
 
-| Axe                                   | Image AVANT                          | Image APRÈS (demande utilisateur)                                                      |
-| ------------------------------------- | ------------------------------------ | -------------------------------------------------------------------------------------- |
-| **Axe 01 — Emploi & Entrepreneuriat** | atelier confection (ancien axe 1)    | `generationenattentedesopportunite-2.png` (personnes assises en ligne, entretien PNUD) |
-| **Axe 02 — Formation technique**      | image générique actuelle             | atelier confection (l'ancienne image de l'axe 1)                                       |
-| **Axe 03 — Leadership & engagement**  | `engagementcommunautairecitoyen.png` | `engagement_com.jpg` (cercle de villageois en concertation)                            |
+**Thème 2 — Système typographique unifié (P1)**
+- Hiérarchie stricte : eyebrow (11px tracking .28em) → H2 (`text-h2`) → lead (`text-lead`) → body. Aucun `text-[Npx]` arbitraire dans les composants.
+- Cormorant Garamond réservé aux citations éditoriales (magazine, témoignages). Inter partout ailleurs.
+- Rythme vertical unifié : `py-[var(--space-section-y)]` sur chaque section, jamais de `py-24` codé en dur.
 
+**Thème 3 — Grille & espacements (P1)**
+- Adopter `container-fluid` (déjà défini dans `styles.css`) partout à la place des variantes maison `max-w-7xl mx-auto px-...`.
+- Gouttières standardisées : `gap-6 lg:gap-8` sur toutes les grilles cartes.
+- Cartes : mêmes rayons (`rounded-2xl`), mêmes bordures (`ring-1 ring-ngo-navy/10`), même ombre au hover.
 
-Axes 04 (Numérique) et 05 (Écologie) : inchangés.
+**Thème 4 — Composants réutilisables (P1)**
+- Extraire 3 primitives dans `src/components/site/` :
+  - `SectionHeader` (eyebrow + titre + lead + optionnel lien "voir tout"),
+  - `Card` (image ratio 4/5, overlay dégradé, kicker, titre, chip ODD),
+  - `Stat` (chiffre tabular-nums + libellé).
+- Remplacer les répétitions inline dans `index.tsx`, `programmes.tsx`, `impact.tsx`, `opportunites.tsx`.
 
-### Exécution technique
+**Thème 5 — Navigation & footer (P2)**
+- Simplifier l'en-tête au scroll (ombre plus discrète, bordure 1px pearl).
+- Menu mobile : accents/interactions Apple (translation + opacity, jamais de scale).
+- Footer : renforcer la hiérarchie institutionnelle (colonne "À propos" plus dense, mentions de conformité).
 
-1. Upload des 2 nouvelles images via `lovable-assets create` depuis `/mnt/user-uploads/` :
-  - `generationenattentedesopportunite-2.png` → `src/assets/home/axe-entrepreneuriat.png.asset.json` (remplace l'actuel)
-  - `engagement_com.jpg` → `src/assets/home/axe-leadership.jpg.asset.json` (remplace l'actuel `.png`)
-2. L'ancienne image « atelier confection » (actuellement `axe-entrepreneuriat.jpg`) est réaffectée à l'axe 02 → renommage logique : la clé `axes.formation` dans `src/lib/media.ts` pointera désormais vers l'ancienne image entrepreneuriat.
-3. Mise à jour de `src/lib/media.ts` (imports + clés `axes.entrepreneuriat`, `axes.formation`, `axes.leadership`).
-4. Suppression des anciens pointeurs `.asset.json` orphelins via `lovable-assets delete`.
-5. `alt` réels et descriptifs sur chaque `<img>` dans `src/routes/index.tsx`.
+**Thème 6 — Performance & accessibilité (P1/P2)**
+- Vérifier `loading="lazy"` + `decoding="async"` sur toutes les images hors-fold ; `fetchPriority="high"` uniquement sur le hero.
+- Ajout d'un `<link rel="preload" as="image">` sur le hero LCP dans le `head()` de `routes/index.tsx`.
+- Alt descriptifs (jamais "image de …").
+- Focus ring cohérent (déjà en place globalement → vérifier absence d'overrides).
 
-## 3. Élévation qualité — standard ONU/PNUD
+**Thème 7 — Micro-interactions (P3)**
+- Transitions unifiées : `duration-200 ease-out` par défaut, `duration-300` pour les cartes.
+- Respect strict de `prefers-reduced-motion` (déjà couvert dans `styles.css`).
+- Aucun effet gratuit type parallax/scale > 1.02.
 
-Passes de raffinement appliquées **sans changer la charte** (navy/gold/pearl conservée) :
+## 2. Livrables
 
-- **Traitement image institutionnel** : chaque visuel des axes reçoit un overlay dégradé subtil (`from-ngo-navy/70 to-transparent`) + titre en surimpression typographique blanc/gold — signature visuelle PNUD/UN Women.
-- **Ratio & cadrage** : uniformisation en `aspect-[4/5]` portrait pour les cartes d'axes (cohérence éditoriale ONU) ; `object-cover object-center` avec `object-position` ajusté par image pour éviter les recadrages malheureux.
-- **Micro-typographie** : numéros d'axes en `tabular-nums` + kicker uppercase tracking `0.28em` (grille éditoriale UN).
-- **Densité & respirations** : espacement vertical entre sections aligné sur un rythme de 96 px (desktop) / 64 px (mobile) — grille UNDP.
-- **Accessibilité** : contraste AA vérifié sur overlays, `alt` descriptifs contextuels (pas de « image de » générique), `loading="lazy"` + `decoding="async"` sauf hero (`eager` + `fetchpriority="high"`).
-- **Cohérence des légendes** : chaque carte d'axe reçoit un mini-libellé ODD (ex. « ODD 8 · Travail décent ») en pied de card, référencé à l'Agenda 2030.
+- Audit écrit (trouvailles classées P0→P3) présenté avant chaque batch de corrections.
+- Screenshots avant/après par viewport pour chaque thème.
+- Compte-rendu final : conformité WCAG 2.2 AA, poids page, score Core Web Vitals (estimé via lighthouse local si dispo).
 
-## 4. Vérification
+## 3. Hors périmètre (à confirmer)
 
-- Build + Playwright headless sur `/` : screenshot pleine page → contrôle visuel de chaque axe (bonne image, overlay lisible, alt correct).
-- Vérification que **toutes** les `<img src>` du site pointent vers des URLs CDN `/__l5e/assets-v1/...` (jamais vers un `.json`).
-- imoprtant : 
-  Le test au niveau de la section Hero doit être des tests du type center. C'est-à-dire que le test align doit être du type CENTER au niveau de la section Hero. Le text align doit être du type CENTER.
+- Nouvelles pages/routes.
+- Refonte de la charte couleur (navy/gold/pearl conservés).
+- Ajout de contenus/textes (je réutilise l'existant, sauf reformulation nécessaire pour la hiérarchie).
 
-## Points à confirmer avant implémentation
+## 4. Questions avant de démarrer
 
-1. OK pour l'affectation des 3 images ci-dessus ?
-2. OK pour l'overlay dégradé + titre en surimpression sur les cartes d'axes (style PNUD) ? Sinon je garde les cartes actuelles avec image séparée du texte.
+1. **OK pour cette méthode par thèmes** (7 batches, re-vérif à chaque étape) plutôt qu'une refonte monolithique en un seul commit géant ?
+2. **Périmètre** : je m'attaque à **toutes les routes** (7 pages) ou d'abord uniquement la **homepage** puis les autres en itération ?
+3. **Contraintes fonctionnelles** : puis-je extraire librement des composants (`SectionHeader`, `Card`, `Stat`) sans casser les URLs / props existantes ?
