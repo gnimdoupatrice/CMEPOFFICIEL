@@ -8,9 +8,9 @@ import homeHeroAsset from "@/assets/home/hero-cmep.jpg.asset.json";
 import homeVisionAsset from "@/assets/home/vision-cmep.webp.asset.json";
 import homeDefisAsset from "@/assets/home/defis-cmep.png.asset.json";
 import homeLancementAsset from "@/assets/home/lancement-cmep.jpg.asset.json";
-import homeAxeEntrepreneuriatAsset from "@/assets/home/axe-entrepreneuriat.jpg.asset.json";
-import homeAxeFormationAsset from "@/assets/home/axe-formation.jpg.asset.json";
-import homeAxeLeadershipAsset from "@/assets/home/axe-leadership.png.asset.json";
+import homeAxeEntrepreneuriatAsset from "@/assets/home/axe-entrepreneuriat-recrutement.png.asset.json";
+import homeAxeFormationAsset from "@/assets/home/axe-entrepreneuriat.jpg.asset.json";
+import homeAxeLeadershipAsset from "@/assets/home/axe-leadership-communautaire.jpg.asset.json";
 import homeAxeEcologieAsset from "@/assets/home/axe-ecologie.jpg.asset.json";
 import homeAxeNumerique from "@/assets/home/axe-numerique.jpg";
 
