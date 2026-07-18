@@ -312,7 +312,7 @@ function Home() {
       <section className="py-24 px-6 bg-white">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-7 relative">
-            <img src={challengeImg} alt="Jeunes diplômés togolais en attente d'entretien de recrutement" loading="lazy" decoding="async" className="w-full h-[560px] object-cover rounded-3xl shadow-2xl" />
+            <img src={axisEntrepreneur} alt="Jeunes diplômés togolais en attente d'entretien de recrutement" loading="lazy" decoding="async" className="w-full h-[560px] object-cover rounded-3xl shadow-2xl" />
             <div className="absolute -bottom-6 -right-6 hidden md:block bg-ngo-navy text-white p-6 rounded-2xl shadow-xl max-w-[240px]">
               <div className="text-4xl font-black text-ngo-gold mb-1">+30%</div>
               <div className="text-xs uppercase tracking-widest font-bold text-white/70">de chômage chez les jeunes diplômés togolais</div>
