@@ -320,8 +320,8 @@ function Home() {
           </div>
 
           <div className="lg:col-span-5">
-            <span className="text-ngo-gold text-[10px] uppercase tracking-[0.25em] font-bold">Pourquoi le CMEP </span>
-            <h2 className="text-4xl md:text-5xl font-extrabold text-ngo-navy mt-4 mb-6 leading-[1.05] tracking-tight">
+            <span className="text-ngo-gold text-[10px] uppercase tracking-[0.25em] font-bold">Pourquoi le CMEP</span>
+            <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-extrabold text-ngo-navy mt-4 mb-6 leading-[1.05] tracking-tight">
               Une génération en attente d'opportunités réelles.
             </h2>
             <div className="space-y-4 text-ngo-slate text-base leading-relaxed">
