@@ -56,7 +56,7 @@ export const CMEP_MEDIA = {
   },
   home: {
     hero: homeHero,
-    vision: teamCmep,
+    vision: homeVision,
     defis: axeLeadership,
     impact: homeLancement,
     lancement: homeLancement,
