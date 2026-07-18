@@ -4,20 +4,6 @@ import { Layout } from "@/components/site/Layout";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { CMEP_MEDIA, PARTNER_LOGOS } from "@/lib/media";
 import { createWhatsAppHref } from "@/lib/contact";
-import homeHeroAsset from "@/assets/home/hero-cmep.jpg.asset.json";
-import homeVisionAsset from "@/assets/home/vision-cmep.webp.asset.json";
-import homeDefisAsset from "@/assets/home/defis-cmep.png.asset.json";
-import homeLancementAsset from "@/assets/home/lancement-cmep.jpg.asset.json";
-import homeAxeEntrepreneuriatAsset from "@/assets/home/axe-entrepreneuriat-recrutement.png.asset.json";
-import homeAxeFormationAsset from "@/assets/home/axe-entrepreneuriat.jpg.asset.json";
-import homeAxeLeadershipAsset from "@/assets/home/axe-leadership-communautaire.jpg.asset.json";
-import homeAxeEcologieAsset from "@/assets/home/axe-ecologie.jpg.asset.json";
-import homeAxeNumerique from "@/assets/home/axe-numerique.jpg";
-
-const resolveAssetUrl = (asset: string | { url?: string } | null | undefined) => {
-  if (typeof asset === "string") return asset;
-  return asset?.url ?? "";
-};
 
 // Actualité phare (featured story hero)
 const FEATURED_STORY = {
@@ -91,16 +77,16 @@ const FEATURED_OPPORTUNITIES = [
   },
 ];
 
-const heroImg = resolveAssetUrl(homeHeroAsset);
-const challengeImg = resolveAssetUrl(homeDefisAsset);
-const visionImg = resolveAssetUrl(homeVisionAsset);
-const impactImg = resolveAssetUrl(homeLancementAsset);
-const axisEntrepreneur = resolveAssetUrl(homeAxeEntrepreneuriatAsset);
-const axisWorkshop = resolveAssetUrl(homeAxeFormationAsset);
-const axisLeadership = resolveAssetUrl(homeAxeLeadershipAsset);
-const axisFormation = resolveAssetUrl(homeAxeFormationAsset);
-const axisDigital = resolveAssetUrl(homeAxeNumerique);
-const axisCitizenship = resolveAssetUrl(homeAxeEcologieAsset);
+const heroImg = CMEP_MEDIA.home.hero;
+const challengeImg = CMEP_MEDIA.home.defis;
+const visionImg = CMEP_MEDIA.home.vision;
+const impactImg = CMEP_MEDIA.home.lancement;
+const axisEntrepreneur = CMEP_MEDIA.home.axes.entrepreneuriat;
+const axisWorkshop = CMEP_MEDIA.home.axes.formation;
+const axisLeadership = CMEP_MEDIA.home.axes.leadership;
+const axisFormation = CMEP_MEDIA.home.axes.formation;
+const axisDigital = CMEP_MEDIA.home.axes.numerique;
+const axisCitizenship = CMEP_MEDIA.home.axes.ecologie;
 
 export const Route = createFileRoute("/")({
   head: () => ({
