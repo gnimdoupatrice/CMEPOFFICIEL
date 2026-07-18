@@ -3,6 +3,7 @@
 
 import logoCmep from "@/assets/images/brand/logo.jpg";
 import teamCmep from "@/assets/images/home/team.jpg";
+import homeVision from "@/assets/images/home/vision.png";
 
 import homeHero from "@/assets/images/home/hero.jpg";
 import homeLancement from "@/assets/images/home/lancement.jpg";
@@ -55,7 +56,7 @@ export const CMEP_MEDIA = {
   },
   home: {
     hero: homeHero,
-    vision: teamCmep,
+    vision: homeVision,
     defis: axeLeadership,
     impact: homeLancement,
     lancement: homeLancement,
