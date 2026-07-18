@@ -361,8 +361,8 @@ function Home() {
         <div className="relative z-10 max-w-5xl mx-auto">
           <span className="text-ngo-gold text-[10px] uppercase tracking-[0.25em] font-bold">Notre Vision</span>
           <Quote size={56} className="text-ngo-gold/40 mt-8 mb-6" strokeWidth={1} />
-          <p className="text-3xl md:text-5xl font-extrabold text-white leading-[1.15] tracking-tight mb-10">
-            « Faire émerger une jeunesse togolaise <span className="text-ngo-gold">autonome, compétente et engagée</span>, capable de transformer durablement son territoire et de prendre place dans l'économie africaine de demain. »
+          <p className="font-serif text-3xl md:text-5xl lg:text-6xl font-extrabold text-white leading-[1.1] tracking-tight mb-10">
+            « Faire émerger une jeunesse togolaise <span className="text-ngo-gold italic">autonome, compétente et engagée</span>, capable de transformer durablement son territoire et de prendre place dans l'économie africaine de demain. »
           </p>
           <div className="space-y-5 text-white/85 text-lg leading-relaxed font-light max-w-3xl">
             <p>
