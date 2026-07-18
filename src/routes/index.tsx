@@ -4,20 +4,6 @@ import { Layout } from "@/components/site/Layout";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { CMEP_MEDIA, PARTNER_LOGOS } from "@/lib/media";
 import { createWhatsAppHref } from "@/lib/contact";
-import homeHeroAsset from "@/assets/home/hero-cmep.jpg.asset.json";
-import homeVisionAsset from "@/assets/home/vision-cmep.webp.asset.json";
-import homeDefisAsset from "@/assets/home/defis-cmep.png.asset.json";
-import homeLancementAsset from "@/assets/home/lancement-cmep.jpg.asset.json";
-import homeAxeEntrepreneuriatAsset from "@/assets/home/axe-entrepreneuriat-recrutement.png.asset.json";
-import homeAxeFormationAsset from "@/assets/home/axe-entrepreneuriat.jpg.asset.json";
-import homeAxeLeadershipAsset from "@/assets/home/axe-leadership-communautaire.jpg.asset.json";
-import homeAxeEcologieAsset from "@/assets/home/axe-ecologie.jpg.asset.json";
-import homeAxeNumerique from "@/assets/home/axe-numerique.jpg";
-
-const resolveAssetUrl = (asset: string | { url?: string } | null | undefined) => {
-  if (typeof asset === "string") return asset;
-  return asset?.url ?? "";
-};
 
 // Actualité phare (featured story hero)
 const FEATURED_STORY = {
@@ -91,16 +77,16 @@ const FEATURED_OPPORTUNITIES = [
   },
 ];
 
-const heroImg = resolveAssetUrl(homeHeroAsset);
-const challengeImg = resolveAssetUrl(homeDefisAsset);
-const visionImg = resolveAssetUrl(homeVisionAsset);
-const impactImg = resolveAssetUrl(homeLancementAsset);
-const axisEntrepreneur = resolveAssetUrl(homeAxeEntrepreneuriatAsset);
-const axisWorkshop = resolveAssetUrl(homeAxeFormationAsset);
-const axisLeadership = resolveAssetUrl(homeAxeLeadershipAsset);
-const axisFormation = resolveAssetUrl(homeAxeFormationAsset);
-const axisDigital = resolveAssetUrl(homeAxeNumerique);
-const axisCitizenship = resolveAssetUrl(homeAxeEcologieAsset);
+const heroImg = CMEP_MEDIA.home.hero;
+const challengeImg = CMEP_MEDIA.home.defis;
+const visionImg = CMEP_MEDIA.home.vision;
+const impactImg = CMEP_MEDIA.home.lancement;
+const axisEntrepreneur = CMEP_MEDIA.home.axes.entrepreneuriat;
+const axisWorkshop = CMEP_MEDIA.home.axes.formation;
+const axisLeadership = CMEP_MEDIA.home.axes.leadership;
+const axisFormation = CMEP_MEDIA.home.axes.formation;
+const axisDigital = CMEP_MEDIA.home.axes.numerique;
+const axisCitizenship = CMEP_MEDIA.home.axes.ecologie;
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -579,10 +565,10 @@ function Home() {
         </div>
       </section>
 
-      {/* ============ IMPACT — Bannière immersive ============ */}
-      <section className="relative py-32 px-6 overflow-hidden">
-        <img src={impactImg} alt="Jeunes togolais en atelier communautaire" loading="lazy" className="absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-b from-ngo-navy/95 via-ngo-navy/90 to-ngo-navy/95"></div>
+      {/* ============ IMPACT — Bannière institutionnelle ============ */}
+      <section className="relative py-32 px-6 overflow-hidden bg-gradient-to-b from-ngo-navy via-ngo-navy to-[color-mix(in_oklab,var(--color-ngo-navy)_92%,black)]">
+        <div className="absolute inset-0 opacity-[0.06] bg-[radial-gradient(circle_at_20%_20%,var(--color-ngo-gold)_0%,transparent_45%),radial-gradient(circle_at_80%_80%,var(--color-ngo-gold)_0%,transparent_45%)]" aria-hidden="true"></div>
+
 
         <div className="relative z-10 max-w-7xl mx-auto">
           <div className="max-w-3xl mb-14">

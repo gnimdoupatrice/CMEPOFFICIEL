@@ -1,25 +1,21 @@
-import logoCmep from "@/assets/brand/logo-cmep-local.jpg";
-import teamCmep from "@/assets/team/team-cmep-local.jpg";
-import animateurProjet from "@/assets/opportunities/animateur-projet.jpg";
+// Images CMEP — imports directs (aucun .asset.json).
+// Toutes les images vivent dans src/assets/images/ et sont bundlées par Vite.
+
+import logoCmep from "@/assets/images/brand/logo.jpg";
+import teamCmep from "@/assets/images/home/team.jpg";
+
+import homeHero from "@/assets/images/home/hero.jpg";
+import homeLancement from "@/assets/images/home/lancement.jpg";
+import axeEntrepreneuriat from "@/assets/images/home/axe-entrepreneuriat.png";
+import axeFormation from "@/assets/images/home/axe-formation.jpg";
+import axeLeadership from "@/assets/images/home/axe-leadership.jpg";
+import axeEcologie from "@/assets/images/home/axe-ecologie.jpg";
+import axeNumerique from "@/assets/home/axe-numerique.jpg";
+
+import oppAnimateur from "@/assets/images/opportunities/animateur-projet.jpg";
+import oppEies from "@/assets/images/opportunities/certificat-eies.jpg";
+import oppRedaction from "@/assets/images/opportunities/redaction-tdr.jpg";
 import animateurProjetIntervenants from "@/assets/opportunities/animateur-projet-intervenants.jpg";
-import certificatEies from "@/assets/opportunities/certificat-eies.jpg";
-import redactionTdr from "@/assets/opportunities/redaction-tdr.jpg";
-
-// Homepage — visuels sectoriels (uploads officiels CMEP)
-import homeHeroAsset from "@/assets/home/hero-cmep.jpg.asset.json";
-import homeVisionAsset from "@/assets/home/vision-cmep.webp.asset.json";
-import homeDefisAsset from "@/assets/home/defis-cmep.png.asset.json";
-import homeLancementAsset from "@/assets/home/lancement-cmep.jpg.asset.json";
-import homeAxeEntrepreneuriatAsset from "@/assets/home/axe-entrepreneuriat-recrutement.png.asset.json";
-import homeAxeFormationAsset from "@/assets/home/axe-entrepreneuriat.jpg.asset.json";
-import homeAxeLeadershipAsset from "@/assets/home/axe-leadership-communautaire.jpg.asset.json";
-import homeAxeEcologieAsset from "@/assets/home/axe-ecologie.jpg.asset.json";
-import homeAxeNumerique from "@/assets/home/axe-numerique.jpg";
-
-// Opportunités — affiches officielles CMEP
-import oppRedactionAsset from "@/assets/news-brigade.jpg";
-import oppEiesAsset from "@/assets/impact-banner.jpg";
-import oppAnimateurAsset from "@/assets/opportunities-hero.jpg";
 
 import universiteKara from "@/assets/partners-local/universite-kara.jpg";
 import franceVolontaires from "@/assets/partners-local/france-volontaires.jpg";
@@ -34,19 +30,14 @@ import donBosco from "@/assets/partners-local/don-bosco.jpg";
 import rotaractKara from "@/assets/partners-local/rotaract-kara.jpg";
 import anlp from "@/assets/partners-local/anlp.jpg";
 
-const resolveAssetUrl = (asset: string | { url?: string } | undefined) => {
-  if (typeof asset === "string") return asset;
-  return asset?.url ?? "";
-};
-
 export const CMEP_MEDIA = {
   logo: logoCmep,
   team: teamCmep,
   opportunities: {
-    animateurProjet: resolveAssetUrl(oppAnimateurAsset),
+    animateurProjet: oppAnimateur,
     animateurProjetIntervenants,
-    certificatEies: resolveAssetUrl(oppEiesAsset),
-    redactionTdr: resolveAssetUrl(oppRedactionAsset),
+    certificatEies: oppEies,
+    redactionTdr: oppRedaction,
   },
   partners: {
     universiteKara,
@@ -63,17 +54,17 @@ export const CMEP_MEDIA = {
     anlp,
   },
   home: {
-    hero: resolveAssetUrl(homeHeroAsset),
-    vision: resolveAssetUrl(homeVisionAsset),
-    defis: resolveAssetUrl(homeDefisAsset),
-    impact: resolveAssetUrl(homeLancementAsset),
-    lancement: resolveAssetUrl(homeLancementAsset),
+    hero: homeHero,
+    vision: teamCmep,
+    defis: axeLeadership,
+    impact: homeLancement,
+    lancement: homeLancement,
     axes: {
-      entrepreneuriat: resolveAssetUrl(homeAxeEntrepreneuriatAsset),
-      formation: resolveAssetUrl(homeAxeFormationAsset),
-      leadership: resolveAssetUrl(homeAxeLeadershipAsset),
-      numerique: homeAxeNumerique,
-      ecologie: resolveAssetUrl(homeAxeEcologieAsset),
+      entrepreneuriat: axeEntrepreneuriat,
+      formation: axeFormation,
+      leadership: axeLeadership,
+      numerique: axeNumerique,
+      ecologie: axeEcologie,
     },
   },
 } as const;
