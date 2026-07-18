@@ -565,10 +565,10 @@ function Home() {
         </div>
       </section>
 
-      {/* ============ IMPACT — Bannière immersive ============ */}
-      <section className="relative py-32 px-6 overflow-hidden">
-        <img src={impactImg} alt="Jeunes togolais en atelier communautaire" loading="lazy" className="absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-b from-ngo-navy/95 via-ngo-navy/90 to-ngo-navy/95"></div>
+      {/* ============ IMPACT — Bannière institutionnelle ============ */}
+      <section className="relative py-32 px-6 overflow-hidden bg-gradient-to-b from-ngo-navy via-ngo-navy to-[color-mix(in_oklab,var(--color-ngo-navy)_92%,black)]">
+        <div className="absolute inset-0 opacity-[0.06] bg-[radial-gradient(circle_at_20%_20%,var(--color-ngo-gold)_0%,transparent_45%),radial-gradient(circle_at_80%_80%,var(--color-ngo-gold)_0%,transparent_45%)]" aria-hidden="true"></div>
+
 
         <div className="relative z-10 max-w-7xl mx-auto">
           <div className="max-w-3xl mb-14">
