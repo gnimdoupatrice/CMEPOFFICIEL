@@ -21,7 +21,7 @@ function LegalPage() {
           <h1 className="font-extrabold text-4xl md:text-6xl mt-5 mb-10 leading-[1.05] tracking-tight text-ngo-navy">
             Mentions légales
           </h1>
-          <div className="prose prose-slate max-w-none text-ngo-slate leading-relaxed space-y-6">
+          <div className="prose-cmep">
             <p><strong className="text-ngo-navy">Éditeur du site :</strong> Chris Mentorship & Empowerment Program (CMEP), initiative togolaise de mentorat et d'autonomisation de la jeunesse.</p>
             <p><strong className="text-ngo-navy">Coordination :</strong> Kara, Togo.</p>
             <p><strong className="text-ngo-navy">Contact :</strong> <a className="text-ngo-navy underline hover:text-ngo-gold" href="mailto:chrismentorshipempowermentprog@gmail.com">chrismentorshipempowermentprog@gmail.com</a> — +228 90 51 00 88</p>

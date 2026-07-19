@@ -28,57 +28,138 @@
   --color-popover-foreground: #0f2a5f;
 
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-serif: "Cormorant Garamond", ui-serif, Georgia, serif;
-  --font-display: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Fraunces", "Cormorant Garamond", ui-serif, Georgia, serif;
+  --font-display: "Fraunces", "Inter", ui-sans-serif, system-ui, sans-serif;
 
   --radius: 0.75rem;
 
-  /* Mobile-first fluid typography (min → preferred → max) */
-  --fs-body: clamp(0.9375rem, 0.9rem + 0.2vw, 1.0625rem);
-  --fs-lead: clamp(1.0625rem, 1rem + 0.4vw, 1.25rem);
-  --fs-h4: clamp(1.0625rem, 1rem + 0.4vw, 1.375rem);
-  --fs-h3: clamp(1.375rem, 1.15rem + 1vw, 1.875rem);
-  --fs-h2: clamp(1.75rem, 1.2rem + 2.2vw, 3rem);
-  --fs-h1: clamp(2.125rem, 1.4rem + 3.8vw, 4.5rem);
-  --fs-hero: clamp(2.5rem, 1.6rem + 5vw, 5.5rem);
+  /* ------------------------------------------------------------------
+     Editorial type scale — inspired by ribedu.saeicubetech.com rhythm,
+     tuned for an institutional NGO (UN/UNICEF/World Bank register).
+     Fluid via clamp(min, preferred, max). Modular ratio ≈ 1.25 mobile,
+     1.333 desktop. Values in rem so users can zoom.
+     ------------------------------------------------------------------ */
+  --fs-eyebrow: clamp(0.6875rem, 0.66rem + 0.12vw, 0.75rem);   /* 11 → 12 */
+  --fs-caption: clamp(0.75rem, 0.72rem + 0.12vw, 0.8125rem);   /* 12 → 13 */
+  --fs-label:   clamp(0.8125rem, 0.78rem + 0.15vw, 0.875rem);  /* 13 → 14 */
+  --fs-body:    clamp(1rem, 0.96rem + 0.2vw, 1.0625rem);       /* 16 → 17 */
+  --fs-lead:    clamp(1.125rem, 1.05rem + 0.35vw, 1.3125rem);  /* 18 → 21 */
+  --fs-h5:      clamp(1.0625rem, 1rem + 0.3vw, 1.25rem);       /* 17 → 20 */
+  --fs-h4:      clamp(1.1875rem, 1.1rem + 0.4vw, 1.5rem);      /* 19 → 24 */
+  --fs-h3:      clamp(1.5rem, 1.3rem + 0.9vw, 2rem);           /* 24 → 32 */
+  --fs-h2:      clamp(2rem, 1.55rem + 2vw, 3.25rem);           /* 32 → 52 */
+  --fs-h1:      clamp(2.5rem, 1.85rem + 3vw, 4.5rem);          /* 40 → 72 */
+  --fs-hero:    clamp(3rem, 2.1rem + 4.2vw, 6rem);             /* 48 → 96 */
 
-  /* Fluid section spacing */
-  --space-section-y: clamp(3rem, 6vw, 6.5rem);
+  /* Line-heights — tight for display, generous for reading */
+  --lh-hero: 1.02;
+  --lh-display: 1.08;
+  --lh-heading: 1.18;
+  --lh-subheading: 1.35;
+  --lh-body: 1.65;
+  --lh-lead: 1.55;
+
+  /* Tracking — negative on display, neutral on body, wide on eyebrows */
+  --tr-hero: -0.035em;
+  --tr-display: -0.025em;
+  --tr-heading: -0.015em;
+  --tr-body: -0.005em;
+  --tr-eyebrow: 0.22em;
+
+  /* Vertical rhythm */
+  --space-section-y: clamp(3.5rem, 5vw + 1rem, 7rem);
+  --space-block-y:   clamp(1.5rem, 1rem + 2vw, 2.75rem);
   --space-container-x: clamp(1rem, 3vw, 2rem);
+
+  /* Optimal measure for prose */
+  --measure-tight: 52ch;
+  --measure-base:  64ch;
+  --measure-wide:  72ch;
 }
 
 html, body {
   background: #ffffff;
   color: #0f2a5f;
   font-family: var(--font-sans);
+  font-feature-settings: "cv11", "ss01", "ss03";
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   font-size: var(--fs-body);
-  /* Prevent iOS text auto-inflation */
+  line-height: var(--lh-body);
+  letter-spacing: var(--tr-body);
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
 }
 
-/* Never allow horizontal scroll */
-html, body {
-  overflow-x: hidden;
-  max-width: 100%;
-}
+html, body { overflow-x: hidden; max-width: 100%; }
 
-/* Safe-area insets for iOS notch / Android gesture bar */
 body {
   padding-left: env(safe-area-inset-left);
   padding-right: env(safe-area-inset-right);
 }
 
-* {
-  border-color: var(--color-border);
+* { border-color: var(--color-border); }
+
+img, video, svg, canvas { max-width: 100%; height: auto; }
+
+/* -------------------------------------------------------------
+   Global heading defaults — every h1..h6 inherits a strong,
+   coherent hierarchy even where components pass raw utilities.
+   Components can still override with Tailwind classes.
+   ------------------------------------------------------------- */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-sans);
+  color: var(--color-ngo-navy);
+  text-wrap: balance;
+  font-feature-settings: "ss01", "cv11";
 }
 
-/* Media never overflows */
-img, video, svg, canvas {
-  max-width: 100%;
-  height: auto;
+h1 {
+  font-size: var(--fs-h1);
+  line-height: var(--lh-display);
+  letter-spacing: var(--tr-display);
+  font-weight: 800;
+}
+h2 {
+  font-size: var(--fs-h2);
+  line-height: var(--lh-display);
+  letter-spacing: var(--tr-display);
+  font-weight: 800;
+}
+h3 {
+  font-size: var(--fs-h3);
+  line-height: var(--lh-heading);
+  letter-spacing: var(--tr-heading);
+  font-weight: 700;
+}
+h4 {
+  font-size: var(--fs-h4);
+  line-height: var(--lh-subheading);
+  letter-spacing: var(--tr-heading);
+  font-weight: 700;
+}
+h5 {
+  font-size: var(--fs-h5);
+  line-height: var(--lh-subheading);
+  font-weight: 600;
+}
+h6 {
+  font-size: var(--fs-label);
+  line-height: 1.4;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--tr-eyebrow);
+}
+
+p { text-wrap: pretty; }
+
+/* Serif display when a component opts in via font-serif utility */
+.font-serif {
+  font-family: var(--font-serif);
+  font-optical-sizing: auto;
+  font-variation-settings: "opsz" 96, "SOFT" 30;
+  letter-spacing: -0.02em;
 }
 
 /* Accessible focus for keyboard users */
@@ -107,12 +188,11 @@ img, video, svg, canvas {
   }
 }
 
-::selection {
-  background: #d4a23c;
-  color: #0f2a5f;
-}
+::selection { background: #d4a23c; color: #0f2a5f; }
 
-/* Utility classes */
+/* -------------------------------------------------------------
+   Utilities
+   ------------------------------------------------------------- */
 @utility no-scrollbar {
   scrollbar-width: none;
   &::-webkit-scrollbar { display: none; }
@@ -127,34 +207,129 @@ img, video, svg, canvas {
   width: 100%;
   margin-inline: auto;
   padding-inline: var(--space-container-x);
-  max-width: 80rem; /* 1280px */
+  max-width: 80rem;
 }
 
+/* Editorial type utilities — semantic, use anywhere */
 @utility text-hero {
   font-size: var(--fs-hero);
-  line-height: 1.05;
-  letter-spacing: -0.02em;
+  line-height: var(--lh-hero);
+  letter-spacing: var(--tr-hero);
+  font-weight: 800;
+  text-wrap: balance;
 }
-
 @utility text-h1 {
   font-size: var(--fs-h1);
-  line-height: 1.1;
-  letter-spacing: -0.02em;
+  line-height: var(--lh-display);
+  letter-spacing: var(--tr-display);
+  font-weight: 800;
+  text-wrap: balance;
 }
-
 @utility text-h2 {
   font-size: var(--fs-h2);
-  line-height: 1.15;
-  letter-spacing: -0.015em;
+  line-height: var(--lh-display);
+  letter-spacing: var(--tr-display);
+  font-weight: 800;
+  text-wrap: balance;
 }
-
 @utility text-h3 {
   font-size: var(--fs-h3);
-  line-height: 1.25;
-  letter-spacing: -0.01em;
+  line-height: var(--lh-heading);
+  letter-spacing: var(--tr-heading);
+  font-weight: 700;
+  text-wrap: balance;
 }
-
+@utility text-h4 {
+  font-size: var(--fs-h4);
+  line-height: var(--lh-subheading);
+  letter-spacing: var(--tr-heading);
+  font-weight: 700;
+}
+@utility text-h5 {
+  font-size: var(--fs-h5);
+  line-height: var(--lh-subheading);
+  font-weight: 600;
+}
 @utility text-lead {
   font-size: var(--fs-lead);
-  line-height: 1.55;
+  line-height: var(--lh-lead);
+  letter-spacing: -0.005em;
+  color: var(--color-ngo-slate);
+  max-width: var(--measure-wide);
+  text-wrap: pretty;
 }
+@utility text-body {
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  letter-spacing: var(--tr-body);
+}
+@utility text-label {
+  font-size: var(--fs-label);
+  line-height: 1.4;
+  font-weight: 600;
+}
+@utility text-caption {
+  font-size: var(--fs-caption);
+  line-height: 1.5;
+  color: var(--color-ngo-slate);
+}
+@utility text-eyebrow {
+  font-size: var(--fs-eyebrow);
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: var(--tr-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-ngo-gold);
+}
+
+/* Optimal measure wrappers — clamp paragraph width for readability */
+@utility measure-tight { max-width: var(--measure-tight); }
+@utility measure-base  { max-width: var(--measure-base); }
+@utility measure-wide  { max-width: var(--measure-wide); }
+
+/* Section rhythm */
+@utility section-y {
+  padding-top: var(--space-section-y);
+  padding-bottom: var(--space-section-y);
+}
+
+/* Rich prose block — used inside legal / editorial routes */
+.prose-cmep {
+  max-width: var(--measure-base);
+  color: var(--color-ngo-slate);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+}
+.prose-cmep > * + * { margin-top: 1.15em; }
+.prose-cmep h2 {
+  font-size: var(--fs-h3);
+  line-height: var(--lh-heading);
+  letter-spacing: var(--tr-heading);
+  color: var(--color-ngo-navy);
+  font-weight: 700;
+  margin-top: 2em;
+  margin-bottom: 0.5em;
+}
+.prose-cmep h3 {
+  font-size: var(--fs-h4);
+  color: var(--color-ngo-navy);
+  font-weight: 700;
+  margin-top: 1.5em;
+  margin-bottom: 0.4em;
+}
+.prose-cmep p, .prose-cmep li { max-width: var(--measure-base); }
+.prose-cmep strong { color: var(--color-ngo-navy); font-weight: 700; }
+.prose-cmep a { color: var(--color-ngo-navy); text-decoration: underline; text-underline-offset: 3px; }
+.prose-cmep a:hover { color: var(--color-ngo-gold); }
+.prose-cmep ul { list-style: disc; padding-left: 1.25em; }
+.prose-cmep ol { list-style: decimal; padding-left: 1.25em; }
+
+/* Buttons & CTAs baseline — consistent label typography */
+button, .btn, [role="button"] {
+  font-family: var(--font-sans);
+  font-feature-settings: "ss01";
+}
+
+/* Improve link readability inside body copy */
+p a, li a { text-underline-offset: 3px; }
+
