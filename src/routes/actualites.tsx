@@ -228,7 +228,7 @@ function NewsroomPage() {
           <div className="grid lg:grid-cols-12 gap-10 items-end mb-16">
             <div className="lg:col-span-7">
               <span className="text-ngo-gold text-[10px] uppercase tracking-[0.3em] font-bold flex items-center gap-3">
-                <span className="h-px w-10 bg-ngo-gold" /> Le magazine
+                Le magazine
               </span>
               <h2 className="text-4xl md:text-6xl font-extrabold text-ngo-navy mt-5 leading-[1.02] tracking-tight">
                 Ce que le terrain <span className="italic font-light text-ngo-slate">raconte</span>.
@@ -347,7 +347,7 @@ function NewsroomPage() {
           <div className="grid lg:grid-cols-12 gap-10 items-end mb-16">
             <div className="lg:col-span-7">
               <span className="text-ngo-gold text-[10px] uppercase tracking-[0.3em] font-bold flex items-center gap-3">
-                <span className="h-px w-10 bg-ngo-gold" /> Programmes ouverts
+                Programmes ouverts
               </span>
               <h2 className="text-4xl md:text-6xl font-extrabold text-white mt-5 leading-[1.02] tracking-tight">
                 Des parcours <span className="italic font-light text-ngo-gold">transformateurs</span>.
@@ -475,7 +475,7 @@ function NewsroomPage() {
         <div className="max-w-7xl mx-auto">
           <div className="max-w-3xl mb-16">
             <span className="text-ngo-gold text-[10px] uppercase tracking-[0.3em] font-bold flex items-center gap-3">
-              <span className="h-px w-10 bg-ngo-gold" /> Voix de la promotion
+              Voix de la promotion
             </span>
             <h2 className="text-4xl md:text-6xl font-extrabold text-ngo-navy mt-5 leading-[1.02] tracking-tight">
               Trois trajectoires. Une <span className="italic font-light">méthode</span>.
@@ -526,7 +526,7 @@ function NewsroomPage() {
           <div className="grid lg:grid-cols-12 gap-14">
             <div className="lg:col-span-4 lg:sticky lg:top-32 lg:self-start">
               <span className="text-ngo-gold text-[10px] uppercase tracking-[0.3em] font-bold flex items-center gap-3">
-                <span className="h-px w-10 bg-ngo-gold" /> Field dispatches
+                Field dispatches
               </span>
               <h2 className="text-4xl md:text-5xl font-extrabold text-ngo-navy mt-5 mb-7 leading-[1.05] tracking-tight">
                 Le pouls du <span className="italic font-light">terrain</span>.

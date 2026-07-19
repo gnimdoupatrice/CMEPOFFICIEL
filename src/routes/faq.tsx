@@ -368,7 +368,6 @@ function FAQPage() {
               Ce n'est pas une plateforme, c'est une équipe. »
             </p>
             <div className="mt-8 flex items-center gap-4">
-              <div className="h-px flex-1 bg-ngo-navy/10" />
               <div>
                 <div className="font-extrabold text-ngo-navy">Aïcha B.</div>
                 <div className="text-[11px] uppercase tracking-[0.22em] text-ngo-slate font-semibold mt-1">Promotion 2024 — Togo</div>
