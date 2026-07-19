@@ -34,22 +34,20 @@
   --radius: 0.75rem;
 
   /* ------------------------------------------------------------------
-     Editorial type scale — inspired by ribedu.saeicubetech.com rhythm,
-     tuned for an institutional NGO (UN/UNICEF/World Bank register).
-     Fluid via clamp(min, preferred, max). Modular ratio ≈ 1.25 mobile,
-     1.333 desktop. Values in rem so users can zoom.
+     Mobile-first institutional type scale.
+     Sizes step up only at breakpoints, never continuously with viewport.
      ------------------------------------------------------------------ */
-  --fs-eyebrow: clamp(0.6875rem, 0.66rem + 0.12vw, 0.75rem);   /* 11 → 12 */
-  --fs-caption: clamp(0.75rem, 0.72rem + 0.12vw, 0.8125rem);   /* 12 → 13 */
-  --fs-label:   clamp(0.8125rem, 0.78rem + 0.15vw, 0.875rem);  /* 13 → 14 */
-  --fs-body:    clamp(1rem, 0.96rem + 0.2vw, 1.0625rem);       /* 16 → 17 */
-  --fs-lead:    clamp(1.125rem, 1.05rem + 0.35vw, 1.3125rem);  /* 18 → 21 */
-  --fs-h5:      clamp(1.0625rem, 1rem + 0.3vw, 1.25rem);       /* 17 → 20 */
-  --fs-h4:      clamp(1.1875rem, 1.1rem + 0.4vw, 1.5rem);      /* 19 → 24 */
-  --fs-h3:      clamp(1.5rem, 1.3rem + 0.9vw, 2rem);           /* 24 → 32 */
-  --fs-h2:      clamp(2rem, 1.55rem + 2vw, 3.25rem);           /* 32 → 52 */
-  --fs-h1:      clamp(2.5rem, 1.85rem + 3vw, 4.5rem);          /* 40 → 72 */
-  --fs-hero:    clamp(3rem, 2.1rem + 4.2vw, 6rem);             /* 48 → 96 */
+  --fs-eyebrow: 0.6875rem;
+  --fs-caption: 0.75rem;
+  --fs-label: 0.8125rem;
+  --fs-body: 1rem;
+  --fs-lead: 1.125rem;
+  --fs-h5: 1.0625rem;
+  --fs-h4: 1.1875rem;
+  --fs-h3: 1.5rem;
+  --fs-h2: 2rem;
+  --fs-h1: 2.5rem;
+  --fs-hero: 2.75rem;
 
   /* Line-heights — tight for display, generous for reading */
   --lh-hero: 1.02;
@@ -60,10 +58,10 @@
   --lh-lead: 1.55;
 
   /* Tracking — negative on display, neutral on body, wide on eyebrows */
-  --tr-hero: -0.035em;
-  --tr-display: -0.025em;
-  --tr-heading: -0.015em;
-  --tr-body: -0.005em;
+  --tr-hero: 0;
+  --tr-display: 0;
+  --tr-heading: 0;
+  --tr-body: 0;
   --tr-eyebrow: 0.22em;
 
   /* Vertical rhythm */
@@ -75,6 +73,35 @@
   --measure-tight: 52ch;
   --measure-base:  64ch;
   --measure-wide:  72ch;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --fs-eyebrow: 0.75rem;
+    --fs-caption: 0.8125rem;
+    --fs-label: 0.875rem;
+    --fs-body: 1rem;
+    --fs-lead: 1.1875rem;
+    --fs-h5: 1.1875rem;
+    --fs-h4: 1.375rem;
+    --fs-h3: 1.875rem;
+    --fs-h2: 2.75rem;
+    --fs-h1: 3.5rem;
+    --fs-hero: 4rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --fs-body: 1.0625rem;
+    --fs-lead: 1.3125rem;
+    --fs-h5: 1.25rem;
+    --fs-h4: 1.5rem;
+    --fs-h3: 2rem;
+    --fs-h2: 3.25rem;
+    --fs-h1: 4.25rem;
+    --fs-hero: 5.25rem;
+  }
 }
 
 html, body {
@@ -112,8 +139,11 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-sans);
   color: var(--color-ngo-navy);
   text-wrap: balance;
+  text-align: start;
   font-feature-settings: "ss01", "cv11";
 }
+
+p, li, dd, dt, blockquote { text-align: start; }
 
 h1 {
   font-size: var(--fs-h1);
@@ -159,7 +189,7 @@ p { text-wrap: pretty; }
   font-family: var(--font-serif);
   font-optical-sizing: auto;
   font-variation-settings: "opsz" 96, "SOFT" 30;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
 }
 
 /* Accessible focus for keyboard users */
