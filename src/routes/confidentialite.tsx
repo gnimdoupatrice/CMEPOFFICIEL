@@ -21,7 +21,7 @@ function PrivacyPage() {
           <h1 className="font-extrabold text-4xl md:text-6xl mt-5 mb-10 leading-[1.05] tracking-tight text-ngo-navy">
             Politique de confidentialité
           </h1>
-          <div className="prose prose-slate max-w-none text-ngo-slate leading-relaxed space-y-6">
+          <div className="prose-cmep">
             <p>Le CMEP accorde une importance particulière au respect de la vie privée des utilisateurs de son site.</p>
             <h2 className="text-ngo-navy font-bold text-xl">1. Données collectées</h2>
             <p>Nous collectons uniquement les données nécessaires au traitement de vos candidatures, à la gestion de la newsletter et à la communication institutionnelle.</p>
