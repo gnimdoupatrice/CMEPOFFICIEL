@@ -248,6 +248,18 @@ p { text-wrap: pretty; }
   font-weight: 800;
   text-wrap: balance;
 }
+
+@utility hero-copy-white {
+  color: var(--color-primary-foreground) !important;
+}
+
+@utility hero-copy-soft {
+  color: color-mix(in oklab, var(--color-primary-foreground) 88%, transparent) !important;
+}
+
+@utility hero-center-text {
+  text-align: center !important;
+}
 @utility text-h1 {
   font-size: var(--fs-h1);
   line-height: var(--lh-display);
