@@ -49,7 +49,7 @@ function MagazinePage() {
               <div className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.28em] font-bold text-ngo-gold mb-4">
                 <Radio size={12} aria-hidden="true" /> Édition {new Date().toLocaleDateString("fr-FR", { day: "2-digit", month: "long", year: "numeric" })}
               </div>
-              <h1 className="font-serif text-5xl md:text-7xl font-black tracking-tight text-ngo-navy leading-none">
+              <h1 className="font-serif text-h1 font-black text-ngo-navy">
                 Le Magazine <span className="text-ngo-gold italic">CMEP</span>
               </h1>
               <p className="mt-4 text-ngo-slate max-w-2xl leading-relaxed">

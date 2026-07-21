@@ -69,7 +69,7 @@ function AboutPage() {
             <div className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.28em] font-bold text-ngo-gold mb-4">
               <Users size={12} aria-hidden="true" /> Notre équipe
             </div>
-            <h2 id="team-heading" className="font-extrabold text-3xl md:text-5xl text-ngo-navy leading-[1.05] tracking-tight">
+            <h2 id="team-heading" className="text-h2 font-extrabold text-ngo-navy">
               Une gouvernance jeune, engagée, au service du Togo.
             </h2>
             <p className="mt-5 text-ngo-slate leading-relaxed">
