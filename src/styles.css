@@ -127,9 +127,16 @@ body {
   padding-right: env(safe-area-inset-right);
 }
 
-* { border-color: var(--color-border); }
+* { border-color: var(--color-border); min-width: 0; }
 
 img, video, svg, canvas { max-width: 100%; height: auto; }
+
+/* Prevent long words / URLs from breaking card layouts on mobile */
+:where(h1, h2, h3, h4, h5, h6, p, li, span, a, div) {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
 
 /* -------------------------------------------------------------
    Global heading defaults — every h1..h6 inherits a strong,
