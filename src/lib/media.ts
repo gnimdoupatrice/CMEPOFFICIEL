@@ -3,11 +3,11 @@
 
 import logoCmep from "@/assets/images/brand/logo.jpg";
 import teamCmep from "@/assets/images/home/team.jpg";
-import homeVision from "@/assets/images/home/vision.png";
+import homeVision from "@/assets/images/home/vision.jpg";
 
 import homeHero from "@/assets/images/home/hero.jpg";
 import homeLancement from "@/assets/images/home/lancement.jpg";
-import axeEntrepreneuriat from "@/assets/images/home/axe-entrepreneuriat.png";
+import axeEntrepreneuriat from "@/assets/images/home/axe-entrepreneuriat.jpg";
 import axeFormation from "@/assets/images/home/axe-formation.jpg";
 import axeLeadership from "@/assets/images/home/axe-leadership.jpg";
 import axeEcologie from "@/assets/images/home/axe-ecologie.jpg";

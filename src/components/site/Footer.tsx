@@ -13,7 +13,7 @@ export function Footer() {
     >
       <h2 id="footer-heading" className="sr-only">Pied de page — CMEP Togo</h2>
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="grid gap-12 md:grid-cols-12 mb-14">
+        <div className="grid gap-12 md:grid-cols-12 mb-14 justify-items-center md:justify-items-stretch text-center md:text-left">
           {/* Brand + newsletter */}
           <div className="md:col-span-5">
             <Link to="/" className="inline-flex items-center gap-3 mb-6" aria-label="CMEP — Accueil">

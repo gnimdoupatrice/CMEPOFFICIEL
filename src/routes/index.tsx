@@ -533,9 +533,10 @@ function Home() {
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="flex flex-wrap justify-center gap-6">
             {PROGRAMS.map((p) => (
-              <article key={p.title} className="group bg-ngo-pearl rounded-3xl overflow-hidden border border-transparent hover:border-ngo-gold/40 hover:shadow-2xl transition-all">
+              <article key={p.title} className="group bg-ngo-pearl rounded-3xl overflow-hidden border border-transparent hover:border-ngo-gold/40 hover:shadow-2xl transition-all w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]">
+
                 <div className="aspect-[4/3] overflow-hidden">
                   <img src={p.image} alt={p.title} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                 </div>
@@ -789,13 +790,13 @@ function Home() {
               </div>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-7">
+            <div className="flex flex-wrap justify-center gap-6 lg:gap-7">
               {FEATURED_OPPORTUNITIES.map((opp) => {
                 const isUrgent = opp.urgency.toLowerCase().includes("imminente");
                 return (
                   <article
                     key={opp.title}
-                    className="group relative rounded-2xl overflow-hidden bg-gradient-to-b from-white/[0.06] to-white/[0.02] border border-white/10 hover:border-ngo-gold/40 hover:bg-white/[0.08] transition-all duration-500 flex flex-col"
+                    className="group relative rounded-2xl overflow-hidden bg-gradient-to-b from-white/[0.06] to-white/[0.02] border border-white/10 hover:border-ngo-gold/40 hover:bg-white/[0.08] transition-all duration-500 flex flex-col w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1.17rem)]"
                   >
                     {/* Cohort image */}
                     <div className="relative aspect-[16/10] overflow-hidden">
