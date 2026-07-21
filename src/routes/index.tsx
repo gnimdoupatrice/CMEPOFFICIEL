@@ -277,7 +277,7 @@ function Home() {
               <span className="w-1.5 h-1.5 rounded-full bg-ngo-gold animate-pulse"></span>
               <span className="text-[10px] uppercase tracking-[0.25em] font-bold text-white">CHRIS Mentorship & Empowerment Program</span>
             </div>
-            <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold hero-copy-white hero-center-text leading-[1.08] md:leading-[1.03] tracking-tight mb-8 max-w-5xl">
+            <h1 className="font-serif text-h1 font-extrabold hero-copy-white hero-center-text mb-8 max-w-5xl">
               Propulser une génération togolaise vers <span className="text-ngo-gold">l'autonomie</span>, l'emploi, le leadership et le développement durable.
             </h1>
             <p className="text-base sm:text-lg md:text-xl hero-copy-soft hero-center-text leading-relaxed mb-10 max-w-3xl mx-auto font-light">
@@ -321,7 +321,7 @@ function Home() {
 
           <div className="lg:col-span-5">
             <span className="text-ngo-gold text-[10px] uppercase tracking-[0.25em] font-bold">Pourquoi le CMEP</span>
-            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-ngo-navy mt-4 mb-6 leading-[1.1] md:leading-[1.05] tracking-tight">
+            <h2 className="font-serif text-h2 font-extrabold text-ngo-navy mt-4 mb-6">
               Une génération en attente d'opportunités réelles.
             </h2>
             <div className="space-y-4 text-ngo-slate text-base leading-relaxed">
@@ -361,7 +361,7 @@ function Home() {
         <div className="relative z-10 max-w-5xl mx-auto">
           <span className="text-ngo-gold text-[10px] uppercase tracking-[0.25em] font-bold">Notre Vision</span>
           <Quote size={56} className="text-ngo-gold/40 mt-8 mb-6" strokeWidth={1} />
-          <p className="font-serif text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-extrabold text-white leading-[1.15] md:leading-[1.1] tracking-tight mb-10">
+          <p className="font-serif text-h2 font-extrabold text-white mb-10">
             « Faire émerger une jeunesse togolaise <span className="text-ngo-gold italic">autonome, compétente et engagée</span>, capable de transformer durablement son territoire et de prendre place dans l'économie africaine de demain. »
           </p>
           <div className="space-y-5 text-white/85 text-lg leading-relaxed font-light max-w-3xl">
@@ -383,7 +383,7 @@ function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="max-w-3xl mb-16">
             <span className="text-ngo-gold text-[10px] uppercase tracking-[0.25em] font-bold">Notre Mission</span>
-            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-extrabold text-ngo-navy mt-4 leading-[1.1] md:leading-[1.05] tracking-tight">
+            <h2 className="font-serif text-h2 font-extrabold text-ngo-navy mt-4 leading-[1.1] md:leading-[1.05] tracking-tight">
               Bâtir la plateforme de référence du mentorat et de l'autonomisation des jeunes au Togo.
             </h2>
           </div>
@@ -412,7 +412,7 @@ function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="max-w-3xl mb-14">
             <span className="text-ngo-gold text-[10px] uppercase tracking-[0.25em] font-bold">Nos Objectifs</span>
-            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-extrabold text-ngo-navy mt-4 leading-[1.1] md:leading-[1.05] tracking-tight">
+            <h2 className="font-serif text-h2 font-extrabold text-ngo-navy mt-4 leading-[1.1] md:leading-[1.05] tracking-tight">
               Quatre objectifs structurants, mesurables et ancrés sur le terrain.
             </h2>
             <p className="text-ngo-slate text-base leading-relaxed mt-5">
@@ -465,7 +465,7 @@ function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="max-w-3xl mb-16">
             <span className="text-ngo-gold text-[10px] uppercase tracking-[0.25em] font-bold">Axes Stratégiques</span>
-            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-extrabold text-ngo-navy mt-4 leading-[1.1] md:leading-[1.05] tracking-tight">
+            <h2 className="font-serif text-h2 font-extrabold text-ngo-navy mt-4 leading-[1.1] md:leading-[1.05] tracking-tight">
               Cinq leviers, déployés comme des programmes à part entière.
             </h2>
           </div>
@@ -487,7 +487,7 @@ function Home() {
                 </div>
 
                 <div className="lg:col-span-6">
-                  <h3 className="text-3xl md:text-4xl font-extrabold text-ngo-navy mb-6 leading-tight tracking-tight">{axis.title}</h3>
+                  <h3 className="text-h2 font-extrabold text-ngo-navy mb-6 leading-tight tracking-tight">{axis.title}</h3>
 
                   <div className="space-y-4 mb-6">
                     <div>
@@ -528,7 +528,7 @@ function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="max-w-3xl mb-14">
             <span className="text-ngo-gold text-[10px] uppercase tracking-[0.25em] font-bold">Programmes Phares</span>
-            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-extrabold text-ngo-navy mt-4 leading-[1.1] md:leading-[1.05] tracking-tight">
+            <h2 className="font-serif text-h2 font-extrabold text-ngo-navy mt-4 leading-[1.1] md:leading-[1.05] tracking-tight">
               Des initiatives concrètes, mesurables et déployées chaque année.
             </h2>
           </div>
@@ -572,7 +572,7 @@ function Home() {
         <div className="relative z-10 max-w-7xl mx-auto">
           <div className="max-w-3xl mb-14">
             <span className="text-ngo-gold text-[10px] uppercase tracking-[0.25em] font-bold">Impact Attendu</span>
-            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mt-4 leading-[1.1] md:leading-[1.05] tracking-tight">
+            <h2 className="font-serif text-h2 font-extrabold text-white mt-4 leading-[1.1] md:leading-[1.05] tracking-tight">
               Des résultats mesurables au service d'une génération.
             </h2>
             <p className="text-white/70 text-base leading-relaxed mt-5">
@@ -605,7 +605,7 @@ function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="max-w-3xl mb-14">
             <span className="text-ngo-gold text-[10px] uppercase tracking-[0.25em] font-bold">Témoignages</span>
-            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-extrabold text-ngo-navy mt-4 tracking-tight">Ils ont traversé le programme.</h2>
+            <h2 className="font-serif text-h2 font-extrabold text-ngo-navy mt-4 tracking-tight">Ils ont traversé le programme.</h2>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
@@ -628,7 +628,7 @@ function Home() {
                     </div>
                   </div>
                   <Quote size={32} className="text-ngo-gold/70 mb-4" strokeWidth={1.4} />
-                  <blockquote className="text-ngo-navy text-[15px] leading-relaxed mb-6 font-medium flex-1">
+                  <blockquote className="text-ngo-navy text-body leading-relaxed mb-6 font-medium flex-1">
                     « {t.quote} »
                   </blockquote>
                   <figcaption className="pt-5 border-t border-ngo-navy/10">
@@ -651,7 +651,7 @@ function Home() {
               <div className="flex items-center gap-4 mb-6">
                 <span className="text-ngo-gold text-[10px] uppercase tracking-[0.35em] font-bold">Le magazine du programme</span>
               </div>
-              <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-ngo-navy leading-[1.1] md:leading-[1.02] tracking-tight">
+              <h2 className="font-serif text-h2 font-extrabold text-ngo-navy">
                 Reportages, parcours, cohortes <span className="text-ngo-gold">la jeunesse togolaise en mouvement.</span>
               </h2>
             </div>
@@ -778,7 +778,7 @@ function Home() {
                 <div className="flex items-center gap-4 mb-6">
                   <span className="text-ngo-gold text-[10px] uppercase tracking-[0.35em] font-bold">Opportunités ouvertes</span>
                 </div>
-                <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-[56px] font-extrabold text-white leading-[1.1] md:leading-[1.02] tracking-tight">
+                <h2 className="font-serif text-h2 font-extrabold text-white">
                   Rejoindre une <span className="text-ngo-gold">cohorte</span>, candidater à un parcours.
                 </h2>
               </div>
@@ -886,7 +886,7 @@ function Home() {
               <div className="flex items-center gap-4 mb-6">
                 <span className="text-ngo-gold text-[10px] uppercase tracking-[0.35em] font-bold">Nos Partenaires</span>
               </div>
-              <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.1] md:leading-[1.02] tracking-tight text-ngo-navy">
+              <h2 className="font-serif text-h2 font-extrabold text-ngo-navy">
                 Une coalition d'acteurs <span className="text-ngo-gold">engagés</span> pour la jeunesse.
               </h2>
             </div>
@@ -940,7 +940,7 @@ function Home() {
               <div className="flex items-center gap-4 mb-6">
                 <span className="text-ngo-gold text-[10px] uppercase tracking-[0.35em] font-bold">Questions fréquentes</span>
               </div>
-              <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-ngo-navy leading-[1.1] md:leading-[1.02] tracking-tight mb-8">
+              <h2 className="font-serif text-h2 font-extrabold text-ngo-navy mb-8">
                 L'essentiel pour bien <span className="text-ngo-gold">comprendre</span> le CMEP.
               </h2>
               <p className="text-ngo-slate text-base md:text-lg leading-relaxed font-light border-l border-ngo-navy/15 pl-6 mb-10">
@@ -1008,7 +1008,7 @@ function Home() {
 
           <div className="relative z-10">
             <span className="text-ngo-gold text-[10px] uppercase tracking-[0.25em] font-bold">Rejoignez-nous</span>
-            <h2 className="font-serif text-4xl md:text-5xl font-extrabold text-white mt-4 mb-6 leading-[1.05] tracking-tight">Un programme, deux engagements possibles.</h2>
+            <h2 className="font-serif text-h2 font-extrabold text-white mt-4 mb-6 leading-[1.05] tracking-tight">Un programme, deux engagements possibles.</h2>
             <p className="text-white/75 text-base leading-relaxed mb-8 max-w-lg">
               Que vous soyez un jeune en quête d'opportunités ou un professionnel souhaitant transmettre, votre place est au sein du CMEP.
             </p>

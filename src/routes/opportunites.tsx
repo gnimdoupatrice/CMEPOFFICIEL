@@ -236,7 +236,7 @@ function OpportunitiesPage() {
               </span>
               Inscriptions ouvertes — Cohortes 2026
             </span>
-            <h1 className="font-extrabold text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.02] tracking-tight max-w-4xl">
+            <h1 className="text-h1 font-extrabold max-w-4xl">
               Trois <span className="text-ngo-gold">formations certifiantes</span> pour renforcer votre carrière.
             </h1>
             <p className="mt-6 sm:mt-8 text-base sm:text-lg text-white/80 max-w-2xl leading-relaxed">
@@ -283,7 +283,7 @@ function OpportunitiesPage() {
             <span className="inline-flex items-center gap-2 text-ngo-gold text-[10px] uppercase tracking-[0.25em] font-bold">
               <Award size={11} aria-hidden="true" /> Catalogue 2026
             </span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-ngo-navy mt-4 leading-[1.05] tracking-tight">
+            <h2 className="text-h2 font-extrabold text-ngo-navy mt-4 leading-[1.05] tracking-tight">
               Nos programmes phares en détail.
             </h2>
             <p className="text-ngo-slate leading-relaxed text-[15px] mt-5">
@@ -333,7 +333,7 @@ function OpportunitiesPage() {
                   <span className="inline-block text-[10px] uppercase tracking-[0.25em] font-bold text-ngo-gold">
                     {p.category}
                   </span>
-                  <h3 className="mt-3 text-2xl sm:text-3xl md:text-4xl font-extrabold text-ngo-navy leading-[1.1] tracking-tight">
+                  <h3 className="mt-3 text-2xl sm:text-h2 font-extrabold text-ngo-navy leading-[1.1] tracking-tight">
                     {p.title}
                   </h3>
                   <p className="mt-3 text-ngo-navy/60 text-sm font-medium">{p.tagline}</p>
@@ -433,7 +433,7 @@ function OpportunitiesPage() {
             <span className="inline-flex items-center gap-2 text-ngo-gold text-[10px] uppercase tracking-[0.25em] font-bold">
               <Sparkles size={11} aria-hidden="true" /> Comment ça se passe
             </span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mt-4 leading-[1.05] tracking-tight">
+            <h2 className="text-h2 font-extrabold mt-4 leading-[1.05] tracking-tight">
               De l'inscription à la <span className="text-ngo-gold">certification</span> : un parcours simple.
             </h2>
           </div>
@@ -446,7 +446,7 @@ function OpportunitiesPage() {
               >
                 <div className="text-[11px] uppercase tracking-[0.22em] text-ngo-gold font-bold mb-4">Étape {s.n}</div>
                 <h3 className="font-extrabold text-lg sm:text-xl leading-tight tracking-tight mb-3">{s.title}</h3>
-                <p className="text-white/70 text-[14px] leading-relaxed">{s.desc}</p>
+                <p className="text-white/70 text-body leading-relaxed">{s.desc}</p>
               </li>
             ))}
           </ol>
@@ -460,7 +460,7 @@ function OpportunitiesPage() {
             <span className="inline-flex items-center gap-2 text-ngo-gold text-[10px] uppercase tracking-[0.25em] font-bold">
               <Users size={11} aria-hidden="true" /> À qui s'adressent ces parcours
             </span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-ngo-navy mt-4 leading-[1.05] tracking-tight">
+            <h2 className="text-h2 font-extrabold text-ngo-navy mt-4 leading-[1.05] tracking-tight">
               Trois profils accueillis.
             </h2>
           </div>
@@ -488,7 +488,7 @@ function OpportunitiesPage() {
           <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-ngo-navy/5 border border-ngo-navy/10 text-[10px] uppercase tracking-[0.25em] font-bold text-ngo-navy mb-7">
             <Check size={11} className="text-ngo-gold" aria-hidden="true" /> Une question avant de candidater ?
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-6xl font-extrabold text-ngo-navy leading-[1.05] tracking-tight">
+          <h2 className="text-3xl sm:text-h2 font-extrabold text-ngo-navy leading-[1.05] tracking-tight">
             La coordination répond <span className="text-ngo-gold">personnellement</span> sous 48 h.
           </h2>
           <p className="text-ngo-slate leading-relaxed text-[15px] mt-6 sm:mt-7 max-w-2xl mx-auto">

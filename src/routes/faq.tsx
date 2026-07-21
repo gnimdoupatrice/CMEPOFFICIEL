@@ -162,7 +162,7 @@ function FAQPage() {
             <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/15 backdrop-blur text-[10px] uppercase tracking-[0.25em] font-bold text-ngo-gold mb-7">
               <LifeBuoy size={11} /> Centre d'aide CMEP
             </span>
-            <h1 className="font-extrabold text-5xl md:text-7xl leading-[1.02] tracking-tight max-w-4xl">
+            <h1 className="text-h1 font-extrabold max-w-4xl">
               Vos questions, <span className="text-ngo-gold">notre engagement</span> à y répondre.
             </h1>
             <p className="mt-8 text-lg text-white/75 leading-relaxed max-w-2xl">
@@ -215,7 +215,7 @@ function FAQPage() {
             <span className="inline-flex items-center gap-2 text-ngo-gold text-[10px] uppercase tracking-[0.25em] font-bold">
               <Compass size={11} /> Comment naviguer ce centre
             </span>
-            <h2 className="text-3xl md:text-5xl font-extrabold text-ngo-navy mt-4 leading-[1.05] tracking-tight">
+            <h2 className="text-h2 font-extrabold text-ngo-navy mt-4 leading-[1.05] tracking-tight">
               Quatre profils, une seule promesse&nbsp;: la clarté.
             </h2>
             <p className="text-ngo-slate leading-relaxed text-[15px] mt-6 max-w-xl">
@@ -276,7 +276,7 @@ function FAQPage() {
             <aside className="lg:col-span-4">
               <div className="sticky top-32">
                 <span className="text-ngo-gold text-[10px] uppercase tracking-[0.25em] font-bold">Section active</span>
-                <h2 className="text-3xl md:text-4xl font-extrabold text-ngo-navy mt-3 leading-[1.05] tracking-tight mb-6">
+                <h2 className="text-h2 font-extrabold text-ngo-navy mt-3 leading-[1.05] tracking-tight mb-6">
                   {CATEGORIES.find((c) => c.key === active)?.label}.
                 </h2>
                 <p className="text-ngo-slate leading-relaxed text-[15px] mb-8">
@@ -341,7 +341,7 @@ function FAQPage() {
                       }`}
                     >
                       <div className="overflow-hidden">
-                        <div className="px-7 pb-7 pl-[72px] text-ngo-slate text-[15px] leading-relaxed border-t border-ngo-navy/8 pt-5">
+                        <div className="px-7 pb-7 pl-[72px] text-ngo-slate text-body leading-relaxed border-t border-ngo-navy/8 pt-5">
                           {it.a}
                         </div>
                       </div>
@@ -386,7 +386,7 @@ function FAQPage() {
               <div className="absolute -top-24 -right-24 size-72 rounded-full bg-ngo-gold/10 blur-3xl" />
               <div className="relative">
                 <span className="text-ngo-gold text-[10px] uppercase tracking-[0.25em] font-bold">Coordination CMEP</span>
-                <h2 className="text-3xl md:text-4xl font-extrabold mt-3 mb-5 leading-tight tracking-tight">
+                <h2 className="text-h2 font-extrabold mt-3 mb-5 leading-tight tracking-tight">
                   Une équipe humaine, joignable directement.
                 </h2>
                 <p className="text-white/70 leading-relaxed mb-10">

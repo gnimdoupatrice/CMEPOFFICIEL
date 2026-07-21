@@ -18,7 +18,7 @@ function LegalPage() {
       <section className="pt-20 md:pt-24 pb-24 px-4 sm:px-6 bg-ngo-pearl">
         <div className="max-w-3xl mx-auto">
           <span className="text-ngo-gold font-bold uppercase tracking-[0.25em] text-[11px]">Informations légales</span>
-          <h1 className="font-extrabold text-4xl md:text-6xl mt-5 mb-10 leading-[1.05] tracking-tight text-ngo-navy">
+          <h1 className="text-h1 font-extrabold mt-5 mb-10 text-ngo-navy">
             Mentions légales
           </h1>
           <div className="prose-cmep">

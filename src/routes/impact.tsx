@@ -49,7 +49,7 @@ function MagazinePage() {
               <div className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.28em] font-bold text-ngo-gold mb-4">
                 <Radio size={12} aria-hidden="true" /> Édition {new Date().toLocaleDateString("fr-FR", { day: "2-digit", month: "long", year: "numeric" })}
               </div>
-              <h1 className="font-serif text-5xl md:text-7xl font-black tracking-tight text-ngo-navy leading-none">
+              <h1 className="font-serif text-h1 font-black text-ngo-navy">
                 Le Magazine <span className="text-ngo-gold italic">CMEP</span>
               </h1>
               <p className="mt-4 text-ngo-slate max-w-2xl leading-relaxed">
@@ -114,10 +114,10 @@ function MagazinePage() {
                     <span className="opacity-80">{featured.category}</span>
                     <span className="opacity-60 hidden sm:inline">• {featured.date}</span>
                   </div>
-                  <h2 className="font-serif text-3xl md:text-5xl font-extrabold leading-[1.05] tracking-tight max-w-3xl">
+                  <h2 className="font-serif text-h2 font-extrabold leading-[1.05] tracking-tight max-w-3xl">
                     {featured.title}
                   </h2>
-                  <p className="mt-4 text-white/85 max-w-2xl text-[15px] leading-relaxed line-clamp-2">
+                  <p className="mt-4 text-white/85 max-w-2xl text-body leading-relaxed line-clamp-2">
                     {featured.excerpt}
                   </p>
                   <div className="mt-5 flex items-center gap-5 text-[12px] text-white/70">
@@ -160,7 +160,7 @@ function MagazinePage() {
           <div className="flex items-end justify-between mb-10">
             <div>
               <span className="text-[10px] uppercase tracking-[0.28em] font-bold text-ngo-gold">Dernières publications</span>
-              <h2 className="font-serif text-3xl md:text-4xl font-extrabold text-ngo-navy mt-2 leading-tight">
+              <h2 className="font-serif text-h2 font-extrabold text-ngo-navy mt-2 leading-tight">
                 {filtered.length} article{filtered.length > 1 ? "s" : ""}{cat !== "Toutes" && <> dans <em className="text-ngo-gold not-italic">{cat}</em></>}
               </h2>
             </div>
@@ -215,7 +215,7 @@ function MagazinePage() {
       <section className="bg-ngo-navy text-white py-20 px-4 sm:px-6">
         <div className="max-w-4xl mx-auto text-center">
           <Bookmark size={28} className="text-ngo-gold mx-auto mb-5" aria-hidden="true" />
-          <h2 className="font-serif text-3xl md:text-5xl font-extrabold leading-tight tracking-tight mb-5">
+          <h2 className="font-serif text-h2 font-extrabold leading-tight tracking-tight mb-5">
             Recevez le meilleur du <span className="text-ngo-gold italic">Magazine CMEP</span>.
           </h2>
           <p className="text-white/70 max-w-xl mx-auto leading-relaxed mb-8">

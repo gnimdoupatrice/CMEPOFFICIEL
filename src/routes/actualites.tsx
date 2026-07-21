@@ -166,7 +166,7 @@ function NewsroomPage() {
                 Promotion 2025
               </span>
             </div>
-            <h1 className="font-extrabold text-5xl md:text-7xl lg:text-[5.5rem] leading-[0.98] tracking-tight max-w-4xl">
+            <h1 className="text-h1 font-extrabold max-w-4xl">
               Une génération qui ne            <span className="text-ngo-gold italic font-light">subit</span> plus.
             </h1>
             <p className="mt-8 text-lg md:text-xl text-white/80 leading-relaxed max-w-2xl font-light">
@@ -230,12 +230,12 @@ function NewsroomPage() {
               <span className="text-ngo-gold text-[10px] uppercase tracking-[0.3em] font-bold flex items-center gap-3">
                 Le magazine
               </span>
-              <h2 className="text-4xl md:text-6xl font-extrabold text-ngo-navy mt-5 leading-[1.02] tracking-tight">
+              <h2 className="text-h2 font-extrabold text-ngo-navy mt-5 leading-[1.02] tracking-tight">
                 Ce que le terrain <span className="italic font-light text-ngo-slate">raconte</span>.
               </h2>
             </div>
             <div className="lg:col-span-5 lg:text-right">
-              <p className="text-ngo-slate text-[15px] leading-relaxed max-w-md lg:ml-auto mb-5">
+              <p className="text-ngo-slate text-body leading-relaxed max-w-md lg:ml-auto mb-5">
                 Récits, portraits, partenariats. Une fenêtre éditoriale sur ce que le programme construit chaque semaine au Togo.
               </p>
               <Link
@@ -272,7 +272,7 @@ function NewsroomPage() {
                 </div>
               </div>
               <span className="text-ngo-gold text-[10px] uppercase tracking-[0.28em] font-bold">{EDITORIAL_NEWS[0].kicker}</span>
-              <h3 className="font-extrabold text-3xl md:text-4xl text-ngo-navy mt-3 leading-[1.1] tracking-tight group-hover:text-ngo-gold transition-colors">
+              <h3 className="text-h3 font-extrabold text-ngo-navy mt-3 leading-[1.1] tracking-tight group-hover:text-ngo-gold transition-colors">
                 {EDITORIAL_NEWS[0].title}
               </h3>
               <p className="text-[16px] text-ngo-slate leading-relaxed mt-4 max-w-2xl">{EDITORIAL_NEWS[0].excerpt}</p>
@@ -349,12 +349,12 @@ function NewsroomPage() {
               <span className="text-ngo-gold text-[10px] uppercase tracking-[0.3em] font-bold flex items-center gap-3">
                 Programmes ouverts
               </span>
-              <h2 className="text-4xl md:text-6xl font-extrabold text-white mt-5 leading-[1.02] tracking-tight">
+              <h2 className="text-h2 font-extrabold text-white mt-5 leading-[1.02] tracking-tight">
                 Des parcours <span className="italic font-light text-ngo-gold">transformateurs</span>.
               </h2>
             </div>
             <div className="lg:col-span-5">
-              <p className="text-white/65 text-[15px] leading-relaxed max-w-md lg:ml-auto">
+              <p className="text-white/65 text-body leading-relaxed max-w-md lg:ml-auto">
                 Cohortes d'excellence, mentorat individuel, bourses complètes.
                 Le programme couvre l'intégralité des frais : ne candidate que la motivation.
               </p>
@@ -393,7 +393,7 @@ function NewsroomPage() {
                   </div>
 
                   <div className="p-8 md:p-10 text-white">
-                    <h3 className="font-extrabold text-2xl md:text-3xl leading-tight tracking-tight mb-4">
+                    <h3 className="font-extrabold text-h3 mb-4">
                       {o.title}
                     </h3>
                     <p className="text-white/70 leading-relaxed text-[15px] mb-7 font-light">{o.pitch}</p>
@@ -477,10 +477,10 @@ function NewsroomPage() {
             <span className="text-ngo-gold text-[10px] uppercase tracking-[0.3em] font-bold flex items-center gap-3">
               Voix de la promotion
             </span>
-            <h2 className="text-4xl md:text-6xl font-extrabold text-ngo-navy mt-5 leading-[1.02] tracking-tight">
+            <h2 className="text-h2 font-extrabold text-ngo-navy mt-5 leading-[1.02] tracking-tight">
               Trois trajectoires. Une <span className="italic font-light">méthode</span>.
             </h2>
-            <p className="text-ngo-slate text-[16px] leading-relaxed mt-7 max-w-2xl">
+            <p className="text-ngo-slate text-body leading-relaxed mt-7 max-w-2xl">
               Derrière chaque chiffre, une histoire. Derrière chaque histoire, des mentors, des nuits courtes
               et la conviction qu'un savoir-faire local mérite d'être structuré, financé et célébré.
             </p>
@@ -504,7 +504,7 @@ function NewsroomPage() {
 
                   <div className="absolute inset-0 p-8 flex flex-col justify-end text-white">
                     <Quote size={32} className="text-ngo-gold mb-5 opacity-90" />
-                    <p className="text-[16px] leading-relaxed mb-6 font-light italic">
+                    <p className="text-body leading-relaxed mb-6 font-light italic">
                       "{s.quote}"
                     </p>
                     <div className="pt-5 border-t border-white/20">
@@ -528,7 +528,7 @@ function NewsroomPage() {
               <span className="text-ngo-gold text-[10px] uppercase tracking-[0.3em] font-bold flex items-center gap-3">
                 Field dispatches
               </span>
-              <h2 className="text-4xl md:text-5xl font-extrabold text-ngo-navy mt-5 mb-7 leading-[1.05] tracking-tight">
+              <h2 className="text-h2 font-extrabold text-ngo-navy mt-5 mb-7 leading-[1.05] tracking-tight">
                 Le pouls du <span className="italic font-light">terrain</span>.
               </h2>
               <p className="text-ngo-slate leading-relaxed text-[15px] mb-10">
@@ -584,7 +584,7 @@ function NewsroomPage() {
             <div className="relative grid lg:grid-cols-12 gap-10 p-12 md:p-16 lg:p-20 items-center">
               <div className="lg:col-span-7 text-white">
                 <Users className="text-ngo-gold mb-6" size={32} />
-                <h2 className="text-3xl md:text-5xl font-extrabold mb-6 leading-[1.05] tracking-tight">
+                <h2 className="text-h2 font-extrabold mb-6 leading-[1.05] tracking-tight">
                   Une lecture <span className="italic font-light text-ngo-gold">mensuelle</span>. Sans bruit.
                 </h2>
                 <p className="text-white/70 max-w-xl leading-relaxed text-[15px] font-light">
