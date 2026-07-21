@@ -40,33 +40,33 @@
   --fs-eyebrow: 0.6875rem;
   --fs-caption: 0.75rem;
   --fs-label: 0.8125rem;
-  --fs-body: 1rem;
-  --fs-lead: 1.125rem;
-  --fs-h5: 1.0625rem;
-  --fs-h4: 1.1875rem;
-  --fs-h3: 1.5rem;
-  --fs-h2: 2rem;
-  --fs-h1: 2.5rem;
-  --fs-hero: 2.75rem;
+  --fs-body: 0.9375rem;
+  --fs-lead: 1.0625rem;
+  --fs-h5: 1rem;
+  --fs-h4: 1.125rem;
+  --fs-h3: 1.375rem;
+  --fs-h2: 1.75rem;
+  --fs-h1: 2.125rem;
+  --fs-hero: 2.375rem;
 
   /* Line-heights — tight for display, generous for reading */
-  --lh-hero: 1.02;
-  --lh-display: 1.08;
-  --lh-heading: 1.18;
+  --lh-hero: 1.05;
+  --lh-display: 1.12;
+  --lh-heading: 1.22;
   --lh-subheading: 1.35;
-  --lh-body: 1.65;
+  --lh-body: 1.6;
   --lh-lead: 1.55;
 
   /* Tracking — negative on display, neutral on body, wide on eyebrows */
-  --tr-hero: 0;
-  --tr-display: 0;
+  --tr-hero: -0.01em;
+  --tr-display: -0.005em;
   --tr-heading: 0;
   --tr-body: 0;
   --tr-eyebrow: 0.22em;
 
-  /* Vertical rhythm */
-  --space-section-y: clamp(3.5rem, 5vw + 1rem, 7rem);
-  --space-block-y:   clamp(1.5rem, 1rem + 2vw, 2.75rem);
+  /* Vertical rhythm — tighter, less empty space on desktop */
+  --space-section-y: clamp(2.5rem, 3.5vw + 1rem, 5rem);
+  --space-block-y:   clamp(1.25rem, 1rem + 1.5vw, 2.25rem);
   --space-container-x: clamp(1rem, 3vw, 2rem);
 
   /* Optimal measure for prose */
@@ -81,28 +81,29 @@
     --fs-caption: 0.8125rem;
     --fs-label: 0.875rem;
     --fs-body: 1rem;
-    --fs-lead: 1.1875rem;
-    --fs-h5: 1.1875rem;
-    --fs-h4: 1.375rem;
-    --fs-h3: 1.875rem;
-    --fs-h2: 2.75rem;
-    --fs-h1: 3.5rem;
-    --fs-hero: 4rem;
+    --fs-lead: 1.125rem;
+    --fs-h5: 1.0625rem;
+    --fs-h4: 1.25rem;
+    --fs-h3: 1.5rem;
+    --fs-h2: 2.125rem;
+    --fs-h1: 2.625rem;
+    --fs-hero: 3rem;
   }
 }
 
 @media (min-width: 1024px) {
   :root {
-    --fs-body: 1.0625rem;
-    --fs-lead: 1.3125rem;
-    --fs-h5: 1.25rem;
-    --fs-h4: 1.5rem;
-    --fs-h3: 2rem;
-    --fs-h2: 3.25rem;
-    --fs-h1: 4.25rem;
-    --fs-hero: 5.25rem;
+    --fs-body: 1rem;
+    --fs-lead: 1.1875rem;
+    --fs-h5: 1.125rem;
+    --fs-h4: 1.3125rem;
+    --fs-h3: 1.625rem;
+    --fs-h2: 2.375rem;
+    --fs-h1: 3rem;
+    --fs-hero: 3.5rem;
   }
 }
+
 
 html, body {
   background: #ffffff;
