@@ -31,7 +31,7 @@ function ContactPage() {
       <section className="pt-32 pb-20 px-6 bg-ngo-pearl border-b border-ngo-navy/5">
         <div className="max-w-7xl mx-auto">
           <span className="text-ngo-gold font-bold uppercase tracking-[0.25em] text-[11px]">Contact</span>
-          <h1 className="font-extrabold text-5xl md:text-7xl mt-5 mb-8 leading-[1.02] tracking-tight text-ngo-navy max-w-4xl">
+          <h1 className="font-extrabold text-h1 mt-5 mb-8 text-ngo-navy max-w-4xl">
             Bâtissons <span className="text-ngo-gold">ensemble</span>.
           </h1>
           <p className="text-lg text-ngo-slate leading-relaxed max-w-2xl">
@@ -88,7 +88,7 @@ function ContactPage() {
             }}
           >
             <span className="text-ngo-gold text-[10px] uppercase tracking-[0.25em] font-bold">Formulaire</span>
-            <h2 className="text-3xl md:text-4xl font-extrabold leading-tight tracking-tight mt-2 mb-2">
+            <h2 className="text-h2 font-extrabold leading-tight tracking-tight mt-2 mb-2">
               Écrivez-nous.
             </h2>
             <p className="text-white/65 text-sm mb-6 leading-relaxed">

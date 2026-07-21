@@ -32,7 +32,7 @@ function AboutPage() {
       <section className="pt-20 md:pt-24 pb-16 md:pb-20 px-4 sm:px-6 bg-ngo-pearl border-b border-ngo-navy/5">
         <div className="max-w-7xl mx-auto">
           <span className="text-ngo-gold font-bold uppercase tracking-[0.25em] text-[11px]">À propos du CMEP</span>
-          <h1 className="font-extrabold text-4xl sm:text-5xl md:text-7xl mt-5 mb-8 leading-[1.02] tracking-tight text-ngo-navy max-w-4xl">
+          <h1 className="font-extrabold text-4xl sm:text-h1 mt-5 mb-8 text-ngo-navy max-w-4xl">
             Une initiative née du terrain, portée par la <span className="text-ngo-gold">jeunesse</span>.
           </h1>
           <p className="text-lg text-ngo-slate leading-relaxed max-w-2xl">
@@ -105,7 +105,7 @@ function AboutPage() {
         <div className="max-w-7xl mx-auto">
           <div className="max-w-3xl mb-14">
             <span className="text-ngo-gold text-[10px] uppercase tracking-[0.25em] font-bold">Objectifs spécifiques</span>
-            <h2 className="text-3xl md:text-5xl font-extrabold text-ngo-navy mt-4 leading-[1.05] tracking-tight">Quatre engagements concrets.</h2>
+            <h2 className="text-h2 font-extrabold text-ngo-navy mt-4 leading-[1.05] tracking-tight">Quatre engagements concrets.</h2>
           </div>
           <div className="grid md:grid-cols-2 gap-5">
             {OBJECTIVES.map((obj, i) => (
@@ -129,7 +129,7 @@ function AboutPage() {
             </div>
             <div className="md:col-span-10">
               <span className="text-ngo-gold text-[10px] uppercase tracking-[0.25em] font-bold">Ancrage national</span>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mt-3 mb-4 leading-tight tracking-tight">
+              <h2 className="text-2xl sm:text-h2 font-extrabold mt-3 mb-4 leading-tight tracking-tight">
                 Un programme togolais, pensé pour passer à l'échelle.
               </h2>
               <p className="text-white/70 leading-relaxed">
@@ -145,7 +145,7 @@ function AboutPage() {
       <section className="py-20 md:py-24 px-4 sm:px-6 bg-white">
         <div className="max-w-3xl mx-auto text-center">
           <Sparkles className="mx-auto text-ngo-gold mb-6" size={28} aria-hidden="true" />
-          <h2 className="text-3xl md:text-4xl font-extrabold text-ngo-navy mb-5 leading-tight tracking-tight">
+          <h2 className="text-h2 font-extrabold text-ngo-navy mb-5 leading-tight tracking-tight">
             Rejoignez l'écosystème CMEP.
           </h2>
           <p className="text-ngo-slate mb-10 leading-relaxed">

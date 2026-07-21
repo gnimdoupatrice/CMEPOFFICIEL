@@ -137,7 +137,7 @@ function PartnersPage() {
           <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/15 backdrop-blur text-[10px] uppercase tracking-[0.25em] font-bold text-ngo-gold mb-8">
             <Network size={11} /> Coalition partenaire
           </span>
-          <h1 className="font-extrabold text-5xl md:text-7xl leading-[1.02] tracking-tight max-w-4xl">
+          <h1 className="text-h1 font-extrabold max-w-4xl">
             Une coalition institutionnelle pour la <span className="text-ngo-gold">jeunesse togolaise</span>.
           </h1>
           <p className="mt-8 text-lg text-white/75 leading-relaxed max-w-2xl">
@@ -152,7 +152,7 @@ function PartnersPage() {
                 className="p-6 bg-white/5 backdrop-blur border border-white/10 rounded-xl hover:border-ngo-gold/40 transition-colors"
               >
                 <t.icon size={20} className="text-ngo-gold mb-4" strokeWidth={2.2} />
-                <div className="text-3xl md:text-4xl font-extrabold leading-none">{t.v}</div>
+                <div className="text-h2 font-extrabold leading-none">{t.v}</div>
                 <div className="text-[10px] uppercase tracking-[0.22em] text-white/55 mt-3 font-semibold">{t.l}</div>
               </div>
             ))}
@@ -165,7 +165,7 @@ function PartnersPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-2xl mx-auto mb-14">
             <span className="text-ngo-gold text-[10px] uppercase tracking-[0.25em] font-bold">Ils nous accompagnent</span>
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-ngo-navy mt-3 leading-tight tracking-tight">
+            <h2 className="text-h2 font-extrabold text-ngo-navy mt-3 leading-tight tracking-tight">
               Un écosystème de douze institutions partenaires.
             </h2>
           </div>
@@ -199,7 +199,7 @@ function PartnersPage() {
           <div className="grid lg:grid-cols-12 gap-10 items-end mb-14">
             <div className="lg:col-span-8">
               <span className="text-ngo-gold text-[10px] uppercase tracking-[0.25em] font-bold">Écosystème structuré</span>
-              <h2 className="text-3xl md:text-5xl font-extrabold text-ngo-navy mt-3 leading-[1.05] tracking-tight">
+              <h2 className="text-h2 font-extrabold text-ngo-navy mt-3 leading-[1.05] tracking-tight">
                 Quatre familles d'engagement. Une seule mission.
               </h2>
             </div>
@@ -220,10 +220,10 @@ function PartnersPage() {
                     <div className="size-12 rounded-xl bg-ngo-gold text-ngo-navy grid place-items-center mb-7">
                       <cat.icon size={20} strokeWidth={2.2} />
                     </div>
-                    <h3 className="font-extrabold text-2xl md:text-3xl leading-tight tracking-tight mb-5">
+                    <h3 className="font-extrabold text-h3 mb-5">
                       {cat.label}
                     </h3>
-                    <p className="text-white/65 text-[14px] leading-relaxed">{cat.desc}</p>
+                    <p className="text-white/65 text-body leading-relaxed">{cat.desc}</p>
                   </div>
                   <div className="mt-8 pt-6 border-t border-white/10 flex items-center justify-between text-[11px] uppercase tracking-[0.22em] font-semibold">
                     <span className="text-white/55">Membres</span>
@@ -270,7 +270,7 @@ function PartnersPage() {
             <div className="absolute -top-24 -right-24 size-72 rounded-full bg-ngo-gold/10 blur-3xl" />
             <div className="md:col-span-8 relative">
               <span className="text-ngo-gold text-[10px] uppercase tracking-[0.25em] font-bold">Rejoindre la coalition</span>
-              <h2 className="text-3xl md:text-4xl font-extrabold mt-3 mb-5 leading-tight tracking-tight">
+              <h2 className="text-h2 font-extrabold mt-3 mb-5 leading-tight tracking-tight">
                 Co-construisez avec nous le prochain chapitre.
               </h2>
               <p className="text-white/70 text-base leading-relaxed">

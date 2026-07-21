@@ -33,7 +33,7 @@ function ProgrammesPage() {
       <section className="pt-20 md:pt-24 pb-16 md:pb-20 px-4 sm:px-6 bg-ngo-pearl border-b border-ngo-navy/5">
         <div className="max-w-7xl mx-auto">
           <span className="text-ngo-gold font-bold uppercase tracking-[0.25em] text-[11px]">Nos axes d'intervention</span>
-          <h1 className="font-extrabold text-4xl sm:text-5xl md:text-7xl mt-5 mb-8 leading-[1.02] tracking-tight text-ngo-navy max-w-4xl">
+          <h1 className="font-extrabold text-4xl sm:text-h1 mt-5 mb-8 text-ngo-navy max-w-4xl">
             Cinq axes pour une <span className="text-ngo-gold">autonomisation</span> réelle.
           </h1>
           <p className="text-lg text-ngo-slate leading-relaxed max-w-2xl">
@@ -88,7 +88,7 @@ function ProgrammesPage() {
               <div className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.28em] font-bold text-ngo-gold mb-4">
                 <Target size={12} aria-hidden="true" /> Agenda 2030
               </div>
-              <h2 id="sdg-heading" className="text-3xl md:text-5xl font-extrabold text-ngo-navy leading-[1.05] tracking-tight mb-6">
+              <h2 id="sdg-heading" className="text-h2 font-extrabold text-ngo-navy leading-[1.05] tracking-tight mb-6">
                 Alignement aux 17 Objectifs de Développement Durable au cœur de l'action.
               </h2>
               <p className="text-ngo-slate leading-relaxed text-[15px] mb-8">
@@ -123,7 +123,7 @@ function ProgrammesPage() {
       {/* CTA */}
       <section className="py-20 md:py-24 px-4 sm:px-6 bg-white">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-ngo-navy mb-5 leading-tight tracking-tight">
+          <h2 className="text-h2 font-extrabold text-ngo-navy mb-5 leading-tight tracking-tight">
             Prêt à rejoindre un axe d'intervention ?
           </h2>
           <p className="text-ngo-slate mb-10 leading-relaxed">
