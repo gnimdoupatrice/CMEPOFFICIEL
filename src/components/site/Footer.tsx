@@ -7,13 +7,13 @@ export function Footer() {
   const year = new Date().getFullYear();
   return (
     <footer
-      className="bg-ngo-navy text-white pt-16 sm:pt-20 pb-8"
+      className="bg-ngo-navy text-white pt-12 sm:pt-20 pb-8"
       style={{ paddingBottom: "max(2rem, env(safe-area-inset-bottom))" }}
       aria-labelledby="footer-heading"
     >
       <h2 id="footer-heading" className="sr-only">Pied de page — CMEP Togo</h2>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="grid gap-12 md:grid-cols-12 mb-14 justify-items-center md:justify-items-stretch text-center md:text-left">
+      <div className="max-w-7xl mx-auto px-5 sm:px-6">
+        <div className="grid gap-10 sm:gap-12 grid-cols-1 sm:grid-cols-2 md:grid-cols-12 mb-10 sm:mb-14 text-left">
           {/* Brand + newsletter */}
           <div className="md:col-span-5">
             <Link to="/" className="inline-flex items-center gap-3 mb-6" aria-label="CMEP — Accueil">
