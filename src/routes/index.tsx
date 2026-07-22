@@ -5,16 +5,16 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { CMEP_MEDIA, PARTNER_LOGOS } from "@/lib/media";
 import { createWhatsAppHref } from "@/lib/contact";
 
-// Actualité phare (featured story hero)
+// Actualité phare (featured story hero) — alignée sur la cérémonie de lancement
 const FEATURED_STORY = {
-  date: "15 mai 2025",
-  category: "Reportage terrain",
+  date: "2026",
+  category: "Événement institutionnel",
   location: "Togo",
-  readTime: "6 min de lecture",
-  title: "Au Togo, les jeunes ouvrent une nouvelle page du CMEP.",
-  kicker: "Promotion 2025 — Cohorte annuelle",
+  readTime: "5 min de lecture",
+  title: "Cérémonie de présentation et de lancement officiel du CMEP.",
+  kicker: "Lancement officiel — Chris Mentorship & Empowerment Program",
   excerpt:
-    "Aux côtés de partenaires académiques, institutionnels et communautaires, les bénéficiaires du CMEP installent une dynamique nationale de mentorat, de leadership et d’insertion.",
+    "Aux côtés des partenaires académiques, institutionnels et communautaires, le CMEP est officiellement lancé : une génération togolaise outillée, responsable et engagée entre en scène.",
 };
 
 // Actualités — évènements CMEP réels
@@ -309,10 +309,10 @@ function Home() {
       </section>
 
       {/* ============ POURQUOI LE CMEP ============ */}
-      <section className="py-24 px-6 bg-white">
+      <section className="section-y px-5 sm:px-6 bg-white">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-7 relative">
-            <img src={axisEntrepreneur} alt="Jeunes diplômés togolais en attente d'entretien de recrutement" loading="lazy" decoding="async" className="w-full h-[560px] object-cover rounded-3xl shadow-2xl" />
+            <img src={axisEntrepreneur} alt="Jeunes diplômés togolais en attente d'entretien de recrutement" loading="lazy" decoding="async" className="w-full h-[380px] md:h-[480px] lg:h-[560px] object-cover rounded-2xl md:rounded-3xl shadow-2xl" />
             <div className="absolute -bottom-6 -right-6 hidden md:block bg-ngo-navy text-white p-6 rounded-2xl shadow-xl max-w-[240px]">
               <div className="text-4xl font-black text-ngo-gold mb-1">+30%</div>
               <div className="text-xs uppercase tracking-widest font-bold text-white/70">de chômage chez les jeunes diplômés togolais</div>
@@ -354,7 +354,7 @@ function Home() {
       </section>
 
       {/* ============ NOTRE VISION — Bannière immersive ============ */}
-      <section className="relative py-32 px-6 overflow-hidden">
+      <section className="relative py-20 md:py-28 px-5 sm:px-6 overflow-hidden">
         <img src={visionImg} alt="Vision CMEP : jeunesse togolaise tournée vers l'horizon" loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-r from-ngo-navy via-ngo-navy/85 to-ngo-navy/40"></div>
 
@@ -379,7 +379,7 @@ function Home() {
       </section>
 
       {/* ============ NOTRE MISSION ============ */}
-      <section className="py-24 px-6 bg-ngo-pearl">
+      <section className="section-y px-5 sm:px-6 bg-ngo-pearl">
         <div className="max-w-7xl mx-auto">
           <div className="max-w-3xl mb-16">
             <span className="text-ngo-gold text-[10px] uppercase tracking-[0.25em] font-bold">Notre Mission</span>
@@ -408,7 +408,7 @@ function Home() {
       </section>
 
       {/* ============ NOS OBJECTIFS — Une carte premium par objectif ============ */}
-      <section className="py-24 px-6 bg-white">
+      <section className="section-y px-5 sm:px-6 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="max-w-3xl mb-14">
             <span className="text-ngo-gold text-[10px] uppercase tracking-[0.25em] font-bold">Nos Objectifs</span>
@@ -461,33 +461,33 @@ function Home() {
       </section>
 
       {/* ============ AXES STRATÉGIQUES — Mini-pages avec image dédiée ============ */}
-      <section className="py-24 px-6 bg-ngo-pearl">
+      <section className="section-y px-5 sm:px-6 bg-ngo-pearl">
         <div className="max-w-7xl mx-auto">
-          <div className="max-w-3xl mb-16">
+          <div className="max-w-3xl mb-10 md:mb-14">
             <span className="text-ngo-gold text-[10px] uppercase tracking-[0.25em] font-bold">Axes Stratégiques</span>
             <h2 className="font-serif text-h2 font-extrabold text-ngo-navy mt-4 leading-[1.1] md:leading-[1.05] tracking-tight">
               Cinq leviers, déployés comme des programmes à part entière.
             </h2>
           </div>
 
-          <div className="space-y-20">
+          <div className="space-y-14 md:space-y-16">
             {AXES.map((axis, i) => (
-              <article key={axis.num} className={`grid lg:grid-cols-12 gap-10 items-center ${i % 2 === 1 ? "lg:[&>*:first-child]:order-2" : ""}`}>
+              <article key={axis.num} className={`grid lg:grid-cols-12 gap-8 lg:gap-10 items-center ${i % 2 === 1 ? "lg:[&>*:first-child]:order-2" : ""}`}>
                 <div className="lg:col-span-6 relative group">
-                  <div className="relative overflow-hidden rounded-3xl shadow-xl ring-1 ring-ngo-navy/10">
-                    <img src={axis.image} alt={axis.imageAlt} loading="lazy" decoding="async" className="w-full h-[460px] object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
+                  <div className="relative overflow-hidden rounded-2xl md:rounded-3xl shadow-xl ring-1 ring-ngo-navy/10">
+                    <img src={axis.image} alt={axis.imageAlt} loading="lazy" decoding="async" className="w-full aspect-[4/3] lg:aspect-[5/4] object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
                     <div className="absolute inset-0 bg-gradient-to-t from-ngo-navy/75 via-ngo-navy/10 to-transparent"></div>
-                    <div className="absolute top-6 left-6 bg-white px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest text-ngo-navy shadow-lg tabular-nums">
+                    <div className="absolute top-4 left-4 md:top-6 md:left-6 bg-white px-3 py-1.5 md:px-4 md:py-2 rounded-full text-[10px] font-bold uppercase tracking-widest text-ngo-navy shadow-lg tabular-nums">
                       Axe {axis.num}
                     </div>
-                    <div className="absolute bottom-6 left-6 right-6 flex items-center gap-2 text-[10px] uppercase tracking-[0.28em] font-bold text-ngo-gold">
+                    <div className="absolute bottom-4 left-4 right-4 md:bottom-6 md:left-6 md:right-6 flex items-center gap-2 text-[10px] uppercase tracking-[0.28em] font-bold text-ngo-gold">
                       <span className="text-white/95">{axis.sdg}</span>
                     </div>
                   </div>
                 </div>
 
                 <div className="lg:col-span-6">
-                  <h3 className="text-h2 font-extrabold text-ngo-navy mb-6 leading-tight tracking-tight">{axis.title}</h3>
+                  <h3 className="text-2xl md:text-3xl lg:text-h3 font-extrabold text-ngo-navy mb-5 leading-tight tracking-tight">{axis.title}</h3>
 
                   <div className="space-y-4 mb-6">
                     <div>
@@ -524,7 +524,7 @@ function Home() {
       </section>
 
       {/* ============ PROGRAMMES ============ */}
-      <section className="py-24 px-6 bg-white">
+      <section className="section-y px-5 sm:px-6 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="max-w-3xl mb-14">
             <span className="text-ngo-gold text-[10px] uppercase tracking-[0.25em] font-bold">Programmes Phares</span>
@@ -566,7 +566,7 @@ function Home() {
       </section>
 
       {/* ============ IMPACT — Bannière institutionnelle ============ */}
-      <section className="relative py-32 px-6 overflow-hidden bg-gradient-to-b from-ngo-navy via-ngo-navy to-[color-mix(in_oklab,var(--color-ngo-navy)_92%,black)]">
+      <section className="relative py-20 md:py-28 px-5 sm:px-6 overflow-hidden bg-gradient-to-b from-ngo-navy via-ngo-navy to-[color-mix(in_oklab,var(--color-ngo-navy)_92%,black)]">
         <div className="absolute inset-0 opacity-[0.06] bg-[radial-gradient(circle_at_20%_20%,var(--color-ngo-gold)_0%,transparent_45%),radial-gradient(circle_at_80%_80%,var(--color-ngo-gold)_0%,transparent_45%)]" aria-hidden="true"></div>
 
 
@@ -602,7 +602,7 @@ function Home() {
       </section>
 
       {/* ============ TÉMOIGNAGES ILLUSTRÉS ============ */}
-      <section className="py-24 px-6 bg-ngo-pearl">
+      <section className="section-y px-5 sm:px-6 bg-ngo-pearl">
         <div className="max-w-7xl mx-auto">
           <div className="max-w-3xl mb-14">
             <span className="text-ngo-gold text-[10px] uppercase tracking-[0.25em] font-bold">Témoignages</span>
@@ -646,7 +646,7 @@ function Home() {
       {/* ============ ACTUALITÉS & OPPORTUNITÉS — magazine éditorial premium ============ */}
       <section className="relative bg-ngo-pearl">
         {/* ---- En-tête de section ---- */}
-        <div className="max-w-7xl mx-auto px-6 pt-28 md:pt-32 pb-12">
+        <div className="max-w-7xl mx-auto px-6 pt-16 md:pt-24 pb-10">
           <div className="grid lg:grid-cols-12 gap-10 items-end">
             <div className="lg:col-span-7">
               <div className="flex items-center gap-4 mb-6">
@@ -724,7 +724,7 @@ function Home() {
         </div>
 
         {/* ---- ACTUALITÉS SECONDAIRES — grille éditoriale magazine ---- */}
-        <div className="max-w-7xl mx-auto px-6 pb-28">
+        <div className="max-w-7xl mx-auto px-6 pb-16 md:pb-20">
           <div className="flex items-baseline justify-between mb-10 pb-5 border-b border-ngo-navy/15">
             <h3 className="text-[11px] uppercase tracking-[0.3em] font-bold text-ngo-navy flex items-center gap-3">
               <Newspaper size={14} className="text-ngo-gold" /> Dernières dépêches
@@ -768,95 +768,86 @@ function Home() {
           </div>
         </div>
 
-        {/* ---- OPPORTUNITÉS PREMIUM — parcours d'excellence ---- */}
-        <div className="bg-ngo-navy relative overflow-hidden">
-          <div className="absolute -top-32 -left-32 w-[480px] h-[480px] bg-ngo-gold/8 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute -bottom-32 -right-32 w-[480px] h-[480px] bg-ngo-gold/5 rounded-full blur-3xl pointer-events-none" />
-
-          <div className="relative max-w-7xl mx-auto px-6 py-28 md:py-32">
-            <div className="grid lg:grid-cols-12 gap-10 items-end mb-16">
+        {/* ---- OPPORTUNITÉS PREMIUM — même traitement que Programmes phares ---- */}
+        <div className="bg-white">
+          <div className="max-w-7xl mx-auto px-5 sm:px-6 py-16 md:py-24">
+            <div className="grid lg:grid-cols-12 gap-8 lg:gap-10 items-end mb-10 md:mb-14">
               <div className="lg:col-span-7">
-                <div className="flex items-center gap-4 mb-6">
+                <div className="flex items-center gap-4 mb-4 md:mb-6">
                   <span className="text-ngo-gold text-[10px] uppercase tracking-[0.35em] font-bold">Opportunités ouvertes</span>
                 </div>
-                <h2 className="font-serif text-h2 font-extrabold text-white">
+                <h2 className="font-serif text-h2 font-extrabold text-ngo-navy leading-[1.1] md:leading-[1.05] tracking-tight">
                   Rejoindre une <span className="text-ngo-gold">cohorte</span>, candidater à un parcours.
                 </h2>
               </div>
               <div className="lg:col-span-5">
-                <p className="text-white/65 text-base md:text-lg leading-relaxed font-light border-l border-white/20 pl-6">
+                <p className="text-ngo-slate text-base md:text-lg leading-relaxed font-light lg:border-l lg:border-ngo-navy/15 lg:pl-6">
                   Trois portes d'entrée vers le CMEP : un programme phare de mentorat, un bootcamp tech, et un dispositif d'insertion en continu. Sélection sur dossier, frais couverts.
                 </p>
               </div>
             </div>
 
-            <div className="flex flex-wrap justify-center gap-6 lg:gap-7">
+            <div className="flex flex-wrap justify-center gap-6">
               {FEATURED_OPPORTUNITIES.map((opp) => {
                 const isUrgent = opp.urgency.toLowerCase().includes("imminente");
                 return (
                   <article
                     key={opp.title}
-                    className="group relative rounded-2xl overflow-hidden bg-gradient-to-b from-white/[0.06] to-white/[0.02] border border-white/10 hover:border-ngo-gold/40 hover:bg-white/[0.08] transition-all duration-500 flex flex-col w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1.17rem)]"
+                    className="group bg-ngo-pearl rounded-3xl overflow-hidden border border-transparent hover:border-ngo-gold/40 hover:shadow-2xl transition-all flex flex-col w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]"
                   >
-                    {/* Cohort image */}
-                    <div className="relative aspect-[16/10] overflow-hidden">
+                    <div className="relative aspect-[4/3] overflow-hidden">
                       <img
                         src={opp.image}
                         alt={opp.title}
-                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-[900ms] group-hover:scale-[1.05]"
+                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                         loading="lazy"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-ngo-navy via-ngo-navy/30 to-transparent" />
-                      {/* Badge */}
-                      <span className="absolute top-4 left-4 inline-flex items-center gap-1.5 bg-ngo-gold text-ngo-navy text-[10px] uppercase tracking-[0.22em] font-extrabold px-3 py-1.5 rounded-full">
+                      <span className="absolute top-4 left-4 inline-flex items-center gap-1.5 bg-ngo-gold text-ngo-navy text-[10px] uppercase tracking-[0.22em] font-extrabold px-3 py-1.5 rounded-full shadow-md">
                         <Award size={11} /> {opp.badge}
                       </span>
-                      {/* Urgency badge */}
                       {isUrgent && (
-                        <span className="absolute top-4 right-4 inline-flex items-center gap-1.5 bg-red-500/95 text-white text-[10px] uppercase tracking-[0.22em] font-extrabold px-3 py-1.5 rounded-full">
+                        <span className="absolute top-4 right-4 inline-flex items-center gap-1.5 bg-red-500 text-white text-[10px] uppercase tracking-[0.22em] font-extrabold px-3 py-1.5 rounded-full shadow-md">
                           <Flame size={11} /> {opp.urgency}
                         </span>
                       )}
                     </div>
 
-                    <div className="p-7 md:p-8 flex flex-col flex-1">
+                    <div className="p-6 md:p-7 flex flex-col flex-1">
                       <span className="text-[10px] uppercase tracking-[0.25em] font-bold text-ngo-gold mb-3">{opp.type}</span>
-                      <h3 className="font-extrabold text-xl md:text-[22px] text-white leading-[1.15] tracking-tight mb-5 group-hover:text-ngo-gold transition-colors">
+                      <h3 className="text-xl font-extrabold text-ngo-navy leading-tight tracking-tight mb-4">
                         {opp.title}
                       </h3>
 
-                      {/* Timeline / meta */}
-                      <div className="grid grid-cols-2 gap-3 mb-6 pb-6 border-b border-white/10 text-[11px]">
+                      <div className="grid grid-cols-2 gap-3 mb-5 pb-5 border-b border-ngo-navy/10 text-xs">
                         <div>
-                          <div className="text-white/40 uppercase tracking-widest font-semibold text-[9px] mb-1">Durée</div>
-                          <div className="text-white font-bold flex items-center gap-1.5"><Clock size={11} className="text-ngo-gold" /> {opp.duration}</div>
+                          <div className="text-ngo-slate/70 uppercase tracking-widest font-semibold text-[9px] mb-1">Durée</div>
+                          <div className="text-ngo-navy font-bold flex items-center gap-1.5"><Clock size={11} className="text-ngo-gold" /> {opp.duration}</div>
                         </div>
                         <div>
-                          <div className="text-white/40 uppercase tracking-widest font-semibold text-[9px] mb-1">Places</div>
-                          <div className="text-white font-bold flex items-center gap-1.5"><Users size={11} className="text-ngo-gold" /> {opp.seats}</div>
+                          <div className="text-ngo-slate/70 uppercase tracking-widest font-semibold text-[9px] mb-1">Places</div>
+                          <div className="text-ngo-navy font-bold flex items-center gap-1.5"><Users size={11} className="text-ngo-gold" /> {opp.seats}</div>
                         </div>
                         <div>
-                          <div className="text-white/40 uppercase tracking-widest font-semibold text-[9px] mb-1">Clôture</div>
-                          <div className="text-white font-bold flex items-center gap-1.5"><Calendar size={11} className="text-ngo-gold" /> {opp.deadline}</div>
+                          <div className="text-ngo-slate/70 uppercase tracking-widest font-semibold text-[9px] mb-1">Clôture</div>
+                          <div className="text-ngo-navy font-bold flex items-center gap-1.5"><Calendar size={11} className="text-ngo-gold" /> {opp.deadline}</div>
                         </div>
                         <div>
-                          <div className="text-white/40 uppercase tracking-widest font-semibold text-[9px] mb-1">Lieu</div>
-                          <div className="text-white font-bold flex items-center gap-1.5"><MapPin size={11} className="text-ngo-gold" /> {opp.location}</div>
+                          <div className="text-ngo-slate/70 uppercase tracking-widest font-semibold text-[9px] mb-1">Lieu</div>
+                          <div className="text-ngo-navy font-bold flex items-center gap-1.5"><MapPin size={11} className="text-ngo-gold" /> {opp.location}</div>
                         </div>
                       </div>
 
-                      {/* Perks */}
-                      <ul className="space-y-2 mb-7">
+                      <ul className="space-y-2 mb-6">
                         {opp.perks.map((perk) => (
-                          <li key={perk} className="flex items-start gap-2.5 text-[13px] text-white/75 font-light">
-                            <Check size={14} className="text-ngo-gold shrink-0 mt-0.5" /> {perk}
+                          <li key={perk} className="flex items-start gap-2 text-sm text-ngo-slate leading-relaxed">
+                            <Check size={14} className="text-ngo-gold shrink-0 mt-0.5" strokeWidth={3} /> {perk}
                           </li>
                         ))}
                       </ul>
 
                       <Link
                         to="/opportunites"
-                        className="mt-auto inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-ngo-gold hover:text-ngo-navy text-white border border-white/15 hover:border-ngo-gold px-5 py-3.5 rounded-xl font-bold text-[11px] uppercase tracking-[0.22em] transition-all"
+                        className="mt-auto inline-flex items-center justify-center gap-2 bg-ngo-navy hover:bg-ngo-gold hover:text-ngo-navy text-white px-5 py-3 rounded-xl font-bold text-[11px] uppercase tracking-[0.22em] transition-all"
                       >
                         Candidater <ArrowRight size={12} />
                       </Link>
@@ -866,11 +857,11 @@ function Home() {
               })}
             </div>
 
-            <div className="mt-14 flex flex-wrap items-center justify-between gap-6 pt-10 border-t border-white/10">
-              <p className="text-white/55 text-sm font-light max-w-xl leading-relaxed">
+            <div className="mt-10 md:mt-12 flex flex-wrap items-center justify-between gap-4 pt-8 border-t border-ngo-navy/10">
+              <p className="text-ngo-slate text-sm font-light max-w-xl leading-relaxed">
                 Une question avant de candidater ? La coordination CMEP répond personnellement à chaque sollicitation sous 48 h.
               </p>
-              <Link to="/opportunites" className="inline-flex items-center gap-2 text-ngo-gold hover:text-white font-bold text-[11px] uppercase tracking-[0.25em] transition-colors">
+              <Link to="/opportunites" className="inline-flex items-center gap-2 text-ngo-navy hover:text-ngo-gold font-bold text-[11px] uppercase tracking-[0.25em] transition-colors">
                 Voir toutes les opportunités <ArrowRight size={12} />
               </Link>
             </div>
@@ -880,7 +871,7 @@ function Home() {
 
 
       {/* ============ PARTENAIRES — mur de logos institutionnel, fond clair ============ */}
-      <section className="py-28 md:py-32 px-6 bg-ngo-pearl relative overflow-hidden">
+      <section className="py-16 md:py-24 px-5 sm:px-6 bg-ngo-pearl relative overflow-hidden">
         <div className="relative max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-12 gap-10 mb-16 items-end">
             <div className="lg:col-span-7">
@@ -934,7 +925,7 @@ function Home() {
       </section>
 
       {/* ============ FAQ — éditorial deux colonnes ============ */}
-      <section className="py-28 md:py-32 px-6 bg-ngo-pearl">
+      <section className="py-16 md:py-24 px-5 sm:px-6 bg-ngo-pearl">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 lg:gap-16">
           <div className="lg:col-span-5">
             <div className="lg:sticky lg:top-32">
@@ -1003,7 +994,7 @@ function Home() {
       </section>
 
       {/* ============ CTA FINAL ============ */}
-      <section className="py-24 px-6 bg-white">
+      <section className="section-y px-5 sm:px-6 bg-white">
         <div className="max-w-7xl mx-auto bg-ngo-navy rounded-3xl p-12 md:p-16 grid lg:grid-cols-2 gap-12 items-center relative overflow-hidden">
           <div className="absolute -top-20 -right-20 w-80 h-80 bg-ngo-gold/15 rounded-full blur-3xl"></div>
 
