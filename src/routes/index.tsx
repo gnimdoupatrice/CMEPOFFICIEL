@@ -768,95 +768,86 @@ function Home() {
           </div>
         </div>
 
-        {/* ---- OPPORTUNITÉS PREMIUM — parcours d'excellence ---- */}
-        <div className="bg-ngo-navy relative overflow-hidden">
-          <div className="absolute -top-32 -left-32 w-[480px] h-[480px] bg-ngo-gold/8 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute -bottom-32 -right-32 w-[480px] h-[480px] bg-ngo-gold/5 rounded-full blur-3xl pointer-events-none" />
-
-          <div className="relative max-w-7xl mx-auto px-6 py-28 md:py-32">
-            <div className="grid lg:grid-cols-12 gap-10 items-end mb-16">
+        {/* ---- OPPORTUNITÉS PREMIUM — même traitement que Programmes phares ---- */}
+        <div className="bg-white">
+          <div className="max-w-7xl mx-auto px-5 sm:px-6 py-16 md:py-24">
+            <div className="grid lg:grid-cols-12 gap-8 lg:gap-10 items-end mb-10 md:mb-14">
               <div className="lg:col-span-7">
-                <div className="flex items-center gap-4 mb-6">
+                <div className="flex items-center gap-4 mb-4 md:mb-6">
                   <span className="text-ngo-gold text-[10px] uppercase tracking-[0.35em] font-bold">Opportunités ouvertes</span>
                 </div>
-                <h2 className="font-serif text-h2 font-extrabold text-white">
+                <h2 className="font-serif text-h2 font-extrabold text-ngo-navy leading-[1.1] md:leading-[1.05] tracking-tight">
                   Rejoindre une <span className="text-ngo-gold">cohorte</span>, candidater à un parcours.
                 </h2>
               </div>
               <div className="lg:col-span-5">
-                <p className="text-white/65 text-base md:text-lg leading-relaxed font-light border-l border-white/20 pl-6">
+                <p className="text-ngo-slate text-base md:text-lg leading-relaxed font-light lg:border-l lg:border-ngo-navy/15 lg:pl-6">
                   Trois portes d'entrée vers le CMEP : un programme phare de mentorat, un bootcamp tech, et un dispositif d'insertion en continu. Sélection sur dossier, frais couverts.
                 </p>
               </div>
             </div>
 
-            <div className="flex flex-wrap justify-center gap-6 lg:gap-7">
+            <div className="flex flex-wrap justify-center gap-6">
               {FEATURED_OPPORTUNITIES.map((opp) => {
                 const isUrgent = opp.urgency.toLowerCase().includes("imminente");
                 return (
                   <article
                     key={opp.title}
-                    className="group relative rounded-2xl overflow-hidden bg-gradient-to-b from-white/[0.06] to-white/[0.02] border border-white/10 hover:border-ngo-gold/40 hover:bg-white/[0.08] transition-all duration-500 flex flex-col w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1.17rem)]"
+                    className="group bg-ngo-pearl rounded-3xl overflow-hidden border border-transparent hover:border-ngo-gold/40 hover:shadow-2xl transition-all flex flex-col w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]"
                   >
-                    {/* Cohort image */}
-                    <div className="relative aspect-[16/10] overflow-hidden">
+                    <div className="relative aspect-[4/3] overflow-hidden">
                       <img
                         src={opp.image}
                         alt={opp.title}
-                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-[900ms] group-hover:scale-[1.05]"
+                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                         loading="lazy"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-ngo-navy via-ngo-navy/30 to-transparent" />
-                      {/* Badge */}
-                      <span className="absolute top-4 left-4 inline-flex items-center gap-1.5 bg-ngo-gold text-ngo-navy text-[10px] uppercase tracking-[0.22em] font-extrabold px-3 py-1.5 rounded-full">
+                      <span className="absolute top-4 left-4 inline-flex items-center gap-1.5 bg-ngo-gold text-ngo-navy text-[10px] uppercase tracking-[0.22em] font-extrabold px-3 py-1.5 rounded-full shadow-md">
                         <Award size={11} /> {opp.badge}
                       </span>
-                      {/* Urgency badge */}
                       {isUrgent && (
-                        <span className="absolute top-4 right-4 inline-flex items-center gap-1.5 bg-red-500/95 text-white text-[10px] uppercase tracking-[0.22em] font-extrabold px-3 py-1.5 rounded-full">
+                        <span className="absolute top-4 right-4 inline-flex items-center gap-1.5 bg-red-500 text-white text-[10px] uppercase tracking-[0.22em] font-extrabold px-3 py-1.5 rounded-full shadow-md">
                           <Flame size={11} /> {opp.urgency}
                         </span>
                       )}
                     </div>
 
-                    <div className="p-7 md:p-8 flex flex-col flex-1">
+                    <div className="p-6 md:p-7 flex flex-col flex-1">
                       <span className="text-[10px] uppercase tracking-[0.25em] font-bold text-ngo-gold mb-3">{opp.type}</span>
-                      <h3 className="font-extrabold text-xl md:text-[22px] text-white leading-[1.15] tracking-tight mb-5 group-hover:text-ngo-gold transition-colors">
+                      <h3 className="text-xl font-extrabold text-ngo-navy leading-tight tracking-tight mb-4">
                         {opp.title}
                       </h3>
 
-                      {/* Timeline / meta */}
-                      <div className="grid grid-cols-2 gap-3 mb-6 pb-6 border-b border-white/10 text-[11px]">
+                      <div className="grid grid-cols-2 gap-3 mb-5 pb-5 border-b border-ngo-navy/10 text-xs">
                         <div>
-                          <div className="text-white/40 uppercase tracking-widest font-semibold text-[9px] mb-1">Durée</div>
-                          <div className="text-white font-bold flex items-center gap-1.5"><Clock size={11} className="text-ngo-gold" /> {opp.duration}</div>
+                          <div className="text-ngo-slate/70 uppercase tracking-widest font-semibold text-[9px] mb-1">Durée</div>
+                          <div className="text-ngo-navy font-bold flex items-center gap-1.5"><Clock size={11} className="text-ngo-gold" /> {opp.duration}</div>
                         </div>
                         <div>
-                          <div className="text-white/40 uppercase tracking-widest font-semibold text-[9px] mb-1">Places</div>
-                          <div className="text-white font-bold flex items-center gap-1.5"><Users size={11} className="text-ngo-gold" /> {opp.seats}</div>
+                          <div className="text-ngo-slate/70 uppercase tracking-widest font-semibold text-[9px] mb-1">Places</div>
+                          <div className="text-ngo-navy font-bold flex items-center gap-1.5"><Users size={11} className="text-ngo-gold" /> {opp.seats}</div>
                         </div>
                         <div>
-                          <div className="text-white/40 uppercase tracking-widest font-semibold text-[9px] mb-1">Clôture</div>
-                          <div className="text-white font-bold flex items-center gap-1.5"><Calendar size={11} className="text-ngo-gold" /> {opp.deadline}</div>
+                          <div className="text-ngo-slate/70 uppercase tracking-widest font-semibold text-[9px] mb-1">Clôture</div>
+                          <div className="text-ngo-navy font-bold flex items-center gap-1.5"><Calendar size={11} className="text-ngo-gold" /> {opp.deadline}</div>
                         </div>
                         <div>
-                          <div className="text-white/40 uppercase tracking-widest font-semibold text-[9px] mb-1">Lieu</div>
-                          <div className="text-white font-bold flex items-center gap-1.5"><MapPin size={11} className="text-ngo-gold" /> {opp.location}</div>
+                          <div className="text-ngo-slate/70 uppercase tracking-widest font-semibold text-[9px] mb-1">Lieu</div>
+                          <div className="text-ngo-navy font-bold flex items-center gap-1.5"><MapPin size={11} className="text-ngo-gold" /> {opp.location}</div>
                         </div>
                       </div>
 
-                      {/* Perks */}
-                      <ul className="space-y-2 mb-7">
+                      <ul className="space-y-2 mb-6">
                         {opp.perks.map((perk) => (
-                          <li key={perk} className="flex items-start gap-2.5 text-[13px] text-white/75 font-light">
-                            <Check size={14} className="text-ngo-gold shrink-0 mt-0.5" /> {perk}
+                          <li key={perk} className="flex items-start gap-2 text-sm text-ngo-slate leading-relaxed">
+                            <Check size={14} className="text-ngo-gold shrink-0 mt-0.5" strokeWidth={3} /> {perk}
                           </li>
                         ))}
                       </ul>
 
                       <Link
                         to="/opportunites"
-                        className="mt-auto inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-ngo-gold hover:text-ngo-navy text-white border border-white/15 hover:border-ngo-gold px-5 py-3.5 rounded-xl font-bold text-[11px] uppercase tracking-[0.22em] transition-all"
+                        className="mt-auto inline-flex items-center justify-center gap-2 bg-ngo-navy hover:bg-ngo-gold hover:text-ngo-navy text-white px-5 py-3 rounded-xl font-bold text-[11px] uppercase tracking-[0.22em] transition-all"
                       >
                         Candidater <ArrowRight size={12} />
                       </Link>
@@ -866,11 +857,11 @@ function Home() {
               })}
             </div>
 
-            <div className="mt-14 flex flex-wrap items-center justify-between gap-6 pt-10 border-t border-white/10">
-              <p className="text-white/55 text-sm font-light max-w-xl leading-relaxed">
+            <div className="mt-10 md:mt-12 flex flex-wrap items-center justify-between gap-4 pt-8 border-t border-ngo-navy/10">
+              <p className="text-ngo-slate text-sm font-light max-w-xl leading-relaxed">
                 Une question avant de candidater ? La coordination CMEP répond personnellement à chaque sollicitation sous 48 h.
               </p>
-              <Link to="/opportunites" className="inline-flex items-center gap-2 text-ngo-gold hover:text-white font-bold text-[11px] uppercase tracking-[0.25em] transition-colors">
+              <Link to="/opportunites" className="inline-flex items-center gap-2 text-ngo-navy hover:text-ngo-gold font-bold text-[11px] uppercase tracking-[0.25em] transition-colors">
                 Voir toutes les opportunités <ArrowRight size={12} />
               </Link>
             </div>
