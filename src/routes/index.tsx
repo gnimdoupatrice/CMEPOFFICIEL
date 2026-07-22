@@ -309,10 +309,10 @@ function Home() {
       </section>
 
       {/* ============ POURQUOI LE CMEP ============ */}
-      <section className="py-24 px-6 bg-white">
+      <section className="section-y px-5 sm:px-6 bg-white">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-7 relative">
-            <img src={axisEntrepreneur} alt="Jeunes diplômés togolais en attente d'entretien de recrutement" loading="lazy" decoding="async" className="w-full h-[560px] object-cover rounded-3xl shadow-2xl" />
+            <img src={axisEntrepreneur} alt="Jeunes diplômés togolais en attente d'entretien de recrutement" loading="lazy" decoding="async" className="w-full h-[380px] md:h-[480px] lg:h-[560px] object-cover rounded-2xl md:rounded-3xl shadow-2xl" />
             <div className="absolute -bottom-6 -right-6 hidden md:block bg-ngo-navy text-white p-6 rounded-2xl shadow-xl max-w-[240px]">
               <div className="text-4xl font-black text-ngo-gold mb-1">+30%</div>
               <div className="text-xs uppercase tracking-widest font-bold text-white/70">de chômage chez les jeunes diplômés togolais</div>
@@ -354,7 +354,7 @@ function Home() {
       </section>
 
       {/* ============ NOTRE VISION — Bannière immersive ============ */}
-      <section className="relative py-32 px-6 overflow-hidden">
+      <section className="relative py-20 md:py-28 px-5 sm:px-6 overflow-hidden">
         <img src={visionImg} alt="Vision CMEP : jeunesse togolaise tournée vers l'horizon" loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-r from-ngo-navy via-ngo-navy/85 to-ngo-navy/40"></div>
 
@@ -379,7 +379,7 @@ function Home() {
       </section>
 
       {/* ============ NOTRE MISSION ============ */}
-      <section className="py-24 px-6 bg-ngo-pearl">
+      <section className="section-y px-5 sm:px-6 bg-ngo-pearl">
         <div className="max-w-7xl mx-auto">
           <div className="max-w-3xl mb-16">
             <span className="text-ngo-gold text-[10px] uppercase tracking-[0.25em] font-bold">Notre Mission</span>
@@ -408,7 +408,7 @@ function Home() {
       </section>
 
       {/* ============ NOS OBJECTIFS — Une carte premium par objectif ============ */}
-      <section className="py-24 px-6 bg-white">
+      <section className="section-y px-5 sm:px-6 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="max-w-3xl mb-14">
             <span className="text-ngo-gold text-[10px] uppercase tracking-[0.25em] font-bold">Nos Objectifs</span>
@@ -524,7 +524,7 @@ function Home() {
       </section>
 
       {/* ============ PROGRAMMES ============ */}
-      <section className="py-24 px-6 bg-white">
+      <section className="section-y px-5 sm:px-6 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="max-w-3xl mb-14">
             <span className="text-ngo-gold text-[10px] uppercase tracking-[0.25em] font-bold">Programmes Phares</span>
@@ -566,7 +566,7 @@ function Home() {
       </section>
 
       {/* ============ IMPACT — Bannière institutionnelle ============ */}
-      <section className="relative py-32 px-6 overflow-hidden bg-gradient-to-b from-ngo-navy via-ngo-navy to-[color-mix(in_oklab,var(--color-ngo-navy)_92%,black)]">
+      <section className="relative py-20 md:py-28 px-5 sm:px-6 overflow-hidden bg-gradient-to-b from-ngo-navy via-ngo-navy to-[color-mix(in_oklab,var(--color-ngo-navy)_92%,black)]">
         <div className="absolute inset-0 opacity-[0.06] bg-[radial-gradient(circle_at_20%_20%,var(--color-ngo-gold)_0%,transparent_45%),radial-gradient(circle_at_80%_80%,var(--color-ngo-gold)_0%,transparent_45%)]" aria-hidden="true"></div>
 
 
@@ -602,7 +602,7 @@ function Home() {
       </section>
 
       {/* ============ TÉMOIGNAGES ILLUSTRÉS ============ */}
-      <section className="py-24 px-6 bg-ngo-pearl">
+      <section className="section-y px-5 sm:px-6 bg-ngo-pearl">
         <div className="max-w-7xl mx-auto">
           <div className="max-w-3xl mb-14">
             <span className="text-ngo-gold text-[10px] uppercase tracking-[0.25em] font-bold">Témoignages</span>
@@ -646,7 +646,7 @@ function Home() {
       {/* ============ ACTUALITÉS & OPPORTUNITÉS — magazine éditorial premium ============ */}
       <section className="relative bg-ngo-pearl">
         {/* ---- En-tête de section ---- */}
-        <div className="max-w-7xl mx-auto px-6 pt-28 md:pt-32 pb-12">
+        <div className="max-w-7xl mx-auto px-6 pt-16 md:pt-24 pb-10">
           <div className="grid lg:grid-cols-12 gap-10 items-end">
             <div className="lg:col-span-7">
               <div className="flex items-center gap-4 mb-6">
@@ -724,7 +724,7 @@ function Home() {
         </div>
 
         {/* ---- ACTUALITÉS SECONDAIRES — grille éditoriale magazine ---- */}
-        <div className="max-w-7xl mx-auto px-6 pb-28">
+        <div className="max-w-7xl mx-auto px-6 pb-16 md:pb-20">
           <div className="flex items-baseline justify-between mb-10 pb-5 border-b border-ngo-navy/15">
             <h3 className="text-[11px] uppercase tracking-[0.3em] font-bold text-ngo-navy flex items-center gap-3">
               <Newspaper size={14} className="text-ngo-gold" /> Dernières dépêches
@@ -871,7 +871,7 @@ function Home() {
 
 
       {/* ============ PARTENAIRES — mur de logos institutionnel, fond clair ============ */}
-      <section className="py-28 md:py-32 px-6 bg-ngo-pearl relative overflow-hidden">
+      <section className="py-16 md:py-24 px-5 sm:px-6 bg-ngo-pearl relative overflow-hidden">
         <div className="relative max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-12 gap-10 mb-16 items-end">
             <div className="lg:col-span-7">
@@ -925,7 +925,7 @@ function Home() {
       </section>
 
       {/* ============ FAQ — éditorial deux colonnes ============ */}
-      <section className="py-28 md:py-32 px-6 bg-ngo-pearl">
+      <section className="py-16 md:py-24 px-5 sm:px-6 bg-ngo-pearl">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 lg:gap-16">
           <div className="lg:col-span-5">
             <div className="lg:sticky lg:top-32">
@@ -994,7 +994,7 @@ function Home() {
       </section>
 
       {/* ============ CTA FINAL ============ */}
-      <section className="py-24 px-6 bg-white">
+      <section className="section-y px-5 sm:px-6 bg-white">
         <div className="max-w-7xl mx-auto bg-ngo-navy rounded-3xl p-12 md:p-16 grid lg:grid-cols-2 gap-12 items-center relative overflow-hidden">
           <div className="absolute -top-20 -right-20 w-80 h-80 bg-ngo-gold/15 rounded-full blur-3xl"></div>
 
