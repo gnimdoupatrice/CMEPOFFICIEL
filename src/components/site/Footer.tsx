@@ -88,7 +88,7 @@ export function Footer() {
 
           {/* Nav columns */}
           <nav aria-label="Programme" className="md:col-span-2">
-            <h3 className="text-[12px] uppercase tracking-[0.22em] font-bold text-white mb-5">Programme</h3>
+            <h3 className="text-[12px] uppercase tracking-[0.22em] font-bold !text-white mb-5">Programme</h3>
             <ul className="space-y-3 text-sm text-white/65">
               <li><Link to="/a-propos" className="hover:text-ngo-gold transition-colors">À propos</Link></li>
               <li><Link to="/programmes" className="hover:text-ngo-gold transition-colors">Axes stratégiques</Link></li>
@@ -98,7 +98,7 @@ export function Footer() {
           </nav>
 
           <nav aria-label="Agir" className="md:col-span-2">
-            <h3 className="text-[12px] uppercase tracking-[0.22em] font-bold text-white mb-5">Agir</h3>
+            <h3 className="text-[12px] uppercase tracking-[0.22em] font-bold !text-white mb-5">Agir</h3>
             <ul className="space-y-3 text-sm text-white/65">
               <li><Link to="/opportunites" className="hover:text-ngo-gold transition-colors">Opportunités</Link></li>
               <li><Link to="/opportunites" className="hover:text-ngo-gold transition-colors">Postuler</Link></li>
@@ -109,7 +109,7 @@ export function Footer() {
           </nav>
 
           <div className="md:col-span-3">
-            <h3 className="text-[12px] uppercase tracking-[0.22em] font-bold text-white mb-5">Contact</h3>
+            <h3 className="text-[12px] uppercase tracking-[0.22em] font-bold !text-white mb-5">Contact</h3>
             <ul className="space-y-4 text-sm text-white/65">
               <li className="flex items-start gap-3">
                 <MapPin size={16} className="mt-0.5 text-ngo-gold shrink-0" aria-hidden="true" />
