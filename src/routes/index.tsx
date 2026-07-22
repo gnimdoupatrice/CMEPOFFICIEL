@@ -461,33 +461,33 @@ function Home() {
       </section>
 
       {/* ============ AXES STRATÉGIQUES — Mini-pages avec image dédiée ============ */}
-      <section className="py-24 px-6 bg-ngo-pearl">
+      <section className="section-y px-5 sm:px-6 bg-ngo-pearl">
         <div className="max-w-7xl mx-auto">
-          <div className="max-w-3xl mb-16">
+          <div className="max-w-3xl mb-10 md:mb-14">
             <span className="text-ngo-gold text-[10px] uppercase tracking-[0.25em] font-bold">Axes Stratégiques</span>
             <h2 className="font-serif text-h2 font-extrabold text-ngo-navy mt-4 leading-[1.1] md:leading-[1.05] tracking-tight">
               Cinq leviers, déployés comme des programmes à part entière.
             </h2>
           </div>
 
-          <div className="space-y-20">
+          <div className="space-y-14 md:space-y-16">
             {AXES.map((axis, i) => (
-              <article key={axis.num} className={`grid lg:grid-cols-12 gap-10 items-center ${i % 2 === 1 ? "lg:[&>*:first-child]:order-2" : ""}`}>
+              <article key={axis.num} className={`grid lg:grid-cols-12 gap-8 lg:gap-10 items-center ${i % 2 === 1 ? "lg:[&>*:first-child]:order-2" : ""}`}>
                 <div className="lg:col-span-6 relative group">
-                  <div className="relative overflow-hidden rounded-3xl shadow-xl ring-1 ring-ngo-navy/10">
-                    <img src={axis.image} alt={axis.imageAlt} loading="lazy" decoding="async" className="w-full h-[460px] object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
+                  <div className="relative overflow-hidden rounded-2xl md:rounded-3xl shadow-xl ring-1 ring-ngo-navy/10">
+                    <img src={axis.image} alt={axis.imageAlt} loading="lazy" decoding="async" className="w-full aspect-[4/3] lg:aspect-[5/4] object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
                     <div className="absolute inset-0 bg-gradient-to-t from-ngo-navy/75 via-ngo-navy/10 to-transparent"></div>
-                    <div className="absolute top-6 left-6 bg-white px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest text-ngo-navy shadow-lg tabular-nums">
+                    <div className="absolute top-4 left-4 md:top-6 md:left-6 bg-white px-3 py-1.5 md:px-4 md:py-2 rounded-full text-[10px] font-bold uppercase tracking-widest text-ngo-navy shadow-lg tabular-nums">
                       Axe {axis.num}
                     </div>
-                    <div className="absolute bottom-6 left-6 right-6 flex items-center gap-2 text-[10px] uppercase tracking-[0.28em] font-bold text-ngo-gold">
+                    <div className="absolute bottom-4 left-4 right-4 md:bottom-6 md:left-6 md:right-6 flex items-center gap-2 text-[10px] uppercase tracking-[0.28em] font-bold text-ngo-gold">
                       <span className="text-white/95">{axis.sdg}</span>
                     </div>
                   </div>
                 </div>
 
                 <div className="lg:col-span-6">
-                  <h3 className="text-h2 font-extrabold text-ngo-navy mb-6 leading-tight tracking-tight">{axis.title}</h3>
+                  <h3 className="text-2xl md:text-3xl lg:text-h3 font-extrabold text-ngo-navy mb-5 leading-tight tracking-tight">{axis.title}</h3>
 
                   <div className="space-y-4 mb-6">
                     <div>
