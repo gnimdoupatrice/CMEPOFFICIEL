@@ -7,13 +7,13 @@ export function Footer() {
   const year = new Date().getFullYear();
   return (
     <footer
-      className="bg-ngo-navy text-white pt-16 sm:pt-20 pb-8"
+      className="bg-ngo-navy text-white pt-12 sm:pt-20 pb-8"
       style={{ paddingBottom: "max(2rem, env(safe-area-inset-bottom))" }}
       aria-labelledby="footer-heading"
     >
       <h2 id="footer-heading" className="sr-only">Pied de page — CMEP Togo</h2>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="grid gap-12 md:grid-cols-12 mb-14 justify-items-center md:justify-items-stretch text-center md:text-left">
+      <div className="max-w-7xl mx-auto px-5 sm:px-6">
+        <div className="grid gap-10 sm:gap-12 grid-cols-1 sm:grid-cols-2 md:grid-cols-12 mb-10 sm:mb-14 text-left">
           {/* Brand + newsletter */}
           <div className="md:col-span-5">
             <Link to="/" className="inline-flex items-center gap-3 mb-6" aria-label="CMEP — Accueil">
@@ -88,7 +88,7 @@ export function Footer() {
 
           {/* Nav columns */}
           <nav aria-label="Programme" className="md:col-span-2">
-            <h3 className="text-[12px] uppercase tracking-[0.22em] font-bold text-white mb-5">Programme</h3>
+            <h3 className="text-[12px] uppercase tracking-[0.22em] font-bold text-white! mb-5">Programme</h3>
             <ul className="space-y-3 text-sm text-white/65">
               <li><Link to="/a-propos" className="hover:text-ngo-gold transition-colors">À propos</Link></li>
               <li><Link to="/programmes" className="hover:text-ngo-gold transition-colors">Axes stratégiques</Link></li>
@@ -98,7 +98,7 @@ export function Footer() {
           </nav>
 
           <nav aria-label="Agir" className="md:col-span-2">
-            <h3 className="text-[12px] uppercase tracking-[0.22em] font-bold text-white mb-5">Agir</h3>
+            <h3 className="text-[12px] uppercase tracking-[0.22em] font-bold text-white! mb-5">Agir</h3>
             <ul className="space-y-3 text-sm text-white/65">
               <li><Link to="/opportunites" className="hover:text-ngo-gold transition-colors">Opportunités</Link></li>
               <li><Link to="/opportunites" className="hover:text-ngo-gold transition-colors">Postuler</Link></li>
@@ -109,7 +109,7 @@ export function Footer() {
           </nav>
 
           <div className="md:col-span-3">
-            <h3 className="text-[12px] uppercase tracking-[0.22em] font-bold text-white mb-5">Contact</h3>
+            <h3 className="text-[12px] uppercase tracking-[0.22em] font-bold text-white! mb-5">Contact</h3>
             <ul className="space-y-4 text-sm text-white/65">
               <li className="flex items-start gap-3">
                 <MapPin size={16} className="mt-0.5 text-ngo-gold shrink-0" aria-hidden="true" />
