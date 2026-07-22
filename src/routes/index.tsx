@@ -5,16 +5,16 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { CMEP_MEDIA, PARTNER_LOGOS } from "@/lib/media";
 import { createWhatsAppHref } from "@/lib/contact";
 
-// Actualité phare (featured story hero)
+// Actualité phare (featured story hero) — alignée sur la cérémonie de lancement
 const FEATURED_STORY = {
-  date: "15 mai 2025",
-  category: "Reportage terrain",
+  date: "2026",
+  category: "Événement institutionnel",
   location: "Togo",
-  readTime: "6 min de lecture",
-  title: "Au Togo, les jeunes ouvrent une nouvelle page du CMEP.",
-  kicker: "Promotion 2025 — Cohorte annuelle",
+  readTime: "5 min de lecture",
+  title: "Cérémonie de présentation et de lancement officiel du CMEP.",
+  kicker: "Lancement officiel — Chris Mentorship & Empowerment Program",
   excerpt:
-    "Aux côtés de partenaires académiques, institutionnels et communautaires, les bénéficiaires du CMEP installent une dynamique nationale de mentorat, de leadership et d’insertion.",
+    "Aux côtés des partenaires académiques, institutionnels et communautaires, le CMEP est officiellement lancé : une génération togolaise outillée, responsable et engagée entre en scène.",
 };
 
 // Actualités — évènements CMEP réels
