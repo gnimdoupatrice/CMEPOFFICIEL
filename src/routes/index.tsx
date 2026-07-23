@@ -566,35 +566,35 @@ function Home() {
       </section>
 
       {/* ============ IMPACT — Bannière institutionnelle ============ */}
-      <section className="relative py-20 md:py-28 px-5 sm:px-6 overflow-hidden bg-gradient-to-b from-ngo-navy via-ngo-navy to-[color-mix(in_oklab,var(--color-ngo-navy)_92%,black)]">
+      <section className="relative py-10 sm:py-20 md:py-28 px-5 sm:px-6 overflow-hidden bg-gradient-to-b from-ngo-navy via-ngo-navy to-[color-mix(in_oklab,var(--color-ngo-navy)_92%,black)]">
         <div className="absolute inset-0 opacity-[0.06] bg-[radial-gradient(circle_at_20%_20%,var(--color-ngo-gold)_0%,transparent_45%),radial-gradient(circle_at_80%_80%,var(--color-ngo-gold)_0%,transparent_45%)]" aria-hidden="true"></div>
 
 
         <div className="relative z-10 max-w-7xl mx-auto">
-          <div className="max-w-3xl mb-14">
+          <div className="max-w-3xl mb-6 sm:mb-14">
             <span className="text-ngo-gold text-[10px] uppercase tracking-[0.25em] font-bold">Impact Attendu</span>
-            <h2 className="font-serif text-h2 font-extrabold text-white mt-4 leading-[1.1] md:leading-[1.05] tracking-tight">
+            <h2 className="font-serif text-[20px] leading-[1.2] sm:text-h2 sm:leading-[1.05] font-extrabold text-white mt-2 sm:mt-4 tracking-tight">
               Des résultats mesurables au service d'une génération.
             </h2>
-            <p className="text-white/70 text-base leading-relaxed mt-5">
+            <p className="text-white/70 text-[13.5px] sm:text-base leading-relaxed mt-3 sm:mt-5">
               Chaque indicateur est suivi, audité et publié dans nos rapports annuels d'activité.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5">
             {[
               { icon: Users, num: "1 000+", title: "Jeunes formés / an", desc: "Cohortes annuelles déployées au Togo, sélectionnées sur dossier et entretien." },
               { icon: TrendingUp, num: "60%", title: "Taux d'insertion ciblé", desc: "Emploi salarié, micro-entreprise ou poursuite d'études supérieures dans les 12 mois." },
               { icon: Sparkles, num: "1", title: "Plateforme de mentorat", desc: "Infrastructure pérenne de mise en relation jeunes/mentors, structurante pour le territoire." },
               { icon: Award, num: "12+", title: "Partenariats structurants", desc: "Universités, ONG, entreprises et institutions publiques engagées dans la durée." },
             ].map((s) => (
-              <div key={s.title} className="bg-white/[0.06] border border-white/15 backdrop-blur-md p-7 rounded-2xl hover:bg-white/[0.1] hover:border-ngo-gold/40 transition-all">
-                <div className="size-11 rounded-xl bg-ngo-gold grid place-items-center mb-6">
-                  <s.icon size={18} className="text-ngo-navy" strokeWidth={2.5} />
+              <div key={s.title} className="bg-white/[0.06] border border-white/15 backdrop-blur-md p-4 sm:p-7 rounded-2xl hover:bg-white/[0.1] hover:border-ngo-gold/40 transition-all">
+                <div className="size-9 sm:size-11 rounded-xl bg-ngo-gold grid place-items-center mb-3 sm:mb-6">
+                  <s.icon size={16} className="text-ngo-navy" strokeWidth={2.5} />
                 </div>
-                <div className="text-5xl font-black text-white mb-2 tracking-tight">{s.num}</div>
-                <div className="text-sm font-bold text-ngo-gold mb-3 uppercase tracking-wider">{s.title}</div>
-                <p className="text-white/70 text-sm leading-relaxed">{s.desc}</p>
+                <div className="text-2xl sm:text-5xl font-black text-white mb-1 sm:mb-2 tracking-tight">{s.num}</div>
+                <div className="text-[11px] sm:text-sm font-bold text-ngo-gold mb-2 sm:mb-3 uppercase tracking-wider leading-tight">{s.title}</div>
+                <p className="text-white/70 text-[12px] sm:text-sm leading-[1.5] sm:leading-relaxed">{s.desc}</p>
               </div>
             ))}
           </div>
