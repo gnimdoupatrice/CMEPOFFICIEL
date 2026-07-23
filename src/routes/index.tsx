@@ -271,36 +271,36 @@ function Home() {
         <div className="absolute inset-0 bg-ngo-navy/70"></div>
         <div className="absolute inset-0 bg-gradient-to-b from-ngo-navy/60 via-ngo-navy/35 to-ngo-navy/75"></div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-6 py-14 sm:py-24 md:py-28 w-full flex justify-center text-center">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-24 md:py-28 w-full flex justify-center text-center">
           <div className="max-w-5xl mx-auto flex flex-col items-center text-center">
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full mb-5 sm:mb-8">
+            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-2.5 py-1 sm:px-4 sm:py-2 rounded-full mb-3 sm:mb-8">
               <span className="w-1.5 h-1.5 rounded-full bg-ngo-gold animate-pulse"></span>
-              <span className="text-[9px] sm:text-[10px] uppercase tracking-[0.2em] sm:tracking-[0.25em] font-bold text-white">Chris Mentorship & Empowerment Program</span>
+              <span className="text-[8px] sm:text-[10px] uppercase tracking-[0.18em] sm:tracking-[0.25em] font-bold text-white">Chris Mentorship & Empowerment Program</span>
             </div>
-            <h1 className="font-serif font-extrabold hero-copy-white hero-center-text mb-4 sm:mb-8 max-w-5xl text-[26px] leading-[1.15] sm:text-h1 sm:leading-[1.05]">
+            <h1 className="font-serif font-extrabold hero-copy-white hero-center-text mb-3 sm:mb-8 max-w-5xl text-[19px] leading-[1.2] sm:text-h1 sm:leading-[1.05]">
               Propulser une génération togolaise vers <span className="text-ngo-gold">l'autonomie</span>, l'emploi, le leadership et le développement durable.
             </h1>
-            <p className="text-[14px] leading-[1.55] sm:text-lg md:text-xl sm:leading-relaxed hero-copy-soft hero-center-text mb-6 sm:mb-10 max-w-3xl mx-auto font-light">
+            <p className="text-[12.5px] leading-[1.5] sm:text-lg md:text-xl sm:leading-relaxed hero-copy-soft hero-center-text mb-4 sm:mb-10 max-w-3xl mx-auto font-light">
               Le <strong className="hero-copy-white font-semibold">CMEP</strong> accompagne chaque année <strong className="text-ngo-gold font-semibold">plus de 1 000 jeunes togolais</strong> par le mentorat, la formation et l'engagement communautaire.
             </p>
-            <div className="flex flex-col sm:flex-row w-full sm:w-auto justify-center gap-3 sm:gap-4 mb-8 sm:mb-14">
-              <Link to="/opportunites" className="bg-ngo-gold text-ngo-navy px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-white transition-all shadow-2xl shadow-ngo-gold/30 text-sm sm:text-base">
-                Rejoindre le programme <ArrowRight size={16} />
+            <div className="flex flex-row w-full justify-center gap-2 sm:gap-4 mb-4 sm:mb-14">
+              <Link to="/opportunites" className="flex-1 sm:flex-initial bg-ngo-gold text-ngo-navy px-3 sm:px-8 py-2.5 sm:py-4 rounded-lg sm:rounded-xl font-bold flex items-center justify-center gap-1.5 sm:gap-2 hover:bg-white transition-all shadow-2xl shadow-ngo-gold/30 text-[11.5px] sm:text-base whitespace-nowrap">
+                Rejoindre <ArrowRight size={13} className="sm:hidden" /><ArrowRight size={16} className="hidden sm:inline" />
               </Link>
-              <a href={createWhatsAppHref("Bonjour CMEP, je souhaite devenir mentor.")} target="_blank" rel="noreferrer noopener" className="border-2 border-white/40 text-white px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl font-semibold hover:bg-white/10 backdrop-blur-sm transition-colors text-center text-sm sm:text-base">
+              <a href={createWhatsAppHref("Bonjour CMEP, je souhaite devenir mentor.")} target="_blank" rel="noreferrer noopener" className="flex-1 sm:flex-initial border-2 border-white/40 text-white px-3 sm:px-8 py-2.5 sm:py-4 rounded-lg sm:rounded-xl font-semibold hover:bg-white/10 backdrop-blur-sm transition-colors text-center text-[11.5px] sm:text-base whitespace-nowrap">
                 Devenir mentor
               </a>
             </div>
 
-            <div className="grid grid-cols-3 gap-3 sm:gap-6 w-full max-w-2xl mx-auto pt-5 sm:pt-10 border-t border-white/20">
+            <div className="grid grid-cols-3 gap-2 sm:gap-6 w-full max-w-2xl mx-auto pt-3 sm:pt-10 border-t border-white/20">
               {[
                 { v: "1 000+", l: "Jeunes/an" },
                 { v: "60%", l: "Insertion" },
                 { v: "12", l: "Partenaires" },
               ].map((s) => (
                 <div key={s.l} className="text-center">
-                  <div className="text-xl sm:text-3xl md:text-4xl font-black text-white mb-0.5 sm:mb-1">{s.v}</div>
-                  <div className="text-[9px] sm:text-[10px] uppercase tracking-[0.16em] sm:tracking-widest font-bold text-white/70">{s.l}</div>
+                  <div className="text-base sm:text-3xl md:text-4xl font-black text-white mb-0.5 sm:mb-1">{s.v}</div>
+                  <div className="text-[8px] sm:text-[10px] uppercase tracking-[0.14em] sm:tracking-widest font-bold text-white/70">{s.l}</div>
                 </div>
               ))}
             </div>
