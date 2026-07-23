@@ -354,17 +354,17 @@ function Home() {
       </section>
 
       {/* ============ NOTRE VISION — Bannière immersive ============ */}
-      <section className="relative py-20 md:py-28 px-5 sm:px-6 overflow-hidden">
+      <section className="relative py-10 sm:py-20 md:py-28 px-5 sm:px-6 overflow-hidden">
         <img src={visionImg} alt="Vision CMEP : jeunesse togolaise tournée vers l'horizon" loading="lazy" decoding="async" style={{position:'absolute',inset:0,width:'100%',height:'100%',objectFit:'cover'}} />
         <div className="absolute inset-0 bg-gradient-to-r from-ngo-navy via-ngo-navy/85 to-ngo-navy/40"></div>
 
         <div className="relative z-10 max-w-5xl mx-auto">
           <span className="text-ngo-gold text-[10px] uppercase tracking-[0.25em] font-bold">Notre Vision</span>
-          <Quote size={56} className="text-ngo-gold/40 mt-8 mb-6" strokeWidth={1} />
-          <p className="font-serif text-h2 font-extrabold text-white mb-10">
+          <Quote size={40} className="text-ngo-gold/40 mt-3 mb-3 sm:mt-8 sm:mb-6 sm:size-14" strokeWidth={1} />
+          <p className="font-serif text-[18px] leading-[1.25] sm:text-h2 sm:leading-[1.15] font-extrabold text-white mb-5 sm:mb-10">
             « Faire émerger une jeunesse togolaise <span className="text-ngo-gold italic">autonome, compétente et engagée</span>, capable de transformer durablement son territoire et de prendre place dans l'économie africaine de demain. »
           </p>
-          <div className="space-y-5 text-white/85 text-lg leading-relaxed font-light max-w-3xl">
+          <div className="space-y-3 sm:space-y-5 text-white/85 text-[13.5px] leading-[1.6] sm:text-lg sm:leading-relaxed font-light max-w-3xl">
             <p>
               Nous projetons un Togo où chaque jeune, quel que soit son point de départ, accède à un mentorat qualifié, à une formation pratique et à un réseau d'opportunités concrètes.
             </p>
