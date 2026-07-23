@@ -756,11 +756,11 @@ function Home() {
                   <span className="flex items-center gap-1.5"><MapPin size={11} className="text-ngo-gold" /> {a.location}</span>
                 </div>
 
-                <h4 className="text-2xl md:text-[26px] font-extrabold text-ngo-navy leading-[1.15] tracking-tight mb-3 group-hover:text-ngo-gold transition-colors">
+                <h4 className="text-lg sm:text-2xl md:text-[26px] font-extrabold text-ngo-navy leading-[1.2] sm:leading-[1.15] tracking-tight mb-2 sm:mb-3 group-hover:text-ngo-gold transition-colors">
                   {a.title}
                 </h4>
-                <p className="text-[15px] text-ngo-slate leading-relaxed font-light mb-5">{a.excerpt}</p>
-                <span className="inline-flex items-center gap-2 text-ngo-navy font-bold text-[11px] uppercase tracking-[0.25em] group-hover:text-ngo-gold transition-colors">
+                <p className="text-[13px] sm:text-[15px] text-ngo-slate leading-[1.55] sm:leading-relaxed font-light mb-3 sm:mb-5">{a.excerpt}</p>
+                <span className="inline-flex items-center gap-2 text-ngo-navy font-bold text-[10px] sm:text-[11px] uppercase tracking-[0.22em] sm:tracking-[0.25em] group-hover:text-ngo-gold transition-colors">
                   Lire la suite <ArrowUpRight size={12} />
                 </span>
               </article>
