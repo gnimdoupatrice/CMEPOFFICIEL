@@ -108,7 +108,7 @@ export function Footer() {
             </ul>
           </nav>
 
-          <div className="md:col-span-3">
+          <div className="col-span-2 md:col-span-3">
             <h3 className="text-[12px] uppercase tracking-[0.22em] font-bold text-white! mb-5">Contact</h3>
             <ul className="space-y-4 text-sm text-white/65">
               <li className="flex items-start gap-3">
