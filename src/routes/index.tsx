@@ -690,33 +690,33 @@ function Home() {
               </div>
 
               {/* Contenu éditorial */}
-              <div className="relative lg:col-span-5 p-9 md:p-12 lg:p-14 flex flex-col justify-between text-white">
+              <div className="relative lg:col-span-5 p-5 sm:p-9 md:p-12 lg:p-14 flex flex-col justify-between text-white">
                 <div>
-                  <div className="flex flex-wrap items-center gap-3 text-[10px] uppercase tracking-[0.25em] font-bold mb-7">
+                  <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-[9px] sm:text-[10px] uppercase tracking-[0.2em] sm:tracking-[0.25em] font-bold mb-3 sm:mb-7">
                     <span className="text-ngo-gold">{FEATURED_STORY.category}</span>
                     <span className="w-1 h-1 rounded-full bg-white/30" />
-                    <span className="text-white/70 flex items-center gap-1.5"><Calendar size={11} /> {FEATURED_STORY.date}</span>
+                    <span className="text-white/70 flex items-center gap-1.5"><Calendar size={10} /> {FEATURED_STORY.date}</span>
                   </div>
 
-                  <p className="text-[11px] uppercase tracking-[0.3em] font-bold text-white/50 mb-4">{FEATURED_STORY.kicker}</p>
-                  <h3 className="font-extrabold text-3xl md:text-4xl lg:text-[42px] leading-[1.05] tracking-tight mb-6">
+                  <p className="text-[9.5px] sm:text-[11px] uppercase tracking-[0.25em] sm:tracking-[0.3em] font-bold text-white/50 mb-2 sm:mb-4">{FEATURED_STORY.kicker}</p>
+                  <h3 className="font-extrabold text-[18px] leading-[1.2] sm:text-3xl md:text-4xl lg:text-[42px] sm:leading-[1.05] tracking-tight mb-3 sm:mb-6">
                     {FEATURED_STORY.title}
                   </h3>
-                  <p className="text-white/75 text-[15px] md:text-base leading-relaxed font-light mb-8 max-w-md">
+                  <p className="text-white/75 text-[13px] sm:text-[15px] md:text-base leading-[1.55] sm:leading-relaxed font-light mb-4 sm:mb-8 max-w-md">
                     {FEATURED_STORY.excerpt}
                   </p>
 
-                  <div className="flex flex-wrap gap-x-5 gap-y-2 text-[11px] text-white/55 uppercase tracking-widest font-semibold mb-10">
-                    <span className="flex items-center gap-1.5"><MapPin size={11} className="text-ngo-gold" /> {FEATURED_STORY.location}</span>
-                    <span className="flex items-center gap-1.5"><Clock size={11} className="text-ngo-gold" /> {FEATURED_STORY.readTime}</span>
+                  <div className="flex flex-wrap gap-x-4 gap-y-1.5 sm:gap-x-5 sm:gap-y-2 text-[10px] sm:text-[11px] text-white/55 uppercase tracking-widest font-semibold mb-5 sm:mb-10">
+                    <span className="flex items-center gap-1.5"><MapPin size={10} className="text-ngo-gold" /> {FEATURED_STORY.location}</span>
+                    <span className="flex items-center gap-1.5"><Clock size={10} className="text-ngo-gold" /> {FEATURED_STORY.readTime}</span>
                   </div>
                 </div>
 
                 <Link
                   to="/actualites"
-                  className="inline-flex items-center gap-3 self-start bg-ngo-gold text-ngo-navy px-7 py-4 rounded-xl font-bold text-[12px] uppercase tracking-[0.2em] hover:bg-white transition-colors shadow-xl shadow-ngo-gold/20"
+                  className="inline-flex items-center gap-2 sm:gap-3 self-start bg-ngo-gold text-ngo-navy px-5 sm:px-7 py-3 sm:py-4 rounded-lg sm:rounded-xl font-bold text-[11px] sm:text-[12px] uppercase tracking-[0.18em] sm:tracking-[0.2em] hover:bg-white transition-colors shadow-xl shadow-ngo-gold/20"
                 >
-                  Lire l'histoire <ArrowRight size={14} />
+                  Lire l'histoire <ArrowRight size={13} />
                 </Link>
               </div>
             </div>
