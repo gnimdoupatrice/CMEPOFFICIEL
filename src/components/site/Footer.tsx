@@ -13,9 +13,9 @@ export function Footer() {
     >
       <h2 id="footer-heading" className="sr-only">Pied de page — CMEP Togo</h2>
       <div className="max-w-7xl mx-auto px-5 sm:px-6">
-        <div className="grid gap-10 sm:gap-12 grid-cols-1 sm:grid-cols-2 md:grid-cols-12 mb-10 sm:mb-14 text-left">
+        <div className="grid gap-8 sm:gap-12 grid-cols-2 md:grid-cols-12 mb-10 sm:mb-14 text-left">
           {/* Brand + newsletter */}
-          <div className="md:col-span-5">
+          <div className="col-span-2 md:col-span-5">
             <Link to="/" className="inline-flex items-center gap-3 mb-6" aria-label="CMEP — Accueil">
               <img
                 src={CMEP_MEDIA.logo}
@@ -108,7 +108,7 @@ export function Footer() {
             </ul>
           </nav>
 
-          <div className="md:col-span-3">
+          <div className="col-span-2 md:col-span-3">
             <h3 className="text-[12px] uppercase tracking-[0.22em] font-bold text-white! mb-5">Contact</h3>
             <ul className="space-y-4 text-sm text-white/65">
               <li className="flex items-start gap-3">

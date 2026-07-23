@@ -271,36 +271,36 @@ function Home() {
         <div className="absolute inset-0 bg-ngo-navy/70"></div>
         <div className="absolute inset-0 bg-gradient-to-b from-ngo-navy/60 via-ngo-navy/35 to-ngo-navy/75"></div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-6 py-14 sm:py-24 md:py-28 w-full flex justify-center text-center">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-24 md:py-28 w-full flex justify-center text-center">
           <div className="max-w-5xl mx-auto flex flex-col items-center text-center">
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full mb-5 sm:mb-8">
+            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-2.5 py-1 sm:px-4 sm:py-2 rounded-full mb-3 sm:mb-8">
               <span className="w-1.5 h-1.5 rounded-full bg-ngo-gold animate-pulse"></span>
-              <span className="text-[9px] sm:text-[10px] uppercase tracking-[0.2em] sm:tracking-[0.25em] font-bold text-white">Chris Mentorship & Empowerment Program</span>
+              <span className="text-[8px] sm:text-[10px] uppercase tracking-[0.18em] sm:tracking-[0.25em] font-bold text-white">Chris Mentorship & Empowerment Program</span>
             </div>
-            <h1 className="font-serif font-extrabold hero-copy-white hero-center-text mb-4 sm:mb-8 max-w-5xl text-[26px] leading-[1.15] sm:text-h1 sm:leading-[1.05]">
+            <h1 className="font-serif font-extrabold hero-copy-white hero-center-text mb-3 sm:mb-8 max-w-5xl text-[19px] leading-[1.2] sm:text-h1 sm:leading-[1.05]">
               Propulser une génération togolaise vers <span className="text-ngo-gold">l'autonomie</span>, l'emploi, le leadership et le développement durable.
             </h1>
-            <p className="text-[14px] leading-[1.55] sm:text-lg md:text-xl sm:leading-relaxed hero-copy-soft hero-center-text mb-6 sm:mb-10 max-w-3xl mx-auto font-light">
+            <p className="text-[12.5px] leading-[1.5] sm:text-lg md:text-xl sm:leading-relaxed hero-copy-soft hero-center-text mb-4 sm:mb-10 max-w-3xl mx-auto font-light">
               Le <strong className="hero-copy-white font-semibold">CMEP</strong> accompagne chaque année <strong className="text-ngo-gold font-semibold">plus de 1 000 jeunes togolais</strong> par le mentorat, la formation et l'engagement communautaire.
             </p>
-            <div className="flex flex-col sm:flex-row w-full sm:w-auto justify-center gap-3 sm:gap-4 mb-8 sm:mb-14">
-              <Link to="/opportunites" className="bg-ngo-gold text-ngo-navy px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-white transition-all shadow-2xl shadow-ngo-gold/30 text-sm sm:text-base">
-                Rejoindre le programme <ArrowRight size={16} />
+            <div className="flex flex-row w-full justify-center gap-2 sm:gap-4 mb-4 sm:mb-14">
+              <Link to="/opportunites" className="flex-1 sm:flex-initial bg-ngo-gold text-ngo-navy px-3 sm:px-8 py-2.5 sm:py-4 rounded-lg sm:rounded-xl font-bold flex items-center justify-center gap-1.5 sm:gap-2 hover:bg-white transition-all shadow-2xl shadow-ngo-gold/30 text-[11.5px] sm:text-base whitespace-nowrap">
+                Rejoindre <ArrowRight size={13} className="sm:hidden" /><ArrowRight size={16} className="hidden sm:inline" />
               </Link>
-              <a href={createWhatsAppHref("Bonjour CMEP, je souhaite devenir mentor.")} target="_blank" rel="noreferrer noopener" className="border-2 border-white/40 text-white px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl font-semibold hover:bg-white/10 backdrop-blur-sm transition-colors text-center text-sm sm:text-base">
+              <a href={createWhatsAppHref("Bonjour CMEP, je souhaite devenir mentor.")} target="_blank" rel="noreferrer noopener" className="flex-1 sm:flex-initial border-2 border-white/40 text-white px-3 sm:px-8 py-2.5 sm:py-4 rounded-lg sm:rounded-xl font-semibold hover:bg-white/10 backdrop-blur-sm transition-colors text-center text-[11.5px] sm:text-base whitespace-nowrap">
                 Devenir mentor
               </a>
             </div>
 
-            <div className="grid grid-cols-3 gap-3 sm:gap-6 w-full max-w-2xl mx-auto pt-5 sm:pt-10 border-t border-white/20">
+            <div className="grid grid-cols-3 gap-2 sm:gap-6 w-full max-w-2xl mx-auto pt-3 sm:pt-10 border-t border-white/20">
               {[
                 { v: "1 000+", l: "Jeunes/an" },
                 { v: "60%", l: "Insertion" },
                 { v: "12", l: "Partenaires" },
               ].map((s) => (
                 <div key={s.l} className="text-center">
-                  <div className="text-xl sm:text-3xl md:text-4xl font-black text-white mb-0.5 sm:mb-1">{s.v}</div>
-                  <div className="text-[9px] sm:text-[10px] uppercase tracking-[0.16em] sm:tracking-widest font-bold text-white/70">{s.l}</div>
+                  <div className="text-base sm:text-3xl md:text-4xl font-black text-white mb-0.5 sm:mb-1">{s.v}</div>
+                  <div className="text-[8px] sm:text-[10px] uppercase tracking-[0.14em] sm:tracking-widest font-bold text-white/70">{s.l}</div>
                 </div>
               ))}
             </div>
@@ -354,17 +354,17 @@ function Home() {
       </section>
 
       {/* ============ NOTRE VISION — Bannière immersive ============ */}
-      <section className="relative py-20 md:py-28 px-5 sm:px-6 overflow-hidden">
+      <section className="relative py-10 sm:py-20 md:py-28 px-5 sm:px-6 overflow-hidden">
         <img src={visionImg} alt="Vision CMEP : jeunesse togolaise tournée vers l'horizon" loading="lazy" decoding="async" style={{position:'absolute',inset:0,width:'100%',height:'100%',objectFit:'cover'}} />
         <div className="absolute inset-0 bg-gradient-to-r from-ngo-navy via-ngo-navy/85 to-ngo-navy/40"></div>
 
         <div className="relative z-10 max-w-5xl mx-auto">
           <span className="text-ngo-gold text-[10px] uppercase tracking-[0.25em] font-bold">Notre Vision</span>
-          <Quote size={56} className="text-ngo-gold/40 mt-8 mb-6" strokeWidth={1} />
-          <p className="font-serif text-h2 font-extrabold text-white mb-10">
+          <Quote size={40} className="text-ngo-gold/40 mt-3 mb-3 sm:mt-8 sm:mb-6 sm:size-14" strokeWidth={1} />
+          <p className="font-serif text-[18px] leading-[1.25] sm:text-h2 sm:leading-[1.15] font-extrabold text-white mb-5 sm:mb-10">
             « Faire émerger une jeunesse togolaise <span className="text-ngo-gold italic">autonome, compétente et engagée</span>, capable de transformer durablement son territoire et de prendre place dans l'économie africaine de demain. »
           </p>
-          <div className="space-y-5 text-white/85 text-lg leading-relaxed font-light max-w-3xl">
+          <div className="space-y-3 sm:space-y-5 text-white/85 text-[13.5px] leading-[1.6] sm:text-lg sm:leading-relaxed font-light max-w-3xl">
             <p>
               Nous projetons un Togo où chaque jeune, quel que soit son point de départ, accède à un mentorat qualifié, à une formation pratique et à un réseau d'opportunités concrètes.
             </p>
@@ -566,35 +566,35 @@ function Home() {
       </section>
 
       {/* ============ IMPACT — Bannière institutionnelle ============ */}
-      <section className="relative py-20 md:py-28 px-5 sm:px-6 overflow-hidden bg-gradient-to-b from-ngo-navy via-ngo-navy to-[color-mix(in_oklab,var(--color-ngo-navy)_92%,black)]">
+      <section className="relative py-10 sm:py-20 md:py-28 px-5 sm:px-6 overflow-hidden bg-gradient-to-b from-ngo-navy via-ngo-navy to-[color-mix(in_oklab,var(--color-ngo-navy)_92%,black)]">
         <div className="absolute inset-0 opacity-[0.06] bg-[radial-gradient(circle_at_20%_20%,var(--color-ngo-gold)_0%,transparent_45%),radial-gradient(circle_at_80%_80%,var(--color-ngo-gold)_0%,transparent_45%)]" aria-hidden="true"></div>
 
 
         <div className="relative z-10 max-w-7xl mx-auto">
-          <div className="max-w-3xl mb-14">
+          <div className="max-w-3xl mb-6 sm:mb-14">
             <span className="text-ngo-gold text-[10px] uppercase tracking-[0.25em] font-bold">Impact Attendu</span>
-            <h2 className="font-serif text-h2 font-extrabold text-white mt-4 leading-[1.1] md:leading-[1.05] tracking-tight">
+            <h2 className="font-serif text-[20px] leading-[1.2] sm:text-h2 sm:leading-[1.05] font-extrabold text-white mt-2 sm:mt-4 tracking-tight">
               Des résultats mesurables au service d'une génération.
             </h2>
-            <p className="text-white/70 text-base leading-relaxed mt-5">
+            <p className="text-white/70 text-[13.5px] sm:text-base leading-relaxed mt-3 sm:mt-5">
               Chaque indicateur est suivi, audité et publié dans nos rapports annuels d'activité.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5">
             {[
               { icon: Users, num: "1 000+", title: "Jeunes formés / an", desc: "Cohortes annuelles déployées au Togo, sélectionnées sur dossier et entretien." },
               { icon: TrendingUp, num: "60%", title: "Taux d'insertion ciblé", desc: "Emploi salarié, micro-entreprise ou poursuite d'études supérieures dans les 12 mois." },
               { icon: Sparkles, num: "1", title: "Plateforme de mentorat", desc: "Infrastructure pérenne de mise en relation jeunes/mentors, structurante pour le territoire." },
               { icon: Award, num: "12+", title: "Partenariats structurants", desc: "Universités, ONG, entreprises et institutions publiques engagées dans la durée." },
             ].map((s) => (
-              <div key={s.title} className="bg-white/[0.06] border border-white/15 backdrop-blur-md p-7 rounded-2xl hover:bg-white/[0.1] hover:border-ngo-gold/40 transition-all">
-                <div className="size-11 rounded-xl bg-ngo-gold grid place-items-center mb-6">
-                  <s.icon size={18} className="text-ngo-navy" strokeWidth={2.5} />
+              <div key={s.title} className="bg-white/[0.06] border border-white/15 backdrop-blur-md p-4 sm:p-7 rounded-2xl hover:bg-white/[0.1] hover:border-ngo-gold/40 transition-all">
+                <div className="size-9 sm:size-11 rounded-xl bg-ngo-gold grid place-items-center mb-3 sm:mb-6">
+                  <s.icon size={16} className="text-ngo-navy" strokeWidth={2.5} />
                 </div>
-                <div className="text-5xl font-black text-white mb-2 tracking-tight">{s.num}</div>
-                <div className="text-sm font-bold text-ngo-gold mb-3 uppercase tracking-wider">{s.title}</div>
-                <p className="text-white/70 text-sm leading-relaxed">{s.desc}</p>
+                <div className="text-2xl sm:text-5xl font-black text-white mb-1 sm:mb-2 tracking-tight">{s.num}</div>
+                <div className="text-[11px] sm:text-sm font-bold text-ngo-gold mb-2 sm:mb-3 uppercase tracking-wider leading-tight">{s.title}</div>
+                <p className="text-white/70 text-[12px] sm:text-sm leading-[1.5] sm:leading-relaxed">{s.desc}</p>
               </div>
             ))}
           </div>
@@ -690,33 +690,33 @@ function Home() {
               </div>
 
               {/* Contenu éditorial */}
-              <div className="relative lg:col-span-5 p-9 md:p-12 lg:p-14 flex flex-col justify-between text-white">
+              <div className="relative lg:col-span-5 p-5 sm:p-9 md:p-12 lg:p-14 flex flex-col justify-between text-white">
                 <div>
-                  <div className="flex flex-wrap items-center gap-3 text-[10px] uppercase tracking-[0.25em] font-bold mb-7">
+                  <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-[9px] sm:text-[10px] uppercase tracking-[0.2em] sm:tracking-[0.25em] font-bold mb-3 sm:mb-7">
                     <span className="text-ngo-gold">{FEATURED_STORY.category}</span>
                     <span className="w-1 h-1 rounded-full bg-white/30" />
-                    <span className="text-white/70 flex items-center gap-1.5"><Calendar size={11} /> {FEATURED_STORY.date}</span>
+                    <span className="text-white/70 flex items-center gap-1.5"><Calendar size={10} /> {FEATURED_STORY.date}</span>
                   </div>
 
-                  <p className="text-[11px] uppercase tracking-[0.3em] font-bold text-white/50 mb-4">{FEATURED_STORY.kicker}</p>
-                  <h3 className="font-extrabold text-3xl md:text-4xl lg:text-[42px] leading-[1.05] tracking-tight mb-6">
+                  <p className="text-[9.5px] sm:text-[11px] uppercase tracking-[0.25em] sm:tracking-[0.3em] font-bold text-white/50 mb-2 sm:mb-4">{FEATURED_STORY.kicker}</p>
+                  <h3 className="font-extrabold text-[18px] leading-[1.2] sm:text-3xl md:text-4xl lg:text-[42px] sm:leading-[1.05] tracking-tight mb-3 sm:mb-6">
                     {FEATURED_STORY.title}
                   </h3>
-                  <p className="text-white/75 text-[15px] md:text-base leading-relaxed font-light mb-8 max-w-md">
+                  <p className="text-white/75 text-[13px] sm:text-[15px] md:text-base leading-[1.55] sm:leading-relaxed font-light mb-4 sm:mb-8 max-w-md">
                     {FEATURED_STORY.excerpt}
                   </p>
 
-                  <div className="flex flex-wrap gap-x-5 gap-y-2 text-[11px] text-white/55 uppercase tracking-widest font-semibold mb-10">
-                    <span className="flex items-center gap-1.5"><MapPin size={11} className="text-ngo-gold" /> {FEATURED_STORY.location}</span>
-                    <span className="flex items-center gap-1.5"><Clock size={11} className="text-ngo-gold" /> {FEATURED_STORY.readTime}</span>
+                  <div className="flex flex-wrap gap-x-4 gap-y-1.5 sm:gap-x-5 sm:gap-y-2 text-[10px] sm:text-[11px] text-white/55 uppercase tracking-widest font-semibold mb-5 sm:mb-10">
+                    <span className="flex items-center gap-1.5"><MapPin size={10} className="text-ngo-gold" /> {FEATURED_STORY.location}</span>
+                    <span className="flex items-center gap-1.5"><Clock size={10} className="text-ngo-gold" /> {FEATURED_STORY.readTime}</span>
                   </div>
                 </div>
 
                 <Link
                   to="/actualites"
-                  className="inline-flex items-center gap-3 self-start bg-ngo-gold text-ngo-navy px-7 py-4 rounded-xl font-bold text-[12px] uppercase tracking-[0.2em] hover:bg-white transition-colors shadow-xl shadow-ngo-gold/20"
+                  className="inline-flex items-center gap-2 sm:gap-3 self-start bg-ngo-gold text-ngo-navy px-5 sm:px-7 py-3 sm:py-4 rounded-lg sm:rounded-xl font-bold text-[11px] sm:text-[12px] uppercase tracking-[0.18em] sm:tracking-[0.2em] hover:bg-white transition-colors shadow-xl shadow-ngo-gold/20"
                 >
-                  Lire l'histoire <ArrowRight size={14} />
+                  Lire l'histoire <ArrowRight size={13} />
                 </Link>
               </div>
             </div>
@@ -756,11 +756,11 @@ function Home() {
                   <span className="flex items-center gap-1.5"><MapPin size={11} className="text-ngo-gold" /> {a.location}</span>
                 </div>
 
-                <h4 className="text-2xl md:text-[26px] font-extrabold text-ngo-navy leading-[1.15] tracking-tight mb-3 group-hover:text-ngo-gold transition-colors">
+                <h4 className="text-lg sm:text-2xl md:text-[26px] font-extrabold text-ngo-navy leading-[1.2] sm:leading-[1.15] tracking-tight mb-2 sm:mb-3 group-hover:text-ngo-gold transition-colors">
                   {a.title}
                 </h4>
-                <p className="text-[15px] text-ngo-slate leading-relaxed font-light mb-5">{a.excerpt}</p>
-                <span className="inline-flex items-center gap-2 text-ngo-navy font-bold text-[11px] uppercase tracking-[0.25em] group-hover:text-ngo-gold transition-colors">
+                <p className="text-[13px] sm:text-[15px] text-ngo-slate leading-[1.55] sm:leading-relaxed font-light mb-3 sm:mb-5">{a.excerpt}</p>
+                <span className="inline-flex items-center gap-2 text-ngo-navy font-bold text-[10px] sm:text-[11px] uppercase tracking-[0.22em] sm:tracking-[0.25em] group-hover:text-ngo-gold transition-colors">
                   Lire la suite <ArrowUpRight size={12} />
                 </span>
               </article>
@@ -994,43 +994,43 @@ function Home() {
       </section>
 
       {/* ============ CTA FINAL ============ */}
-      <section className="section-y px-5 sm:px-6 bg-white">
-        <div className="max-w-7xl mx-auto bg-ngo-navy rounded-3xl p-12 md:p-16 grid lg:grid-cols-2 gap-12 items-center relative overflow-hidden">
+      <section className="section-y px-4 sm:px-6 bg-white">
+        <div className="max-w-7xl mx-auto bg-ngo-navy rounded-2xl sm:rounded-3xl p-6 sm:p-12 md:p-16 grid lg:grid-cols-2 gap-8 sm:gap-12 items-center relative overflow-hidden">
           <div className="absolute -top-20 -right-20 w-80 h-80 bg-ngo-gold/15 rounded-full blur-3xl"></div>
 
           <div className="relative z-10">
             <span className="text-ngo-gold text-[10px] uppercase tracking-[0.25em] font-bold">Rejoignez-nous</span>
-            <h2 className="font-serif text-h2 font-extrabold text-white mt-4 mb-6 leading-[1.05] tracking-tight">Un programme, deux engagements possibles.</h2>
-            <p className="text-white/75 text-base leading-relaxed mb-8 max-w-lg">
+            <h2 className="font-serif text-[20px] leading-[1.2] sm:text-h2 sm:leading-[1.05] font-extrabold !text-white mt-3 sm:mt-4 mb-3 sm:mb-6 tracking-tight">Un programme, deux engagements possibles.</h2>
+            <p className="text-white/75 text-[13.5px] sm:text-base leading-[1.55] sm:leading-relaxed mb-5 sm:mb-8 max-w-lg">
               Que vous soyez un jeune en quête d'opportunités ou un professionnel souhaitant transmettre, votre place est au sein du CMEP.
             </p>
-            <ul className="space-y-3 mb-10">
+            <ul className="space-y-2 sm:space-y-3 mb-6 sm:mb-10">
               {["Inscription gratuite aux cohortes de formation", "Mise en relation avec des mentors qualifiés", "Accès à un réseau de partenaires engagés"].map((b) => (
-                <li key={b} className="flex items-center gap-3 text-white/85 text-sm">
-                  <Check size={16} className="text-ngo-gold" strokeWidth={3} /> {b}
+                <li key={b} className="flex items-center gap-2.5 sm:gap-3 text-white/85 text-[13px] sm:text-sm">
+                  <Check size={15} className="text-ngo-gold shrink-0" strokeWidth={3} /> {b}
                 </li>
               ))}
             </ul>
-            <div className="flex flex-wrap gap-4">
-              <Link to="/contact" className="bg-ngo-gold text-ngo-navy px-8 py-4 rounded-xl font-bold hover:bg-white transition-colors inline-flex items-center gap-2">
-                Envoyer mon engagement <ArrowRight size={16} />
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+              <Link to="/contact" className="bg-ngo-gold text-ngo-navy px-5 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl font-bold hover:bg-white transition-colors inline-flex items-center justify-center gap-2 text-[13px] sm:text-base">
+                Envoyer mon engagement <ArrowRight size={15} />
               </Link>
-              <Link to="/opportunites" className="border border-white/20 text-white px-8 py-4 rounded-xl font-semibold hover:bg-white/10 transition-colors">
+              <Link to="/opportunites" className="border border-white/20 text-white px-5 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl font-semibold hover:bg-white/10 transition-colors text-center text-[13px] sm:text-base">
                 Voir les opportunités
               </Link>
             </div>
           </div>
 
-          <div className="relative z-10 grid grid-cols-2 gap-4">
+          <div className="relative z-10 grid grid-cols-2 gap-2.5 sm:gap-4">
             {[
               { num: "1 000+", l: "Jeunes accompagnés" },
               { num: "60%", l: "Insertion ciblée" },
               { num: "12", l: "Partenaires actifs" },
               { num: "5", l: "Axes stratégiques" },
             ].map((s) => (
-              <div key={s.l} className="bg-white/[0.06] border border-white/10 backdrop-blur-sm p-6 rounded-2xl">
-                <div className="text-3xl font-black text-ngo-gold mb-1">{s.num}</div>
-                <div className="text-[11px] uppercase tracking-widest font-bold text-white/70 leading-snug">{s.l}</div>
+              <div key={s.l} className="bg-white/[0.06] border border-white/10 backdrop-blur-sm p-3 sm:p-6 rounded-xl sm:rounded-2xl">
+                <div className="text-xl sm:text-3xl font-black text-ngo-gold mb-0.5 sm:mb-1">{s.num}</div>
+                <div className="text-[10px] sm:text-[11px] uppercase tracking-[0.14em] sm:tracking-widest font-bold text-white/70 leading-tight sm:leading-snug">{s.l}</div>
               </div>
             ))}
           </div>
