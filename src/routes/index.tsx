@@ -267,7 +267,7 @@ function Home() {
     <Layout>
       {/* ============ HERO IMMERSIF ============ */}
       <section className="relative min-h-[86svh] md:min-h-[100svh] flex items-center justify-center overflow-hidden">
-        <img src={heroImg} alt="Rencontre CMEP : jeunes professionnels togolais en session stratégique" className="absolute inset-0 w-full h-full object-cover" width={1920} height={1280} loading="eager" fetchPriority="high" decoding="async" />
+        <img src={heroImg} alt="Rencontre CMEP : jeunes professionnels togolais en session stratégique" style={{position:'absolute',inset:0,width:'100%',height:'100%',objectFit:'cover'}} width={1920} height={1280} loading="eager" fetchPriority="high" decoding="async" />
         <div className="absolute inset-0 bg-ngo-navy/70"></div>
         <div className="absolute inset-0 bg-gradient-to-b from-ngo-navy/60 via-ngo-navy/35 to-ngo-navy/75"></div>
 
