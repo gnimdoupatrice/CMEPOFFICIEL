@@ -994,43 +994,43 @@ function Home() {
       </section>
 
       {/* ============ CTA FINAL ============ */}
-      <section className="section-y px-5 sm:px-6 bg-white">
-        <div className="max-w-7xl mx-auto bg-ngo-navy rounded-3xl p-12 md:p-16 grid lg:grid-cols-2 gap-12 items-center relative overflow-hidden">
+      <section className="section-y px-4 sm:px-6 bg-white">
+        <div className="max-w-7xl mx-auto bg-ngo-navy rounded-2xl sm:rounded-3xl p-6 sm:p-12 md:p-16 grid lg:grid-cols-2 gap-8 sm:gap-12 items-center relative overflow-hidden">
           <div className="absolute -top-20 -right-20 w-80 h-80 bg-ngo-gold/15 rounded-full blur-3xl"></div>
 
           <div className="relative z-10">
             <span className="text-ngo-gold text-[10px] uppercase tracking-[0.25em] font-bold">Rejoignez-nous</span>
-            <h2 className="font-serif text-h2 font-extrabold text-white mt-4 mb-6 leading-[1.05] tracking-tight">Un programme, deux engagements possibles.</h2>
-            <p className="text-white/75 text-base leading-relaxed mb-8 max-w-lg">
+            <h2 className="font-serif text-[20px] leading-[1.2] sm:text-h2 sm:leading-[1.05] font-extrabold !text-white mt-3 sm:mt-4 mb-3 sm:mb-6 tracking-tight">Un programme, deux engagements possibles.</h2>
+            <p className="text-white/75 text-[13.5px] sm:text-base leading-[1.55] sm:leading-relaxed mb-5 sm:mb-8 max-w-lg">
               Que vous soyez un jeune en quête d'opportunités ou un professionnel souhaitant transmettre, votre place est au sein du CMEP.
             </p>
-            <ul className="space-y-3 mb-10">
+            <ul className="space-y-2 sm:space-y-3 mb-6 sm:mb-10">
               {["Inscription gratuite aux cohortes de formation", "Mise en relation avec des mentors qualifiés", "Accès à un réseau de partenaires engagés"].map((b) => (
-                <li key={b} className="flex items-center gap-3 text-white/85 text-sm">
-                  <Check size={16} className="text-ngo-gold" strokeWidth={3} /> {b}
+                <li key={b} className="flex items-center gap-2.5 sm:gap-3 text-white/85 text-[13px] sm:text-sm">
+                  <Check size={15} className="text-ngo-gold shrink-0" strokeWidth={3} /> {b}
                 </li>
               ))}
             </ul>
-            <div className="flex flex-wrap gap-4">
-              <Link to="/contact" className="bg-ngo-gold text-ngo-navy px-8 py-4 rounded-xl font-bold hover:bg-white transition-colors inline-flex items-center gap-2">
-                Envoyer mon engagement <ArrowRight size={16} />
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+              <Link to="/contact" className="bg-ngo-gold text-ngo-navy px-5 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl font-bold hover:bg-white transition-colors inline-flex items-center justify-center gap-2 text-[13px] sm:text-base">
+                Envoyer mon engagement <ArrowRight size={15} />
               </Link>
-              <Link to="/opportunites" className="border border-white/20 text-white px-8 py-4 rounded-xl font-semibold hover:bg-white/10 transition-colors">
+              <Link to="/opportunites" className="border border-white/20 text-white px-5 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl font-semibold hover:bg-white/10 transition-colors text-center text-[13px] sm:text-base">
                 Voir les opportunités
               </Link>
             </div>
           </div>
 
-          <div className="relative z-10 grid grid-cols-2 gap-4">
+          <div className="relative z-10 grid grid-cols-2 gap-2.5 sm:gap-4">
             {[
               { num: "1 000+", l: "Jeunes accompagnés" },
               { num: "60%", l: "Insertion ciblée" },
               { num: "12", l: "Partenaires actifs" },
               { num: "5", l: "Axes stratégiques" },
             ].map((s) => (
-              <div key={s.l} className="bg-white/[0.06] border border-white/10 backdrop-blur-sm p-6 rounded-2xl">
-                <div className="text-3xl font-black text-ngo-gold mb-1">{s.num}</div>
-                <div className="text-[11px] uppercase tracking-widest font-bold text-white/70 leading-snug">{s.l}</div>
+              <div key={s.l} className="bg-white/[0.06] border border-white/10 backdrop-blur-sm p-3 sm:p-6 rounded-xl sm:rounded-2xl">
+                <div className="text-xl sm:text-3xl font-black text-ngo-gold mb-0.5 sm:mb-1">{s.num}</div>
+                <div className="text-[10px] sm:text-[11px] uppercase tracking-[0.14em] sm:tracking-widest font-bold text-white/70 leading-tight sm:leading-snug">{s.l}</div>
               </div>
             ))}
           </div>
