@@ -857,10 +857,7 @@ function Home() {
               })}
             </div>
 
-            <div className="mt-10 md:mt-12 flex flex-wrap items-center justify-between gap-4 pt-8 border-t border-ngo-navy/10">
-              <p className="text-ngo-slate text-sm font-light max-w-xl leading-relaxed">
-                Une question avant de candidater ? La coordination CMEP répond personnellement à chaque sollicitation sous 48 h.
-              </p>
+            <div className="mt-10 md:mt-12 flex justify-end pt-8 border-t border-ngo-navy/10">
               <Link to="/opportunites" className="inline-flex items-center gap-2 text-ngo-navy hover:text-ngo-gold font-bold text-[11px] uppercase tracking-[0.25em] transition-colors">
                 Voir toutes les opportunités <ArrowRight size={12} />
               </Link>
