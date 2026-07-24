@@ -64,26 +64,6 @@ export function Footer() {
               </p>
             </form>
 
-            <div className="mt-8 flex items-center gap-3">
-              <a
-                href="https://www.linkedin.com/company/chris-mentorship-empowerment-program-cmep/about/"
-                target="_blank"
-                rel="noreferrer noopener"
-                aria-label="LinkedIn CMEP"
-                className="inline-flex items-center justify-center size-11 rounded-md bg-white/5 border border-white/10 hover:bg-ngo-gold hover:text-ngo-navy transition-colors"
-              >
-                <Linkedin size={18} aria-hidden="true" />
-              </a>
-              <a
-                href="https://facebook.com/"
-                target="_blank"
-                rel="noreferrer noopener"
-                aria-label="Facebook CMEP"
-                className="inline-flex items-center justify-center size-11 rounded-md bg-white/5 border border-white/10 hover:bg-ngo-gold hover:text-ngo-navy transition-colors"
-              >
-                <Facebook size={18} aria-hidden="true" />
-              </a>
-            </div>
           </div>
 
           {/* Nav columns */}
