@@ -113,6 +113,26 @@ export function Footer() {
           <p className="text-[11px] uppercase tracking-widest text-white/40">
             © {year} CMEP Togo. Tous droits réservés.
           </p>
+          <div className="flex items-center gap-3 order-3 md:order-none md:mx-auto">
+            <a
+              href="https://www.linkedin.com/company/chris-mentorship-empowerment-program-cmep/about/"
+              target="_blank"
+              rel="noreferrer noopener"
+              aria-label="LinkedIn CMEP"
+              className="inline-flex items-center justify-center size-10 rounded-md bg-white/5 border border-white/10 hover:bg-ngo-gold hover:text-ngo-navy transition-colors"
+            >
+              <Linkedin size={16} aria-hidden="true" />
+            </a>
+            <a
+              href="https://facebook.com/"
+              target="_blank"
+              rel="noreferrer noopener"
+              aria-label="Facebook CMEP"
+              className="inline-flex items-center justify-center size-10 rounded-md bg-white/5 border border-white/10 hover:bg-ngo-gold hover:text-ngo-navy transition-colors"
+            >
+              <Facebook size={16} aria-hidden="true" />
+            </a>
+          </div>
           <ul className="flex flex-wrap items-center gap-x-6 gap-y-2 text-[11px] uppercase tracking-widest text-white/50">
             <li><Link to="/mentions-legales" className="hover:text-ngo-gold transition-colors">Mentions légales</Link></li>
             <li><Link to="/confidentialite" className="hover:text-ngo-gold transition-colors">Confidentialité</Link></li>
