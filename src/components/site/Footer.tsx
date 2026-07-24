@@ -64,31 +64,11 @@ export function Footer() {
               </p>
             </form>
 
-            <div className="mt-8 flex items-center gap-3">
-              <a
-                href="https://www.linkedin.com/company/chris-mentorship-empowerment-program-cmep/about/"
-                target="_blank"
-                rel="noreferrer noopener"
-                aria-label="LinkedIn CMEP"
-                className="inline-flex items-center justify-center size-11 rounded-md bg-white/5 border border-white/10 hover:bg-ngo-gold hover:text-ngo-navy transition-colors"
-              >
-                <Linkedin size={18} aria-hidden="true" />
-              </a>
-              <a
-                href="https://facebook.com/"
-                target="_blank"
-                rel="noreferrer noopener"
-                aria-label="Facebook CMEP"
-                className="inline-flex items-center justify-center size-11 rounded-md bg-white/5 border border-white/10 hover:bg-ngo-gold hover:text-ngo-navy transition-colors"
-              >
-                <Facebook size={18} aria-hidden="true" />
-              </a>
-            </div>
           </div>
 
           {/* Nav columns */}
           <nav aria-label="Programme" className="md:col-span-2">
-            <h3 className="text-[12px] uppercase tracking-[0.22em] font-bold text-white! mb-5">Programme</h3>
+            <h3 className="text-[11px] uppercase tracking-[0.14em] font-bold text-white mb-5 whitespace-nowrap">Programme</h3>
             <ul className="space-y-3 text-sm text-white/65">
               <li><Link to="/a-propos" className="hover:text-ngo-gold transition-colors">À propos</Link></li>
               <li><Link to="/programmes" className="hover:text-ngo-gold transition-colors">Axes stratégiques</Link></li>
@@ -98,7 +78,7 @@ export function Footer() {
           </nav>
 
           <nav aria-label="Agir" className="md:col-span-2">
-            <h3 className="text-[12px] uppercase tracking-[0.22em] font-bold text-white! mb-5">Agir</h3>
+            <h3 className="text-[11px] uppercase tracking-[0.14em] font-bold text-white mb-5 whitespace-nowrap">Agir</h3>
             <ul className="space-y-3 text-sm text-white/65">
               <li><Link to="/opportunites" className="hover:text-ngo-gold transition-colors">Opportunités</Link></li>
               <li><Link to="/opportunites" className="hover:text-ngo-gold transition-colors">Postuler</Link></li>
@@ -109,7 +89,7 @@ export function Footer() {
           </nav>
 
           <div className="col-span-2 md:col-span-3">
-            <h3 className="text-[12px] uppercase tracking-[0.22em] font-bold text-white! mb-5">Contact</h3>
+            <h3 className="text-[11px] uppercase tracking-[0.14em] font-bold text-white mb-5 whitespace-nowrap">Contact</h3>
             <ul className="space-y-4 text-sm text-white/65">
               <li className="flex items-start gap-3">
                 <MapPin size={16} className="mt-0.5 text-ngo-gold shrink-0" aria-hidden="true" />
@@ -133,6 +113,26 @@ export function Footer() {
           <p className="text-[11px] uppercase tracking-widest text-white/40">
             © {year} CMEP Togo. Tous droits réservés.
           </p>
+          <div className="flex items-center gap-3 order-3 md:order-none md:mx-auto">
+            <a
+              href="https://www.linkedin.com/company/chris-mentorship-empowerment-program-cmep/about/"
+              target="_blank"
+              rel="noreferrer noopener"
+              aria-label="LinkedIn CMEP"
+              className="inline-flex items-center justify-center size-10 rounded-md bg-white/5 border border-white/10 hover:bg-ngo-gold hover:text-ngo-navy transition-colors"
+            >
+              <Linkedin size={16} aria-hidden="true" />
+            </a>
+            <a
+              href="https://facebook.com/"
+              target="_blank"
+              rel="noreferrer noopener"
+              aria-label="Facebook CMEP"
+              className="inline-flex items-center justify-center size-10 rounded-md bg-white/5 border border-white/10 hover:bg-ngo-gold hover:text-ngo-navy transition-colors"
+            >
+              <Facebook size={16} aria-hidden="true" />
+            </a>
+          </div>
           <ul className="flex flex-wrap items-center gap-x-6 gap-y-2 text-[11px] uppercase tracking-widest text-white/50">
             <li><Link to="/mentions-legales" className="hover:text-ngo-gold transition-colors">Mentions légales</Link></li>
             <li><Link to="/confidentialite" className="hover:text-ngo-gold transition-colors">Confidentialité</Link></li>

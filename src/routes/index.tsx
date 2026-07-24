@@ -271,7 +271,7 @@ function Home() {
         <div className="absolute inset-0 bg-ngo-navy/70"></div>
         <div className="absolute inset-0 bg-gradient-to-b from-ngo-navy/60 via-ngo-navy/35 to-ngo-navy/75"></div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-24 md:py-28 w-full flex justify-center text-center">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12 md:py-16 w-full flex justify-center text-center">
           <div className="max-w-5xl mx-auto flex flex-col items-center text-center">
             <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-2.5 py-1 sm:px-4 sm:py-2 rounded-full mb-3 sm:mb-8">
               <span className="w-1.5 h-1.5 rounded-full bg-ngo-gold animate-pulse"></span>
@@ -857,10 +857,7 @@ function Home() {
               })}
             </div>
 
-            <div className="mt-10 md:mt-12 flex flex-wrap items-center justify-between gap-4 pt-8 border-t border-ngo-navy/10">
-              <p className="text-ngo-slate text-sm font-light max-w-xl leading-relaxed">
-                Une question avant de candidater ? La coordination CMEP répond personnellement à chaque sollicitation sous 48 h.
-              </p>
+            <div className="mt-10 md:mt-12 flex justify-end pt-8 border-t border-ngo-navy/10">
               <Link to="/opportunites" className="inline-flex items-center gap-2 text-ngo-navy hover:text-ngo-gold font-bold text-[11px] uppercase tracking-[0.25em] transition-colors">
                 Voir toutes les opportunités <ArrowRight size={12} />
               </Link>
