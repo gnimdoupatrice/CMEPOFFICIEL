@@ -215,36 +215,36 @@ function PartnersPage() {
                 key={cat.key}
                 className="grid lg:grid-cols-12 gap-0 bg-white border border-ngo-navy/8 rounded-2xl overflow-hidden hover:shadow-xl transition-shadow"
               >
-                <div className="lg:col-span-4 p-9 md:p-10 bg-ngo-navy text-white flex flex-col justify-between">
+                <div className="lg:col-span-4 p-6 sm:p-8 md:p-10 bg-ngo-navy text-white flex flex-col justify-between">
                   <div>
-                    <div className="size-12 rounded-xl bg-ngo-gold text-ngo-navy grid place-items-center mb-7">
+                    <div className="size-11 sm:size-12 rounded-xl bg-ngo-gold text-ngo-navy grid place-items-center mb-5 sm:mb-7">
                       <cat.icon size={20} strokeWidth={2.2} />
                     </div>
-                    <h3 className="font-extrabold text-h3 mb-5">
+                    <h3 className="font-extrabold text-lg sm:text-xl md:text-h3 mb-3 sm:mb-5 leading-tight break-words">
                       {cat.label}
                     </h3>
-                    <p className="text-white/65 text-body leading-relaxed">{cat.desc}</p>
+                    <p className="text-white/65 text-sm sm:text-body leading-relaxed">{cat.desc}</p>
                   </div>
-                  <div className="mt-8 pt-6 border-t border-white/10 flex items-center justify-between text-[11px] uppercase tracking-[0.22em] font-semibold">
+                  <div className="mt-6 sm:mt-8 pt-5 sm:pt-6 border-t border-white/10 flex items-center justify-between gap-2 text-[10px] sm:text-[11px] uppercase tracking-[0.16em] sm:tracking-[0.22em] font-semibold">
                     <span className="text-white/55">Membres</span>
-                    <span className="text-ngo-gold">{String(cat.partners.length).padStart(2, "0")} institution{cat.partners.length > 1 ? "s" : ""}</span>
+                    <span className="text-ngo-gold text-right">{String(cat.partners.length).padStart(2, "0")} institution{cat.partners.length > 1 ? "s" : ""}</span>
                   </div>
                 </div>
 
-                <div className="lg:col-span-8 p-6 md:p-8 grid sm:grid-cols-2 gap-4">
+                <div className="lg:col-span-8 p-4 sm:p-6 md:p-8 grid sm:grid-cols-2 gap-3 sm:gap-4">
                   {cat.partners.map((p) => (
                     <div
                       key={p.name}
-                      className="group p-5 border border-ngo-navy/8 rounded-xl hover:border-ngo-gold/40 hover:bg-ngo-pearl transition-all flex items-center gap-5"
+                      className="group p-3 sm:p-5 border border-ngo-navy/8 rounded-xl hover:border-ngo-gold/40 hover:bg-ngo-pearl transition-all grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 sm:gap-4"
                     >
-                      <div className="size-16 rounded-lg bg-white border border-ngo-navy/8 flex items-center justify-center shrink-0 overflow-hidden">
-                        <img loading="lazy" decoding="async" src={p.logo} alt={p.name} className="max-h-12 max-w-12 object-contain" />
+                      <div className="size-12 sm:size-14 rounded-lg bg-white border border-ngo-navy/8 flex items-center justify-center shrink-0 overflow-hidden">
+                        <img loading="lazy" decoding="async" src={p.logo} alt={p.name} className="max-h-10 max-w-10 object-contain" />
                       </div>
-                      <div className="min-w-0 flex-1">
-                        <div className="font-extrabold text-ngo-navy text-[15px] leading-tight truncate">{p.name}</div>
-                        <div className="text-[11px] uppercase tracking-[0.18em] text-ngo-slate font-semibold mt-1.5">{p.role}</div>
+                      <div className="min-w-0">
+                        <div className="font-extrabold text-ngo-navy text-[13px] sm:text-[14px] leading-snug break-words">{p.name}</div>
+                        <div className="text-[10px] sm:text-[11px] uppercase tracking-[0.12em] sm:tracking-[0.16em] text-ngo-slate font-semibold mt-1 leading-tight break-words">{p.role}</div>
                       </div>
-                      <ArrowUpRight size={16} className="text-ngo-slate/40 group-hover:text-ngo-gold group-hover:rotate-12 transition-all" />
+                      <ArrowUpRight size={14} className="shrink-0 text-ngo-slate/40 group-hover:text-ngo-gold group-hover:rotate-12 transition-all" />
                     </div>
                   ))}
                 </div>
