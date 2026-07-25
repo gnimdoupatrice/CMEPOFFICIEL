@@ -215,19 +215,19 @@ function PartnersPage() {
                 key={cat.key}
                 className="grid lg:grid-cols-12 gap-0 bg-white border border-ngo-navy/8 rounded-2xl overflow-hidden hover:shadow-xl transition-shadow"
               >
-                <div className="lg:col-span-4 p-9 md:p-10 bg-ngo-navy text-white flex flex-col justify-between">
+                <div className="lg:col-span-4 p-6 sm:p-8 md:p-10 bg-ngo-navy text-white flex flex-col justify-between">
                   <div>
-                    <div className="size-12 rounded-xl bg-ngo-gold text-ngo-navy grid place-items-center mb-7">
+                    <div className="size-11 sm:size-12 rounded-xl bg-ngo-gold text-ngo-navy grid place-items-center mb-5 sm:mb-7">
                       <cat.icon size={20} strokeWidth={2.2} />
                     </div>
-                    <h3 className="font-extrabold text-h3 mb-5">
+                    <h3 className="font-extrabold text-lg sm:text-xl md:text-h3 mb-3 sm:mb-5 leading-tight break-words">
                       {cat.label}
                     </h3>
-                    <p className="text-white/65 text-body leading-relaxed">{cat.desc}</p>
+                    <p className="text-white/65 text-sm sm:text-body leading-relaxed">{cat.desc}</p>
                   </div>
-                  <div className="mt-8 pt-6 border-t border-white/10 flex items-center justify-between text-[11px] uppercase tracking-[0.22em] font-semibold">
+                  <div className="mt-6 sm:mt-8 pt-5 sm:pt-6 border-t border-white/10 flex items-center justify-between gap-2 text-[10px] sm:text-[11px] uppercase tracking-[0.16em] sm:tracking-[0.22em] font-semibold">
                     <span className="text-white/55">Membres</span>
-                    <span className="text-ngo-gold">{String(cat.partners.length).padStart(2, "0")} institution{cat.partners.length > 1 ? "s" : ""}</span>
+                    <span className="text-ngo-gold text-right">{String(cat.partners.length).padStart(2, "0")} institution{cat.partners.length > 1 ? "s" : ""}</span>
                   </div>
                 </div>
 
