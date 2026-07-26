@@ -1,5 +1,5 @@
-// Images CMEP — imports directs (aucun .asset.json).
-// Toutes les images vivent dans src/assets/images/ et sont bundlées par Vite.
+// Images CMEP — imports directs de fichiers image locaux.
+// Toutes les images vivent dans src/assets/ et sont bundlées par Vite.
 
 import logoCmep from "@/assets/images/brand/logo.jpg";
 import teamCmep from "@/assets/images/home/team.jpg";
