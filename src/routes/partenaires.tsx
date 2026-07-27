@@ -130,35 +130,110 @@ function PartnersPage() {
         <img
           src={partnersHero}
           alt="Coalition de partenaires CMEP mobilisés autour de la jeunesse togolaise"
-          className="absolute inset-0 size-full object-cover opacity-25"
+          className="absolute inset-0 size-full object-cover opacity-20"
+          fetchPriority="high"
+          decoding="async"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-ngo-navy via-ngo-navy/85 to-ngo-navy/40" />
-        <div className="relative max-w-7xl mx-auto px-6 pt-32 pb-28">
-          <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/15 backdrop-blur text-[10px] uppercase tracking-[0.25em] font-bold text-ngo-gold mb-8">
-            <Network size={11} /> Coalition partenaire
-          </span>
-          <h1 className="text-h1 font-extrabold max-w-4xl">
-            Une coalition institutionnelle pour la <span className="text-ngo-gold">jeunesse togolaise</span>.
-          </h1>
-          <p className="mt-8 text-lg text-white/75 leading-relaxed max-w-2xl">
-            Universités, ONG, mouvements citoyens, plateformes jeunesse et acteurs internationaux.
-            Une alliance plurielle qui structure, finance et amplifie ce que le CMEP construit.
-          </p>
+        <div className="absolute inset-0 bg-gradient-to-br from-ngo-navy via-ngo-navy/92 to-ngo-navy/60" />
+        <div
+          aria-hidden
+          className="absolute -top-32 -right-24 size-[26rem] rounded-full bg-ngo-gold/10 blur-3xl"
+        />
 
-          <div className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="relative max-w-7xl mx-auto px-6 pt-16 pb-20 md:pt-24 md:pb-28">
+          {/* Fil d'Ariane */}
+          <nav aria-label="Fil d'Ariane" className="mb-8 md:mb-10">
+            <ol className="flex items-center gap-2 text-[11px] uppercase tracking-[0.18em] font-semibold text-white/50">
+              <li>
+                <Link to="/" className="hover:text-ngo-gold transition-colors">
+                  Accueil
+                </Link>
+              </li>
+              <li aria-hidden className="text-white/25">/</li>
+              <li aria-current="page" className="text-white/80">Partenaires</li>
+            </ol>
+          </nav>
+
+          <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+            <div className="lg:col-span-7">
+              <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/15 backdrop-blur text-[10px] uppercase tracking-[0.25em] font-bold text-ngo-gold mb-6 md:mb-8">
+                <Network size={11} /> Coalition partenaire
+              </span>
+              <h1 className="text-h1 font-extrabold leading-[1.05] tracking-tight text-balance">
+                Une coalition institutionnelle pour la <span className="text-ngo-gold">jeunesse togolaise</span>.
+              </h1>
+              <p className="mt-6 md:mt-8 text-base md:text-lg text-white/75 leading-relaxed max-w-2xl">
+                Universités, ONG, mouvements citoyens, plateformes jeunesse et acteurs internationaux.
+                Une alliance plurielle qui structure, finance et amplifie ce que le CMEP construit.
+              </p>
+
+              <div className="mt-8 md:mt-10 flex flex-wrap items-center gap-3">
+                <a
+                  href={createWhatsAppHref("Bonjour CMEP, je souhaite échanger sur un partenariat.")}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="inline-flex items-center gap-2 bg-ngo-gold text-ngo-navy px-6 py-3.5 font-bold uppercase tracking-widest text-[11px] rounded-md hover:bg-ngo-gold/90 transition-colors"
+                >
+                  Devenir partenaire <ArrowRight size={14} />
+                </a>
+                <a
+                  href="#ecosysteme"
+                  className="inline-flex items-center gap-2 border border-white/25 text-white px-6 py-3.5 font-bold uppercase tracking-widest text-[11px] rounded-md hover:border-ngo-gold/60 hover:text-ngo-gold transition-colors"
+                >
+                  Voir l'écosystème <ArrowUpRight size={14} />
+                </a>
+              </div>
+            </div>
+
+            {/* Aperçu logos — signal de crédibilité immédiat */}
+            <div className="lg:col-span-5">
+              <div className="rounded-2xl border border-white/12 bg-white/5 backdrop-blur p-5 sm:p-6">
+                <div className="flex items-center justify-between gap-3 mb-5">
+                  <span className="text-[10px] uppercase tracking-[0.22em] font-bold text-white/55">
+                    Ils nous accompagnent
+                  </span>
+                  <span className="text-[10px] uppercase tracking-[0.22em] font-bold text-ngo-gold">12+</span>
+                </div>
+                <div className="grid grid-cols-3 gap-2 sm:gap-3">
+                  {CATEGORIES.flatMap((c) => c.partners)
+                    .slice(0, 6)
+                    .map((p) => (
+                      <div
+                        key={p.name}
+                        title={p.name}
+                        className="aspect-[4/3] rounded-lg bg-white/90 flex items-center justify-center p-2.5 sm:p-3"
+                      >
+                        <img
+                          src={p.logo}
+                          alt={`Logo ${p.name}`}
+                          loading="lazy"
+                          decoding="async"
+                          className="max-h-10 max-w-full object-contain"
+                        />
+                      </div>
+                    ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-12 md:mt-16 grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
             {TRUST.map((t) => (
               <div
                 key={t.l}
-                className="p-6 bg-white/5 backdrop-blur border border-white/10 rounded-xl hover:border-ngo-gold/40 transition-colors"
+                className="min-w-0 p-5 sm:p-6 bg-white/5 backdrop-blur border border-white/10 rounded-xl hover:border-ngo-gold/40 transition-colors"
               >
                 <t.icon size={20} className="text-ngo-gold mb-4" strokeWidth={2.2} />
-                <div className="text-h2 font-extrabold leading-none">{t.v}</div>
-                <div className="text-[10px] uppercase tracking-[0.22em] text-white/55 mt-3 font-semibold">{t.l}</div>
+                <div className="text-h2 font-extrabold leading-none tabular-nums">{t.v}</div>
+                <div className="text-[10px] uppercase tracking-[0.22em] text-white/55 mt-3 font-semibold leading-tight">
+                  {t.l}
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
+
 
       {/* LOGO WALL — grille responsive avec images réelles du PowerPoint */}
       <section className="bg-white py-20 md:py-28 px-6 border-b border-ngo-navy/5">
@@ -194,7 +269,7 @@ function PartnersPage() {
       </section>
 
       {/* CATEGORIZED ECOSYSTEM */}
-      <section className="bg-ngo-pearl py-24 px-6">
+      <section id="ecosysteme" className="bg-ngo-pearl py-24 px-6 scroll-mt-24">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-12 gap-10 items-end mb-14">
             <div className="lg:col-span-8">
