@@ -1,10 +1,27 @@
+import { useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { Mail, Phone, MapPin, Facebook, Linkedin, ArrowRight } from "lucide-react";
+import { Mail, Phone, MapPin, Facebook, Linkedin, ArrowRight, Check } from "lucide-react";
 import { CMEP_MEDIA } from "@/lib/media";
-import { createWhatsAppHref } from "@/lib/contact";
+import { createWhatsAppHref, CMEP_EMAIL } from "@/lib/contact";
 
 export function Footer() {
   const year = new Date().getFullYear();
+  const [email, setEmail] = useState("");
+  const [subscribed, setSubscribed] = useState(false);
+
+  function handleNewsletter(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const value = email.trim();
+    if (!value) return;
+    const subject = encodeURIComponent("Inscription à la newsletter CMEP");
+    const body = encodeURIComponent(
+      `Bonjour CMEP,\n\nJe souhaite m'inscrire à votre newsletter institutionnelle.\n\nEmail : ${value}\n\nMerci.`,
+    );
+    window.location.href = `mailto:${CMEP_EMAIL}?subject=${subject}&body=${body}`;
+    setSubscribed(true);
+    setEmail("");
+  }
+
   return (
     <footer
       className="bg-ngo-navy text-white pt-12 sm:pt-20 pb-8"
