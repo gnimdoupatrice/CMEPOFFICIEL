@@ -1,4 +1,5 @@
 import { CMEP_MEDIA } from "@/lib/media";
+import locavoreTourisme from "@/assets/images/news/locavore-tourisme.jpg";
 
 export type EditorialArticle = {
   id: string;
