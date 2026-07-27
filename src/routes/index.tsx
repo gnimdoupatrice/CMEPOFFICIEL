@@ -287,7 +287,7 @@ function Home() {
               <a href={createWhatsAppHref("Bonjour CMEP, je souhaite rejoindre le programme et être accompagné(e). Pouvez-vous me guider sur les étapes d'inscription ?")} target="_blank" rel="noreferrer noopener" className="flex-1 sm:flex-initial bg-ngo-gold text-ngo-navy px-3 sm:px-8 py-2.5 sm:py-4 rounded-lg sm:rounded-xl font-bold flex items-center justify-center gap-1.5 sm:gap-2 hover:bg-white transition-all shadow-2xl shadow-ngo-gold/30 text-[11.5px] sm:text-base whitespace-nowrap">
                 Rejoindre <ArrowRight size={13} className="sm:hidden" /><ArrowRight size={16} className="hidden sm:inline" />
               </a>
-              <a href={createWhatsAppHref("Bonjour CMEP, je souhaite devenir mentor.")} target="_blank" rel="noreferrer noopener" className="flex-1 sm:flex-initial border-2 border-white/40 text-white px-3 sm:px-8 py-2.5 sm:py-4 rounded-lg sm:rounded-xl font-semibold hover:bg-white/10 backdrop-blur-sm transition-colors text-center text-[11.5px] sm:text-base whitespace-nowrap">
+              <a href={createWhatsAppHref("Bonjour CMEP, je souhaite devenir mentor au sein du programme. Comment puis-je proposer ma candidature ?")} target="_blank" rel="noreferrer noopener" className="flex-1 sm:flex-initial border-2 border-white/40 text-white px-3 sm:px-8 py-2.5 sm:py-4 rounded-lg sm:rounded-xl font-semibold hover:bg-white/10 backdrop-blur-sm transition-colors text-center text-[11.5px] sm:text-base whitespace-nowrap">
                 Devenir mentor
               </a>
             </div>
