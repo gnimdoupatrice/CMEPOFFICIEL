@@ -269,7 +269,7 @@ function PartnersPage() {
       </section>
 
       {/* CATEGORIZED ECOSYSTEM */}
-      <section className="bg-ngo-pearl py-24 px-6">
+      <section id="ecosysteme" className="bg-ngo-pearl py-24 px-6 scroll-mt-24">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-12 gap-10 items-end mb-14">
             <div className="lg:col-span-8">
