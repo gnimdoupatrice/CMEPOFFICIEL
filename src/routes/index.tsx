@@ -229,6 +229,8 @@ const PROGRAMS = [
     beneficiaries: "Étudiants et jeunes professionnels du Togo (18-35 ans).",
     duration: "Sessions de 4 jours — Lomé (mai 2026) & Kara (mai 2026)",
     results: "Certification officielle CMEP à l'issue du parcours, 11 modules validés dont sauvegarde & VBG.",
+    ctaLabel: "Rejoindre la cohorte",
+    whatsapp: "Bonjour CMEP, je souhaite m'inscrire à la Formation certifiante « Animateur de projet » (11 modules, sessions de Lomé et Kara en mai 2026). Merci de m'indiquer les prochaines étapes.",
   },
   {
     title: "Expert en Évaluation d'Impact Environnemental & Social",
