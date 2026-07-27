@@ -77,7 +77,7 @@ export const EDITORIAL_ARTICLES: EditorialArticle[] = [
     date: "Avril 2026",
     readTime: "8 min",
     location: "Togo",
-    image: CMEP_MEDIA.opportunities.redactionTdr,
+    image: locavoreTourisme,
     source:
       "https://www.linkedin.com/posts/chris-mentorship-empowerment-program-cmep_cmep-locavoretourisme-daezveloppementdurable-activity-7437412725321936896-MCZ3",
   },
