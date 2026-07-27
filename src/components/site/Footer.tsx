@@ -1,10 +1,27 @@
+import { useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { Mail, Phone, MapPin, Facebook, Linkedin, ArrowRight } from "lucide-react";
+import { Mail, Phone, MapPin, Facebook, Linkedin, ArrowRight, Check } from "lucide-react";
 import { CMEP_MEDIA } from "@/lib/media";
-import { createWhatsAppHref } from "@/lib/contact";
+import { CMEP_EMAIL } from "@/lib/contact";
 
 export function Footer() {
   const year = new Date().getFullYear();
+  const [email, setEmail] = useState("");
+  const [subscribed, setSubscribed] = useState(false);
+
+  function handleNewsletter(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const value = email.trim();
+    if (!value) return;
+    const subject = encodeURIComponent("Inscription à la newsletter CMEP");
+    const body = encodeURIComponent(
+      `Bonjour CMEP,\n\nJe souhaite m'inscrire à votre newsletter institutionnelle.\n\nEmail : ${value}\n\nMerci.`,
+    );
+    window.location.href = `mailto:${CMEP_EMAIL}?subject=${subject}&body=${body}`;
+    setSubscribed(true);
+    setEmail("");
+  }
+
   return (
     <footer
       className="bg-ngo-navy text-white pt-12 sm:pt-20 pb-8"
@@ -38,7 +55,7 @@ export function Footer() {
 
             <form
               className="max-w-md"
-              onSubmit={(e) => e.preventDefault()}
+              onSubmit={handleNewsletter}
               aria-labelledby="newsletter-label"
             >
               <label id="newsletter-label" htmlFor="newsletter" className="block text-[11px] uppercase tracking-[0.22em] font-bold text-ngo-gold mb-3">
@@ -49,6 +66,8 @@ export function Footer() {
                   id="newsletter"
                   type="email"
                   required
+                  value={email}
+                  onChange={(e) => { setEmail(e.target.value); setSubscribed(false); }}
                   placeholder="votre.email@exemple.com"
                   className="flex-1 min-w-0 px-4 py-3 min-h-11 bg-white/5 border border-white/15 rounded-md text-sm text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-ngo-gold focus:border-transparent"
                 />
@@ -59,8 +78,12 @@ export function Footer() {
                   OK <ArrowRight size={14} aria-hidden="true" />
                 </button>
               </div>
-              <p className="text-[11px] text-white/40 mt-3">
-                Une lettre trimestrielle. Désinscription en un clic.
+              <p className="text-[11px] mt-3 flex items-center gap-1.5" aria-live="polite">
+                {subscribed ? (
+                  <><Check size={13} className="text-ngo-gold" /> <span className="text-white/70">Merci ! Votre demande d'inscription est prête à être envoyée.</span></>
+                ) : (
+                  <span className="text-white/40">Une lettre trimestrielle. Désinscription en un clic.</span>
+                )}
               </p>
             </form>
 
@@ -82,8 +105,8 @@ export function Footer() {
             <ul className="space-y-3 text-sm text-white/65">
               <li><Link to="/opportunites" className="hover:text-ngo-gold transition-colors">Opportunités</Link></li>
               <li><Link to="/opportunites" className="hover:text-ngo-gold transition-colors">Postuler</Link></li>
-              <li><a href={createWhatsAppHref("Bonjour CMEP, je souhaite échanger sur un partenariat.")} target="_blank" rel="noreferrer noopener" className="hover:text-ngo-gold transition-colors">Devenir partenaire</a></li>
-              <li><a href={createWhatsAppHref("Bonjour CMEP, je souhaite soutenir le programme.")} target="_blank" rel="noreferrer noopener" className="hover:text-ngo-gold transition-colors">Soutenir le programme</a></li>
+              <li><Link to="/partenaires" className="hover:text-ngo-gold transition-colors">Devenir partenaire</Link></li>
+              <li><Link to="/partenaires" className="hover:text-ngo-gold transition-colors">Soutenir le programme</Link></li>
               <li><Link to="/faq" className="hover:text-ngo-gold transition-colors">FAQ</Link></li>
             </ul>
           </nav>

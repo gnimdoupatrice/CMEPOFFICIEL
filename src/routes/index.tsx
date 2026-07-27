@@ -50,6 +50,7 @@ const FEATURED_OPPORTUNITIES = [
     urgency: "Inscriptions ouvertes",
     perks: ["Certification à l'issue", "Intervenants confirmés", "Modules incluant sauvegarde & VBG"],
     image: CMEP_MEDIA.opportunities.animateurProjet,
+    whatsapp: "Bonjour CMEP, je souhaite candidater à la formation certifiante « Animateur de projet » (11 modules, cohortes de mai 2026 à Lomé et Kara). Merci de m'envoyer le dossier de candidature.",
   },
   {
     badge: "Certification",
@@ -62,6 +63,7 @@ const FEATURED_OPPORTUNITIES = [
     urgency: "Inscriptions ouvertes",
     perks: ["Cadres réglementaires", "Standards internationaux", "Étude de cas & projet final"],
     image: CMEP_MEDIA.opportunities.certificatEies,
+    whatsapp: "Bonjour CMEP, je souhaite candidater au certificat « Expert en Évaluation d'Impact Environnemental et Social » (8 modules, session du 12 au 14 février à Kara). Merci de me préciser les conditions d'inscription.",
   },
   {
     badge: "Atelier certifiant",
@@ -74,6 +76,7 @@ const FEATURED_OPPORTUNITIES = [
     urgency: "Inscriptions ouvertes",
     perks: ["Canevas d'ONG internationales", "TDR bancables", "Documents de formation inclus"],
     image: CMEP_MEDIA.opportunities.redactionTdr,
+    whatsapp: "Bonjour CMEP, je souhaite candidater à l'atelier « Rédaction et Gestion de projet & TDR » (3 journées intensives, clôture des inscriptions le 22 mars 2026). Merci de m'indiquer la marche à suivre.",
   },
 ];
 
@@ -217,6 +220,8 @@ const PROGRAMS = [
     beneficiaries: "Étudiants, jeunes professionnels et membres d'OSC.",
     duration: "3 journées intensives — 24-26 mars 2026, Kara",
     results: "Chaque participant repart avec un TDR opérationnel et l'accès aux canevas d'organisations internationales.",
+    ctaLabel: "M'inscrire à l'atelier",
+    whatsapp: "Bonjour CMEP, je suis intéressé(e) par l'Atelier certifiant « Rédaction & Gestion de projet — TDR » (3 journées, 24-26 mars 2026, Kara). Merci de m'envoyer les modalités d'inscription et les frais de participation.",
   },
   {
     title: "Animateur de projet — Formation certifiante",
@@ -227,6 +232,8 @@ const PROGRAMS = [
     beneficiaries: "Étudiants et jeunes professionnels du Togo (18-35 ans).",
     duration: "Sessions de 4 jours — Lomé (mai 2026) & Kara (mai 2026)",
     results: "Certification officielle CMEP à l'issue du parcours, 11 modules validés dont sauvegarde & VBG.",
+    ctaLabel: "Rejoindre la cohorte",
+    whatsapp: "Bonjour CMEP, je souhaite m'inscrire à la Formation certifiante « Animateur de projet » (11 modules, sessions de Lomé et Kara en mai 2026). Merci de m'indiquer les prochaines étapes.",
   },
   {
     title: "Expert en Évaluation d'Impact Environnemental & Social",
@@ -237,6 +244,8 @@ const PROGRAMS = [
     beneficiaries: "Professionnels du secteur environnemental, étudiants avancés et membres d'OSC engagés.",
     duration: "3 journées intensives — 12, 13 & 14 février, Kara (Commune Kozah 1)",
     results: "Certificat d'expert reconnu, capable de piloter des évaluations d'impact environnemental et social.",
+    ctaLabel: "Demander ma place",
+    whatsapp: "Bonjour CMEP, je souhaite être certifié(e) « Expert en Évaluation d'Impact Environnemental & Social » (8 modules, 12-14 février, Kara). Merci de me transmettre le dossier d'inscription.",
   },
 ] as const;
 
@@ -284,10 +293,10 @@ function Home() {
               Le <strong className="hero-copy-white font-semibold">CMEP</strong> accompagne chaque année <strong className="text-ngo-gold font-semibold">plus de 1 000 jeunes togolais</strong> par le mentorat, la formation et l'engagement communautaire.
             </p>
             <div className="flex flex-row w-full justify-center gap-2 sm:gap-4 mb-4 sm:mb-14">
-              <Link to="/opportunites" className="flex-1 sm:flex-initial bg-ngo-gold text-ngo-navy px-3 sm:px-8 py-2.5 sm:py-4 rounded-lg sm:rounded-xl font-bold flex items-center justify-center gap-1.5 sm:gap-2 hover:bg-white transition-all shadow-2xl shadow-ngo-gold/30 text-[11.5px] sm:text-base whitespace-nowrap">
+              <a href={createWhatsAppHref("Bonjour CMEP, je souhaite rejoindre le programme et être accompagné(e). Pouvez-vous me guider sur les étapes d'inscription ?")} target="_blank" rel="noreferrer noopener" className="flex-1 sm:flex-initial bg-ngo-gold text-ngo-navy px-3 sm:px-8 py-2.5 sm:py-4 rounded-lg sm:rounded-xl font-bold flex items-center justify-center gap-1.5 sm:gap-2 hover:bg-white transition-all shadow-2xl shadow-ngo-gold/30 text-[11.5px] sm:text-base whitespace-nowrap">
                 Rejoindre <ArrowRight size={13} className="sm:hidden" /><ArrowRight size={16} className="hidden sm:inline" />
-              </Link>
-              <a href={createWhatsAppHref("Bonjour CMEP, je souhaite devenir mentor.")} target="_blank" rel="noreferrer noopener" className="flex-1 sm:flex-initial border-2 border-white/40 text-white px-3 sm:px-8 py-2.5 sm:py-4 rounded-lg sm:rounded-xl font-semibold hover:bg-white/10 backdrop-blur-sm transition-colors text-center text-[11.5px] sm:text-base whitespace-nowrap">
+              </a>
+              <a href={createWhatsAppHref("Bonjour CMEP, je souhaite devenir mentor au sein du programme. Comment puis-je proposer ma candidature ?")} target="_blank" rel="noreferrer noopener" className="flex-1 sm:flex-initial border-2 border-white/40 text-white px-3 sm:px-8 py-2.5 sm:py-4 rounded-lg sm:rounded-xl font-semibold hover:bg-white/10 backdrop-blur-sm transition-colors text-center text-[11.5px] sm:text-base whitespace-nowrap">
                 Devenir mentor
               </a>
             </div>
@@ -558,6 +567,23 @@ function Home() {
                       </div>
                     ))}
                   </dl>
+
+                  <div className="mt-6 pt-5 border-t border-ngo-navy/10 flex flex-col sm:flex-row gap-2.5">
+                    <a
+                      href={createWhatsAppHref(p.whatsapp)}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                      className="flex-1 inline-flex items-center justify-center gap-2 bg-ngo-navy hover:bg-ngo-gold hover:text-ngo-navy text-white px-4 py-3 rounded-xl font-bold text-[11px] uppercase tracking-[0.18em] transition-all text-center"
+                    >
+                      {p.ctaLabel} <ArrowRight size={12} />
+                    </a>
+                    <Link
+                      to="/opportunites"
+                      className="flex-1 inline-flex items-center justify-center gap-2 border border-ngo-navy/20 text-ngo-navy hover:border-ngo-gold hover:text-ngo-gold px-4 py-3 rounded-xl font-bold text-[11px] uppercase tracking-[0.18em] transition-all text-center"
+                    >
+                      Plus de détails
+                    </Link>
+                  </div>
                 </div>
               </article>
             ))}
@@ -713,7 +739,7 @@ function Home() {
                 </div>
 
                 <Link
-                  to="/actualites"
+                  to="/impact"
                   className="inline-flex items-center gap-2 sm:gap-3 self-start bg-ngo-gold text-ngo-navy px-5 sm:px-7 py-3 sm:py-4 rounded-lg sm:rounded-xl font-bold text-[11px] sm:text-[12px] uppercase tracking-[0.18em] sm:tracking-[0.2em] hover:bg-white transition-colors shadow-xl shadow-ngo-gold/20"
                 >
                   Lire l'histoire <ArrowRight size={13} />
@@ -729,14 +755,15 @@ function Home() {
             <h3 className="text-[11px] uppercase tracking-[0.3em] font-bold text-ngo-navy flex items-center gap-3">
               <Newspaper size={14} className="text-ngo-gold" /> Dernières dépêches
             </h3>
-            <Link to="/actualites" className="inline-flex items-center gap-1.5 text-ngo-slate hover:text-ngo-gold font-bold text-[10px] uppercase tracking-[0.25em] transition-colors">
+            <Link to="/impact" className="inline-flex items-center gap-1.5 text-ngo-slate hover:text-ngo-gold font-bold text-[10px] uppercase tracking-[0.25em] transition-colors">
               Toutes les actualités <ArrowRight size={11} />
             </Link>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 lg:gap-10">
-            {ACTUALITES.map((a, i) => (
-              <article key={a.title} className="group cursor-pointer">
+            {ACTUALITES.map((a) => (
+              <Link key={a.title} to="/impact" className="group block">
+              <article className="cursor-pointer">
                 <div className="relative aspect-[16/10] overflow-hidden rounded-2xl mb-6 bg-ngo-navy/5">
                   <img
                     src={a.image}
@@ -764,6 +791,7 @@ function Home() {
                   Lire la suite <ArrowUpRight size={12} />
                 </span>
               </article>
+              </Link>
             ))}
           </div>
         </div>
@@ -845,12 +873,22 @@ function Home() {
                         ))}
                       </ul>
 
-                      <Link
-                        to="/opportunites"
-                        className="mt-auto inline-flex items-center justify-center gap-2 bg-ngo-navy hover:bg-ngo-gold hover:text-ngo-navy text-white px-5 py-3 rounded-xl font-bold text-[11px] uppercase tracking-[0.22em] transition-all"
-                      >
-                        Candidater <ArrowRight size={12} />
-                      </Link>
+                      <div className="mt-auto flex flex-col sm:flex-row gap-2.5">
+                        <a
+                          href={createWhatsAppHref(opp.whatsapp)}
+                          target="_blank"
+                          rel="noreferrer noopener"
+                          className="flex-1 inline-flex items-center justify-center gap-2 bg-ngo-navy hover:bg-ngo-gold hover:text-ngo-navy text-white px-4 py-3 rounded-xl font-bold text-[11px] uppercase tracking-[0.18em] transition-all text-center"
+                        >
+                          Candidater <ArrowRight size={12} />
+                        </a>
+                        <Link
+                          to="/opportunites"
+                          className="flex-1 inline-flex items-center justify-center gap-2 border border-ngo-navy/20 text-ngo-navy hover:border-ngo-gold hover:text-ngo-gold px-4 py-3 rounded-xl font-bold text-[11px] uppercase tracking-[0.18em] transition-all text-center"
+                        >
+                          Plus de détails
+                        </Link>
+                      </div>
                     </div>
                   </article>
                 );
@@ -1009,9 +1047,9 @@ function Home() {
               ))}
             </ul>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-              <Link to="/contact" className="bg-ngo-gold text-ngo-navy px-5 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl font-bold hover:bg-white transition-colors inline-flex items-center justify-center gap-2 text-[13px] sm:text-base">
-                Envoyer mon engagement <ArrowRight size={15} />
-              </Link>
+              <a href={createWhatsAppHref("Bonjour CMEP, je souhaite nous rejoindre : merci de m'orienter vers le parcours (jeune bénéficiaire ou mentor) le plus adapté à mon profil.")} target="_blank" rel="noreferrer noopener" className="bg-ngo-gold text-ngo-navy px-5 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl font-bold hover:bg-white transition-colors inline-flex items-center justify-center gap-2 text-[13px] sm:text-base">
+                Nous rejoindre <ArrowRight size={15} />
+              </a>
               <Link to="/opportunites" className="border border-white/20 text-white px-5 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl font-semibold hover:bg-white/10 transition-colors text-center text-[13px] sm:text-base">
                 Voir les opportunités
               </Link>
