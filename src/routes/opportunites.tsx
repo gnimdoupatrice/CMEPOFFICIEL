@@ -558,32 +558,56 @@ function OpportunitiesPage() {
       </section>
 
       {/* PROCESSUS */}
-      <section className="bg-ngo-navy py-12 sm:py-16 md:py-20 px-4 sm:px-6 text-white relative overflow-hidden">
+      <section className="bg-ngo-navy py-14 sm:py-20 md:py-24 px-4 sm:px-6 text-white relative overflow-hidden">
         <div className="absolute -top-32 -left-32 size-96 rounded-full bg-ngo-gold/10 blur-3xl" aria-hidden="true" />
         <div className="absolute -bottom-32 -right-32 size-96 rounded-full bg-ngo-gold/5 blur-3xl" aria-hidden="true" />
 
         <div className="relative max-w-7xl mx-auto">
-          <div className="max-w-3xl mb-10 sm:mb-14">
-            <span className="inline-flex items-center gap-2 text-ngo-gold text-[10px] uppercase tracking-[0.25em] font-bold">
-              <Sparkles size={11} aria-hidden="true" /> Comment ça se passe
+          <div className="max-w-3xl mb-12 sm:mb-16">
+            <span className="inline-flex items-center gap-2 text-ngo-gold text-[10px] sm:text-[11px] uppercase tracking-[0.25em] font-bold">
+              <Sparkles size={12} aria-hidden="true" /> Comment ça marche
             </span>
-            <h2 className="text-h2 font-extrabold mt-4 leading-[1.05] tracking-tight">
+            <h2 className="text-h2 font-extrabold mt-4 leading-[1.05] tracking-tight text-white">
               De l'inscription à la <span className="text-ngo-gold">certification</span> : un parcours simple.
             </h2>
+            <p className="mt-4 text-white/70 text-[14px] sm:text-[15px] leading-relaxed max-w-2xl">
+              Quatre étapes claires — de la sélection de votre parcours à la remise officielle de votre certification.
+            </p>
           </div>
 
-          <ol className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-            {PROCESS.map((s) => (
-              <li
-                key={s.n}
-                className="relative p-5 sm:p-6 bg-white/5 backdrop-blur border border-white/10 rounded-2xl"
-              >
-                <div className="text-[11px] uppercase tracking-[0.22em] text-ngo-gold font-bold mb-3">Étape {s.n}</div>
-                <h3 className="font-extrabold text-base sm:text-lg leading-tight tracking-tight mb-2">{s.title}</h3>
-                <p className="text-white/70 text-[13px] sm:text-body leading-relaxed">{s.desc}</p>
-              </li>
-            ))}
-          </ol>
+          {/* Connecteur horizontal desktop */}
+          <div className="relative">
+            <div
+              className="hidden lg:block absolute top-8 left-[10%] right-[10%] h-px bg-gradient-to-r from-transparent via-ngo-gold/40 to-transparent"
+              aria-hidden="true"
+            />
+            <ol className="grid gap-5 sm:gap-6 sm:grid-cols-2 lg:grid-cols-4 relative">
+              {PROCESS.map((s) => (
+                <li
+                  key={s.n}
+                  className="group relative p-6 sm:p-7 bg-white/[0.06] backdrop-blur-sm border border-white/12 rounded-2xl hover:bg-white/[0.09] hover:border-ngo-gold/40 transition-all"
+                >
+                  <div className="flex items-center justify-between mb-5">
+                    <div
+                      className="size-16 sm:size-[68px] rounded-2xl bg-ngo-gold text-ngo-navy grid place-items-center font-extrabold text-2xl sm:text-[26px] tabular-nums shadow-lg shadow-ngo-gold/20 group-hover:scale-105 transition-transform"
+                      aria-hidden="true"
+                    >
+                      {s.n}
+                    </div>
+                    <span className="text-[10px] uppercase tracking-[0.22em] text-ngo-gold/90 font-bold">
+                      Étape {s.n}
+                    </span>
+                  </div>
+                  <h3 className="font-extrabold text-white text-lg sm:text-xl leading-tight tracking-tight mb-3 break-words">
+                    {s.title}
+                  </h3>
+                  <p className="text-white/75 text-[13.5px] sm:text-[14px] leading-relaxed break-words">
+                    {s.desc}
+                  </p>
+                </li>
+              ))}
+            </ol>
+          </div>
         </div>
       </section>
 
