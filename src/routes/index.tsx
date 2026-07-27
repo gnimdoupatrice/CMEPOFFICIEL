@@ -276,7 +276,7 @@ const TESTIMONIALS = [
 function Home() {
   return (
     <Layout>
-      {/* ============ HERO IMMERSIF ============ */}
+      {/* =========HERO IMMERSIF ========= */}
       <section className="relative min-h-[86svh] md:min-h-[100svh] flex items-center justify-center overflow-hidden">
         <img src={heroImg} alt="Rencontre CMEP : jeunes professionnels togolais en session stratégique" style={{position:'absolute',inset:0,width:'100%',height:'100%',objectFit:'cover'}} width={1920} height={1280} loading="eager" fetchPriority="high" decoding="async" />
         <div className="absolute inset-0 bg-ngo-navy/70"></div>

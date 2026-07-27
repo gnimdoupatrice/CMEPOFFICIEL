@@ -358,7 +358,7 @@ function OpportunitiesPage() {
         </div>
       </section>
 
-      {/* RECHERCHE */}
+      {/* RECHERCHE    */}
       <section className="bg-ngo-pearl/70 px-4 sm:px-6 py-5 sm:py-6 border-b border-ngo-navy/8">
         <div className="max-w-7xl mx-auto">
           <div className="grid gap-3 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center rounded-2xl bg-white p-3 sm:p-4 ring-1 ring-ngo-navy/8 shadow-sm">
