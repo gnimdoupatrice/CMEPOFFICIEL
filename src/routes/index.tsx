@@ -736,7 +736,7 @@ function Home() {
                 </div>
 
                 <Link
-                  to="/actualites"
+                  to="/impact"
                   className="inline-flex items-center gap-2 sm:gap-3 self-start bg-ngo-gold text-ngo-navy px-5 sm:px-7 py-3 sm:py-4 rounded-lg sm:rounded-xl font-bold text-[11px] sm:text-[12px] uppercase tracking-[0.18em] sm:tracking-[0.2em] hover:bg-white transition-colors shadow-xl shadow-ngo-gold/20"
                 >
                   Lire l'histoire <ArrowRight size={13} />
