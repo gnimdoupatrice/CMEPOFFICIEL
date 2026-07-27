@@ -69,17 +69,5 @@ export const EDITORIAL_ARTICLES: EditorialArticle[] = [
     source:
       "https://www.linkedin.com/posts/chris-mentorship-empowerment-program-cmep_cmep-daezveloppementdurable-impactenvironnemental-activity-7426925397960790016-r25f",
   },
-  {
-    id: "mentorat-impact",
-    title: "Mentorat, jeunesse, impact : la méthode CMEP expliquée.",
-    excerpt:
-      "Le mentorat n'est pas un supplément : c'est l'infrastructure relationnelle qui permet aux jeunes de tenir dans la durée.",
-    category: "Éditorial",
-    date: "Janvier 2026",
-    readTime: "4 min",
-    location: "Togo",
-    image: CMEP_MEDIA.logo,
-    source:
-      "https://www.linkedin.com/posts/chris-mentorship-empowerment-program-cmep_mentorat-jeunesse-impact-activity-7416106819426918400-i2KT",
-  },
 ];
+
