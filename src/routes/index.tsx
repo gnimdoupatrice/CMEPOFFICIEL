@@ -4,6 +4,8 @@ import { Layout } from "@/components/site/Layout";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { CMEP_MEDIA, PARTNER_LOGOS } from "@/lib/media";
 import { createWhatsAppHref } from "@/lib/contact";
+import locavoreTourisme from "@/assets/images/news/locavore-tourisme.jpg";
+
 
 // Actualité phare (featured story hero) — alignée sur la cérémonie de lancement
 const FEATURED_STORY = {
