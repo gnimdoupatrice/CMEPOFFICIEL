@@ -564,6 +564,23 @@ function Home() {
                       </div>
                     ))}
                   </dl>
+
+                  <div className="mt-6 pt-5 border-t border-ngo-navy/10 flex flex-col sm:flex-row gap-2.5">
+                    <a
+                      href={createWhatsAppHref(p.whatsapp)}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                      className="flex-1 inline-flex items-center justify-center gap-2 bg-ngo-navy hover:bg-ngo-gold hover:text-ngo-navy text-white px-4 py-3 rounded-xl font-bold text-[11px] uppercase tracking-[0.18em] transition-all text-center"
+                    >
+                      {p.ctaLabel} <ArrowRight size={12} />
+                    </a>
+                    <Link
+                      to="/opportunites"
+                      className="flex-1 inline-flex items-center justify-center gap-2 border border-ngo-navy/20 text-ngo-navy hover:border-ngo-gold hover:text-ngo-gold px-4 py-3 rounded-xl font-bold text-[11px] uppercase tracking-[0.18em] transition-all text-center"
+                    >
+                      Plus de détails
+                    </Link>
+                  </div>
                 </div>
               </article>
             ))}
