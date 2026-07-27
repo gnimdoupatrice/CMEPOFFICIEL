@@ -217,6 +217,8 @@ const PROGRAMS = [
     beneficiaries: "Étudiants, jeunes professionnels et membres d'OSC.",
     duration: "3 journées intensives — 24-26 mars 2026, Kara",
     results: "Chaque participant repart avec un TDR opérationnel et l'accès aux canevas d'organisations internationales.",
+    ctaLabel: "M'inscrire à l'atelier",
+    whatsapp: "Bonjour CMEP, je suis intéressé(e) par l'Atelier certifiant « Rédaction & Gestion de projet — TDR » (3 journées, 24-26 mars 2026, Kara). Merci de m'envoyer les modalités d'inscription et les frais de participation.",
   },
   {
     title: "Animateur de projet — Formation certifiante",
