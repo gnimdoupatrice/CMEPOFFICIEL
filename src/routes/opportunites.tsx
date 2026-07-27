@@ -220,11 +220,14 @@ const badgeLabel = {
 
 const getProgramSearchText = (program: Program) =>
   [
+    program.id,
+    program.slug,
     program.title,
     program.category,
     program.tagline,
     program.excerpt,
     program.badge,
+    program.posterAlt,
     program.deadline,
     program.modules.join(" "),
     program.pricing.map((price) => `${price.label} ${price.value}`).join(" "),
@@ -232,6 +235,15 @@ const getProgramSearchText = (program: Program) =>
   ]
     .filter(Boolean)
     .join(" ")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLocaleLowerCase("fr-FR");
+
+const normalizeSearchQuery = (query: string) =>
+  query
+    .trim()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
     .toLocaleLowerCase("fr-FR");
 
 function OpportunityCard({ p, index }: { p: Program; index: number }) {
@@ -291,7 +303,7 @@ function OpportunitiesPage() {
   const featured = PROGRAMS.find((p) => p.status === "featured") ?? PROGRAMS[0];
   const others = PROGRAMS.filter((p) => p.id !== featured.id);
   const filteredPrograms = useMemo(() => {
-    const normalizedQuery = searchQuery.trim().toLocaleLowerCase("fr-FR");
+    const normalizedQuery = normalizeSearchQuery(searchQuery);
 
     return PROGRAMS.filter((program) => {
       const matchesCategory = activeCategory === "Toutes" || program.category === activeCategory;
@@ -636,7 +648,7 @@ function OpportunitiesPage() {
       </section>
 
       {/* PROCESSUS */}
-      <section className="bg-ngo-navy py-14 sm:py-20 md:py-24 px-4 sm:px-6 text-white relative overflow-hidden">
+      <section className="opportunities-process-section bg-ngo-navy py-14 sm:py-20 md:py-24 px-4 sm:px-6 text-white relative overflow-hidden">
         <div className="absolute -top-32 -left-32 size-96 rounded-full bg-ngo-gold/10 blur-3xl" aria-hidden="true" />
         <div className="absolute -bottom-32 -right-32 size-96 rounded-full bg-ngo-gold/5 blur-3xl" aria-hidden="true" />
 
