@@ -192,6 +192,10 @@ h6 {
 
 p { text-wrap: pretty; }
 
+.opportunities-process-section :where(h2, h3) {
+  color: var(--color-primary-foreground);
+}
+
 /* Serif display when a component opts in via font-serif utility */
 .font-serif {
   font-family: var(--font-serif);

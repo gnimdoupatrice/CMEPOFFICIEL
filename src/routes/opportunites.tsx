@@ -1,7 +1,8 @@
+import { useMemo, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Layout } from "@/components/site/Layout";
+import { Button } from "@/components/ui/button";
 import {
-  ArrowRight,
   ArrowUpRight,
   MapPin,
   Users,
@@ -20,6 +21,7 @@ import {
   Calendar,
   Tag,
   Eye,
+  Search,
 } from "lucide-react";
 import { CMEP_MEDIA } from "@/lib/media";
 import { createWhatsAppHref } from "@/lib/contact";
@@ -54,7 +56,6 @@ type Program = {
   slug: string;
   poster: string;
   posterAlt: string;
-  secondary?: { url: string; alt: string };
   badge: string;
   category: string;
   title: string;
@@ -75,7 +76,6 @@ const PROGRAMS: Program[] = [
     slug: "animateur-de-projet",
     poster: CMEP_MEDIA.opportunities.animateurProjet,
     posterAlt: "Affiche officielle — Formation certifiante Animateur de projet",
-    secondary: { url: CMEP_MEDIA.opportunities.animateurProjetIntervenants, alt: "Intervenants de la formation Animateur de projet" },
     badge: "Formation phare",
     category: "Formation certifiante",
     title: "Animateur de projet",
@@ -182,7 +182,7 @@ const CATEGORIES = [
 ];
 
 const PROCESS = [
-  { n: "01", title: "Choix du parcours", desc: "Sélectionnez la formation qui correspond à votre profil et à votre étape professionnelle." },
+  { n: "01", title: "Choisis ton parcours", desc: "Sélectionnez la formation qui correspond à votre profil et à votre étape professionnelle." },
   { n: "02", title: "Inscription en ligne", desc: "Un formulaire court, une confirmation immédiate — moins de 5 minutes." },
   { n: "03", title: "Validation & paiement", desc: "Coordination CMEP vous confirme votre place et les modalités de règlement." },
   { n: "04", title: "Session & certification", desc: "Sessions présentielles avec intervenants confirmés, remise d'attestation officielle." },
@@ -218,6 +218,34 @@ const badgeLabel = {
   soon: "Bientôt",
 } as const;
 
+const getProgramSearchText = (program: Program) =>
+  [
+    program.id,
+    program.slug,
+    program.title,
+    program.category,
+    program.tagline,
+    program.excerpt,
+    program.badge,
+    program.posterAlt,
+    program.deadline,
+    program.modules.join(" "),
+    program.pricing.map((price) => `${price.label} ${price.value}`).join(" "),
+    program.sessions.map((session) => `${session.city} ${session.dates} ${session.venue ?? ""}`).join(" "),
+  ]
+    .filter(Boolean)
+    .join(" ")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLocaleLowerCase("fr-FR");
+
+const normalizeSearchQuery = (query: string) =>
+  query
+    .trim()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLocaleLowerCase("fr-FR");
+
 function OpportunityCard({ p, index }: { p: Program; index: number }) {
   const nextSession = p.sessions[0];
   return (
@@ -225,11 +253,11 @@ function OpportunityCard({ p, index }: { p: Program; index: number }) {
       href={`#${p.slug}`}
       className="group flex flex-col overflow-hidden rounded-2xl bg-white ring-1 ring-ngo-navy/8 hover:ring-ngo-gold hover:shadow-xl transition-all"
     >
-      <div className="relative aspect-[16/10] overflow-hidden bg-ngo-navy">
+      <div className="relative aspect-[4/5] overflow-hidden bg-ngo-pearl">
         <img
           src={p.poster}
           alt={p.posterAlt}
-          className="absolute inset-0 size-full object-cover group-hover:scale-105 transition-transform duration-500"
+          className="absolute inset-0 size-full object-contain p-2 group-hover:scale-[1.02] transition-transform duration-500"
           loading="lazy"
           decoding="async"
         />
@@ -270,8 +298,20 @@ function OpportunityCard({ p, index }: { p: Program; index: number }) {
 }
 
 function OpportunitiesPage() {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [activeCategory, setActiveCategory] = useState("Toutes");
   const featured = PROGRAMS.find((p) => p.status === "featured") ?? PROGRAMS[0];
   const others = PROGRAMS.filter((p) => p.id !== featured.id);
+  const filteredPrograms = useMemo(() => {
+    const normalizedQuery = normalizeSearchQuery(searchQuery);
+
+    return PROGRAMS.filter((program) => {
+      const matchesCategory = activeCategory === "Toutes" || program.category === activeCategory;
+      const matchesQuery = normalizedQuery.length === 0 || getProgramSearchText(program).includes(normalizedQuery);
+
+      return matchesCategory && matchesQuery;
+    });
+  }, [activeCategory, searchQuery]);
 
   return (
     <Layout>
@@ -297,13 +337,62 @@ function OpportunitiesPage() {
             </div>
             <div className="lg:col-span-4 flex flex-wrap gap-2">
               {CATEGORIES.map((c) => (
-                <span
+                <Button
                   key={c.label}
-                  className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-ngo-pearl border border-ngo-navy/10 text-[11px] font-bold text-ngo-navy"
+                  type="button"
+                  variant="outline"
+                  size="sm"
+                  onClick={() => setActiveCategory(c.label)}
+                  className={`rounded-full border-ngo-navy/10 px-3 text-[11px] font-bold ${
+                    activeCategory === c.label
+                      ? "bg-ngo-navy text-primary-foreground hover:bg-ngo-navy hover:text-primary-foreground"
+                      : "bg-ngo-pearl text-ngo-navy hover:bg-ngo-gold hover:text-ngo-navy"
+                  }`}
                 >
                   {c.label}
                   <span className="text-[10px] tabular-nums text-ngo-slate">({c.count})</span>
-                </span>
+                </Button>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* RECHERCHE */}
+      <section className="bg-ngo-pearl/70 px-4 sm:px-6 py-5 sm:py-6 border-b border-ngo-navy/8">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid gap-3 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center rounded-2xl bg-white p-3 sm:p-4 ring-1 ring-ngo-navy/8 shadow-sm">
+            <label className="relative block min-w-0">
+              <span className="sr-only">Rechercher une opportunité</span>
+              <Search
+                size={18}
+                className="absolute left-4 top-1/2 -translate-y-1/2 text-ngo-gold pointer-events-none"
+                aria-hidden="true"
+              />
+              <input
+                type="search"
+                value={searchQuery}
+                onChange={(event) => setSearchQuery(event.target.value)}
+                placeholder="Rechercher par formation, module, ville, tarif…"
+                className="h-12 w-full rounded-xl border border-ngo-navy/10 bg-ngo-pearl/60 pl-11 pr-4 text-sm font-medium text-ngo-navy placeholder:text-ngo-slate/75 outline-none transition focus:border-ngo-gold focus:bg-white focus:ring-2 focus:ring-ngo-gold/20"
+              />
+            </label>
+            <div className="flex flex-wrap items-center gap-2">
+              {CATEGORIES.map((c) => (
+                <Button
+                  key={`search-${c.label}`}
+                  type="button"
+                  variant="outline"
+                  size="sm"
+                  onClick={() => setActiveCategory(c.label)}
+                  className={`rounded-full border-ngo-navy/10 px-3 text-[11px] font-bold ${
+                    activeCategory === c.label
+                      ? "bg-ngo-gold text-ngo-navy hover:bg-ngo-gold hover:text-ngo-navy"
+                      : "bg-white text-ngo-navy hover:bg-ngo-pearl hover:text-ngo-navy"
+                  }`}
+                >
+                  {c.label}
+                </Button>
               ))}
             </div>
           </div>
@@ -322,11 +411,11 @@ function OpportunitiesPage() {
               <img
                 src={featured.poster}
                 alt={featured.posterAlt}
-                className="absolute inset-0 size-full object-cover opacity-70 group-hover:opacity-80 group-hover:scale-105 transition-all duration-500"
+                className="absolute inset-0 size-full object-contain p-3 opacity-90 group-hover:opacity-100 group-hover:scale-[1.02] transition-all duration-500"
                 loading="eager"
                 fetchPriority="high"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-ngo-navy via-ngo-navy/70 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-ngo-navy via-ngo-navy/55 to-ngo-navy/5" />
               <div className="absolute top-4 left-4 flex gap-2">
                 <span className="px-2.5 py-1 text-[9px] uppercase tracking-[0.2em] font-extrabold rounded bg-ngo-gold text-ngo-navy">
                   À la une
@@ -368,11 +457,11 @@ function OpportunitiesPage() {
                 href={`#${p.slug}`}
                 className="group flex gap-3 sm:gap-4 rounded-xl bg-white ring-1 ring-ngo-navy/8 hover:ring-ngo-gold hover:shadow-md transition-all overflow-hidden"
               >
-                <div className="relative w-24 sm:w-32 shrink-0 aspect-square bg-ngo-navy overflow-hidden">
+                <div className="relative w-24 sm:w-32 shrink-0 aspect-[4/5] bg-ngo-pearl overflow-hidden">
                   <img
                     src={p.poster}
                     alt={p.posterAlt}
-                    className="absolute inset-0 size-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="absolute inset-0 size-full object-contain p-1.5 group-hover:scale-[1.02] transition-transform duration-500"
                     loading="lazy"
                     decoding="async"
                   />
@@ -411,15 +500,21 @@ function OpportunitiesPage() {
                 Toutes les opportunités disponibles.
               </h2>
             </div>
-            <span className="text-[11px] uppercase tracking-[0.2em] font-bold text-ngo-slate tabular-nums">
-              {PROGRAMS.length} programmes
+               <span className="text-[11px] uppercase tracking-[0.2em] font-bold text-ngo-slate tabular-nums">
+               {filteredPrograms.length} / {PROGRAMS.length} programmes
             </span>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
-            {PROGRAMS.map((p, i) => (
-              <OpportunityCard key={p.id} p={p} index={i} />
-            ))}
-          </div>
+          {filteredPrograms.length > 0 ? (
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+              {filteredPrograms.map((p, i) => (
+                <OpportunityCard key={p.id} p={p} index={i} />
+              ))}
+            </div>
+          ) : (
+            <div className="rounded-2xl border border-ngo-navy/10 bg-ngo-pearl p-6 text-sm font-semibold text-ngo-navy">
+              Aucun programme ne correspond à cette recherche.
+            </div>
+          )}
         </div>
       </section>
 
@@ -443,14 +538,14 @@ function OpportunitiesPage() {
               <article
                 key={p.id}
                 id={p.slug}
-                className="group scroll-mt-24 grid lg:grid-cols-12 gap-6 md:gap-10 items-start bg-white rounded-2xl p-4 sm:p-6 md:p-8 ring-1 ring-ngo-navy/8"
+                  className="group scroll-mt-24 grid lg:grid-cols-12 gap-6 md:gap-10 items-center bg-white rounded-2xl p-4 sm:p-6 md:p-8 ring-1 ring-ngo-navy/8"
               >
-                <div className={`lg:col-span-5 ${i % 2 === 1 ? "lg:order-2" : ""}`}>
-                  <div className="relative aspect-[4/5] rounded-xl overflow-hidden bg-ngo-navy ring-1 ring-ngo-navy/10 shadow-xl">
+                <div className="lg:col-span-5">
+                  <div className="relative aspect-[4/5] rounded-xl overflow-hidden bg-ngo-pearl ring-1 ring-ngo-navy/10 shadow-xl">
                     <img
                       src={p.poster}
                       alt={p.posterAlt}
-                      className="absolute inset-0 size-full object-cover"
+                      className="absolute inset-0 size-full object-contain p-3"
                       loading="lazy"
                       decoding="async"
                     />
@@ -460,20 +555,9 @@ function OpportunitiesPage() {
                       </span>
                     </div>
                   </div>
-                  {p.secondary && (
-                    <div className="mt-4 relative aspect-[4/5] rounded-xl overflow-hidden bg-ngo-navy ring-1 ring-ngo-navy/10">
-                      <img
-                        src={p.secondary.url}
-                        alt={p.secondary.alt}
-                        className="absolute inset-0 size-full object-cover"
-                        loading="lazy"
-                        decoding="async"
-                      />
-                    </div>
-                  )}
                 </div>
 
-                <div className={`lg:col-span-7 min-w-0 ${i % 2 === 1 ? "lg:order-1" : ""}`}>
+                <div className="lg:col-span-7 min-w-0">
                   <span className="inline-block text-[10px] uppercase tracking-[0.25em] font-bold text-ngo-gold">
                     {p.category}
                   </span>
@@ -564,7 +648,7 @@ function OpportunitiesPage() {
       </section>
 
       {/* PROCESSUS */}
-      <section className="bg-ngo-navy py-14 sm:py-20 md:py-24 px-4 sm:px-6 text-white relative overflow-hidden">
+      <section className="opportunities-process-section bg-ngo-navy py-14 sm:py-20 md:py-24 px-4 sm:px-6 text-white relative overflow-hidden">
         <div className="absolute -top-32 -left-32 size-96 rounded-full bg-ngo-gold/10 blur-3xl" aria-hidden="true" />
         <div className="absolute -bottom-32 -right-32 size-96 rounded-full bg-ngo-gold/5 blur-3xl" aria-hidden="true" />
 
@@ -600,14 +684,14 @@ function OpportunitiesPage() {
                     >
                       {s.n}
                     </div>
-                    <span className="text-[10px] uppercase tracking-[0.22em] text-ngo-gold/90 font-bold">
+                    <span className="text-[10px] uppercase tracking-[0.22em] text-primary-foreground/80 font-bold">
                       Étape {s.n}
                     </span>
                   </div>
-                  <h3 className="font-extrabold text-white text-lg sm:text-xl leading-tight tracking-tight mb-3 break-words">
+                  <h3 className="font-extrabold text-primary-foreground text-lg sm:text-xl leading-tight tracking-tight mb-3 break-words">
                     {s.title}
                   </h3>
-                  <p className="text-white/75 text-[13.5px] sm:text-[14px] leading-relaxed break-words">
+                  <p className="text-primary-foreground/80 text-[13.5px] sm:text-[14px] leading-relaxed break-words">
                     {s.desc}
                   </p>
                 </li>
