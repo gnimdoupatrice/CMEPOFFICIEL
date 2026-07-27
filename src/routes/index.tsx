@@ -788,6 +788,7 @@ function Home() {
                   Lire la suite <ArrowUpRight size={12} />
                 </span>
               </article>
+              </Link>
             ))}
           </div>
         </div>
