@@ -328,7 +328,8 @@ function FAQPage() {
 
 
       {/* CATEGORY TABS — segmented */}
-      <section className="bg-white py-16 px-6">
+      <section id="faq-categories" className="bg-white py-16 px-6 scroll-mt-28">
+
         <div className="max-w-7xl mx-auto">
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-14">
             {CATEGORIES.map((c) => {
