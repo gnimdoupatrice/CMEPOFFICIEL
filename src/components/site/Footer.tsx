@@ -105,8 +105,8 @@ export function Footer() {
             <ul className="space-y-3 text-sm text-white/65">
               <li><Link to="/opportunites" className="hover:text-ngo-gold transition-colors">Opportunités</Link></li>
               <li><Link to="/opportunites" className="hover:text-ngo-gold transition-colors">Postuler</Link></li>
-              <li><a href={createWhatsAppHref("Bonjour CMEP, je souhaite échanger sur un partenariat.")} target="_blank" rel="noreferrer noopener" className="hover:text-ngo-gold transition-colors">Devenir partenaire</a></li>
-              <li><a href={createWhatsAppHref("Bonjour CMEP, je souhaite soutenir le programme.")} target="_blank" rel="noreferrer noopener" className="hover:text-ngo-gold transition-colors">Soutenir le programme</a></li>
+              <li><Link to="/partenaires" className="hover:text-ngo-gold transition-colors">Devenir partenaire</Link></li>
+              <li><Link to="/partenaires" className="hover:text-ngo-gold transition-colors">Soutenir le programme</Link></li>
               <li><Link to="/faq" className="hover:text-ngo-gold transition-colors">FAQ</Link></li>
             </ul>
           </nav>
