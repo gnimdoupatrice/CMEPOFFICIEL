@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Mail, Phone, MapPin, Facebook, Linkedin, ArrowRight, Check } from "lucide-react";
 import { CMEP_MEDIA } from "@/lib/media";
-import { createWhatsAppHref, CMEP_EMAIL } from "@/lib/contact";
+import { CMEP_EMAIL } from "@/lib/contact";
 
 export function Footer() {
   const year = new Date().getFullYear();
