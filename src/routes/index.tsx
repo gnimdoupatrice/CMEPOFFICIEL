@@ -35,7 +35,7 @@ const ACTUALITES = [
     location: "Togo",
     title: "Locavore, tourisme et développement durable",
     excerpt: "CMEP met en avant des modèles économiques locaux, responsables et capables de créer de la valeur dans les chaînes touristiques et alimentaires.",
-    image: CMEP_MEDIA.home.axes.ecologie,
+    image: locavoreTourisme,
   },
 ];
 
