@@ -37,7 +37,10 @@ function MagazinePage() {
   const featured = filtered.find((a) => a.featured) ?? filtered[0];
   const rest = filtered.filter((a) => a.id !== featured?.id);
   const highlighted = rest.slice(0, 3);
-  const latest = rest.slice(3);
+  // La grille « Dernières publications » liste TOUS les articles filtrés
+  // (y compris la une et les plus lus) — comportement standard des pages
+  // magazine/actualités : le filtre catégorie pilote toujours la grille.
+  const latest = filtered;
 
   return (
     <Layout>
