@@ -758,8 +758,9 @@ function Home() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 lg:gap-10">
-            {ACTUALITES.map((a, i) => (
-              <article key={a.title} className="group cursor-pointer">
+            {ACTUALITES.map((a) => (
+              <Link key={a.title} to="/impact" className="group block">
+              <article className="cursor-pointer">
                 <div className="relative aspect-[16/10] overflow-hidden rounded-2xl mb-6 bg-ngo-navy/5">
                   <img
                     src={a.image}
