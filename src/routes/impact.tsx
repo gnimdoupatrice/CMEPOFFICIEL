@@ -20,7 +20,7 @@ export const Route = createFileRoute("/impact")({
 
 type Article = EditorialArticle;
 
-const CATEGORIES = ["Toutes", "Institutionnel", "Formation", "Écologie", "Événement", "Analyse", "Communauté", "Développement durable", "Éditorial"] as const;
+const CATEGORIES = ["Toutes", "Institutionnel", "Analyse", "Formation", "Développement durable"] as const;
 
 const ARTICLES: Article[] = EDITORIAL_ARTICLES;
 

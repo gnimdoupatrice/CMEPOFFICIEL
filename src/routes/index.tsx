@@ -4,6 +4,8 @@ import { Layout } from "@/components/site/Layout";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { CMEP_MEDIA, PARTNER_LOGOS } from "@/lib/media";
 import { createWhatsAppHref } from "@/lib/contact";
+import locavoreTourisme from "@/assets/images/news/locavore-tourisme.jpg";
+
 
 // Actualité phare (featured story hero) — alignée sur la cérémonie de lancement
 const FEATURED_STORY = {
@@ -33,7 +35,7 @@ const ACTUALITES = [
     location: "Togo",
     title: "Locavore, tourisme et développement durable",
     excerpt: "CMEP met en avant des modèles économiques locaux, responsables et capables de créer de la valeur dans les chaînes touristiques et alimentaires.",
-    image: CMEP_MEDIA.home.axes.ecologie,
+    image: locavoreTourisme,
   },
 ];
 
