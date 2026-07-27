@@ -1047,9 +1047,9 @@ function Home() {
               ))}
             </ul>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-              <Link to="/contact" className="bg-ngo-gold text-ngo-navy px-5 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl font-bold hover:bg-white transition-colors inline-flex items-center justify-center gap-2 text-[13px] sm:text-base">
-                Envoyer mon engagement <ArrowRight size={15} />
-              </Link>
+              <a href={createWhatsAppHref("Bonjour CMEP, je souhaite nous rejoindre : merci de m'orienter vers le parcours (jeune bénéficiaire ou mentor) le plus adapté à mon profil.")} target="_blank" rel="noreferrer noopener" className="bg-ngo-gold text-ngo-navy px-5 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl font-bold hover:bg-white transition-colors inline-flex items-center justify-center gap-2 text-[13px] sm:text-base">
+                Nous rejoindre <ArrowRight size={15} />
+              </a>
               <Link to="/opportunites" className="border border-white/20 text-white px-5 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl font-semibold hover:bg-white/10 transition-colors text-center text-[13px] sm:text-base">
                 Voir les opportunités
               </Link>
