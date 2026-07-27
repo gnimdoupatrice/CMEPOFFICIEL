@@ -50,6 +50,7 @@ const FEATURED_OPPORTUNITIES = [
     urgency: "Inscriptions ouvertes",
     perks: ["Certification à l'issue", "Intervenants confirmés", "Modules incluant sauvegarde & VBG"],
     image: CMEP_MEDIA.opportunities.animateurProjet,
+    whatsapp: "Bonjour CMEP, je souhaite candidater à la formation certifiante « Animateur de projet » (11 modules, cohortes de mai 2026 à Lomé et Kara). Merci de m'envoyer le dossier de candidature.",
   },
   {
     badge: "Certification",
@@ -62,6 +63,7 @@ const FEATURED_OPPORTUNITIES = [
     urgency: "Inscriptions ouvertes",
     perks: ["Cadres réglementaires", "Standards internationaux", "Étude de cas & projet final"],
     image: CMEP_MEDIA.opportunities.certificatEies,
+    whatsapp: "Bonjour CMEP, je souhaite candidater au certificat « Expert en Évaluation d'Impact Environnemental et Social » (8 modules, session du 12 au 14 février à Kara). Merci de me préciser les conditions d'inscription.",
   },
   {
     badge: "Atelier certifiant",
@@ -74,6 +76,7 @@ const FEATURED_OPPORTUNITIES = [
     urgency: "Inscriptions ouvertes",
     perks: ["Canevas d'ONG internationales", "TDR bancables", "Documents de formation inclus"],
     image: CMEP_MEDIA.opportunities.redactionTdr,
+    whatsapp: "Bonjour CMEP, je souhaite candidater à l'atelier « Rédaction et Gestion de projet & TDR » (3 journées intensives, clôture des inscriptions le 22 mars 2026). Merci de m'indiquer la marche à suivre.",
   },
 ];
 
