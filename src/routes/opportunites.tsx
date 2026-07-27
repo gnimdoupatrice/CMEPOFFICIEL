@@ -218,7 +218,7 @@ const badgeLabel = {
   soon: "Bientôt",
 } as const;
 
-function OpportunityCard({ p }: { p: Program }) {
+function OpportunityCard({ p, index }: { p: Program; index: number }) {
   const nextSession = p.sessions[0];
   return (
     <a
@@ -238,6 +238,12 @@ function OpportunityCard({ p }: { p: Program }) {
             {badgeLabel[p.status]}
           </span>
         </div>
+        <span
+          className="absolute top-3 right-3 size-9 rounded-full bg-white/95 backdrop-blur text-ngo-navy grid place-items-center text-[11px] font-extrabold tabular-nums shadow-md"
+          aria-hidden="true"
+        >
+          {String(index + 1).padStart(2, "0")}
+        </span>
       </div>
       <div className="flex flex-col flex-1 p-4 sm:p-5">
         <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] font-bold text-ngo-gold">
