@@ -241,6 +241,8 @@ const PROGRAMS = [
     beneficiaries: "Professionnels du secteur environnemental, étudiants avancés et membres d'OSC engagés.",
     duration: "3 journées intensives — 12, 13 & 14 février, Kara (Commune Kozah 1)",
     results: "Certificat d'expert reconnu, capable de piloter des évaluations d'impact environnemental et social.",
+    ctaLabel: "Demander ma place",
+    whatsapp: "Bonjour CMEP, je souhaite être certifié(e) « Expert en Évaluation d'Impact Environnemental & Social » (8 modules, 12-14 février, Kara). Merci de me transmettre le dossier d'inscription.",
   },
 ] as const;
 
