@@ -148,57 +148,150 @@ function FAQPage() {
 
   return (
     <Layout>
-      {/* HERO — immersive editorial */}
+      {/* HERO — institutional help center (AfricaRe-style) */}
       <section className="relative overflow-hidden bg-ngo-navy text-white">
         <img
           src={CMEP_MEDIA.team}
           alt="Jeunes bénéficiaires du CMEP en session d'orientation"
-          className="absolute inset-0 size-full object-cover opacity-30"
+          className="absolute inset-0 size-full object-cover opacity-25"
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-ngo-navy via-ngo-navy/90 to-ngo-navy/40" />
+        <div className="absolute inset-0 bg-gradient-to-br from-ngo-navy via-ngo-navy/95 to-ngo-navy/70" />
         <div className="absolute -bottom-32 -left-32 size-96 rounded-full bg-ngo-gold/10 blur-3xl" />
-        <div className="relative max-w-7xl mx-auto px-6 pt-32 pb-24 grid lg:grid-cols-12 gap-10 items-end">
-          <div className="lg:col-span-8 animate-fade-in">
-            <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/15 backdrop-blur text-[10px] uppercase tracking-[0.25em] font-bold text-ngo-gold mb-7">
-              <LifeBuoy size={11} /> Centre d'aide CMEP
-            </span>
-            <h1 className="text-h1 font-extrabold max-w-4xl">
-              Vos questions, <span className="text-ngo-gold">notre engagement</span> à y répondre.
-            </h1>
-            <p className="mt-8 text-lg text-white/75 leading-relaxed max-w-2xl">
-              Un espace structuré, segmenté par profil. Pas de chatbot, pas de tickets impersonnels —
-              une coordination humaine vous répond personnellement sous 48 h.
-            </p>
 
-            <div className="mt-10 max-w-2xl relative">
-              <Search className="absolute left-5 top-1/2 -translate-y-1/2 text-ngo-navy/60" size={18} />
-              <input
-                type="search"
-                value={query}
-                onChange={(e) => {
-                  setQuery(e.target.value);
-                  setOpenIdx(null);
-                }}
-                placeholder="Rechercher une question (candidature, mentorat, financement…)"
-                className="w-full pl-14 pr-5 py-4 bg-white border border-white/20 rounded-xl text-[15px] text-ngo-navy placeholder:text-ngo-navy/50 focus:outline-none focus:border-ngo-gold focus:ring-4 focus:ring-ngo-gold/30 transition-all shadow-2xl"
-              />
+        <div className="relative max-w-7xl mx-auto px-6 pt-24 sm:pt-28 pb-0">
+          {/* Breadcrumb */}
+          <nav aria-label="Fil d'Ariane" className="text-[11px] uppercase tracking-[0.22em] font-semibold text-white/55">
+            <ol className="flex flex-wrap items-center gap-2">
+              <li>
+                <Link to="/" className="hover:text-ngo-gold transition-colors">Accueil</Link>
+              </li>
+              <li aria-hidden="true" className="text-white/30">/</li>
+              <li className="text-ngo-gold" aria-current="page">Centre d'aide</li>
+            </ol>
+          </nav>
+
+          <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-start pt-10 pb-16">
+            <div className="lg:col-span-7 animate-fade-in">
+              <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/15 backdrop-blur text-[10px] uppercase tracking-[0.25em] font-bold text-ngo-gold mb-6">
+                <LifeBuoy size={11} /> Centre d'aide CMEP
+              </span>
+              <h1 className="text-h1 font-extrabold max-w-3xl">
+                Vos questions, <span className="text-ngo-gold">notre engagement</span> à y répondre.
+              </h1>
+              <p className="mt-6 text-lead hero-copy-soft max-w-2xl">
+                Un centre de support structuré, segmenté par profil. Pas de chatbot, pas de tickets
+                impersonnels — une coordination humaine vous répond personnellement sous 48 h.
+              </p>
+
+              {/* Search */}
+              <div className="mt-8 max-w-2xl relative">
+                <Search className="absolute left-5 top-1/2 -translate-y-1/2 text-ngo-navy/60" size={18} />
+                <label htmlFor="faq-search" className="sr-only">Rechercher une question</label>
+                <input
+                  id="faq-search"
+                  type="search"
+                  value={query}
+                  onChange={(e) => {
+                    setQuery(e.target.value);
+                    setOpenIdx(null);
+                  }}
+                  placeholder="Rechercher une question (candidature, mentorat, financement…)"
+                  className="w-full pl-14 pr-5 py-4 bg-white border border-white/20 rounded-xl text-[15px] text-ngo-navy placeholder:text-ngo-navy/50 focus:outline-none focus:border-ngo-gold focus:ring-4 focus:ring-ngo-gold/30 transition-all shadow-2xl"
+                />
+              </div>
+
+              {/* Popular topics */}
+              <div className="mt-5 flex flex-wrap items-center gap-2">
+                <span className="text-[10px] uppercase tracking-[0.22em] font-bold text-white/45 mr-1">
+                  Recherches fréquentes
+                </span>
+                {["Candidature", "Mentorat", "Financement", "Partenariat"].map((t) => (
+                  <button
+                    key={t}
+                    type="button"
+                    onClick={() => {
+                      setQuery(t);
+                      setOpenIdx(null);
+                    }}
+                    className="px-3.5 py-1.5 rounded-full border border-white/20 bg-white/5 backdrop-blur text-[12px] font-semibold text-white/80 hover:border-ngo-gold hover:text-ngo-gold transition-colors"
+                  >
+                    {t}
+                  </button>
+                ))}
+              </div>
+
+              {/* CTAs */}
+              <div className="mt-9 flex flex-col sm:flex-row gap-3">
+                <a
+                  href="#faq-categories"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-ngo-gold text-ngo-navy font-bold text-[14px] hover:brightness-105 transition-all shadow-lg"
+                >
+                  Parcourir les questions <ArrowRight size={16} />
+                </a>
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl border border-white/25 bg-white/5 backdrop-blur font-bold text-[14px] text-white hover:border-ngo-gold hover:text-ngo-gold transition-colors"
+                >
+                  Contacter la coordination <ArrowUpRight size={16} />
+                </Link>
+              </div>
+            </div>
+
+            {/* Quick access card */}
+            <div className="lg:col-span-5 lg:pt-14">
+              <div className="rounded-2xl border border-white/12 bg-white/[0.06] backdrop-blur p-6 sm:p-7 shadow-2xl">
+                <span className="text-[10px] uppercase tracking-[0.25em] font-bold text-ngo-gold">
+                  Accès rapide par profil
+                </span>
+                <ul className="mt-5 space-y-2">
+                  {CATEGORIES.map((c) => (
+                    <li key={c.key}>
+                      <a
+                        href="#faq-categories"
+                        onClick={() => {
+                          setActive(c.key);
+                          setOpenIdx(0);
+                          setQuery("");
+                        }}
+                        className="group flex items-center gap-4 p-3.5 rounded-xl border border-white/10 bg-white/[0.04] hover:border-ngo-gold/50 hover:bg-white/10 transition-all"
+                      >
+                        <span className="size-10 rounded-lg grid place-items-center bg-ngo-gold/15 text-ngo-gold shrink-0">
+                          <c.icon size={17} strokeWidth={2.2} />
+                        </span>
+                        <span className="flex-1 min-w-0">
+                          <span className="block font-bold text-[14px] leading-tight">{c.label}</span>
+                          <span className="block text-[11px] text-white/55 mt-0.5 leading-snug">{c.sub}</span>
+                        </span>
+                        <ArrowUpRight size={15} className="text-white/35 group-hover:text-ngo-gold transition-colors shrink-0" />
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
-          <div className="lg:col-span-4 grid grid-cols-2 gap-3">
+        </div>
+
+        {/* Trust bar */}
+        <div className="relative border-t border-white/10 bg-ngo-navy/40 backdrop-blur">
+          <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 lg:grid-cols-4 divide-x divide-white/10">
             {[
               { v: "48 h", l: "Réponse coordination" },
               { v: "17", l: "Questions de référence" },
               { v: "04", l: "Profils accompagnés" },
               { v: "100%", l: "Réponses humaines" },
             ].map((s) => (
-              <div key={s.l} className="p-5 bg-white/5 backdrop-blur border border-white/10 rounded-xl hover:border-ngo-gold/40 transition-colors">
-                <div className="text-2xl font-extrabold leading-none">{s.v}</div>
-                <div className="text-[9px] uppercase tracking-[0.22em] text-white/55 mt-3 font-semibold leading-snug">{s.l}</div>
+              <div key={s.l} className="py-6 px-4 sm:px-6 first:pl-0">
+                <div className="text-2xl sm:text-3xl font-extrabold leading-none text-ngo-gold">{s.v}</div>
+                <div className="text-[9px] sm:text-[10px] uppercase tracking-[0.22em] text-white/55 mt-2.5 font-semibold leading-snug">
+                  {s.l}
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
+
 
       {/* EDITORIAL FEATURED — story before the categories */}
       <section className="bg-white py-20 px-6">
