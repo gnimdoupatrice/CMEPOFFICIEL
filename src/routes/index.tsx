@@ -752,7 +752,7 @@ function Home() {
             <h3 className="text-[11px] uppercase tracking-[0.3em] font-bold text-ngo-navy flex items-center gap-3">
               <Newspaper size={14} className="text-ngo-gold" /> Dernières dépêches
             </h3>
-            <Link to="/actualites" className="inline-flex items-center gap-1.5 text-ngo-slate hover:text-ngo-gold font-bold text-[10px] uppercase tracking-[0.25em] transition-colors">
+            <Link to="/impact" className="inline-flex items-center gap-1.5 text-ngo-slate hover:text-ngo-gold font-bold text-[10px] uppercase tracking-[0.25em] transition-colors">
               Toutes les actualités <ArrowRight size={11} />
             </Link>
           </div>
