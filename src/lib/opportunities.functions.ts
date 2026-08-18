@@ -1,8 +1,9 @@
 import { createServerFn } from "@tanstack/react-start";
 import { applicationSchema, type PublicOpportunity } from "@/lib/opportunities";
+import type { OpportunityRow } from "@/lib/opportunities.server";
 
 export const listPublishedOpportunities = createServerFn({ method: "GET" }).handler(async () => {
-  const { publicClient, signCovers, toPublicOpportunity, OPPORTUNITY_PUBLIC_SELECT, type OpportunityRow } = await import(
+  const { publicClient, signCovers, toPublicOpportunity, OPPORTUNITY_PUBLIC_SELECT } = await import(
     "@/lib/opportunities.server"
   );
   const today = new Date().toISOString().slice(0, 10);
@@ -23,7 +24,7 @@ export const listPublishedOpportunities = createServerFn({ method: "GET" }).hand
 export const getPublishedOpportunity = createServerFn({ method: "GET" })
   .inputValidator((data: { slug: string }) => ({ slug: String(data.slug).slice(0, 200) }))
   .handler(async ({ data }) => {
-    const { publicClient, signCovers, toPublicOpportunity, OPPORTUNITY_PUBLIC_SELECT, type OpportunityRow } = await import(
+    const { publicClient, signCovers, toPublicOpportunity, OPPORTUNITY_PUBLIC_SELECT } = await import(
       "@/lib/opportunities.server"
     );
     const { data: row, error } = await publicClient()
