@@ -18,6 +18,7 @@ import { Route as ImpactRouteImport } from './routes/impact'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ConfidentialiteRouteImport } from './routes/confidentialite'
+import { Route as AuthRouteImport } from './routes/auth'
 import { Route as ActualitesRouteImport } from './routes/actualites'
 import { Route as AProposRouteImport } from './routes/a-propos'
 import { Route as IndexRouteImport } from './routes/index'
@@ -67,6 +68,11 @@ const ConfidentialiteRoute = ConfidentialiteRouteImport.update({
   path: '/confidentialite',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ActualitesRoute = ActualitesRouteImport.update({
   id: '/actualites',
   path: '/actualites',
@@ -87,6 +93,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/a-propos': typeof AProposRoute
   '/actualites': typeof ActualitesRoute
+  '/auth': typeof AuthRoute
   '/confidentialite': typeof ConfidentialiteRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
@@ -101,6 +108,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/a-propos': typeof AProposRoute
   '/actualites': typeof ActualitesRoute
+  '/auth': typeof AuthRoute
   '/confidentialite': typeof ConfidentialiteRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
@@ -116,6 +124,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/a-propos': typeof AProposRoute
   '/actualites': typeof ActualitesRoute
+  '/auth': typeof AuthRoute
   '/confidentialite': typeof ConfidentialiteRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
@@ -132,6 +141,7 @@ export interface FileRouteTypes {
     | '/'
     | '/a-propos'
     | '/actualites'
+    | '/auth'
     | '/confidentialite'
     | '/contact'
     | '/faq'
@@ -146,6 +156,7 @@ export interface FileRouteTypes {
     | '/'
     | '/a-propos'
     | '/actualites'
+    | '/auth'
     | '/confidentialite'
     | '/contact'
     | '/faq'
@@ -160,6 +171,7 @@ export interface FileRouteTypes {
     | '/'
     | '/a-propos'
     | '/actualites'
+    | '/auth'
     | '/confidentialite'
     | '/contact'
     | '/faq'
@@ -175,6 +187,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AProposRoute: typeof AProposRoute
   ActualitesRoute: typeof ActualitesRoute
+  AuthRoute: typeof AuthRoute
   ConfidentialiteRoute: typeof ConfidentialiteRoute
   ContactRoute: typeof ContactRoute
   FaqRoute: typeof FaqRoute
@@ -251,6 +264,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ConfidentialiteRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/actualites': {
       id: '/actualites'
       path: '/actualites'
@@ -279,6 +299,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AProposRoute: AProposRoute,
   ActualitesRoute: ActualitesRoute,
+  AuthRoute: AuthRoute,
   ConfidentialiteRoute: ConfidentialiteRoute,
   ContactRoute: ContactRoute,
   FaqRoute: FaqRoute,
