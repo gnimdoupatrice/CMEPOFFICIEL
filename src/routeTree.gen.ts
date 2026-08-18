@@ -27,6 +27,7 @@ import { Route as OpportunitesIndexRouteImport } from './routes/opportunites.ind
 import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin.index'
 import { Route as OpportunitesSlugCandidaterRouteImport } from './routes/opportunites.$slug.candidater'
 import { Route as AuthenticatedAdminOpportunitesNouvelleRouteImport } from './routes/_authenticated/admin.opportunites.nouvelle'
+import { Route as AuthenticatedAdminOpportunitesIdRouteImport } from './routes/_authenticated/admin.opportunites.$id'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
@@ -119,6 +120,12 @@ const AuthenticatedAdminOpportunitesNouvelleRoute =
     path: '/admin/opportunites/nouvelle',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const AuthenticatedAdminOpportunitesIdRoute =
+  AuthenticatedAdminOpportunitesIdRouteImport.update({
+    id: '/admin/opportunites/$id',
+    path: '/admin/opportunites/$id',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -137,6 +144,7 @@ export interface FileRoutesByFullPath {
   '/opportunites/': typeof OpportunitesIndexRoute
   '/opportunites/$slug/candidater': typeof OpportunitesSlugCandidaterRoute
   '/admin/': typeof AuthenticatedAdminIndexRoute
+  '/admin/opportunites/$id': typeof AuthenticatedAdminOpportunitesIdRoute
   '/admin/opportunites/nouvelle': typeof AuthenticatedAdminOpportunitesNouvelleRoute
 }
 export interface FileRoutesByTo {
@@ -155,6 +163,7 @@ export interface FileRoutesByTo {
   '/opportunites': typeof OpportunitesIndexRoute
   '/opportunites/$slug/candidater': typeof OpportunitesSlugCandidaterRoute
   '/admin': typeof AuthenticatedAdminIndexRoute
+  '/admin/opportunites/$id': typeof AuthenticatedAdminOpportunitesIdRoute
   '/admin/opportunites/nouvelle': typeof AuthenticatedAdminOpportunitesNouvelleRoute
 }
 export interface FileRoutesById {
@@ -176,6 +185,7 @@ export interface FileRoutesById {
   '/opportunites/': typeof OpportunitesIndexRoute
   '/opportunites/$slug/candidater': typeof OpportunitesSlugCandidaterRoute
   '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
+  '/_authenticated/admin/opportunites/$id': typeof AuthenticatedAdminOpportunitesIdRoute
   '/_authenticated/admin/opportunites/nouvelle': typeof AuthenticatedAdminOpportunitesNouvelleRoute
 }
 export interface FileRouteTypes {
@@ -197,6 +207,7 @@ export interface FileRouteTypes {
     | '/opportunites/'
     | '/opportunites/$slug/candidater'
     | '/admin/'
+    | '/admin/opportunites/$id'
     | '/admin/opportunites/nouvelle'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -215,6 +226,7 @@ export interface FileRouteTypes {
     | '/opportunites'
     | '/opportunites/$slug/candidater'
     | '/admin'
+    | '/admin/opportunites/$id'
     | '/admin/opportunites/nouvelle'
   id:
     | '__root__'
@@ -235,6 +247,7 @@ export interface FileRouteTypes {
     | '/opportunites/'
     | '/opportunites/$slug/candidater'
     | '/_authenticated/admin/'
+    | '/_authenticated/admin/opportunites/$id'
     | '/_authenticated/admin/opportunites/nouvelle'
   fileRoutesById: FileRoutesById
 }
@@ -383,16 +396,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminOpportunitesNouvelleRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/admin/opportunites/$id': {
+      id: '/_authenticated/admin/opportunites/$id'
+      path: '/admin/opportunites/$id'
+      fullPath: '/admin/opportunites/$id'
+      preLoaderRoute: typeof AuthenticatedAdminOpportunitesIdRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
   }
 }
 
 interface AuthenticatedRouteRouteChildren {
   AuthenticatedAdminIndexRoute: typeof AuthenticatedAdminIndexRoute
+  AuthenticatedAdminOpportunitesIdRoute: typeof AuthenticatedAdminOpportunitesIdRoute
   AuthenticatedAdminOpportunitesNouvelleRoute: typeof AuthenticatedAdminOpportunitesNouvelleRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedAdminIndexRoute: AuthenticatedAdminIndexRoute,
+  AuthenticatedAdminOpportunitesIdRoute: AuthenticatedAdminOpportunitesIdRoute,
   AuthenticatedAdminOpportunitesNouvelleRoute:
     AuthenticatedAdminOpportunitesNouvelleRoute,
 }
