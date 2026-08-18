@@ -2,7 +2,6 @@ import { createServerFn } from "@tanstack/react-start";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 import { opportunityInputSchema } from "@/lib/opportunities";
 import type { Database } from "@/integrations/supabase/types";
-import type { Database } from "@/integrations/supabase/types";
 
 export const getAdminStatus = createServerFn({ method: "GET" })
   .middleware([requireSupabaseAuth])
