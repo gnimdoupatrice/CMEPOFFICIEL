@@ -21,7 +21,11 @@ import { Route as ConfidentialiteRouteImport } from './routes/confidentialite'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as ActualitesRouteImport } from './routes/actualites'
 import { Route as AProposRouteImport } from './routes/a-propos'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as OpportunitesIndexRouteImport } from './routes/opportunites.index'
+import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin.index'
+import { Route as OpportunitesSlugCandidaterRouteImport } from './routes/opportunites.$slug.candidater'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
@@ -83,11 +87,31 @@ const AProposRoute = AProposRouteImport.update({
   path: '/a-propos',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OpportunitesIndexRoute = OpportunitesIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => OpportunitesRoute,
+} as any)
+const AuthenticatedAdminIndexRoute = AuthenticatedAdminIndexRouteImport.update({
+  id: '/admin/',
+  path: '/admin/',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const OpportunitesSlugCandidaterRoute =
+  OpportunitesSlugCandidaterRouteImport.update({
+    id: '/$slug/candidater',
+    path: '/$slug/candidater',
+    getParentRoute: () => OpportunitesRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -99,10 +123,13 @@ export interface FileRoutesByFullPath {
   '/faq': typeof FaqRoute
   '/impact': typeof ImpactRoute
   '/mentions-legales': typeof MentionsLegalesRoute
-  '/opportunites': typeof OpportunitesRoute
+  '/opportunites': typeof OpportunitesRouteWithChildren
   '/partenaires': typeof PartenairesRoute
   '/programmes': typeof ProgrammesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/opportunites/': typeof OpportunitesIndexRoute
+  '/opportunites/$slug/candidater': typeof OpportunitesSlugCandidaterRoute
+  '/admin/': typeof AuthenticatedAdminIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -114,14 +141,17 @@ export interface FileRoutesByTo {
   '/faq': typeof FaqRoute
   '/impact': typeof ImpactRoute
   '/mentions-legales': typeof MentionsLegalesRoute
-  '/opportunites': typeof OpportunitesRoute
   '/partenaires': typeof PartenairesRoute
   '/programmes': typeof ProgrammesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/opportunites': typeof OpportunitesIndexRoute
+  '/opportunites/$slug/candidater': typeof OpportunitesSlugCandidaterRoute
+  '/admin': typeof AuthenticatedAdminIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/a-propos': typeof AProposRoute
   '/actualites': typeof ActualitesRoute
   '/auth': typeof AuthRoute
@@ -130,10 +160,13 @@ export interface FileRoutesById {
   '/faq': typeof FaqRoute
   '/impact': typeof ImpactRoute
   '/mentions-legales': typeof MentionsLegalesRoute
-  '/opportunites': typeof OpportunitesRoute
+  '/opportunites': typeof OpportunitesRouteWithChildren
   '/partenaires': typeof PartenairesRoute
   '/programmes': typeof ProgrammesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/opportunites/': typeof OpportunitesIndexRoute
+  '/opportunites/$slug/candidater': typeof OpportunitesSlugCandidaterRoute
+  '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -151,6 +184,9 @@ export interface FileRouteTypes {
     | '/partenaires'
     | '/programmes'
     | '/sitemap.xml'
+    | '/opportunites/'
+    | '/opportunites/$slug/candidater'
+    | '/admin/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -162,13 +198,16 @@ export interface FileRouteTypes {
     | '/faq'
     | '/impact'
     | '/mentions-legales'
-    | '/opportunites'
     | '/partenaires'
     | '/programmes'
     | '/sitemap.xml'
+    | '/opportunites'
+    | '/opportunites/$slug/candidater'
+    | '/admin'
   id:
     | '__root__'
     | '/'
+    | '/_authenticated'
     | '/a-propos'
     | '/actualites'
     | '/auth'
@@ -181,10 +220,14 @@ export interface FileRouteTypes {
     | '/partenaires'
     | '/programmes'
     | '/sitemap.xml'
+    | '/opportunites/'
+    | '/opportunites/$slug/candidater'
+    | '/_authenticated/admin/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AProposRoute: typeof AProposRoute
   ActualitesRoute: typeof ActualitesRoute
   AuthRoute: typeof AuthRoute
@@ -193,7 +236,7 @@ export interface RootRouteChildren {
   FaqRoute: typeof FaqRoute
   ImpactRoute: typeof ImpactRoute
   MentionsLegalesRoute: typeof MentionsLegalesRoute
-  OpportunitesRoute: typeof OpportunitesRoute
+  OpportunitesRoute: typeof OpportunitesRouteWithChildren
   PartenairesRoute: typeof PartenairesRoute
   ProgrammesRoute: typeof ProgrammesRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
@@ -285,6 +328,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AProposRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -292,11 +342,58 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/opportunites/': {
+      id: '/opportunites/'
+      path: '/'
+      fullPath: '/opportunites/'
+      preLoaderRoute: typeof OpportunitesIndexRouteImport
+      parentRoute: typeof OpportunitesRoute
+    }
+    '/_authenticated/admin/': {
+      id: '/_authenticated/admin/'
+      path: '/admin'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AuthenticatedAdminIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/opportunites/$slug/candidater': {
+      id: '/opportunites/$slug/candidater'
+      path: '/$slug/candidater'
+      fullPath: '/opportunites/$slug/candidater'
+      preLoaderRoute: typeof OpportunitesSlugCandidaterRouteImport
+      parentRoute: typeof OpportunitesRoute
+    }
   }
 }
 
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedAdminIndexRoute: typeof AuthenticatedAdminIndexRoute
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedAdminIndexRoute: AuthenticatedAdminIndexRoute,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+
+interface OpportunitesRouteChildren {
+  OpportunitesIndexRoute: typeof OpportunitesIndexRoute
+  OpportunitesSlugCandidaterRoute: typeof OpportunitesSlugCandidaterRoute
+}
+
+const OpportunitesRouteChildren: OpportunitesRouteChildren = {
+  OpportunitesIndexRoute: OpportunitesIndexRoute,
+  OpportunitesSlugCandidaterRoute: OpportunitesSlugCandidaterRoute,
+}
+
+const OpportunitesRouteWithChildren = OpportunitesRoute._addFileChildren(
+  OpportunitesRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AProposRoute: AProposRoute,
   ActualitesRoute: ActualitesRoute,
   AuthRoute: AuthRoute,
@@ -305,7 +402,7 @@ const rootRouteChildren: RootRouteChildren = {
   FaqRoute: FaqRoute,
   ImpactRoute: ImpactRoute,
   MentionsLegalesRoute: MentionsLegalesRoute,
-  OpportunitesRoute: OpportunitesRoute,
+  OpportunitesRoute: OpportunitesRouteWithChildren,
   PartenairesRoute: PartenairesRoute,
   ProgrammesRoute: ProgrammesRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
