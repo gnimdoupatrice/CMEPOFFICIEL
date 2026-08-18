@@ -276,7 +276,7 @@ const TESTIMONIALS = [
 function Home() {
   return (
     <Layout>
-      {/* =========HERO IMMERSIF ========= */}
+      {/* ======HERO IMMERSIF ===== */}
       <section className="relative min-h-[86svh] md:min-h-[100svh] flex items-center justify-center overflow-hidden">
         <img src={heroImg} alt="Rencontre CMEP : jeunes professionnels togolais en session stratégique" style={{position:'absolute',inset:0,width:'100%',height:'100%',objectFit:'cover'}} width={1920} height={1280} loading="eager" fetchPriority="high" decoding="async" />
         <div className="absolute inset-0 bg-ngo-navy/70"></div>
@@ -319,7 +319,7 @@ function Home() {
         </div>
       </section>
 
-      {/* ============ POURQUOI LE CMEP ============ */}
+      {/*======== POURQUOI LE CMEP ======== */}
       <section className="section-y px-5 sm:px-6 bg-white">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-7 relative">
@@ -364,7 +364,7 @@ function Home() {
         </div>
       </section>
 
-      {/* ============ NOTRE VISION — Bannière immersive ============ */}
+      {/* ======== NOTRE VISION — Bannière immersive ========= */}
       <section className="relative py-10 sm:py-20 md:py-28 px-5 sm:px-6 overflow-hidden">
         <img src={visionImg} alt="Vision CMEP : jeunesse togolaise tournée vers l'horizon" loading="lazy" decoding="async" style={{position:'absolute',inset:0,width:'100%',height:'100%',objectFit:'cover'}} />
         <div className="absolute inset-0 bg-gradient-to-r from-ngo-navy via-ngo-navy/85 to-ngo-navy/40"></div>

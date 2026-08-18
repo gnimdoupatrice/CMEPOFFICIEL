@@ -358,7 +358,7 @@ function OpportunitiesPage() {
         </div>
       </section>
 
-      {/* RECHERCHE    */}
+      {/* RECHERCHE  rrrr   */}
       <section className="bg-ngo-pearl/70 px-4 sm:px-6 py-5 sm:py-6 border-b border-ngo-navy/8">
         <div className="max-w-7xl mx-auto">
           <div className="grid gap-3 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center rounded-2xl bg-white p-3 sm:p-4 ring-1 ring-ngo-navy/8 shadow-sm">
@@ -399,7 +399,7 @@ function OpportunitiesPage() {
         </div>
       </section>
 
-      {/* À LA UNE + LISTING */}
+      {/* À LA UNE + tyyt LISTING */}
       <section className="bg-ngo-pearl/40 py-10 sm:py-14 md:py-16 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-6 md:gap-8">
           {/* Featured */}
