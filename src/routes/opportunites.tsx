@@ -399,7 +399,7 @@ function OpportunitiesPage() {
         </div>
       </section>
 
-      {/* À LA UNE + tyyt LISTING */}
+      {/* À LA UNE +  LISTING */}
       <section className="bg-ngo-pearl/40 py-10 sm:py-14 md:py-16 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-6 md:gap-8">
           {/* Featured */}
@@ -488,7 +488,7 @@ function OpportunitiesPage() {
         </div>
       </section>
 
-      {/* GRILLE — toutes les opportunités */}
+      {/* GRILLE —  les opportunités */}
       <section id="toutes" className="bg-white py-12 sm:py-16 md:py-20 px-4 sm:px-6 scroll-mt-20">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-wrap items-end justify-between gap-3 mb-8 sm:mb-10">
@@ -518,7 +518,7 @@ function OpportunitiesPage() {
         </div>
       </section>
 
-      {/* DÉTAILS PROGRAMMES */}
+      {/* DÉTAIL PROGRAMMES */}
       <section id="programmes" className="bg-ngo-pearl/40 py-12 sm:py-16 md:py-20 px-4 sm:px-6 scroll-mt-20">
         <div className="max-w-7xl mx-auto">
           <div className="max-w-3xl mb-10 sm:mb-14">
