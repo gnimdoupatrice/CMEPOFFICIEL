@@ -60,7 +60,8 @@ export function toPublicOpportunity(row: OpportunityRow, covers: Record<string, 
   };
 }
 
-export async function assertAdmin(context: { supabase: { rpc: (fn: string, args: Record<string, unknown>) => Promise<{ data: unknown }> }; userId: string }) {
-  const { data } = await context.supabase.rpc("has_role", { _user_id: context.userId, _role: "admin" });
+export async function assertAdmin(context: { supabase: unknown; userId: string }) {
+  const client = context.supabase as { rpc: (fn: "has_role", args: { _user_id: string; _role: "admin" }) => Promise<{ data: unknown }> };
+  const { data } = await client.rpc("has_role", { _user_id: context.userId, _role: "admin" });
   if (!data) throw new Error("Accès réservé à l'administration CMEP.");
 }
