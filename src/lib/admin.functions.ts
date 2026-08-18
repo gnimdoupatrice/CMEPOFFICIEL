@@ -2,17 +2,7 @@ import { createServerFn } from "@tanstack/react-start";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 import { opportunityInputSchema } from "@/lib/opportunities";
 import type { Database } from "@/integrations/supabase/types";
-
-type OpportunityRow = Database["public"]["Tables"]["opportunities"]["Row"];
-type ApplicationRow = Database["public"]["Tables"]["applications"]["Row"];
-
-async function assertAdmin(context: { supabase: any; userId: string }) {
-  const { data } = await context.supabase.rpc("has_role", {
-    _user_id: context.userId,
-    _role: "admin",
-  });
-  if (!data) throw new Error("Accès réservé à l'administration CMEP.");
-}
+import type { Database } from "@/integrations/supabase/types";
 
 export const getAdminStatus = createServerFn({ method: "GET" })
   .middleware([requireSupabaseAuth])
@@ -27,7 +17,7 @@ export const getAdminStatus = createServerFn({ method: "GET" })
 export const adminListOpportunities = createServerFn({ method: "GET" })
   .middleware([requireSupabaseAuth])
   .handler(async ({ context }) => {
-    await assertAdmin(context);
+    await (await import("@/lib/opportunities.server")).assertAdmin(context);
     const { data, error } = await context.supabase
       .from("opportunities")
       .select("*")
@@ -40,7 +30,7 @@ export const adminListOpportunities = createServerFn({ method: "GET" })
       counts[a.opportunity_id] = (counts[a.opportunity_id] ?? 0) + 1;
     }
     return {
-      opportunities: ((data ?? []) as OpportunityRow[]).map((row) => ({
+      opportunities: ((data ?? []) as Database["public"]["Tables"]["opportunities"]["Row"][]).map((row) => ({
         ...row,
         applications_count: counts[row.id] ?? 0,
       })),
@@ -51,21 +41,21 @@ export const adminGetOpportunity = createServerFn({ method: "GET" })
   .middleware([requireSupabaseAuth])
   .inputValidator((data: { id: string }) => ({ id: String(data.id) }))
   .handler(async ({ data, context }) => {
-    await assertAdmin(context);
+    await (await import("@/lib/opportunities.server")).assertAdmin(context);
     const { data: row, error } = await context.supabase
       .from("opportunities")
       .select("*")
       .eq("id", data.id)
       .maybeSingle();
     if (error) throw new Error(error.message);
-    return { opportunity: (row ?? null) as OpportunityRow | null };
+    return { opportunity: (row ?? null) as Database["public"]["Tables"]["opportunities"]["Row"] | null };
   });
 
 export const adminSaveOpportunity = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .inputValidator((data: unknown) => opportunityInputSchema.parse(data))
   .handler(async ({ data, context }) => {
-    await assertAdmin(context);
+    await (await import("@/lib/opportunities.server")).assertAdmin(context);
     const payload = {
       title: data.title,
       slug: data.slug,
@@ -103,7 +93,7 @@ export const adminDeleteOpportunity = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .inputValidator((data: { id: string }) => ({ id: String(data.id) }))
   .handler(async ({ data, context }) => {
-    await assertAdmin(context);
+    await (await import("@/lib/opportunities.server")).assertAdmin(context);
     const { error } = await context.supabase.from("opportunities").delete().eq("id", data.id);
     if (error) return { ok: false, error: error.message };
     return { ok: true, error: null as string | null };
@@ -112,14 +102,14 @@ export const adminDeleteOpportunity = createServerFn({ method: "POST" })
 export const adminListApplications = createServerFn({ method: "GET" })
   .middleware([requireSupabaseAuth])
   .handler(async ({ context }) => {
-    await assertAdmin(context);
+    await (await import("@/lib/opportunities.server")).assertAdmin(context);
     const { data, error } = await context.supabase
       .from("applications")
       .select("*, opportunities(title, slug)")
       .order("created_at", { ascending: false });
     if (error) throw new Error(error.message);
     return {
-      applications: (data ?? []) as (ApplicationRow & {
+      applications: (data ?? []) as (Database["public"]["Tables"]["applications"]["Row"] & {
         opportunities: { title: string; slug: string } | null;
       })[],
     };
@@ -129,10 +119,10 @@ export const adminUpdateApplicationStatus = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .inputValidator((data: { id: string; status: string }) => ({
     id: String(data.id),
-    status: String(data.status) as ApplicationRow["status"],
+    status: String(data.status) as Database["public"]["Tables"]["applications"]["Row"]["status"],
   }))
   .handler(async ({ data, context }) => {
-    await assertAdmin(context);
+    await (await import("@/lib/opportunities.server")).assertAdmin(context);
     const { error } = await context.supabase
       .from("applications")
       .update({ status: data.status })
@@ -145,7 +135,7 @@ export const adminSignCover = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .inputValidator((data: { path: string }) => ({ path: String(data.path) }))
   .handler(async ({ data, context }) => {
-    await assertAdmin(context);
+    await (await import("@/lib/opportunities.server")).assertAdmin(context);
     const { data: signed } = await context.supabase.storage
       .from("opportunity-covers")
       .createSignedUrl(data.path, 3600);
@@ -156,7 +146,7 @@ export const adminSignCv = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .inputValidator((data: { path: string }) => ({ path: String(data.path) }))
   .handler(async ({ data, context }) => {
-    await assertAdmin(context);
+    await (await import("@/lib/opportunities.server")).assertAdmin(context);
     const { data: signed } = await context.supabase.storage
       .from("applications-cv")
       .createSignedUrl(data.path, 3600);
