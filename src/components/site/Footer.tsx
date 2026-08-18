@@ -160,6 +160,7 @@ export function Footer() {
             <li><Link to="/mentions-legales" className="hover:text-ngo-gold transition-colors">Mentions légales</Link></li>
             <li><Link to="/confidentialite" className="hover:text-ngo-gold transition-colors">Confidentialité</Link></li>
             <li><Link to="/contact" className="hover:text-ngo-gold transition-colors">Contact</Link></li>
+            <li><Link to="/admin" className="text-white/25 hover:text-ngo-gold transition-colors">Espace coordination</Link></li>
           </ul>
         </div>
       </div>
