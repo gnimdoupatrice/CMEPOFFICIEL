@@ -26,6 +26,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as OpportunitesIndexRouteImport } from './routes/opportunites.index'
 import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin.index'
 import { Route as OpportunitesSlugCandidaterRouteImport } from './routes/opportunites.$slug.candidater'
+import { Route as AuthenticatedAdminOpportunitesNouvelleRouteImport } from './routes/_authenticated/admin.opportunites.nouvelle'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
@@ -112,6 +113,12 @@ const OpportunitesSlugCandidaterRoute =
     path: '/$slug/candidater',
     getParentRoute: () => OpportunitesRoute,
   } as any)
+const AuthenticatedAdminOpportunitesNouvelleRoute =
+  AuthenticatedAdminOpportunitesNouvelleRouteImport.update({
+    id: '/admin/opportunites/nouvelle',
+    path: '/admin/opportunites/nouvelle',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -130,6 +137,7 @@ export interface FileRoutesByFullPath {
   '/opportunites/': typeof OpportunitesIndexRoute
   '/opportunites/$slug/candidater': typeof OpportunitesSlugCandidaterRoute
   '/admin/': typeof AuthenticatedAdminIndexRoute
+  '/admin/opportunites/nouvelle': typeof AuthenticatedAdminOpportunitesNouvelleRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -147,6 +155,7 @@ export interface FileRoutesByTo {
   '/opportunites': typeof OpportunitesIndexRoute
   '/opportunites/$slug/candidater': typeof OpportunitesSlugCandidaterRoute
   '/admin': typeof AuthenticatedAdminIndexRoute
+  '/admin/opportunites/nouvelle': typeof AuthenticatedAdminOpportunitesNouvelleRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -167,6 +176,7 @@ export interface FileRoutesById {
   '/opportunites/': typeof OpportunitesIndexRoute
   '/opportunites/$slug/candidater': typeof OpportunitesSlugCandidaterRoute
   '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
+  '/_authenticated/admin/opportunites/nouvelle': typeof AuthenticatedAdminOpportunitesNouvelleRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -187,6 +197,7 @@ export interface FileRouteTypes {
     | '/opportunites/'
     | '/opportunites/$slug/candidater'
     | '/admin/'
+    | '/admin/opportunites/nouvelle'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -204,6 +215,7 @@ export interface FileRouteTypes {
     | '/opportunites'
     | '/opportunites/$slug/candidater'
     | '/admin'
+    | '/admin/opportunites/nouvelle'
   id:
     | '__root__'
     | '/'
@@ -223,6 +235,7 @@ export interface FileRouteTypes {
     | '/opportunites/'
     | '/opportunites/$slug/candidater'
     | '/_authenticated/admin/'
+    | '/_authenticated/admin/opportunites/nouvelle'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -363,15 +376,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OpportunitesSlugCandidaterRouteImport
       parentRoute: typeof OpportunitesRoute
     }
+    '/_authenticated/admin/opportunites/nouvelle': {
+      id: '/_authenticated/admin/opportunites/nouvelle'
+      path: '/admin/opportunites/nouvelle'
+      fullPath: '/admin/opportunites/nouvelle'
+      preLoaderRoute: typeof AuthenticatedAdminOpportunitesNouvelleRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
   }
 }
 
 interface AuthenticatedRouteRouteChildren {
   AuthenticatedAdminIndexRoute: typeof AuthenticatedAdminIndexRoute
+  AuthenticatedAdminOpportunitesNouvelleRoute: typeof AuthenticatedAdminOpportunitesNouvelleRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedAdminIndexRoute: AuthenticatedAdminIndexRoute,
+  AuthenticatedAdminOpportunitesNouvelleRoute:
+    AuthenticatedAdminOpportunitesNouvelleRoute,
 }
 
 const AuthenticatedRouteRouteWithChildren =
