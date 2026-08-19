@@ -14,157 +14,16 @@ export type Database = {
   }
   public: {
     Tables: {
-      applications: {
-        Row: {
-          created_at: string
-          cv_url: string | null
-          email: string
-          full_name: string
-          id: string
-          motivation: string | null
-          opportunity_id: string
-          phone: string
-          profile: string | null
-          status: Database["public"]["Enums"]["application_status"]
-        }
-        Insert: {
-          created_at?: string
-          cv_url?: string | null
-          email: string
-          full_name: string
-          id?: string
-          motivation?: string | null
-          opportunity_id: string
-          phone: string
-          profile?: string | null
-          status?: Database["public"]["Enums"]["application_status"]
-        }
-        Update: {
-          created_at?: string
-          cv_url?: string | null
-          email?: string
-          full_name?: string
-          id?: string
-          motivation?: string | null
-          opportunity_id?: string
-          phone?: string
-          profile?: string | null
-          status?: Database["public"]["Enums"]["application_status"]
-        }
-        Relationships: [
-          {
-            foreignKeyName: "applications_opportunity_id_fkey"
-            columns: ["opportunity_id"]
-            isOneToOne: false
-            referencedRelation: "opportunities"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      opportunities: {
-        Row: {
-          application_mode: Database["public"]["Enums"]["application_mode"]
-          badge: Database["public"]["Enums"]["opportunity_badge"] | null
-          category: Database["public"]["Enums"]["opportunity_category"]
-          cover_image: string | null
-          created_at: string
-          description: string
-          id: string
-          modules: Json
-          pricing: Json
-          registration_deadline: string | null
-          sessions: Json
-          short_description: string
-          slug: string
-          sort_order: number
-          status: Database["public"]["Enums"]["opportunity_status"]
-          title: string
-          updated_at: string
-          whatsapp_message: string | null
-        }
-        Insert: {
-          application_mode?: Database["public"]["Enums"]["application_mode"]
-          badge?: Database["public"]["Enums"]["opportunity_badge"] | null
-          category?: Database["public"]["Enums"]["opportunity_category"]
-          cover_image?: string | null
-          created_at?: string
-          description?: string
-          id?: string
-          modules?: Json
-          pricing?: Json
-          registration_deadline?: string | null
-          sessions?: Json
-          short_description?: string
-          slug: string
-          sort_order?: number
-          status?: Database["public"]["Enums"]["opportunity_status"]
-          title: string
-          updated_at?: string
-          whatsapp_message?: string | null
-        }
-        Update: {
-          application_mode?: Database["public"]["Enums"]["application_mode"]
-          badge?: Database["public"]["Enums"]["opportunity_badge"] | null
-          category?: Database["public"]["Enums"]["opportunity_category"]
-          cover_image?: string | null
-          created_at?: string
-          description?: string
-          id?: string
-          modules?: Json
-          pricing?: Json
-          registration_deadline?: string | null
-          sessions?: Json
-          short_description?: string
-          slug?: string
-          sort_order?: number
-          status?: Database["public"]["Enums"]["opportunity_status"]
-          title?: string
-          updated_at?: string
-          whatsapp_message?: string | null
-        }
-        Relationships: []
-      }
-      user_roles: {
-        Row: {
-          created_at: string
-          id: string
-          role: Database["public"]["Enums"]["app_role"]
-          user_id: string
-        }
-        Insert: {
-          created_at?: string
-          id?: string
-          role: Database["public"]["Enums"]["app_role"]
-          user_id: string
-        }
-        Update: {
-          created_at?: string
-          id?: string
-          role?: Database["public"]["Enums"]["app_role"]
-          user_id?: string
-        }
-        Relationships: []
-      }
+      [_ in never]: never
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      has_role: {
-        Args: {
-          _role: Database["public"]["Enums"]["app_role"]
-          _user_id: string
-        }
-        Returns: boolean
-      }
+      [_ in never]: never
     }
     Enums: {
-      app_role: "admin" | "moderator" | "user"
-      application_mode: "whatsapp" | "form"
-      application_status: "nouvelle" | "en_revue" | "acceptee" | "refusee"
-      opportunity_badge: "a_la_une" | "inscriptions_ouvertes" | "cloture"
-      opportunity_category: "formation_certifiante" | "atelier_formation"
-      opportunity_status: "draft" | "published" | "archived"
+      [_ in never]: never
     }
     CompositeTypes: {
       [_ in never]: never
@@ -291,13 +150,6 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {
-      app_role: ["admin", "moderator", "user"],
-      application_mode: ["whatsapp", "form"],
-      application_status: ["nouvelle", "en_revue", "acceptee", "refusee"],
-      opportunity_badge: ["a_la_une", "inscriptions_ouvertes", "cloture"],
-      opportunity_category: ["formation_certifiante", "atelier_formation"],
-      opportunity_status: ["draft", "published", "archived"],
-    },
+    Enums: {},
   },
 } as const
