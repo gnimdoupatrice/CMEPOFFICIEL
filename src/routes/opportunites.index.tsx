@@ -153,8 +153,9 @@ function ApplyLink({ o, className, children }: { o: PublicOpportunity; className
 
 function OpportunityCard({ p, index }: { p: PublicOpportunity; index: number }) {
   return (
-    <a
-      href={`#${p.slug}`}
+    <Link
+      to="/opportunites/$slug"
+      params={{ slug: p.slug }}
       className="group flex flex-col overflow-hidden rounded-2xl bg-white ring-1 ring-ngo-navy/8 hover:ring-ngo-gold hover:shadow-xl transition-all"
     >
       <div className="relative aspect-[4/5] overflow-hidden bg-ngo-pearl">

@@ -24,6 +24,7 @@ import { Route as AProposRouteImport } from './routes/a-propos'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as OpportunitesIndexRouteImport } from './routes/opportunites.index'
+import { Route as OpportunitesSlugIndexRouteImport } from './routes/opportunites.$slug.index'
 import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin.index'
 import { Route as OpportunitesSlugCandidaterRouteImport } from './routes/opportunites.$slug.candidater'
 import { Route as AuthenticatedAdminOpportunitesNouvelleRouteImport } from './routes/_authenticated/admin.opportunites.nouvelle'
@@ -103,6 +104,11 @@ const OpportunitesIndexRoute = OpportunitesIndexRouteImport.update({
   path: '/',
   getParentRoute: () => OpportunitesRoute,
 } as any)
+const OpportunitesSlugIndexRoute = OpportunitesSlugIndexRouteImport.update({
+  id: '/$slug/',
+  path: '/$slug/',
+  getParentRoute: () => OpportunitesRoute,
+} as any)
 const AuthenticatedAdminIndexRoute = AuthenticatedAdminIndexRouteImport.update({
   id: '/admin/',
   path: '/admin/',
@@ -144,6 +150,7 @@ export interface FileRoutesByFullPath {
   '/opportunites/': typeof OpportunitesIndexRoute
   '/opportunites/$slug/candidater': typeof OpportunitesSlugCandidaterRoute
   '/admin/': typeof AuthenticatedAdminIndexRoute
+  '/opportunites/$slug/': typeof OpportunitesSlugIndexRoute
   '/admin/opportunites/$id': typeof AuthenticatedAdminOpportunitesIdRoute
   '/admin/opportunites/nouvelle': typeof AuthenticatedAdminOpportunitesNouvelleRoute
 }
@@ -163,6 +170,7 @@ export interface FileRoutesByTo {
   '/opportunites': typeof OpportunitesIndexRoute
   '/opportunites/$slug/candidater': typeof OpportunitesSlugCandidaterRoute
   '/admin': typeof AuthenticatedAdminIndexRoute
+  '/opportunites/$slug': typeof OpportunitesSlugIndexRoute
   '/admin/opportunites/$id': typeof AuthenticatedAdminOpportunitesIdRoute
   '/admin/opportunites/nouvelle': typeof AuthenticatedAdminOpportunitesNouvelleRoute
 }
@@ -185,6 +193,7 @@ export interface FileRoutesById {
   '/opportunites/': typeof OpportunitesIndexRoute
   '/opportunites/$slug/candidater': typeof OpportunitesSlugCandidaterRoute
   '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
+  '/opportunites/$slug/': typeof OpportunitesSlugIndexRoute
   '/_authenticated/admin/opportunites/$id': typeof AuthenticatedAdminOpportunitesIdRoute
   '/_authenticated/admin/opportunites/nouvelle': typeof AuthenticatedAdminOpportunitesNouvelleRoute
 }
@@ -207,6 +216,7 @@ export interface FileRouteTypes {
     | '/opportunites/'
     | '/opportunites/$slug/candidater'
     | '/admin/'
+    | '/opportunites/$slug/'
     | '/admin/opportunites/$id'
     | '/admin/opportunites/nouvelle'
   fileRoutesByTo: FileRoutesByTo
@@ -226,6 +236,7 @@ export interface FileRouteTypes {
     | '/opportunites'
     | '/opportunites/$slug/candidater'
     | '/admin'
+    | '/opportunites/$slug'
     | '/admin/opportunites/$id'
     | '/admin/opportunites/nouvelle'
   id:
@@ -247,6 +258,7 @@ export interface FileRouteTypes {
     | '/opportunites/'
     | '/opportunites/$slug/candidater'
     | '/_authenticated/admin/'
+    | '/opportunites/$slug/'
     | '/_authenticated/admin/opportunites/$id'
     | '/_authenticated/admin/opportunites/nouvelle'
   fileRoutesById: FileRoutesById
@@ -375,6 +387,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OpportunitesIndexRouteImport
       parentRoute: typeof OpportunitesRoute
     }
+    '/opportunites/$slug/': {
+      id: '/opportunites/$slug/'
+      path: '/$slug'
+      fullPath: '/opportunites/$slug/'
+      preLoaderRoute: typeof OpportunitesSlugIndexRouteImport
+      parentRoute: typeof OpportunitesRoute
+    }
     '/_authenticated/admin/': {
       id: '/_authenticated/admin/'
       path: '/admin'
@@ -425,11 +444,13 @@ const AuthenticatedRouteRouteWithChildren =
 interface OpportunitesRouteChildren {
   OpportunitesIndexRoute: typeof OpportunitesIndexRoute
   OpportunitesSlugCandidaterRoute: typeof OpportunitesSlugCandidaterRoute
+  OpportunitesSlugIndexRoute: typeof OpportunitesSlugIndexRoute
 }
 
 const OpportunitesRouteChildren: OpportunitesRouteChildren = {
   OpportunitesIndexRoute: OpportunitesIndexRoute,
   OpportunitesSlugCandidaterRoute: OpportunitesSlugCandidaterRoute,
+  OpportunitesSlugIndexRoute: OpportunitesSlugIndexRoute,
 }
 
 const OpportunitesRouteWithChildren = OpportunitesRoute._addFileChildren(
