@@ -3,6 +3,8 @@
 @theme {
   --color-ngo-navy: #0f2a5f;
   --color-ngo-gold: #d4a23c;
+  /* Variante lisible du doré sur fonds clairs (WCAG AA >= 4.5:1) */
+  --color-ngo-gold-ink: #85610f;
   --color-ngo-pearl: #f6f3ec;
   --color-ngo-slate: #5b6478;
 
