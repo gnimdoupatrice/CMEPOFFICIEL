@@ -479,10 +479,25 @@ export function OpportunityForm({ initial }: { initial?: OpportunityInput }) {
         <Button type="submit" disabled={saving} className="bg-ngo-navy text-white hover:bg-ngo-gold hover:text-ngo-navy font-bold uppercase tracking-widest text-[11px]">
           {saving ? "Enregistrement…" : "Enregistrer"}
         </Button>
+        <Button
+          type="button"
+          variant="outline"
+          onClick={() => setShowPreview(true)}
+          className="font-bold uppercase tracking-widest text-[11px]"
+        >
+          <Eye size={13} aria-hidden="true" /> Aperçu
+        </Button>
         <Button type="button" variant="outline" onClick={() => navigate({ to: "/admin" })}>
           Annuler
         </Button>
       </div>
+
+      <OpportunityPreview
+        input={previewInput}
+        coverUrl={coverPreview}
+        isOpen={showPreview}
+        onClose={() => setShowPreview(false)}
+      />
     </form>
   );
 }
