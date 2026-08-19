@@ -7,17 +7,13 @@ import {
   ArrowUpRight,
   MapPin,
   Users,
-  Flame,
   Check,
-  FileText,
   MessageCircle,
   Award,
   Briefcase,
   GraduationCap,
   Mail,
   Sparkles,
-  Wallet,
-  Download,
   Phone,
   Calendar,
   Tag,
@@ -28,12 +24,9 @@ import { CMEP_MEDIA } from "@/lib/media";
 import { createWhatsAppHref } from "@/lib/contact";
 import { listPublishedOpportunities } from "@/lib/opportunities.functions";
 import {
-  applyHref,
   badgeLabel,
   categoryLabel,
   coverFor,
-  formatAmount,
-  formatDate,
   formatSessionDates,
   type PublicOpportunity,
 } from "@/lib/opportunities";
@@ -135,22 +128,6 @@ function nextSessionCity(o: PublicOpportunity) {
   return o.sessions[0]?.location ?? "Lieu à confirmer";
 }
 
-function ApplyLink({ o, className, children }: { o: PublicOpportunity; className: string; children: React.ReactNode }) {
-  const href = applyHref(o);
-  if (o.application_mode === "form") {
-    return (
-      <Link to="/opportunites/$slug/candidater" params={{ slug: o.slug }} className={className}>
-        {children}
-      </Link>
-    );
-  }
-  return (
-    <a href={href} target="_blank" rel="noreferrer noopener" className={className}>
-      {children}
-    </a>
-  );
-}
-
 function OpportunityCard({ p, index }: { p: PublicOpportunity; index: number }) {
   return (
     <Link
@@ -238,10 +215,6 @@ function OpportunitiesPage() {
     });
   }, [activeCategory, searchQuery, programs]);
 
-  const highlighted = useMemo(() => {
-    const feat = filteredPrograms.find((p) => p.badge === "a_la_une");
-    return feat ? [feat, ...filteredPrograms.filter((p) => p.id !== feat.id)] : filteredPrograms;
-  }, [filteredPrograms]);
 
   return (
     <Layout>
