@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Layout } from "@/components/site/Layout";
 import { useMemo, useState } from "react";
-import { ArrowRight, ArrowUpRight, Search, Clock, MapPin, TrendingUp, Newspaper, Radio, Bookmark } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Search, MapPin, TrendingUp, Newspaper, Radio, Bookmark } from "lucide-react";
 import { EDITORIAL_ARTICLES, type EditorialArticle } from "@/lib/editorial";
 
 export const Route = createFileRoute("/impact")({
@@ -106,6 +106,7 @@ Reportages et comptes rendus des activités déjà menées par le CMEP sur le te
                   <img
                     src={featured.image}
                     alt={featured.title}
+                    style={{ objectPosition: featured.focal ?? "center" }}
                     width={1280}
                     height={800}
                     loading="eager"
@@ -127,8 +128,10 @@ Reportages et comptes rendus des activités déjà menées par le CMEP sur le te
                     {featured.excerpt}
                   </p>
                   <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-[11px] sm:text-[12px] text-ngo-slate">
-                    <span className="inline-flex items-center gap-1.5"><Clock size={12} aria-hidden="true" /> {featured.readTime}</span>
                     <span className="inline-flex items-center gap-1.5"><MapPin size={12} aria-hidden="true" /> {featured.location}</span>
+                    <span className="inline-flex items-center gap-1.5 font-bold uppercase tracking-widest text-ngo-navy">
+                      Lire le compte rendu <ArrowUpRight size={13} className="text-ngo-gold" aria-hidden="true" />
+                    </span>
                   </div>
                 </div>
               </Link>
@@ -148,6 +151,7 @@ Reportages et comptes rendus des activités déjà menées par le CMEP sur le te
                         <img
                           src={a.image}
                           alt=""
+                          style={{ objectPosition: a.focal ?? "center" }}
                           loading="lazy"
                           decoding="async"
                           className="absolute inset-0 size-full object-cover"
@@ -196,6 +200,7 @@ Reportages et comptes rendus des activités déjà menées par le CMEP sur le te
                       <img
                         src={a.image}
                         alt={a.title}
+                        style={{ objectPosition: a.focal ?? "center" }}
                         width={640}
                         height={400}
                         loading="lazy"
@@ -210,7 +215,7 @@ Reportages et comptes rendus des activités déjà menées par le CMEP sur le te
                       <div className="text-[10px] uppercase tracking-[0.2em] font-bold text-ngo-slate mb-2 sm:mb-3 flex flex-wrap items-center gap-x-3 gap-y-1">
                         <span>{a.date}</span>
                         <span aria-hidden="true">•</span>
-                        <span className="inline-flex items-center gap-1"><Clock size={11} aria-hidden="true" /> {a.readTime}</span>
+                        <span className="inline-flex items-center gap-1"><MapPin size={11} aria-hidden="true" /> {a.location}</span>
                       </div>
                       <h3 className="font-serif text-[17px] sm:text-xl font-bold text-ngo-navy leading-snug group-hover:text-ngo-gold transition-colors mb-2 sm:mb-3 break-words">
                         {a.title}

@@ -1,6 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { Layout } from "@/components/site/Layout";
-import { ArrowLeft, ArrowUpRight, Clock, MapPin, CalendarDays } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, MapPin, CalendarDays } from "lucide-react";
 import { EDITORIAL_ARTICLES, getArticle } from "@/lib/editorial";
 
 export const Route = createFileRoute("/impact/$id")({
@@ -54,20 +54,25 @@ function ArticlePage() {
           <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-[12px] text-ngo-slate">
             <span className="inline-flex items-center gap-1.5"><CalendarDays size={13} aria-hidden="true" /> {article.date}</span>
             <span className="inline-flex items-center gap-1.5"><MapPin size={13} aria-hidden="true" /> {article.location}</span>
-            <span className="inline-flex items-center gap-1.5"><Clock size={13} aria-hidden="true" /> {article.readTime}</span>
           </div>
         </div>
 
         <div className="max-w-4xl mx-auto px-4 sm:px-6 mt-8 sm:mt-10">
-          <div className="rounded-xl sm:rounded-2xl overflow-hidden bg-ngo-pearl">
-            <img
-              src={article.image}
-              alt={article.title}
-              loading="eager"
-              decoding="async"
-              className="w-full h-auto object-contain"
-            />
-          </div>
+          <figure className="m-0">
+            <div className="relative aspect-[16/9] rounded-xl sm:rounded-2xl overflow-hidden bg-ngo-pearl">
+              <img
+                src={article.image}
+                alt={article.title}
+                loading="eager"
+                decoding="async"
+                style={{ objectPosition: article.focal ?? "center" }}
+                className="absolute inset-0 size-full object-cover"
+              />
+            </div>
+            <figcaption className="mt-3 text-[11px] sm:text-[12px] text-ngo-slate italic">
+              {article.location} — {article.date}. Photo : CMEP.
+            </figcaption>
+          </figure>
         </div>
 
         <div className="max-w-3xl mx-auto px-4 sm:px-6 py-10 sm:py-14">
@@ -109,6 +114,7 @@ function ArticlePage() {
                     <img
                       src={a.image}
                       alt={a.title}
+                      style={{ objectPosition: a.focal ?? "center" }}
                       loading="lazy"
                       decoding="async"
                       className="absolute inset-0 size-full object-cover group-hover:scale-105 transition-transform duration-500"

@@ -12,7 +12,7 @@ export type EditorialArticle = {
   excerpt: string;
   category: string;
   date: string;
-  readTime: string;
+  focal?: string;
   location: string;
   image: string;
   body: ArticleBlock[];
@@ -28,7 +28,6 @@ export const EDITORIAL_ARTICLES: EditorialArticle[] = [
       "Retour sur les Rencontres Nationales sur l'Entrepreneuriat à Lomé, où le CMEP est intervenu en panel sur le thème « Réussir depuis les régions ».",
     category: "Reportage",
     date: "02 – 04 juillet 2026",
-    readTime: "5 min",
     location: "Lomé, Togo",
     image: article4,
     body: [
@@ -57,7 +56,6 @@ export const EDITORIAL_ARTICLES: EditorialArticle[] = [
       "Débat citoyen avec les autorités, activité sportive et une centaine d'arbres plantés : retour sur deux journées de mobilisation dans la commune de Kpendjal 1.",
     category: "Reportage",
     date: "26 – 27 juin 2026",
-    readTime: "6 min",
     location: "Kpendjal 1, Togo",
     image: article2,
     body: [
@@ -86,9 +84,9 @@ export const EDITORIAL_ARTICLES: EditorialArticle[] = [
       "Cinq modules pratiques, dix femmes parmi les participants et la naissance d'un réseau de jeunes engagés : retour sur une journée de formation à l'ANVT Kara.",
     category: "Retour d'activité",
     date: "26 juin 2026",
-    readTime: "7 min",
     location: "Kara, Togo",
     image: article3,
+    focal: "50% 58%",
     body: [
       {
         type: "p",
@@ -121,7 +119,6 @@ export const EDITORIAL_ARTICLES: EditorialArticle[] = [
       "Reboisement, pépinières, randonnée à Lumen Valley : retour sur la deuxième édition du Locavore-tourisme, entre Journée Nationale de l'Arbre et Journée Mondiale de l'Environnement.",
     category: "Retour d'activité",
     date: "1er juin 2026",
-    readTime: "4 min",
     location: "Togo",
     image: article1,
     body: [
@@ -159,7 +156,6 @@ export const EDITORIAL_ARTICLES: EditorialArticle[] = [
       "Professionnels et étudiants réunis à Lomé avec le club Cephal-AUF Togo pour un parcours intensif de gestion et de pilotage de projets.",
     category: "Retour d'activité",
     date: "01 – 04 juin 2026",
-    readTime: "5 min",
     location: "Lomé, Togo",
     image: article5,
     body: [

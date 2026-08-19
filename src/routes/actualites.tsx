@@ -53,7 +53,8 @@ const EDITORIAL_NEWS = EDITORIAL_ARTICLES.slice(0, 4).map((article, index) => ({
   excerpt: article.excerpt,
   date: article.date,
   location: article.location,
-  readTime: article.readTime,
+  id: article.id,
+  focal: article.focal,
   size: index === 0 ? "wide" : index === 1 ? "tall" : "square",
 }));
 
@@ -177,7 +178,6 @@ function NewsroomPage() {
             <div className="mt-10 flex items-center gap-5 text-[11px] uppercase tracking-[0.22em] text-white/60 font-semibold">
               <span className="flex items-center gap-1.5"><Calendar size={12} className="text-ngo-gold" /> 04 juin 2025</span>
               <span className="flex items-center gap-1.5"><MapPin size={12} className="text-ngo-gold" /> Togo</span>
-              <span className="flex items-center gap-1.5"><Clock size={12} className="text-ngo-gold" /> 12 min de lecture</span>
             </div>
 
             <div className="mt-10 flex flex-wrap items-center gap-4">
@@ -255,6 +255,7 @@ function NewsroomPage() {
                 <img
                   src={EDITORIAL_NEWS[0].img}
                   alt={EDITORIAL_NEWS[0].title}
+                  style={{ objectPosition: EDITORIAL_NEWS[0].focal ?? "center" }}
                   className="size-full object-cover group-hover:scale-[1.04] transition-transform duration-[1200ms] ease-out"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-ngo-navy/80 via-transparent to-transparent" />
@@ -266,9 +267,6 @@ function NewsroomPage() {
                     <span className="flex items-center gap-1.5"><Calendar size={11} className="text-ngo-gold" /> {EDITORIAL_NEWS[0].date}</span>
                     <span className="flex items-center gap-1.5"><MapPin size={11} className="text-ngo-gold" /> {EDITORIAL_NEWS[0].location}</span>
                   </div>
-                  <span className="flex items-center gap-1.5 text-[11px] uppercase tracking-[0.22em] font-semibold">
-                    <Clock size={11} className="text-ngo-gold" /> {EDITORIAL_NEWS[0].readTime}
-                  </span>
                 </div>
               </div>
               <span className="text-ngo-gold text-[10px] uppercase tracking-[0.28em] font-bold">{EDITORIAL_NEWS[0].kicker}</span>
@@ -287,6 +285,7 @@ function NewsroomPage() {
                 <img
                   src={EDITORIAL_NEWS[1].img}
                   alt={EDITORIAL_NEWS[1].title}
+                  style={{ objectPosition: EDITORIAL_NEWS[1].focal ?? "center" }}
                   className="size-full object-cover group-hover:scale-[1.04] transition-transform duration-[1200ms] ease-out"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-ngo-navy via-ngo-navy/40 to-transparent" />
@@ -301,7 +300,7 @@ function NewsroomPage() {
                   <div className="flex items-center gap-3 text-[10px] uppercase tracking-[0.22em] font-semibold text-white/70 pt-3 border-t border-white/20">
                     <span>{EDITORIAL_NEWS[1].date}</span>
                     <span>·</span>
-                    <span>{EDITORIAL_NEWS[1].readTime}</span>
+                    <span>{EDITORIAL_NEWS[1].location}</span>
                   </div>
                 </div>
               </div>
@@ -312,7 +311,7 @@ function NewsroomPage() {
               <article key={n.title} className="md:col-span-6 group cursor-pointer">
                 <div className="grid sm:grid-cols-5 gap-5 items-stretch p-5 border border-ngo-navy/10 rounded-2xl hover:border-ngo-gold/40 hover:shadow-xl transition-all duration-500">
                   <div className="sm:col-span-2 relative aspect-[4/3] sm:aspect-auto overflow-hidden rounded-xl">
-                    <img loading="lazy" decoding="async" src={n.img} alt={n.title} className="absolute inset-0 size-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                    <img loading="lazy" decoding="async" src={n.img} alt={n.title} style={{ objectPosition: n.focal ?? "center" }} className="absolute inset-0 size-full object-cover group-hover:scale-105 transition-transform duration-700" />
                   </div>
                   <div className="sm:col-span-3 flex flex-col">
                     <div className="flex items-center gap-2 mb-3">
