@@ -3,7 +3,7 @@ import { Layout } from "@/components/site/Layout";
 import { STRATEGIC_AXES } from "@/lib/cmep-data";
 import { ArrowRight, Target } from "lucide-react";
 
-export const Route = createFileRoute("/programmes")({
+export const Route = createFileRoute("/programmesSSD")({
   head: () => ({
     meta: [
       { title: "Axes stratégiques — CMEP Togo" },
@@ -80,7 +80,7 @@ function ProgrammesPage() {
         </div>
       </section>
 
-      {/* ALIGNEMENT ODD (déplacé depuis /) */}
+      {/* ALIGNEMENT ODD (déplacé  /) */}
       <section className="bg-ngo-pearl py-20 md:py-24 px-4 sm:px-6" aria-labelledby="sdg-heading">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-12 gap-12">
