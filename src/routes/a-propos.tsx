@@ -2,7 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Layout } from "@/components/site/Layout";
 import { ArrowRight, Target, Compass, Sparkles, MapPin, Users } from "lucide-react";
 import { CMEP_MEDIA } from "@/lib/media";
-import { createWhatsAppHref } from "@/lib/contact";
+import { createWhatsAppHref, CMEP_EMAIL, CMEP_PHONE_DISPLAY, CMEP_PHONE_HREF } from "@/lib/contact";
+import { TeamGrid } from "@/components/site/TeamGrid";
 
 export const Route = createFileRoute("/a-propos")({
   head: () => ({
