@@ -80,7 +80,7 @@ function ProgrammesPage() {
         </div>
       </section>
 
-      {/* ALIGNEMENT ODD (déplacé depuis /partenaires) */}
+      {/* ALIGNEMENT ODD (déplacé depuis /) */}
       <section className="bg-ngo-pearl py-20 md:py-24 px-4 sm:px-6" aria-labelledby="sdg-heading">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-12 gap-12">

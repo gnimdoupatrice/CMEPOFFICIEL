@@ -125,7 +125,7 @@ const QUOTES = [
 function PartnersPage() {
   return (
     <Layout>
-      {/* HERO — institutional */}
+      {/* HERO —  */}
       <section className="relative overflow-hidden bg-ngo-navy text-white">
         <img
           src={partnersHero}
@@ -185,7 +185,7 @@ function PartnersPage() {
               </div>
             </div>
 
-            {/* Aperçu logos — signal de crédibilité immédiat */}
+            {/* Aperçu logos —  de crédibilité immédiat */}
             <div className="lg:col-span-5">
               <div className="rounded-2xl border border-white/12 bg-white/5 backdrop-blur p-5 sm:p-6">
                 <div className="flex items-center justify-between gap-3 mb-5">
