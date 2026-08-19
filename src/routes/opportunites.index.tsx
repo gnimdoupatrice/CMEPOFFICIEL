@@ -229,10 +229,6 @@ function OpportunitiesPage() {
     [programs],
   );
 
-  const featured = programs.find((p) => p.badge === "a_la_une") ?? programs[0];
-  const highlighted = featured ? [featured, ...programs.filter((p) => p.id !== featured.id)] : programs;
-
-
   const filteredPrograms = useMemo(() => {
     const q = normalizeQuery(searchQuery);
     return programs.filter((program) => {
@@ -241,6 +237,11 @@ function OpportunitiesPage() {
       return matchesCategory && matchesQuery;
     });
   }, [activeCategory, searchQuery, programs]);
+
+  const highlighted = useMemo(() => {
+    const feat = filteredPrograms.find((p) => p.badge === "a_la_une");
+    return feat ? [feat, ...filteredPrograms.filter((p) => p.id !== feat.id)] : filteredPrograms;
+  }, [filteredPrograms]);
 
   return (
     <Layout>
