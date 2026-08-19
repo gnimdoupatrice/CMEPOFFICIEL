@@ -128,7 +128,7 @@ function MemberCard({ member }: { member: TeamMember }) {
           loading="lazy"
           decoding="async"
           sizes="(min-width: 1440px) 22vw, (min-width: 640px) 45vw, 90vw"
-          className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+          className="w-full h-full! object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
         />
       </div>
       <div className="flex flex-1 flex-col p-6 text-center">
@@ -154,7 +154,7 @@ export function TeamGrid() {
         <section key={group.pole} aria-label={`Pôle ${group.pole}`}>
           <div className="flex items-center gap-4 mb-8">
             <span className="h-px flex-1 bg-ngo-navy/10" aria-hidden="true" />
-            <h3 className={`${EYEBROW} text-[10px]! whitespace-nowrap`}>{group.pole}</h3>
+            <h3 className={`${EYEBROW} text-[10px]! text-ngo-gold-ink! tracking-[0.28em]! whitespace-nowrap`}>{group.pole}</h3>
             <span className="h-px flex-1 bg-ngo-navy/10" aria-hidden="true" />
           </div>
           <div className={`${TRACK} ${trackWidth(group.members.length)}`}>
