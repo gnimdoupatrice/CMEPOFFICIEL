@@ -50,7 +50,17 @@ export function OpportunityForm({ initial }: { initial?: OpportunityInput }) {
   const [uploading, setUploading] = useState(false);
   const [saving, setSaving] = useState(false);
   const [slugTouched, setSlugTouched] = useState(Boolean(initial?.slug));
+  const [showPreview, setShowPreview] = useState(false);
   const dropRef = useRef<HTMLLabelElement>(null);
+
+  const previewInput = useMemo<OpportunityInput>(
+    () => ({
+      ...form,
+      slug: form.slug || slugify(form.title),
+      modules: form.modules.map((m, i) => ({ ...m, order: i + 1 })),
+    }),
+    [form],
+  );
 
   useEffect(() => {
     if (!form.cover_image) {
