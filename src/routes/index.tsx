@@ -12,7 +12,6 @@ const FEATURED_STORY = {
   date: "2026",
   category: "Événement institutionnel",
   location: "Togo",
-  readTime: "5 min de lecture",
   title: "Cérémonie de présentation et de lancement officiel du CMEP.",
   kicker: "Lancement officiel — Chris Mentorship & Empowerment Program",
   excerpt:
@@ -736,7 +735,6 @@ function Home() {
 
                   <div className="flex flex-wrap gap-x-4 gap-y-1.5 sm:gap-x-5 sm:gap-y-2 text-[10px] sm:text-[11px] text-white/55 uppercase tracking-widest font-semibold mb-5 sm:mb-10">
                     <span className="flex items-center gap-1.5"><MapPin size={10} className="text-ngo-gold" /> {FEATURED_STORY.location}</span>
-                    <span className="flex items-center gap-1.5"><Clock size={10} className="text-ngo-gold" /> {FEATURED_STORY.readTime}</span>
                   </div>
                 </div>
 
