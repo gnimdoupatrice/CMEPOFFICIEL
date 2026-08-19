@@ -154,12 +154,10 @@ export function TeamGrid() {
         <section key={group.pole} aria-label={`Pôle ${group.pole}`}>
           <div className="flex items-center gap-4 mb-8">
             <span className="h-px flex-1 bg-ngo-navy/10" aria-hidden="true" />
-            <h3 className={`${EYEBROW} whitespace-nowrap`}>
-              {group.pole}
-            </h3>
+            <h3 className={`${EYEBROW} text-[10px]! whitespace-nowrap`}>{group.pole}</h3>
             <span className="h-px flex-1 bg-ngo-navy/10" aria-hidden="true" />
           </div>
-          <div className={TRACK}>
+          <div className={`${TRACK} ${trackWidth(group.members.length)}`}>
             {group.members.map((m) => (
               <div key={m.nom + m.role} className={cellClass(group.members.length)}>
                 <MemberCard member={m} />
