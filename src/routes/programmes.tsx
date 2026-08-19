@@ -3,7 +3,7 @@ import { Layout } from "@/components/site/Layout";
 import { STRATEGIC_AXES } from "@/lib/cmep-data";
 import { ArrowRight, Target } from "lucide-react";
 
-export const Route = createFileRoute("/programmes")({
+export const Route = createFileRoute("/programmesSSD")({
   head: () => ({
     meta: [
       { title: "Axes stratégiques — CMEP Togo" },
@@ -29,7 +29,7 @@ const SDGS = [
 function ProgrammesPage() {
   return (
     <Layout>
-      {/* HERO */}
+      {/* HERO  SECTION MAKE*/}
       <section className="pt-20 md:pt-24 pb-16 md:pb-20 px-4 sm:px-6 bg-ngo-pearl border-b border-ngo-navy/5">
         <div className="max-w-7xl mx-auto">
           <span className="text-ngo-gold font-bold uppercase tracking-[0.25em] text-[11px]">Nos axes d'intervention</span>
