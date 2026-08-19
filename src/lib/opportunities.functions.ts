@@ -41,7 +41,7 @@ export const getPublishedOpportunity = createServerFn({ method: "GET" })
   });
 
 export const submitApplication = createServerFn({ method: "POST" })
-  .validator((data: unknown) => applicationSchema.parse(data))
+  .inputValidator((data: unknown) => applicationSchema.parse(data))
   .handler(async ({ data }) => {
     const { publicClient } = await import("@/lib/opportunities.server");
     const { error } = await publicClient().from("applications").insert({
