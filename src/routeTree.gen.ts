@@ -24,6 +24,7 @@ import { Route as AProposRouteImport } from './routes/a-propos'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as OpportunitesIndexRouteImport } from './routes/opportunites.index'
+import { Route as ImpactIdRouteImport } from './routes/impact.$id'
 import { Route as OpportunitesSlugIndexRouteImport } from './routes/opportunites.$slug.index'
 import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin.index'
 import { Route as OpportunitesSlugCandidaterRouteImport } from './routes/opportunites.$slug.candidater'
@@ -104,6 +105,11 @@ const OpportunitesIndexRoute = OpportunitesIndexRouteImport.update({
   path: '/',
   getParentRoute: () => OpportunitesRoute,
 } as any)
+const ImpactIdRoute = ImpactIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => ImpactRoute,
+} as any)
 const OpportunitesSlugIndexRoute = OpportunitesSlugIndexRouteImport.update({
   id: '/$slug/',
   path: '/$slug/',
@@ -141,12 +147,13 @@ export interface FileRoutesByFullPath {
   '/confidentialite': typeof ConfidentialiteRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
-  '/impact': typeof ImpactRoute
+  '/impact': typeof ImpactRouteWithChildren
   '/mentions-legales': typeof MentionsLegalesRoute
   '/opportunites': typeof OpportunitesRouteWithChildren
   '/partenaires': typeof PartenairesRoute
   '/programmes': typeof ProgrammesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/impact/$id': typeof ImpactIdRoute
   '/opportunites/': typeof OpportunitesIndexRoute
   '/opportunites/$slug/candidater': typeof OpportunitesSlugCandidaterRoute
   '/admin/': typeof AuthenticatedAdminIndexRoute
@@ -162,11 +169,12 @@ export interface FileRoutesByTo {
   '/confidentialite': typeof ConfidentialiteRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
-  '/impact': typeof ImpactRoute
+  '/impact': typeof ImpactRouteWithChildren
   '/mentions-legales': typeof MentionsLegalesRoute
   '/partenaires': typeof PartenairesRoute
   '/programmes': typeof ProgrammesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/impact/$id': typeof ImpactIdRoute
   '/opportunites': typeof OpportunitesIndexRoute
   '/opportunites/$slug/candidater': typeof OpportunitesSlugCandidaterRoute
   '/admin': typeof AuthenticatedAdminIndexRoute
@@ -184,12 +192,13 @@ export interface FileRoutesById {
   '/confidentialite': typeof ConfidentialiteRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
-  '/impact': typeof ImpactRoute
+  '/impact': typeof ImpactRouteWithChildren
   '/mentions-legales': typeof MentionsLegalesRoute
   '/opportunites': typeof OpportunitesRouteWithChildren
   '/partenaires': typeof PartenairesRoute
   '/programmes': typeof ProgrammesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/impact/$id': typeof ImpactIdRoute
   '/opportunites/': typeof OpportunitesIndexRoute
   '/opportunites/$slug/candidater': typeof OpportunitesSlugCandidaterRoute
   '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
@@ -213,6 +222,7 @@ export interface FileRouteTypes {
     | '/partenaires'
     | '/programmes'
     | '/sitemap.xml'
+    | '/impact/$id'
     | '/opportunites/'
     | '/opportunites/$slug/candidater'
     | '/admin/'
@@ -233,6 +243,7 @@ export interface FileRouteTypes {
     | '/partenaires'
     | '/programmes'
     | '/sitemap.xml'
+    | '/impact/$id'
     | '/opportunites'
     | '/opportunites/$slug/candidater'
     | '/admin'
@@ -255,6 +266,7 @@ export interface FileRouteTypes {
     | '/partenaires'
     | '/programmes'
     | '/sitemap.xml'
+    | '/impact/$id'
     | '/opportunites/'
     | '/opportunites/$slug/candidater'
     | '/_authenticated/admin/'
@@ -272,7 +284,7 @@ export interface RootRouteChildren {
   ConfidentialiteRoute: typeof ConfidentialiteRoute
   ContactRoute: typeof ContactRoute
   FaqRoute: typeof FaqRoute
-  ImpactRoute: typeof ImpactRoute
+  ImpactRoute: typeof ImpactRouteWithChildren
   MentionsLegalesRoute: typeof MentionsLegalesRoute
   OpportunitesRoute: typeof OpportunitesRouteWithChildren
   PartenairesRoute: typeof PartenairesRoute
@@ -387,6 +399,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OpportunitesIndexRouteImport
       parentRoute: typeof OpportunitesRoute
     }
+    '/impact/$id': {
+      id: '/impact/$id'
+      path: '/$id'
+      fullPath: '/impact/$id'
+      preLoaderRoute: typeof ImpactIdRouteImport
+      parentRoute: typeof ImpactRoute
+    }
     '/opportunites/$slug/': {
       id: '/opportunites/$slug/'
       path: '/$slug'
@@ -441,6 +460,17 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
 const AuthenticatedRouteRouteWithChildren =
   AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
 
+interface ImpactRouteChildren {
+  ImpactIdRoute: typeof ImpactIdRoute
+}
+
+const ImpactRouteChildren: ImpactRouteChildren = {
+  ImpactIdRoute: ImpactIdRoute,
+}
+
+const ImpactRouteWithChildren =
+  ImpactRoute._addFileChildren(ImpactRouteChildren)
+
 interface OpportunitesRouteChildren {
   OpportunitesIndexRoute: typeof OpportunitesIndexRoute
   OpportunitesSlugCandidaterRoute: typeof OpportunitesSlugCandidaterRoute
@@ -466,7 +496,7 @@ const rootRouteChildren: RootRouteChildren = {
   ConfidentialiteRoute: ConfidentialiteRoute,
   ContactRoute: ContactRoute,
   FaqRoute: FaqRoute,
-  ImpactRoute: ImpactRoute,
+  ImpactRoute: ImpactRouteWithChildren,
   MentionsLegalesRoute: MentionsLegalesRoute,
   OpportunitesRoute: OpportunitesRouteWithChildren,
   PartenairesRoute: PartenairesRoute,

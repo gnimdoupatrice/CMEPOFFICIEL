@@ -7,10 +7,12 @@ import { EDITORIAL_ARTICLES, type EditorialArticle } from "@/lib/editorial";
 export const Route = createFileRoute("/impact")({
   head: () => ({
     meta: [
-      { title: "Magazine CMEP — Le média de la jeunesse togolaise" },
-      { name: "description", content: "Reportages, analyses, portraits et actualités du Chris Mentorship & Empowerment Program. L'information institutionnelle sur la jeunesse togolaise." },
-      { property: "og:title", content: "Magazine CMEP — Le média de la jeunesse togolaise" },
-      { property: "og:description", content: "Un portail éditorial dédié à la jeunesse togolaise et à l'écosystème CMEP." },
+      { title: "Retours d'activités — Magazine CMEP" },
+      { name: "description", content: "Reportages et comptes rendus des activités déjà menées par le Chris Mentorship & Empowerment Program : formations, reboisements, panels et initiatives de terrain au Togo." },
+      { property: "og:title", content: "Retours d'activités — Magazine CMEP" },
+      { property: "og:description", content: "Ce qui s'est passé sur le terrain : reportages et comptes rendus des activités déjà réalisées par le CMEP." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { property: "og:url", content: "/impact" },
     ],
     links: [{ rel: "canonical", href: "/impact" }],
@@ -20,7 +22,7 @@ export const Route = createFileRoute("/impact")({
 
 type Article = EditorialArticle;
 
-const CATEGORIES = ["Toutes", "Institutionnel", "Analyse", "Formation", "Développement durable"] as const;
+const CATEGORIES = ["Toutes", "Reportage", "Retour d'activité"] as const;
 
 const ARTICLES: Article[] = EDITORIAL_ARTICLES;
 
@@ -51,13 +53,13 @@ function MagazinePage() {
             <div className="min-w-0">
               <div className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.24em] font-bold text-ngo-gold mb-3">
                 <Radio size={12} aria-hidden="true" />
-                <span className="truncate">Édition {new Date().toLocaleDateString("fr-FR", { day: "2-digit", month: "long", year: "numeric" })}</span>
+                <span className="truncate">Archives · Activités déjà réalisées</span>
               </div>
               <h1 className="font-serif text-[26px] sm:text-4xl md:text-5xl font-black text-ngo-navy leading-[1.1]">
-                Le Magazine <span className="text-ngo-gold italic">CMEP</span>
+                Retours sur <span className="text-ngo-gold italic">nos activités</span>
               </h1>
               <p className="mt-3 sm:mt-4 text-[14px] sm:text-base text-ngo-slate max-w-2xl leading-relaxed">
-                Reportages, portraits, analyses et actualités de l'écosystème de la jeunesse togolaise.
+Reportages et comptes rendus des activités déjà menées par le CMEP sur le terrain : formations, reboisements, panels et initiatives citoyennes.
               </p>
             </div>
             <label className="relative w-full md:w-72 shrink-0">
@@ -66,7 +68,7 @@ function MagazinePage() {
               <input
                 value={q}
                 onChange={(e) => setQ(e.target.value)}
-                placeholder="Rechercher un article…"
+                placeholder="Rechercher une activité…"
                 className="w-full pl-10 pr-4 py-3 min-h-11 bg-ngo-pearl border border-ngo-navy/10 rounded-md text-sm text-ngo-navy placeholder:text-ngo-slate focus:outline-none focus:ring-2 focus:ring-ngo-gold"
               />
             </label>
@@ -99,7 +101,7 @@ function MagazinePage() {
         <section className="bg-white pb-12 sm:pb-16 pt-8 sm:pt-10 px-4 sm:px-6">
           <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-8 lg:gap-10">
             <article className="lg:col-span-8 group">
-              <Link to="/impact" className="block">
+              <Link to="/impact/$id" params={{ id: featured.id }} className="block">
                 <div className="relative aspect-[16/10] rounded-xl sm:rounded-2xl overflow-hidden bg-ngo-pearl">
                   <img
                     src={featured.image}
@@ -114,7 +116,7 @@ function MagazinePage() {
                 </div>
                 <div className="mt-4 sm:mt-5 bg-ngo-pearl sm:bg-transparent rounded-xl sm:rounded-none p-4 sm:p-0">
                   <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[10px] sm:text-[11px] uppercase tracking-[0.2em] font-bold mb-3">
-                    <span className="bg-ngo-gold text-ngo-navy px-2 py-1 rounded">À la une</span>
+                    <span className="bg-ngo-gold text-ngo-navy px-2 py-1 rounded">Dernier retour</span>
                     <span className="text-ngo-navy">{featured.category}</span>
                     <span className="text-ngo-slate">• {featured.date}</span>
                   </div>
@@ -136,12 +138,12 @@ function MagazinePage() {
             <aside className="lg:col-span-4 min-w-0">
               <div className="flex items-center gap-2 mb-4 sm:mb-5">
                 <TrendingUp size={16} className="text-ngo-gold shrink-0" aria-hidden="true" />
-                <h2 className="text-[11px] uppercase tracking-[0.24em] font-bold text-ngo-navy">Les plus lus</h2>
+                <h2 className="text-[11px] uppercase tracking-[0.24em] font-bold text-ngo-navy">Activités marquantes</h2>
               </div>
               <ol className="divide-y divide-ngo-navy/10 border-y border-ngo-navy/10">
                 {highlighted.map((a, i) => (
                   <li key={a.id} className="py-4 sm:py-5 group">
-                    <Link to="/impact" className="flex gap-3 sm:gap-4 items-start">
+                    <Link to="/impact/$id" params={{ id: a.id }} className="flex gap-3 sm:gap-4 items-start">
                       <div className="relative w-20 h-20 sm:w-24 sm:h-24 shrink-0 rounded-lg overflow-hidden bg-ngo-pearl">
                         <img
                           src={a.image}
@@ -175,21 +177,21 @@ function MagazinePage() {
         <div className="max-w-7xl mx-auto">
           <div className="flex items-end justify-between gap-4 mb-8 sm:mb-10">
             <div className="min-w-0">
-              <span className="text-[10px] uppercase tracking-[0.24em] font-bold text-ngo-gold">Dernières publications</span>
+              <span className="text-[10px] uppercase tracking-[0.24em] font-bold text-ngo-gold">Toutes nos activités passées</span>
               <h2 className="font-serif text-[22px] sm:text-3xl md:text-4xl font-extrabold text-ngo-navy mt-2 leading-tight break-words">
-                {filtered.length} article{filtered.length > 1 ? "s" : ""}{cat !== "Toutes" && <> dans <em className="text-ngo-gold not-italic">{cat}</em></>}
+                {filtered.length} retour{filtered.length > 1 ? "s" : ""} d'activité{cat !== "Toutes" && <> dans <em className="text-ngo-gold not-italic">{cat}</em></>}
               </h2>
             </div>
             <Newspaper size={28} className="text-ngo-navy/30 hidden md:block shrink-0" aria-hidden="true" />
           </div>
 
           {latest.length === 0 ? (
-            <p className="text-ngo-slate text-center py-16">Aucun article ne correspond à votre recherche.</p>
+            <p className="text-ngo-slate text-center py-16">Aucune activité ne correspond à votre recherche.</p>
           ) : (
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
               {latest.map((a) => (
                 <article key={a.id} className="group bg-white border border-ngo-navy/8 rounded-xl sm:rounded-2xl overflow-hidden hover:shadow-xl hover:border-ngo-gold/40 transition-all">
-                  <Link to="/impact" className="block">
+                  <Link to="/impact/$id" params={{ id: a.id }} className="block">
                     <div className="relative aspect-[16/10] overflow-hidden bg-ngo-pearl">
                       <img
                         src={a.image}
@@ -215,7 +217,7 @@ function MagazinePage() {
                       </h3>
                       <p className="text-ngo-slate text-[13px] sm:text-sm leading-relaxed line-clamp-3">{a.excerpt}</p>
                       <div className="mt-4 sm:mt-5 pt-4 sm:pt-5 border-t border-ngo-navy/8 flex items-center justify-between text-[11px] uppercase tracking-widest font-bold text-ngo-navy">
-                        Lire l'article
+                        Lire le compte rendu
                         <ArrowUpRight size={14} className="text-ngo-gold group-hover:rotate-12 transition-transform shrink-0" aria-hidden="true" />
                       </div>
                     </div>
@@ -232,10 +234,10 @@ function MagazinePage() {
         <div className="max-w-4xl mx-auto text-center">
           <Bookmark size={26} className="text-ngo-gold mx-auto mb-4 sm:mb-5" aria-hidden="true" />
           <h2 className="font-serif text-[22px] sm:text-3xl md:text-4xl font-extrabold leading-tight tracking-tight mb-4 sm:mb-5 break-words">
-            Recevez le meilleur du <span className="text-ngo-gold italic">Magazine CMEP</span>.
+            Ne manquez aucun <span className="text-ngo-gold italic">retour d'activité</span>.
           </h2>
           <p className="text-white/70 max-w-xl mx-auto text-[14px] sm:text-base leading-relaxed mb-6 sm:mb-8">
-            Une lettre éditoriale trimestrielle : reportages, portraits, analyses et opportunités.
+            Une lettre trimestrielle : comptes rendus de nos activités, reportages de terrain et prochaines opportunités.
           </p>
           <Link
             to="/contact"
