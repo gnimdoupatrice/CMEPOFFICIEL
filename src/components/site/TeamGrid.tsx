@@ -2,7 +2,6 @@ import photoChristian from "@/assets/images/team/01_Christian_AKAKPO_Program_Man
 import photoEsse from "@/assets/images/team/02_ESSE_Eyram_Secretaire_Principal.jpg";
 import photoRamatha from "@/assets/images/team/03_MAMOUDOU_Ramatha_Secretaire_Generale.jpg";
 import photoFaizou from "@/assets/images/team/04_ABOUDOULAYE_Faizou_Community_Manager.jpg";
-import photoAVerifier from "@/assets/images/team/05_photo_sans_legende_a_verifier.jpg";
 import photoRodrigue from "@/assets/images/team/06_AWESSO_Samie_Magnimwe_Rodrigue_Presentateur.jpg";
 import photoKola from "@/assets/images/team/07_KOLA_Kodzo_Presentateur.jpg";
 import photoTokpo from "@/assets/images/team/08_TOKPO_Kodjo_Romeo_Videaste.jpg";
@@ -17,7 +16,7 @@ import photoGloria from "@/assets/images/team/10_POKONA_Solim_Gloria_Comptable.j
 export type TeamMember = {
   nom: string;
   role: string;
-  pole: "Direction" | "Secrétariat" | "Communication" | "Économat" | "À confirmer";
+  pole: "Direction" | "Secrétariat" | "Communication" | "Économat";
   photo: string;
 };
 
@@ -76,7 +75,6 @@ export const TEAM_MEMBERS: TeamMember[] = [
     pole: "Économat",
     photo: photoGloria,
   },
-  { nom: "À compléter", role: "À compléter", pole: "À confirmer", photo: photoAVerifier },
 ];
 /** ▲▲▲ FIN DU TABLEAU DES MEMBRES ▲▲▲ */
 
@@ -85,12 +83,27 @@ const POLE_ORDER: TeamMember["pole"][] = [
   "Secrétariat",
   "Communication",
   "Économat",
-  "À confirmer",
 ];
+
+/** Système de carte unique de la page À propos (rayon / bordure / ombre / survol). */
+export const CARD_BASE =
+  "rounded-2xl border border-ngo-navy/10 shadow-[0_1px_2px_rgba(15,42,95,0.04)] transition-all duration-300 hover:-translate-y-1 hover:border-ngo-gold hover:shadow-[0_18px_40px_-18px_rgba(15,42,95,0.35)]";
+
+/** Libellé de section en petites majuscules — même échelle partout. */
+export const EYEBROW =
+  "text-[10px] uppercase tracking-[0.28em] font-bold text-ngo-gold-ink";
+
+/**
+ * Piste flex centrée : la dernière rangée incomplète reste centrée.
+ * 1 col < 640 · 2 cols 640–1024 · 3 cols 1024–1440 · 4 cols ≥ 1440
+ */
+const TRACK = "flex flex-wrap justify-center gap-6";
+const CELL =
+  "basis-full sm:basis-[calc(50%-0.75rem)] lg:basis-[calc(33.333%-1rem)] min-[1440px]:basis-[calc(25%-1.125rem)] max-w-sm min-w-0";
 
 function MemberCard({ member }: { member: TeamMember }) {
   return (
-    <article className="group bg-white border border-ngo-navy/10 rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:border-ngo-gold">
+    <article className={`group bg-white overflow-hidden ${CARD_BASE}`}>
       <div className="aspect-[4/5] overflow-hidden bg-ngo-navy/5">
         <img
           src={member.photo}
@@ -99,17 +112,16 @@ function MemberCard({ member }: { member: TeamMember }) {
           height={1000}
           loading="lazy"
           decoding="async"
+          sizes="(min-width: 1440px) 22vw, (min-width: 1024px) 30vw, (min-width: 640px) 45vw, 90vw"
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
         />
       </div>
-      <div className="p-5 text-center">
+      <div className="p-6 text-center">
         <h4 className="font-extrabold text-ngo-navy leading-tight tracking-tight text-[17px]">
           {member.nom}
         </h4>
         <p className="mt-2 text-[13px] text-ngo-slate leading-relaxed">{member.role}</p>
-        <p className="mt-3 text-[10px] uppercase tracking-[0.22em] font-bold text-ngo-gold">
-          {member.pole}
-        </p>
+        <p className={`mt-4 ${EYEBROW}`}>{member.pole}</p>
       </div>
     </article>
   );
@@ -122,18 +134,21 @@ export function TeamGrid() {
   })).filter((g) => g.members.length > 0);
 
   return (
-    <div className="space-y-14">
+    <div className="space-y-16">
       {groups.map((group) => (
         <section key={group.pole} aria-label={`Pôle ${group.pole}`}>
-          <div className="flex items-center gap-4 mb-7">
-            <h3 className="text-[11px] uppercase tracking-[0.28em] font-bold text-ngo-navy whitespace-nowrap">
+          <div className="flex items-center gap-4 mb-8">
+            <span className="h-px flex-1 bg-ngo-navy/10" aria-hidden="true" />
+            <h3 className="text-[10px] uppercase tracking-[0.28em] font-bold text-ngo-navy whitespace-nowrap">
               {group.pole}
             </h3>
             <span className="h-px flex-1 bg-ngo-navy/10" aria-hidden="true" />
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className={TRACK}>
             {group.members.map((m) => (
-              <MemberCard key={m.nom + m.role} member={m} />
+              <div key={m.nom + m.role} className={CELL}>
+                <MemberCard member={m} />
+              </div>
             ))}
           </div>
         </section>
