@@ -229,7 +229,8 @@ function OpportunitiesPage() {
   );
 
   const featured = programs.find((p) => p.badge === "a_la_une") ?? programs[0];
-  const others = featured ? programs.filter((p) => p.id !== featured.id) : [];
+  const highlighted = featured ? [featured, ...programs.filter((p) => p.id !== featured.id)] : programs;
+
 
   const filteredPrograms = useMemo(() => {
     const q = normalizeQuery(searchQuery);
