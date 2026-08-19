@@ -202,7 +202,7 @@ function OpportunityCard({ p, index }: { p: PublicOpportunity; index: number }) 
           Voir détails <ArrowUpRight size={12} aria-hidden="true" />
         </span>
       </div>
-    </a>
+    </Link>
   );
 }
 
