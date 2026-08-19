@@ -1,9 +1,9 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { Layout } from "@/components/site/Layout";
 import { ArrowRight, Target, Compass, Sparkles, MapPin, Users } from "lucide-react";
 import { CMEP_MEDIA } from "@/lib/media";
 import { createWhatsAppHref, CMEP_EMAIL, CMEP_PHONE_DISPLAY, CMEP_PHONE_HREF } from "@/lib/contact";
-import { TeamGrid } from "@/components/site/TeamGrid";
+import { TeamGrid, CARD_BASE, EYEBROW } from "@/components/site/TeamGrid";
 
 export const Route = createFileRoute("/a-propos")({
   head: () => ({
@@ -19,6 +19,8 @@ export const Route = createFileRoute("/a-propos")({
         property: "og:description",
         content: "Découvrez l'histoire, la mission et l'équipe du CMEP.",
       },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { property: "og:url", content: "/a-propos" },
     ],
     links: [{ rel: "canonical", href: "/a-propos" }],
@@ -38,18 +40,16 @@ function AboutPage() {
     <Layout>
       {/* HERO */}
       <section className="pt-20 md:pt-24 pb-16 md:pb-20 px-4 sm:px-6 bg-ngo-pearl border-b border-ngo-navy/5">
-        <div className="max-w-7xl mx-auto">
-          <span className="text-ngo-gold font-bold uppercase tracking-[0.25em] text-[11px]">
-            À propos du CMEP
-          </span>
-          <h1 className="font-extrabold text-4xl sm:text-h1 mt-5 mb-8 text-ngo-navy max-w-4xl">
+        <div className="max-w-4xl mx-auto text-center">
+          <span className={EYEBROW}>À propos du CMEP</span>
+          <h1 className="font-extrabold text-4xl sm:text-h1 mt-5 mb-8 text-ngo-navy leading-[1.05] tracking-tight">
             Une initiative née du terrain, portée par la{" "}
-            <span className="text-ngo-gold">jeunesse</span>.
+            <span className="text-ngo-gold-ink">jeunesse</span>.
           </h1>
-          <p className="text-lg text-ngo-slate leading-relaxed max-w-2xl">
-            Le Chris Mentorship & Empowerment Program (CMEP) est une initiative collective portée
-            par un réseau de jeunes leaders togolais. Elle vise à renforcer l'autonomisation, les
-            compétences et l'insertion socio-économique des jeunes à travers des formations
+          <p className="text-lg text-ngo-slate leading-relaxed max-w-2xl mx-auto editorial-body">
+            Le Chris Mentorship &amp; Empowerment Program (CMEP) est une initiative collective
+            portée par un réseau de jeunes leaders togolais. Elle vise à renforcer l'autonomisation,
+            les compétences et l'insertion socio-économique des jeunes à travers des formations
             pratiques, du mentorat et des actions communautaires.
           </p>
         </div>
@@ -57,7 +57,7 @@ function AboutPage() {
 
       {/* VISION & MISSION */}
       <section className="py-20 md:py-24 px-4 sm:px-6 bg-white">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-6">
+        <div className="max-w-7xl mx-auto flex flex-wrap justify-center gap-6">
           {[
             {
               icon: Compass,
@@ -74,18 +74,16 @@ function AboutPage() {
           ].map((b) => (
             <article
               key={b.eyebrow}
-              className="p-10 md:p-12 bg-ngo-pearl border border-ngo-navy/5 rounded-2xl"
+              className={`basis-full md:basis-[calc(50%-0.75rem)] min-w-0 p-10 md:p-12 bg-ngo-pearl text-center ${CARD_BASE}`}
             >
-              <div className="size-12 rounded-xl bg-ngo-navy text-white grid place-items-center mb-8">
+              <div className="size-12 rounded-xl bg-ngo-navy text-white grid place-items-center mb-8 mx-auto">
                 <b.icon size={20} strokeWidth={2.2} aria-hidden="true" />
               </div>
-              <span className="text-ngo-gold text-[10px] uppercase tracking-[0.25em] font-bold">
-                {b.eyebrow}
-              </span>
+              <span className={EYEBROW}>{b.eyebrow}</span>
               <h2 className="text-2xl md:text-3xl font-extrabold text-ngo-navy mt-3 mb-5 leading-tight tracking-tight">
                 {b.title}
               </h2>
-              <p className="text-ngo-slate leading-relaxed text-[15px]">{b.body}</p>
+              <p className="text-ngo-slate leading-relaxed text-[15px] editorial-body">{b.body}</p>
             </article>
           ))}
         </div>
@@ -97,14 +95,17 @@ function AboutPage() {
         aria-labelledby="team-heading"
       >
         <div className="max-w-7xl mx-auto">
-          <div className="max-w-3xl mb-12">
-            <div className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.28em] font-bold text-ngo-gold mb-4">
+          <div className="max-w-3xl mx-auto text-center mb-14">
+            <div className={`inline-flex items-center gap-2 mb-4 ${EYEBROW}`}>
               <Users size={12} aria-hidden="true" /> Notre équipe
             </div>
-            <h2 id="team-heading" className="text-h2 font-extrabold text-ngo-navy">
+            <h2
+              id="team-heading"
+              className="text-h2 font-extrabold text-ngo-navy leading-[1.05] tracking-tight"
+            >
               Une gouvernance jeune, engagée, au service du Togo.
             </h2>
-            <p className="mt-5 text-ngo-slate leading-relaxed">
+            <p className="mt-5 text-ngo-slate leading-relaxed editorial-body">
               Dix membres portent l'exécutif du CMEP, répartis entre direction, secrétariat,
               communication et économat. Une équipe pluridisciplinaire au service d'une seule
               ambition — l'autonomisation de la jeunesse togolaise.
@@ -114,7 +115,9 @@ function AboutPage() {
           <TeamGrid />
 
           {/* Contact coordination */}
-          <div className="mt-16 grid gap-6 md:grid-cols-12 items-center p-8 sm:p-10 bg-white border border-ngo-navy/10 rounded-3xl">
+          <div
+            className={`mt-16 grid gap-6 md:grid-cols-12 items-center p-8 sm:p-10 bg-white ${CARD_BASE}`}
+          >
             <div className="md:col-span-3 flex justify-center">
               <img
                 src={CMEP_MEDIA.logo}
@@ -126,17 +129,15 @@ function AboutPage() {
                 className="size-24 rounded-2xl object-cover ring-1 ring-ngo-navy/10"
               />
             </div>
-            <div className="md:col-span-9 text-center md:text-center">
-              <span className="text-ngo-gold text-[10px] uppercase tracking-[0.25em] font-bold">
-                Contacter la coordination
-              </span>
+            <div className="md:col-span-9 text-center">
+              <span className={EYEBROW}>Contacter la coordination</span>
               <div className="mt-4 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 text-sm text-ngo-navy font-medium">
-                <a href={CMEP_PHONE_HREF} className="hover:text-ngo-gold transition-colors">
+                <a href={CMEP_PHONE_HREF} className="hover:text-ngo-gold-ink transition-colors">
                   {CMEP_PHONE_DISPLAY}
                 </a>
                 <a
                   href={`mailto:${CMEP_EMAIL}`}
-                  className="break-all hover:text-ngo-gold transition-colors"
+                  className="break-all hover:text-ngo-gold-ink transition-colors"
                 >
                   {CMEP_EMAIL}
                 </a>
@@ -149,24 +150,24 @@ function AboutPage() {
       {/* OBJECTIFS */}
       <section className="py-20 md:py-24 px-4 sm:px-6 bg-white">
         <div className="max-w-7xl mx-auto">
-          <div className="max-w-3xl mb-14">
-            <span className="text-ngo-gold text-[10px] uppercase tracking-[0.25em] font-bold">
-              Objectifs spécifiques
-            </span>
+          <div className="max-w-3xl mx-auto text-center mb-14">
+            <span className={EYEBROW}>Objectifs spécifiques</span>
             <h2 className="text-h2 font-extrabold text-ngo-navy mt-4 leading-[1.05] tracking-tight">
               Quatre engagements concrets.
             </h2>
           </div>
-          <div className="grid md:grid-cols-2 gap-5">
+          <div className="flex flex-wrap justify-center gap-6">
             {OBJECTIVES.map((obj, i) => (
               <article
                 key={i}
-                className="group flex gap-6 p-8 bg-ngo-pearl border border-ngo-navy/10 rounded-2xl hover:border-ngo-gold hover:shadow-xl transition-all"
+                className={`basis-full md:basis-[calc(50%-0.75rem)] min-w-0 flex gap-6 p-8 bg-ngo-pearl ${CARD_BASE}`}
               >
-                <span className="text-3xl font-black text-ngo-gold tabular-nums shrink-0 leading-none pt-1">
+                <span className="text-3xl font-black text-ngo-gold-ink tabular-nums shrink-0 leading-none pt-1">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <p className="text-base text-ngo-navy leading-relaxed font-medium pt-0.5">{obj}</p>
+                <p className="text-base text-ngo-navy leading-relaxed font-medium pt-0.5 editorial-body">
+                  {obj}
+                </p>
               </article>
             ))}
           </div>
@@ -176,48 +177,49 @@ function AboutPage() {
       {/* ANCRAGE NATIONAL */}
       <section className="py-20 md:py-24 px-4 sm:px-6 bg-ngo-pearl">
         <div className="max-w-5xl mx-auto">
-          <div className="grid md:grid-cols-12 gap-8 md:gap-10 items-center p-8 sm:p-10 md:p-14 bg-ngo-navy rounded-3xl text-white">
-            <div className="md:col-span-2">
-              <div className="size-14 rounded-2xl bg-ngo-gold text-ngo-navy grid place-items-center">
-                <MapPin size={22} strokeWidth={2.4} aria-hidden="true" />
-              </div>
+          <div
+            className={`p-10 sm:p-12 md:p-16 bg-ngo-navy text-white text-center ${CARD_BASE} hover:border-ngo-gold`}
+          >
+            <div className="size-14 rounded-2xl bg-ngo-gold text-ngo-navy grid place-items-center mx-auto mb-8">
+              <MapPin size={22} strokeWidth={2.4} aria-hidden="true" />
             </div>
-            <div className="md:col-span-10">
-              <span className="text-ngo-gold text-[10px] uppercase tracking-[0.25em] font-bold">
-                Ancrage national
-              </span>
-              <h2 className="text-2xl sm:text-h2 font-extrabold mt-3 mb-4 leading-tight tracking-tight">
-                Un programme togolais, pensé pour passer à l'échelle.
-              </h2>
-              <p className="text-white/70 leading-relaxed">
-                Nos actions s'inscrivent dans une dynamique nationale : former, mentorer et
-                connecter les jeunes partout où les besoins d'accompagnement, d'emploi et de
-                leadership sont prioritaires.
-              </p>
-            </div>
+            <span className="text-[10px] uppercase tracking-[0.28em] font-bold text-ngo-gold">
+              Ancrage national
+            </span>
+            <h2 className="text-2xl sm:text-h2 font-extrabold mt-3 mb-5 leading-tight tracking-tight">
+              Un programme togolais, pensé pour passer à l'échelle.
+            </h2>
+            <p className="text-white/80 leading-relaxed max-w-2xl mx-auto editorial-body">
+              Nos actions s'inscrivent dans une dynamique nationale : former, mentorer et connecter
+              les jeunes partout où les besoins d'accompagnement, d'emploi et de leadership sont
+              prioritaires.
+            </p>
           </div>
         </div>
       </section>
 
       {/* CTA */}
       <section className="py-20 md:py-24 px-4 sm:px-6 bg-white">
-        <div className="max-w-3xl mx-auto text-center">
-          <Sparkles className="mx-auto text-ngo-gold mb-6" size={28} aria-hidden="true" />
-          <h2 className="text-h2 font-extrabold text-ngo-navy mb-5 leading-tight tracking-tight">
-            Rejoignez l'écosystème CMEP.
-          </h2>
-          <p className="text-ngo-slate mb-10 leading-relaxed">
-            Jeune talent, mentor, partenaire institutionnel : il y a une place pour vous dans cette
-            aventure collective.
-          </p>
-          <a
-            href={createWhatsAppHref("Bonjour CMEP, je souhaite rejoindre l’écosystème CMEP.")}
-            target="_blank"
-            rel="noreferrer noopener"
-            className="inline-flex items-center gap-2 bg-ngo-gold text-ngo-navy px-8 py-4 min-h-12 font-bold uppercase tracking-widest text-xs hover:scale-105 transition-transform rounded-md"
-          >
-            Nous contacter <ArrowRight size={14} aria-hidden="true" />
-          </a>
+        <div className="max-w-3xl mx-auto">
+          <div className={`p-10 sm:p-12 bg-ngo-pearl text-center ${CARD_BASE}`}>
+            <Sparkles className="mx-auto text-ngo-gold-ink mb-6" size={28} aria-hidden="true" />
+            <span className={EYEBROW}>Rejoindre le CMEP</span>
+            <h2 className="text-h2 font-extrabold text-ngo-navy mt-3 mb-5 leading-tight tracking-tight">
+              Rejoignez l'écosystème CMEP.
+            </h2>
+            <p className="text-ngo-slate mb-10 leading-relaxed max-w-xl mx-auto editorial-body">
+              Jeune talent, mentor, partenaire institutionnel : il y a une place pour vous dans
+              cette aventure collective.
+            </p>
+            <a
+              href={createWhatsAppHref("Bonjour CMEP, je souhaite rejoindre l’écosystème CMEP.")}
+              target="_blank"
+              rel="noreferrer noopener"
+              className="inline-flex items-center gap-2 bg-ngo-navy text-white px-8 py-4 min-h-12 font-bold uppercase tracking-widest text-xs hover:bg-ngo-gold hover:text-ngo-navy transition-colors rounded-xl"
+            >
+              Nous contacter <ArrowRight size={14} aria-hidden="true" />
+            </a>
+          </div>
         </div>
       </section>
     </Layout>
