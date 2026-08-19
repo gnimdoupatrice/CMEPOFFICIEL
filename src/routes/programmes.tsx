@@ -29,7 +29,7 @@ const SDGS = [
 function ProgrammesPage() {
   return (
     <Layout>
-      {/* HERO  SECTION */}
+      {/* HERO   ppppp*/}
       <section className="pt-20 md:pt-24 pb-16 md:pb-20 px-4 sm:px-6 bg-ngo-pearl border-b border-ngo-navy/5">
         <div className="max-w-7xl mx-auto">
           <span className="text-ngo-gold font-bold uppercase tracking-[0.25em] text-[11px]">Nos axes d'intervention</span>
@@ -43,7 +43,7 @@ function ProgrammesPage() {
         </div>
       </section>
 
-      {/* AXES  make*/}
+      {/* AXES  */}
       <section className="py-20 md:py-24 px-4 sm:px-6 bg-white">
         <div className="max-w-7xl mx-auto space-y-5">
           {STRATEGIC_AXES.map((axis, i) => (
@@ -77,46 +77,6 @@ function ProgrammesPage() {
               </div>
             </article>
           ))}
-        </div>
-      </section>
-
-      {/* ALIGNEMENT ODD (déplacé  /) */}
-      <section className="bg-ngo-pearl py-20 md:py-24 px-4 sm:px-6" aria-labelledby="sdg-heading">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-12 gap-12">
-            <div className="lg:col-span-5">
-              <div className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.28em] font-bold text-ngo-gold mb-4">
-                <Target size={12} aria-hidden="true" /> Agenda 2030
-              </div>
-              <h2 id="sdg-heading" className="text-h2 font-extrabold text-ngo-navy leading-[1.05] tracking-tight mb-6">
-                Alignement aux 17 Objectifs de Développement Durable au cœur de l'action.
-              </h2>
-              <p className="text-ngo-slate leading-relaxed text-[15px] mb-8">
-                Le CMEP structure ses cinq axes stratégiques selon le référentiel ONU 2030.
-                Chaque axe est explicitement ancré dans un ou plusieurs ODD prioritaires
-                pour le Togo, garantissant cohérence, mesurabilité et redevabilité.
-              </p>
-              <Link
-                to="/impact"
-                className="inline-flex items-center gap-2 text-ngo-navy font-bold text-[13px] uppercase tracking-widest hover:text-ngo-gold transition-colors"
-              >
-                Lire notre magazine <ArrowRight size={14} aria-hidden="true" />
-              </Link>
-            </div>
-            <ul className="lg:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-3">
-              {SDGS.map((s) => (
-                <li
-                  key={s.num}
-                  className="group aspect-square p-5 bg-white border border-ngo-navy/8 rounded-xl flex flex-col justify-between hover:bg-ngo-navy hover:border-ngo-navy transition-all"
-                >
-                  <span className="text-4xl font-extrabold text-ngo-gold tabular-nums leading-none">{s.num}</span>
-                  <span className="text-[11px] uppercase tracking-[0.18em] font-bold text-ngo-navy group-hover:text-white leading-snug">
-                    {s.label}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
         </div>
       </section>
 
