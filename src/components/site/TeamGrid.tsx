@@ -131,7 +131,7 @@ function MemberCard({ member }: { member: TeamMember }) {
           className="w-full h-full! object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
         />
       </div>
-      <div className="flex flex-1 flex-col p-6 text-center">
+      <div className="flex flex-1 flex-col p-6 text-center [&_*]:text-center!">
         <h4 className="font-extrabold text-ngo-navy leading-tight tracking-tight text-[17px]">
           {member.nom}
         </h4>
