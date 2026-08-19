@@ -98,11 +98,18 @@ export const EYEBROW =
  * Le nombre de colonnes dépend du nombre de membres du pôle : aucune rangée
  * ne peut se terminer par une carte isolée à 375 / 768 / 1024 / 1440 px.
  */
-const TRACK = "flex flex-wrap justify-center items-stretch gap-6";
+const TRACK = "flex flex-wrap justify-center items-stretch gap-6 mx-auto";
+
+/** Largeur maximale de la piste : verrouille le nombre de colonnes par pôle. */
+function trackWidth(count: number) {
+  if (count === 1) return "max-w-[22rem]";
+  if (count % 3 === 0 && count % 2 !== 0) return "max-w-[70rem]";
+  return "max-w-[48rem]";
+}
 
 function cellClass(count: number) {
-  const base = "min-w-0 max-w-sm";
-  if (count === 1) return `${base} basis-full sm:basis-[22rem]`;
+  const base = "min-w-0";
+  if (count === 1) return `${base} basis-full`;
   if (count % 3 === 0 && count % 2 !== 0)
     return `${base} basis-full sm:basis-[calc(50%-0.75rem)] lg:basis-[calc(33.333%-1rem)]`;
   // 2, 4, 8… → 1 colonne < 640 px, 2 colonnes ensuite : rangées toujours pleines.
