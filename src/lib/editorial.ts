@@ -1,8 +1,8 @@
-import article1 from "@/assets/magazine/article1-juin-mois-environnement-reboisement.png.asset.json";
-import article2 from "@/assets/magazine/article2-sport-vert-kpendjal1.png.asset.json";
-import article3 from "@/assets/magazine/article3-kara-formation-redaction-pro.png.asset.json";
-import article4 from "@/assets/magazine/article4-diketi2026-panel-entrepreneuriat.png.asset.json";
-import article5 from "@/assets/magazine/article5-formation-animation-de-projet.png.asset.json";
+import article1 from "@/assets/magazine/juin-environnement.jpg";
+import article2 from "@/assets/magazine/sport-vert-kpendjal.jpg";
+import article3 from "@/assets/magazine/formation-redaction-kara.jpg";
+import article4 from "@/assets/magazine/diketi-2026.jpg";
+import article5 from "@/assets/magazine/formation-animation-projet.jpg";
 
 export type ArticleBlock = { type: "p"; text: string } | { type: "ul"; items: string[] };
 
@@ -30,7 +30,7 @@ export const EDITORIAL_ARTICLES: EditorialArticle[] = [
     date: "02 – 04 juillet 2026",
     readTime: "5 min",
     location: "Lomé, Togo",
-    image: article4.url,
+    image: article4,
     body: [
       {
         type: "p",
@@ -59,7 +59,7 @@ export const EDITORIAL_ARTICLES: EditorialArticle[] = [
     date: "26 – 27 juin 2026",
     readTime: "6 min",
     location: "Kpendjal 1, Togo",
-    image: article2.url,
+    image: article2,
     body: [
       {
         type: "p",
@@ -88,7 +88,7 @@ export const EDITORIAL_ARTICLES: EditorialArticle[] = [
     date: "26 juin 2026",
     readTime: "7 min",
     location: "Kara, Togo",
-    image: article3.url,
+    image: article3,
     body: [
       {
         type: "p",
@@ -123,7 +123,7 @@ export const EDITORIAL_ARTICLES: EditorialArticle[] = [
     date: "1er juin 2026",
     readTime: "4 min",
     location: "Togo",
-    image: article1.url,
+    image: article1,
     body: [
       {
         type: "p",
@@ -161,7 +161,7 @@ export const EDITORIAL_ARTICLES: EditorialArticle[] = [
     date: "01 – 04 juin 2026",
     readTime: "5 min",
     location: "Lomé, Togo",
-    image: article5.url,
+    image: article5,
     body: [
       {
         type: "p",
