@@ -73,30 +73,41 @@ function AboutPage() {
               Une gouvernance jeune, engagée, au service du Togo.
             </h2>
             <p className="mt-5 text-ngo-slate leading-relaxed">
-              Six membres portent l'exécutif du CMEP : direction, coordination des programmes,
-              communication, partenariats et suivi terrain. Une équipe pluridisciplinaire au
-              service d'une seule ambition — l'autonomisation de la jeunesse togolaise.
+              Dix membres portent l'exécutif du CMEP, répartis entre direction, secrétariat,
+              communication et économat. Une équipe pluridisciplinaire au service d'une seule
+              ambition — l'autonomisation de la jeunesse togolaise.
             </p>
           </div>
 
-          <figure className="relative rounded-3xl overflow-hidden border border-ngo-navy/10 shadow-xl bg-ngo-navy">
-            <img
-              src={CMEP_MEDIA.team}
-              alt="L'équipe officielle du CMEP — six membres présentés avec leurs noms et fonctions respectives."
-              width={1600}
-              height={1000}
-              loading="lazy"
-              decoding="async"
-              className="w-full h-auto object-cover"
-            />
-            <figcaption className="sr-only">
-              L'équipe permanente du Chris Mentorship & Empowerment Program.
-            </figcaption>
-          </figure>
+          <TeamGrid />
 
-          <p className="mt-6 text-[13px] text-ngo-slate max-w-3xl">
-            Les biographies détaillées des membres de l'équipe seront publiées dans une prochaine mise à jour institutionnelle.
-          </p>
+          {/* Contact coordination */}
+          <div className="mt-16 grid gap-6 md:grid-cols-12 items-center p-8 sm:p-10 bg-white border border-ngo-navy/10 rounded-3xl">
+            <div className="md:col-span-3 flex justify-center">
+              <img
+                src={CMEP_MEDIA.logo}
+                alt="Logo CMEP"
+                width={96}
+                height={96}
+                loading="lazy"
+                decoding="async"
+                className="size-24 rounded-2xl object-cover ring-1 ring-ngo-navy/10"
+              />
+            </div>
+            <div className="md:col-span-9 text-center md:text-center">
+              <span className="text-ngo-gold text-[10px] uppercase tracking-[0.25em] font-bold">
+                Contacter la coordination
+              </span>
+              <div className="mt-4 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 text-sm text-ngo-navy font-medium">
+                <a href={CMEP_PHONE_HREF} className="hover:text-ngo-gold transition-colors">
+                  {CMEP_PHONE_DISPLAY}
+                </a>
+                <a href={`mailto:${CMEP_EMAIL}`} className="break-all hover:text-ngo-gold transition-colors">
+                  {CMEP_EMAIL}
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
