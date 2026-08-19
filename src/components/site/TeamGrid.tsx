@@ -147,7 +147,7 @@ export function TeamGrid() {
         <section key={group.pole} aria-label={`Pôle ${group.pole}`}>
           <div className="flex items-center gap-4 mb-8">
             <span className="h-px flex-1 bg-ngo-navy/10" aria-hidden="true" />
-            <h3 className="text-[10px] uppercase tracking-[0.28em] font-bold text-ngo-navy whitespace-nowrap">
+            <h3 className={`${EYEBROW} whitespace-nowrap`}>
               {group.pole}
             </h3>
             <span className="h-px flex-1 bg-ngo-navy/10" aria-hidden="true" />
