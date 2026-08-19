@@ -151,3 +151,48 @@ export const adminSignCv = createServerFn({ method: "POST" })
       .createSignedUrl(data.path, 3600);
     return { url: signed?.signedUrl ?? null };
   });
+
+export const adminDuplicateOpportunity = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((data: { id: string }) => ({ id: String(data.id) }))
+  .handler(async ({ data, context }) => {
+    await (await import("@/lib/opportunities.server")).assertAdmin(context);
+    const { data: row, error: fetchError } = await context.supabase
+      .from("opportunities")
+      .select("*")
+      .eq("id", data.id)
+      .single();
+    if (fetchError || !row) return { ok: false, id: null, error: "Opportunité introuvable." };
+
+    const original = row as Database["public"]["Tables"]["opportunities"]["Row"];
+    const { slugify } = await import("@/lib/opportunities");
+    const suffix = `copie-${Date.now().toString(36)}`;
+    const newSlug = `${slugify(original.slug).slice(0, 80)}-${suffix}`;
+    const newTitle = `${original.title} (Copie)`;
+
+    const payload = {
+      title: newTitle,
+      slug: newSlug,
+      category: original.category,
+      badge: original.badge,
+      cover_image: original.cover_image,
+      short_description: original.short_description,
+      description: original.description,
+      sessions: original.sessions,
+      registration_deadline: original.registration_deadline,
+      modules: original.modules,
+      pricing: original.pricing,
+      application_mode: original.application_mode,
+      whatsapp_message: original.whatsapp_message,
+      status: "draft" as const,
+      sort_order: original.sort_order,
+    };
+
+    const { data: inserted, error: insertError } = await context.supabase
+      .from("opportunities")
+      .insert(payload)
+      .select("id")
+      .single();
+    if (insertError) return { ok: false, id: null, error: insertError.message };
+    return { ok: true, id: (inserted as { id: string }).id, error: null as string | null };
+  });
