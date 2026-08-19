@@ -29,7 +29,7 @@ const SDGS = [
 function ProgrammesPage() {
   return (
     <Layout>
-      {/* HERO   ppppp*/}
+      {/* HERO pp*/}
       <section className="pt-20 md:pt-24 pb-16 md:pb-20 px-4 sm:px-6 bg-ngo-pearl border-b border-ngo-navy/5">
         <div className="max-w-7xl mx-auto">
           <span className="text-ngo-gold font-bold uppercase tracking-[0.25em] text-[11px]">Nos axes d'intervention</span>
@@ -43,7 +43,7 @@ function ProgrammesPage() {
         </div>
       </section>
 
-      {/* AXES  */}
+      {/* AXES pppp */}
       <section className="py-20 md:py-24 px-4 sm:px-6 bg-white">
         <div className="max-w-7xl mx-auto space-y-5">
           {STRATEGIC_AXES.map((axis, i) => (
