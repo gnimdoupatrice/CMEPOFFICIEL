@@ -154,7 +154,7 @@ export function TeamGrid() {
           </div>
           <div className={TRACK}>
             {group.members.map((m) => (
-              <div key={m.nom + m.role} className={CELL}>
+              <div key={m.nom + m.role} className={cellClass(group.members.length)}>
                 <MemberCard member={m} />
               </div>
             ))}
