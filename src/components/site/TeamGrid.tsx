@@ -22,15 +22,60 @@ export type TeamMember = {
 };
 
 export const TEAM_MEMBERS: TeamMember[] = [
-  { nom: "Christian AKAKPO", role: "Program Manager — Coordonnateur du Programme", pole: "Direction", photo: photoChristian },
-  { nom: "ADAN Kpamou Assossimna", role: "Project Manager — Responsable de projet", pole: "Direction", photo: photoAdan },
-  { nom: "MAMOUDOU Ramatha", role: "Secrétaire générale", pole: "Secrétariat", photo: photoRamatha },
-  { nom: "ESSE Eyram", role: "Secrétaire Principal — Responsable équipe Secrétariat", pole: "Secrétariat", photo: photoEsse },
-  { nom: "ABOUDOULAYE Faïzou", role: "Community Manager — Responsable équipe Communication", pole: "Communication", photo: photoFaizou },
-  { nom: "AWESSO Samie Magnimwè Rodrigue", role: "Présentateur, Assistant du responsable Communication", pole: "Communication", photo: photoRodrigue },
-  { nom: "KOLA Kodzo", role: "Présentateur, Chargé à l'information", pole: "Communication", photo: photoKola },
-  { nom: "TOKPO Kodjo Roméo", role: "Vidéaste, Chargé de la création de contenus", pole: "Communication", photo: photoTokpo },
-  { nom: "POKONA Solim Gloria", role: "Comptable — Responsable équipe Économat", pole: "Économat", photo: photoGloria },
+  {
+    nom: "Christian AKAKPO",
+    role: "Program Manager — Coordonnateur du Programme",
+    pole: "Direction",
+    photo: photoChristian,
+  },
+  {
+    nom: "ADAN Kpamou Assossimna",
+    role: "Project Manager — Responsable de projet",
+    pole: "Direction",
+    photo: photoAdan,
+  },
+  {
+    nom: "MAMOUDOU Ramatha",
+    role: "Secrétaire générale",
+    pole: "Secrétariat",
+    photo: photoRamatha,
+  },
+  {
+    nom: "ESSE Eyram",
+    role: "Secrétaire Principal — Responsable équipe Secrétariat",
+    pole: "Secrétariat",
+    photo: photoEsse,
+  },
+  {
+    nom: "ABOUDOULAYE Faïzou",
+    role: "Community Manager — Responsable équipe Communication",
+    pole: "Communication",
+    photo: photoFaizou,
+  },
+  {
+    nom: "AWESSO Samie Magnimwè Rodrigue",
+    role: "Présentateur, Assistant du responsable Communication",
+    pole: "Communication",
+    photo: photoRodrigue,
+  },
+  {
+    nom: "KOLA Kodzo",
+    role: "Présentateur, Chargé à l'information",
+    pole: "Communication",
+    photo: photoKola,
+  },
+  {
+    nom: "TOKPO Kodjo Roméo",
+    role: "Vidéaste, Chargé de la création de contenus",
+    pole: "Communication",
+    photo: photoTokpo,
+  },
+  {
+    nom: "POKONA Solim Gloria",
+    role: "Comptable — Responsable équipe Économat",
+    pole: "Économat",
+    photo: photoGloria,
+  },
   { nom: "À compléter", role: "À compléter", pole: "À confirmer", photo: photoAVerifier },
 ];
 /** ▲▲▲ FIN DU TABLEAU DES MEMBRES ▲▲▲ */
