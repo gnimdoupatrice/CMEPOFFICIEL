@@ -105,8 +105,8 @@ function cellClass(count: number) {
   if (count === 1) return `${base} basis-full sm:basis-[22rem]`;
   if (count % 3 === 0 && count % 2 !== 0)
     return `${base} basis-full sm:basis-[calc(50%-0.75rem)] lg:basis-[calc(33.333%-1rem)]`;
-  // 2, 4, 8… → 1 / 2 / 2 / 4 colonnes : toujours des rangées pleines.
-  return `${base} basis-full sm:basis-[calc(50%-0.75rem)] min-[1440px]:basis-[calc(25%-1.125rem)]`;
+  // 2, 4, 8… → 1 colonne < 640 px, 2 colonnes ensuite : rangées toujours pleines.
+  return `${base} basis-full sm:basis-[calc(50%-0.75rem)]`;
 }
 
 function MemberCard({ member }: { member: TeamMember }) {
