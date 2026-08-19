@@ -94,16 +94,31 @@ export const EYEBROW =
   "text-[10px] uppercase tracking-[0.28em] font-bold text-ngo-gold-ink";
 
 /**
- * Piste flex centrée : la dernière rangée incomplète reste centrée.
- * 1 col < 640 · 2 cols 640–1024 · 3 cols 1024–1440 · 4 cols ≥ 1440
+ * Piste flex centrée, cellules à hauteur égale.
+ * Le nombre de colonnes dépend du nombre de membres du pôle : aucune rangée
+ * ne peut se terminer par une carte isolée à 375 / 768 / 1024 / 1440 px.
  */
-const TRACK = "flex flex-wrap justify-center gap-6";
-const CELL =
-  "basis-full sm:basis-[calc(50%-0.75rem)] lg:basis-[calc(33.333%-1rem)] min-[1440px]:basis-[calc(25%-1.125rem)] max-w-sm min-w-0";
+const TRACK = "flex flex-wrap justify-center items-stretch gap-6 mx-auto";
+
+/** Largeur maximale de la piste : verrouille le nombre de colonnes par pôle. */
+function trackWidth(count: number) {
+  if (count === 1) return "max-w-[22rem]";
+  if (count % 3 === 0 && count % 2 !== 0) return "max-w-[70rem]";
+  return "max-w-[48rem]";
+}
+
+function cellClass(count: number) {
+  const base = "min-w-0";
+  if (count === 1) return `${base} basis-full`;
+  if (count % 3 === 0 && count % 2 !== 0)
+    return `${base} basis-full sm:basis-[calc(50%-0.75rem)] lg:basis-[calc(33.333%-1rem)]`;
+  // 2, 4, 8… → 1 colonne < 640 px, 2 colonnes ensuite : rangées toujours pleines.
+  return `${base} basis-full sm:basis-[calc(50%-0.75rem)]`;
+}
 
 function MemberCard({ member }: { member: TeamMember }) {
   return (
-    <article className={`group bg-white overflow-hidden ${CARD_BASE}`}>
+    <article className={`group h-full flex flex-col bg-white overflow-hidden ${CARD_BASE}`}>
       <div className="aspect-[4/5] overflow-hidden bg-ngo-navy/5">
         <img
           src={member.photo}
@@ -112,16 +127,16 @@ function MemberCard({ member }: { member: TeamMember }) {
           height={1000}
           loading="lazy"
           decoding="async"
-          sizes="(min-width: 1440px) 22vw, (min-width: 1024px) 30vw, (min-width: 640px) 45vw, 90vw"
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+          sizes="(min-width: 1440px) 22vw, (min-width: 640px) 45vw, 90vw"
+          className="w-full h-full! object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
         />
       </div>
-      <div className="p-6 text-center">
+      <div className="flex flex-1 flex-col p-6 text-center [&_*]:text-center!">
         <h4 className="font-extrabold text-ngo-navy leading-tight tracking-tight text-[17px]">
           {member.nom}
         </h4>
         <p className="mt-2 text-[13px] text-ngo-slate leading-relaxed">{member.role}</p>
-        <p className={`mt-4 ${EYEBROW}`}>{member.pole}</p>
+        <p className={`mt-auto pt-4 ${EYEBROW}`}>{member.pole}</p>
       </div>
     </article>
   );
@@ -139,14 +154,12 @@ export function TeamGrid() {
         <section key={group.pole} aria-label={`Pôle ${group.pole}`}>
           <div className="flex items-center gap-4 mb-8">
             <span className="h-px flex-1 bg-ngo-navy/10" aria-hidden="true" />
-            <h3 className="text-[10px] uppercase tracking-[0.28em] font-bold text-ngo-navy whitespace-nowrap">
-              {group.pole}
-            </h3>
+            <h3 className={`${EYEBROW} text-[10px]! text-ngo-gold-ink! tracking-[0.28em]! whitespace-nowrap`}>{group.pole}</h3>
             <span className="h-px flex-1 bg-ngo-navy/10" aria-hidden="true" />
           </div>
-          <div className={TRACK}>
+          <div className={`${TRACK} ${trackWidth(group.members.length)}`}>
             {group.members.map((m) => (
-              <div key={m.nom + m.role} className={CELL}>
+              <div key={m.nom + m.role} className={cellClass(group.members.length)}>
                 <MemberCard member={m} />
               </div>
             ))}

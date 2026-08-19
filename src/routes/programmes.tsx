@@ -3,7 +3,7 @@ import { Layout } from "@/components/site/Layout";
 import { STRATEGIC_AXES } from "@/lib/cmep-data";
 import { ArrowRight, Target } from "lucide-react";
 
-export const Route = createFileRoute("/programmesSSD")({
+export const Route = createFileRoute("/programmes")({
   head: () => ({
     meta: [
       { title: "Axes stratégiques — CMEP Togo" },

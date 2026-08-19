@@ -40,7 +40,7 @@ function AboutPage() {
     <Layout>
       {/* HERO */}
       <section className="pt-20 md:pt-24 pb-16 md:pb-20 px-4 sm:px-6 bg-ngo-pearl border-b border-ngo-navy/5">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-4xl mx-auto text-center [&_*]:text-center!">
           <span className={EYEBROW}>À propos du CMEP</span>
           <h1 className="font-extrabold text-4xl sm:text-h1 mt-5 mb-8 text-ngo-navy leading-[1.05] tracking-tight">
             Une initiative née du terrain, portée par la{" "}
@@ -74,7 +74,7 @@ function AboutPage() {
           ].map((b) => (
             <article
               key={b.eyebrow}
-              className={`basis-full md:basis-[calc(50%-0.75rem)] min-w-0 p-10 md:p-12 bg-ngo-pearl text-center ${CARD_BASE}`}
+              className={`basis-full md:basis-[calc(50%-0.75rem)] min-w-0 p-10 md:p-12 bg-ngo-pearl text-center [&_*]:text-center! ${CARD_BASE}`}
             >
               <div className="size-12 rounded-xl bg-ngo-navy text-white grid place-items-center mb-8 mx-auto">
                 <b.icon size={20} strokeWidth={2.2} aria-hidden="true" />
@@ -95,7 +95,7 @@ function AboutPage() {
         aria-labelledby="team-heading"
       >
         <div className="max-w-7xl mx-auto">
-          <div className="max-w-3xl mx-auto text-center mb-14">
+          <div className="max-w-3xl mx-auto text-center [&_*]:text-center! mb-14">
             <div className={`inline-flex items-center gap-2 mb-4 ${EYEBROW}`}>
               <Users size={12} aria-hidden="true" /> Notre équipe
             </div>
@@ -129,7 +129,7 @@ function AboutPage() {
                 className="size-24 rounded-2xl object-cover ring-1 ring-ngo-navy/10"
               />
             </div>
-            <div className="md:col-span-9 text-center">
+            <div className="md:col-span-9 text-center [&_*]:text-center!">
               <span className={EYEBROW}>Contacter la coordination</span>
               <div className="mt-4 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 text-sm text-ngo-navy font-medium">
                 <a href={CMEP_PHONE_HREF} className="hover:text-ngo-gold-ink transition-colors">
@@ -150,7 +150,7 @@ function AboutPage() {
       {/* OBJECTIFS */}
       <section className="py-20 md:py-24 px-4 sm:px-6 bg-white">
         <div className="max-w-7xl mx-auto">
-          <div className="max-w-3xl mx-auto text-center mb-14">
+          <div className="max-w-3xl mx-auto text-center [&_*]:text-center! mb-14">
             <span className={EYEBROW}>Objectifs spécifiques</span>
             <h2 className="text-h2 font-extrabold text-ngo-navy mt-4 leading-[1.05] tracking-tight">
               Quatre engagements concrets.
@@ -178,7 +178,7 @@ function AboutPage() {
       <section className="py-20 md:py-24 px-4 sm:px-6 bg-ngo-pearl">
         <div className="max-w-5xl mx-auto">
           <div
-            className={`p-10 sm:p-12 md:p-16 bg-ngo-navy text-white text-center ${CARD_BASE} hover:border-ngo-gold`}
+            className={`p-10 sm:p-12 md:p-16 bg-ngo-navy text-white text-center [&_*]:text-center! ${CARD_BASE} hover:border-ngo-gold`}
           >
             <div className="size-14 rounded-2xl bg-ngo-gold text-ngo-navy grid place-items-center mx-auto mb-8">
               <MapPin size={22} strokeWidth={2.4} aria-hidden="true" />
@@ -186,7 +186,7 @@ function AboutPage() {
             <span className="text-[10px] uppercase tracking-[0.28em] font-bold text-ngo-gold">
               Ancrage national
             </span>
-            <h2 className="text-2xl sm:text-h2 font-extrabold mt-3 mb-5 leading-tight tracking-tight">
+            <h2 className="text-2xl sm:text-h2 font-extrabold mt-3 mb-5 leading-tight tracking-tight text-white!">
               Un programme togolais, pensé pour passer à l'échelle.
             </h2>
             <p className="text-white/80 leading-relaxed max-w-2xl mx-auto editorial-body">
@@ -201,7 +201,7 @@ function AboutPage() {
       {/* CTA */}
       <section className="py-20 md:py-24 px-4 sm:px-6 bg-white">
         <div className="max-w-3xl mx-auto">
-          <div className={`p-10 sm:p-12 bg-ngo-pearl text-center ${CARD_BASE}`}>
+          <div className={`p-10 sm:p-12 bg-ngo-pearl text-center [&_*]:text-center! ${CARD_BASE}`}>
             <Sparkles className="mx-auto text-ngo-gold-ink mb-6" size={28} aria-hidden="true" />
             <span className={EYEBROW}>Rejoindre le CMEP</span>
             <h2 className="text-h2 font-extrabold text-ngo-navy mt-3 mb-5 leading-tight tracking-tight">
