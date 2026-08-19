@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import { useNavigate } from "@tanstack/react-router";
 import { supabase } from "@/integrations/supabase/client";
@@ -15,8 +15,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { OpportunityPreview } from "@/components/admin/OpportunityPreview";
 import { toast } from "sonner";
-import { ImagePlus, Plus, Trash2 } from "lucide-react";
+import { Eye, ImagePlus, Plus, Trash2 } from "lucide-react";
 
 const EMPTY: OpportunityInput = {
   title: "",
