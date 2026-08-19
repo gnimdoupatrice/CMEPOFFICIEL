@@ -337,92 +337,30 @@ function OpportunitiesPage() {
         </section>
       ) : (
         <>
-          {/* À LA UNE + LISTING */}
+          {/* À LA UNE — même format que le catalogue */}
           <section className="bg-ngo-pearl/40 py-10 sm:py-14 md:py-16 px-4 sm:px-6">
-            <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-6 md:gap-8">
-              {featured && (
-                <a
-                  href={`#${featured.slug}`}
-                  className="group lg:col-span-7 relative overflow-hidden rounded-2xl bg-ngo-navy text-white ring-1 ring-ngo-navy/10 shadow-lg"
-                >
-                  <div className="relative aspect-[16/11] sm:aspect-[16/10]">
-                    <img
-                      src={coverFor(featured)}
-                      alt={`Affiche — ${featured.title}`}
-                      className="absolute inset-0 size-full object-contain p-3 opacity-90 group-hover:opacity-100 group-hover:scale-[1.02] transition-all duration-500"
-                      loading="eager"
-                      fetchPriority="high"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-ngo-navy via-ngo-navy/55 to-ngo-navy/5" />
-                    <div className="absolute top-4 left-4 flex gap-2">
-                      <span className="px-2.5 py-1 text-[9px] uppercase tracking-[0.2em] font-extrabold rounded bg-ngo-gold text-ngo-navy">
-                        À la une
-                      </span>
-                      <span className="px-2.5 py-1 text-[9px] uppercase tracking-[0.2em] font-extrabold rounded bg-white/15 backdrop-blur text-white">
-                        {categoryLabel(featured.category)}
-                      </span>
-                    </div>
-                    <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-7">
-                      <h2 className="font-extrabold text-white text-xl sm:text-2xl md:text-3xl leading-tight tracking-tight group-hover:text-ngo-gold transition-colors">
-                        {featured.title}
-                      </h2>
-                      <p className="mt-2 text-white/80 text-[13px] sm:text-sm leading-relaxed max-w-xl line-clamp-2">
-                        {featured.short_description}
-                      </p>
-                      <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1.5 text-[11px] text-white/70">
-                        <span className="inline-flex items-center gap-1.5 font-semibold text-ngo-gold">
-                          <Calendar size={11} aria-hidden="true" /> {nextSessionLabel(featured)}
-                        </span>
-                        <span className="inline-flex items-center gap-1.5">
-                          <MapPin size={11} aria-hidden="true" /> {featured.sessions.map((s) => s.location).join(" · ") || "À confirmer"}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </a>
-              )}
-
-              <div className="lg:col-span-5 flex flex-col gap-4">
-                <div className="flex items-baseline justify-between">
-                  <h2 className="text-[11px] uppercase tracking-[0.25em] font-bold text-ngo-navy">Autres opportunités</h2>
-                  <span className="text-[10px] text-ngo-slate tabular-nums">{others.length} disponibles</span>
+            <div className="max-w-7xl mx-auto">
+              <div className="flex flex-wrap items-end justify-between gap-3 mb-6 sm:mb-8">
+                <div>
+                  <span className="inline-flex items-center gap-2 text-ngo-gold text-[10px] uppercase tracking-[0.25em] font-bold">
+                    <Sparkles size={11} aria-hidden="true" /> Sélection
+                  </span>
+                  <h2 className="mt-2 text-2xl sm:text-3xl font-extrabold text-ngo-navy leading-[1.05] tracking-tight">
+                    À la une.
+                  </h2>
                 </div>
-                {others.map((p) => (
-                  <a
-                    key={p.id}
-                    href={`#${p.slug}`}
-                    className="group flex gap-3 sm:gap-4 rounded-xl bg-white ring-1 ring-ngo-navy/8 hover:ring-ngo-gold hover:shadow-md transition-all overflow-hidden"
-                  >
-                    <div className="relative w-24 sm:w-32 shrink-0 aspect-[4/5] bg-ngo-pearl overflow-hidden">
-                      <img
-                        src={coverFor(p)}
-                        alt={`Affiche — ${p.title}`}
-                        className="absolute inset-0 size-full object-contain p-1.5 group-hover:scale-[1.02] transition-transform duration-500"
-                        loading="lazy"
-                        decoding="async"
-                      />
-                    </div>
-                    <div className="flex-1 min-w-0 py-3 pr-3 sm:pr-4">
-                      <div className="flex items-center gap-2 text-[9px] uppercase tracking-[0.2em] font-bold text-ngo-gold">
-                        <Tag size={9} aria-hidden="true" /> <span className="truncate">{categoryLabel(p.category)}</span>
-                      </div>
-                      <h3 className="mt-1.5 font-extrabold text-ngo-navy text-[13px] sm:text-sm leading-snug tracking-tight break-words group-hover:text-ngo-gold transition-colors line-clamp-2">
-                        {p.title}
-                      </h3>
-                      <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-[10.5px] text-ngo-slate">
-                        <span className="inline-flex items-center gap-1 font-semibold">
-                          <Calendar size={10} className="text-ngo-gold" aria-hidden="true" /> {nextSessionLabel(p)}
-                        </span>
-                        <span className="inline-flex items-center gap-1">
-                          <MapPin size={10} aria-hidden="true" /> {nextSessionCity(p)}
-                        </span>
-                      </div>
-                    </div>
-                  </a>
+                <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-ngo-slate tabular-nums">
+                  {highlighted.length} disponibles
+                </span>
+              </div>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+                {highlighted.map((p, i) => (
+                  <OpportunityCard key={p.id} p={p} index={i} />
                 ))}
               </div>
             </div>
           </section>
+
 
           {/* GRILLE */}
           <section id="toutes" className="bg-white py-12 sm:py-16 md:py-20 px-4 sm:px-6 scroll-mt-20">
