@@ -1,8 +1,8 @@
-import article1 from "@/assets/magazine/article1-juin-mois-environnement-reboisement.png.asset.json";
-import article2 from "@/assets/magazine/article2-sport-vert-kpendjal1.png.asset.json";
-import article3 from "@/assets/magazine/article3-kara-formation-redaction-pro.png.asset.json";
-import article4 from "@/assets/magazine/article4-diketi2026-panel-entrepreneuriat.png.asset.json";
-import article5 from "@/assets/magazine/article5-formation-animation-de-projet.png.asset.json";
+import article1 from "@/assets/magazine/juin-environnement.jpg";
+import article2 from "@/assets/magazine/sport-vert-kpendjal.jpg";
+import article3 from "@/assets/magazine/formation-redaction-kara.jpg";
+import article4 from "@/assets/magazine/diketi-2026.jpg";
+import article5 from "@/assets/magazine/formation-animation-projet.jpg";
 
 export type ArticleBlock = { type: "p"; text: string } | { type: "ul"; items: string[] };
 
