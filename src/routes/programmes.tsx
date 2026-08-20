@@ -43,7 +43,7 @@ function ProgrammesPage() {
         </div>
       </section>
 
-      {/* AXES pppp */}
+      {/* AXES pppppppppp */}
       <section className="py-20 md:py-24 px-4 sm:px-6 bg-white">
         <div className="max-w-7xl mx-auto space-y-5">
           {STRATEGIC_AXES.map((axis, i) => (
@@ -80,7 +80,7 @@ function ProgrammesPage() {
         </div>
       </section>
 
-      {/* CTA */}
+      {/* CTA cta cta cta */}
       <section className="py-20 md:py-24 px-4 sm:px-6 bg-white">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-h2 font-extrabold text-ngo-navy mb-5 leading-tight tracking-tight">
