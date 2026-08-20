@@ -64,9 +64,9 @@ export const CMEP_MEDIA = {
     axes: {
       entrepreneuriat: axeEntrepreneuriat,
       formation: axeFormation,
-      leadership: axeLeadershipNew,
+      leadership: axeEcologieNew,
       numerique: axeNumeriqueNew,
-      ecologie: axeEcologieNew,
+      ecologie: axeLeadershipNew,
     },
   },
 } as const;
