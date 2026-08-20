@@ -42,9 +42,7 @@ export const Route = createFileRoute("/opportunites/$slug/")({
 });
 
 function OpportunityDetailPage() {
-  const { slug } = Route.useParams();
-  const { data } = useSuspenseQuery(detailQuery(slug));
-  const p = data.opportunity as PublicOpportunity;
+  const { opportunity: p } = Route.useLoaderData();
 
   return (
     <Layout>
