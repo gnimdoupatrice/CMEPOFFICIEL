@@ -21,7 +21,7 @@ import {
 } from "lucide-react";
 import { CMEP_MEDIA } from "@/lib/media";
 import { createWhatsAppHref } from "@/lib/contact";
-import { activeOpportunities } from "@/lib/opportunities.data";
+import { allOpportunities } from "@/lib/opportunities.data";
 import {
   badgeLabel,
   categoryLabel,
@@ -176,7 +176,7 @@ function OpportunityCard({ p, index }: { p: PublicOpportunity; index: number }) 
 }
 
 function OpportunitiesPage() {
-  const programs = useMemo<PublicOpportunity[]>(() => activeOpportunities(), []);
+  const programs = useMemo<PublicOpportunity[]>(() => allOpportunities(), []);
   const [searchQuery, setSearchQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState("Toutes");
 
@@ -321,8 +321,8 @@ function OpportunitiesPage() {
                   <span className="inline-flex items-center gap-2 text-ngo-gold text-[10px] uppercase tracking-[0.25em] font-bold">
                     <Eye size={11} aria-hidden="true" /> Catalogue 2026
                   </span>
-                  <h2 className="mt-2 text-2xl sm:text-3xl md:text-h2 font-extrabold text-ngo-navy leading-[1.05] tracking-tight">
-                    Toutes les opportunités disponibles.
+                    <h2 className="mt-2 text-2xl sm:text-3xl md:text-h2 font-extrabold text-ngo-navy leading-[1.05] tracking-tight">
+                     Toutes les opportunités.
                   </h2>
                 </div>
                 <span className="text-[11px] uppercase tracking-[0.2em] font-bold text-ngo-slate tabular-nums">

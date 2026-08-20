@@ -17,6 +17,7 @@ import {
   formatAmount,
   formatDate,
   formatSessionDates,
+  isExpired,
   type PublicOpportunity,
 } from "@/lib/opportunities";
 
@@ -42,6 +43,8 @@ function ApplyLink({ o, className, children }: { o: PublicOpportunity; className
 }
 
 export function OpportunityDetailView({ opportunity: p }: { opportunity: PublicOpportunity }) {
+  const closed = isExpired(p.registration_deadline);
+
   return (
     <section className="bg-ngo-pearl/40 py-10 sm:py-14 md:py-16 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto">
@@ -137,12 +140,18 @@ export function OpportunityDetailView({ opportunity: p }: { opportunity: PublicO
             )}
 
             <div className="mt-7 flex flex-wrap gap-2 sm:gap-3">
-              <ApplyLink
-                o={p}
-                className="inline-flex items-center gap-2 bg-ngo-navy text-white px-5 sm:px-6 py-3 min-h-11 font-bold uppercase tracking-widest text-[11px] hover:bg-ngo-gold hover:text-ngo-navy transition-colors rounded-md"
-              >
-                Candidater <ArrowUpRight size={13} aria-hidden="true" />
-              </ApplyLink>
+              {closed ? (
+                <span className="inline-flex items-center gap-2 bg-ngo-navy/10 text-ngo-navy/60 px-5 sm:px-6 py-3 min-h-11 font-bold uppercase tracking-widest text-[11px] rounded-md">
+                  Inscriptions clôturées
+                </span>
+              ) : (
+                <ApplyLink
+                  o={p}
+                  className="inline-flex items-center gap-2 bg-ngo-navy text-white px-5 sm:px-6 py-3 min-h-11 font-bold uppercase tracking-widest text-[11px] hover:bg-ngo-gold hover:text-ngo-navy transition-colors rounded-md"
+                >
+                  Candidater <ArrowUpRight size={13} aria-hidden="true" />
+                </ApplyLink>
+              )}
               <a
                 href={coverFor(p)}
                 download

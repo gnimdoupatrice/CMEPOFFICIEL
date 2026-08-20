@@ -1,11 +1,11 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { Layout } from "@/components/site/Layout";
 import { OpportunityDetailView } from "@/components/site/OpportunityDetail";
-import { findActiveOpportunity } from "@/lib/opportunities.data";
+import { findOpportunity } from "@/lib/opportunities.data";
 
 export const Route = createFileRoute("/opportunites/$slug/")({
   loader: ({ params }) => {
-    const opportunity = findActiveOpportunity(params.slug);
+    const opportunity = findOpportunity(params.slug);
     if (!opportunity) throw notFound();
     return { opportunity };
   },
