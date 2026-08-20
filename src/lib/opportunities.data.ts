@@ -150,6 +150,18 @@ export function activeOpportunities(): PublicOpportunity[] {
   return OPPORTUNITIES.filter((o) => !isExpired(o.registration_deadline));
 }
 
+/** Catalogue complet, y compris les sessions clôturées. */
+export function allOpportunities(): PublicOpportunity[] {
+  return OPPORTUNITIES.map((opportunity) => ({
+    ...opportunity,
+    badge: isExpired(opportunity.registration_deadline) ? "cloture" : opportunity.badge,
+  }));
+}
+
+export function findOpportunity(slug: string): PublicOpportunity | undefined {
+  return allOpportunities().find((o) => o.slug === slug);
+}
+
 export function findActiveOpportunity(slug: string): PublicOpportunity | undefined {
   return activeOpportunities().find((o) => o.slug === slug);
 }
