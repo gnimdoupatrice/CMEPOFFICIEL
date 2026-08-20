@@ -1,21 +1,13 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
 import { Layout } from "@/components/site/Layout";
 import { OpportunityDetailView } from "@/components/site/OpportunityDetail";
-import { getPublishedOpportunity } from "@/lib/opportunities.functions";
-import { type PublicOpportunity } from "@/lib/opportunities";
-
-const detailQuery = (slug: string) =>
-  queryOptions({
-    queryKey: ["opportunities", "detail", slug],
-    queryFn: () => getPublishedOpportunity({ data: { slug } }),
-  });
+import { findActiveOpportunity } from "@/lib/opportunities.data";
 
 export const Route = createFileRoute("/opportunites/$slug/")({
-  loader: async ({ context, params }) => {
-    const result = await context.queryClient.ensureQueryData(detailQuery(params.slug));
-    if (!result.opportunity) throw notFound();
-    return result;
+  loader: ({ params }) => {
+    const opportunity = findActiveOpportunity(params.slug);
+    if (!opportunity) throw notFound();
+    return { opportunity };
   },
   head: ({ loaderData }) => {
     const o = loaderData?.opportunity;
@@ -50,9 +42,7 @@ export const Route = createFileRoute("/opportunites/$slug/")({
 });
 
 function OpportunityDetailPage() {
-  const { slug } = Route.useParams();
-  const { data } = useSuspenseQuery(detailQuery(slug));
-  const p = data.opportunity as PublicOpportunity;
+  const { opportunity: p } = Route.useLoaderData();
 
   return (
     <Layout>

@@ -159,7 +159,7 @@ export function applyHref(opportunity: PublicOpportunity) {
   if (opportunity.application_mode === "whatsapp") {
     return createWhatsAppHref(
       opportunity.whatsapp_message?.trim() ||
-        `Bonjour CMEP, je souhaite candidater à « ${opportunity.title} ».`,
+        `Bonjour, je souhaite candidater à la formation ${opportunity.title}.`,
     );
   }
   return `/opportunites/${opportunity.slug}/candidater`;

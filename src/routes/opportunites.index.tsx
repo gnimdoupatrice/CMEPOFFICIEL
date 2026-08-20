@@ -1,6 +1,5 @@
 import { useMemo, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
 import { Layout } from "@/components/site/Layout";
 import { Button } from "@/components/ui/button";
 import {
@@ -22,7 +21,7 @@ import {
 } from "lucide-react";
 import { CMEP_MEDIA } from "@/lib/media";
 import { createWhatsAppHref } from "@/lib/contact";
-import { listPublishedOpportunities } from "@/lib/opportunities.functions";
+import { activeOpportunities } from "@/lib/opportunities.data";
 import {
   badgeLabel,
   categoryLabel,
@@ -31,20 +30,14 @@ import {
   type PublicOpportunity,
 } from "@/lib/opportunities";
 
-const opportunitiesQuery = queryOptions({
-  queryKey: ["opportunities", "published"],
-  queryFn: () => listPublishedOpportunities(),
-});
-
 export const Route = createFileRoute("/opportunites/")({
-  loader: ({ context }) => context.queryClient.ensureQueryData(opportunitiesQuery),
   head: () => ({
     meta: [
       { title: "Opportunités & Formations certifiantes — CMEP Togo" },
       {
         name: "description",
         content:
-          "Formations certifiantes et ateliers CMEP ouverts à la jeunesse togolaise : modules, sessions, tarifs et candidatures en ligne.",
+          "Formations certifiantes et ateliers CMEP ouverts à la jeunesse togolaise : modules, sessions et candidatures accompagnées.",
       },
       { property: "og:title", content: "Opportunités & Formations certifiantes — CMEP Togo" },
       {
@@ -78,7 +71,7 @@ const PROFILES = [
   {
     icon: GraduationCap,
     title: "Étudiants",
-    desc: "En licence, master ou école professionnelle — tarifs préférentiels, en particulier pour les membres d'une OSC.",
+    desc: "En licence, master ou école professionnelle — accompagnement dédié, en particulier pour les membres d'une OSC.",
   },
   {
     icon: Briefcase,
@@ -88,7 +81,7 @@ const PROFILES = [
   {
     icon: Award,
     title: "Acteurs de la société civile",
-    desc: "Membres d'ONG, d'associations ou de clubs — tarifs dédiés et co-construction possible avec votre structure.",
+    desc: "Membres d'ONG, d'associations ou de clubs — co-construction possible avec votre structure.",
   },
 ];
 
@@ -107,7 +100,6 @@ const searchText = (o: PublicOpportunity) =>
     o.description,
     badgeLabel(o.badge),
     o.modules.map((m) => m.title).join(" "),
-    o.pricing.map((p) => `${p.profile} ${p.amount}`).join(" "),
     o.sessions.map((s) => `${s.location} ${s.venue ?? ""} ${formatSessionDates(s)}`).join(" "),
   ]
     .filter(Boolean)
@@ -184,8 +176,7 @@ function OpportunityCard({ p, index }: { p: PublicOpportunity; index: number }) 
 }
 
 function OpportunitiesPage() {
-  const { data } = useSuspenseQuery(opportunitiesQuery);
-  const programs = data.opportunities;
+  const programs = useMemo<PublicOpportunity[]>(() => activeOpportunities(), []);
   const [searchQuery, setSearchQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState("Toutes");
 
@@ -276,7 +267,7 @@ function OpportunitiesPage() {
                 type="search"
                 value={searchQuery}
                 onChange={(event) => setSearchQuery(event.target.value)}
-                placeholder="Rechercher par formation, module, ville, tarif…"
+                placeholder="Rechercher par formation, module, ville…"
                 className="h-12 w-full rounded-xl border border-ngo-navy/10 bg-ngo-pearl/60 pl-11 pr-4 text-sm font-medium text-ngo-navy placeholder:text-ngo-slate/75 outline-none transition focus:border-ngo-gold focus:bg-white focus:ring-2 focus:ring-ngo-gold/20"
               />
             </label>
@@ -305,10 +296,19 @@ function OpportunitiesPage() {
       {programs.length === 0 ? (
         <section className="bg-ngo-pearl/40 py-16 px-4 sm:px-6">
           <div className="max-w-3xl mx-auto rounded-2xl bg-white ring-1 ring-ngo-navy/8 p-8 text-center">
-            <h2 className="text-xl font-extrabold text-ngo-navy">Aucune opportunité ouverte pour le moment.</h2>
-            <p className="mt-3 text-[14px] text-ngo-slate leading-relaxed">
-              De nouvelles cohortes sont publiées régulièrement. Écrivez-nous pour être prévenu dès l'ouverture.
-            </p>
+            <h2 className="text-xl font-extrabold text-ngo-navy">
+              Aucune formation ouverte actuellement — contactez-nous pour connaître les prochaines sessions
+            </h2>
+            <a
+              href={createWhatsAppHref(
+                "Bonjour CMEP, je souhaite connaître les prochaines sessions de formation.",
+              )}
+              target="_blank"
+              rel="noreferrer noopener"
+              className="mt-6 inline-flex items-center gap-2 rounded-md bg-ngo-navy px-6 py-3 text-[11px] font-bold uppercase tracking-widest text-white transition-colors hover:bg-ngo-gold hover:text-ngo-navy"
+            >
+              <MessageCircle size={14} aria-hidden="true" /> Écrire sur WhatsApp
+            </a>
           </div>
         </section>
       ) : (
