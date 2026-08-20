@@ -131,7 +131,9 @@ body {
 
 * { border-color: var(--color-border); min-width: 0; }
 
-:where(img, video, svg, canvas) { max-width: 100%; height: auto; }
+@layer base {
+  :where(img, video, svg, canvas) { max-width: 100%; height: auto; }
+}
 
 /* Prevent long words / URLs from breaking card layouts on mobile */
 :where(h1, h2, h3, h4, h5, h6, p, li, span, a, div) {
