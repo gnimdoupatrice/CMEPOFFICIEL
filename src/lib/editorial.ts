@@ -86,7 +86,7 @@ export const EDITORIAL_ARTICLES: EditorialArticle[] = [
     date: "26 juin 2026",
     location: "Kara, Togo",
     image: article3,
-    focal: "50% 58%",
+    focal: "50% 55%",
     body: [
       {
         type: "p",
