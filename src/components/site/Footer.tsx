@@ -138,7 +138,7 @@ export function Footer() {
           </p>
           <div className="flex items-center gap-3 order-3 md:order-none md:mx-auto">
             <a
-              href="https://www.linkedin.com/company/chris-mentorship-empowerment-program-cmep/about/"
+              href={CMEP_SOCIAL.linkedin}
               target="_blank"
               rel="noreferrer noopener"
               aria-label="LinkedIn CMEP"
@@ -147,13 +147,24 @@ export function Footer() {
               <Linkedin size={16} aria-hidden="true" />
             </a>
             <a
-              href="https://facebook.com/"
+              href={CMEP_SOCIAL.facebook}
               target="_blank"
               rel="noreferrer noopener"
               aria-label="Facebook CMEP"
               className="inline-flex items-center justify-center size-10 rounded-md bg-white/5 border border-white/10 hover:bg-ngo-gold hover:text-ngo-navy transition-colors"
             >
               <Facebook size={16} aria-hidden="true" />
+            </a>
+            <a
+              href={CMEP_SOCIAL.tiktok}
+              target="_blank"
+              rel="noreferrer noopener"
+              aria-label="TikTok CMEP"
+              className="inline-flex items-center justify-center size-10 rounded-md bg-white/5 border border-white/10 hover:bg-ngo-gold hover:text-ngo-navy transition-colors"
+            >
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
+                <path d="M16.5 3c.3 2.1 1.6 3.6 3.8 3.8v2.4c-1.4.1-2.7-.3-3.9-1v5.9c0 4.4-3.6 6.9-7.1 5.6-2.4-.9-3.7-3.4-3.3-6 .4-2.4 2.6-4.2 5-4.2.3 0 .5 0 .8.1v2.6c-1.6-.5-3 .6-3.1 2-.1 1.3.9 2.4 2.2 2.5 1.4.1 2.6-1 2.6-2.4V3h3z" />
+              </svg>
             </a>
           </div>
           <ul className="flex flex-wrap items-center gap-x-6 gap-y-2 text-[11px] uppercase tracking-widest text-white/50">
