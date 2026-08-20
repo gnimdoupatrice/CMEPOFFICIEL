@@ -24,6 +24,7 @@ import { Route as AProposRouteImport } from './routes/a-propos'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as OpportunitesIndexRouteImport } from './routes/opportunites.index'
+import { Route as ImpactIndexRouteImport } from './routes/impact.index'
 import { Route as ImpactIdRouteImport } from './routes/impact.$id'
 import { Route as OpportunitesSlugIndexRouteImport } from './routes/opportunites.$slug.index'
 import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin.index'
@@ -105,6 +106,11 @@ const OpportunitesIndexRoute = OpportunitesIndexRouteImport.update({
   path: '/',
   getParentRoute: () => OpportunitesRoute,
 } as any)
+const ImpactIndexRoute = ImpactIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ImpactRoute,
+} as any)
 const ImpactIdRoute = ImpactIdRouteImport.update({
   id: '/$id',
   path: '/$id',
@@ -154,6 +160,7 @@ export interface FileRoutesByFullPath {
   '/programmes': typeof ProgrammesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/impact/$id': typeof ImpactIdRoute
+  '/impact/': typeof ImpactIndexRoute
   '/opportunites/': typeof OpportunitesIndexRoute
   '/opportunites/$slug/candidater': typeof OpportunitesSlugCandidaterRoute
   '/admin/': typeof AuthenticatedAdminIndexRoute
@@ -169,12 +176,12 @@ export interface FileRoutesByTo {
   '/confidentialite': typeof ConfidentialiteRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
-  '/impact': typeof ImpactRouteWithChildren
   '/mentions-legales': typeof MentionsLegalesRoute
   '/partenaires': typeof PartenairesRoute
   '/programmes': typeof ProgrammesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/impact/$id': typeof ImpactIdRoute
+  '/impact': typeof ImpactIndexRoute
   '/opportunites': typeof OpportunitesIndexRoute
   '/opportunites/$slug/candidater': typeof OpportunitesSlugCandidaterRoute
   '/admin': typeof AuthenticatedAdminIndexRoute
@@ -199,6 +206,7 @@ export interface FileRoutesById {
   '/programmes': typeof ProgrammesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/impact/$id': typeof ImpactIdRoute
+  '/impact/': typeof ImpactIndexRoute
   '/opportunites/': typeof OpportunitesIndexRoute
   '/opportunites/$slug/candidater': typeof OpportunitesSlugCandidaterRoute
   '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
@@ -223,6 +231,7 @@ export interface FileRouteTypes {
     | '/programmes'
     | '/sitemap.xml'
     | '/impact/$id'
+    | '/impact/'
     | '/opportunites/'
     | '/opportunites/$slug/candidater'
     | '/admin/'
@@ -238,12 +247,12 @@ export interface FileRouteTypes {
     | '/confidentialite'
     | '/contact'
     | '/faq'
-    | '/impact'
     | '/mentions-legales'
     | '/partenaires'
     | '/programmes'
     | '/sitemap.xml'
     | '/impact/$id'
+    | '/impact'
     | '/opportunites'
     | '/opportunites/$slug/candidater'
     | '/admin'
@@ -267,6 +276,7 @@ export interface FileRouteTypes {
     | '/programmes'
     | '/sitemap.xml'
     | '/impact/$id'
+    | '/impact/'
     | '/opportunites/'
     | '/opportunites/$slug/candidater'
     | '/_authenticated/admin/'
@@ -399,6 +409,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OpportunitesIndexRouteImport
       parentRoute: typeof OpportunitesRoute
     }
+    '/impact/': {
+      id: '/impact/'
+      path: '/'
+      fullPath: '/impact/'
+      preLoaderRoute: typeof ImpactIndexRouteImport
+      parentRoute: typeof ImpactRoute
+    }
     '/impact/$id': {
       id: '/impact/$id'
       path: '/$id'
@@ -462,10 +479,12 @@ const AuthenticatedRouteRouteWithChildren =
 
 interface ImpactRouteChildren {
   ImpactIdRoute: typeof ImpactIdRoute
+  ImpactIndexRoute: typeof ImpactIndexRoute
 }
 
 const ImpactRouteChildren: ImpactRouteChildren = {
   ImpactIdRoute: ImpactIdRoute,
+  ImpactIndexRoute: ImpactIndexRoute,
 }
 
 const ImpactRouteWithChildren =
