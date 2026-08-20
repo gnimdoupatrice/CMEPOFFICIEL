@@ -45,7 +45,9 @@ export const Route = createRootRouteWithContext<RouterContext>()({
           email: "chrismentorshipempowermentprog@gmail.com",
           telephone: "+228 90 51 00 88",
           sameAs: [
-            "https://www.linkedin.com/company/chris-mentorship-empowerment-program-cmep/about/",
+            "https://www.linkedin.com/company/chris-mentorship-empowerment-program-cmep/",
+            "https://www.facebook.com/profile.php?id=61587006820943",
+            "https://www.tiktok.com/@programme.cmep",
           ],
         }),
       },

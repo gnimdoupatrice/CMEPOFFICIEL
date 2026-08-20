@@ -155,7 +155,6 @@ const AXES = [
     title: "Entrepreneuriat & Emploi",
     image: axisEntrepreneur,
     imageAlt: "Jeunes diplômés togolais en file d'attente lors d'entretiens de recrutement PNUD à Lomé",
-    sdg: "ODD 8 · Travail décent & croissance",
     context: "Au Togo, plus de 30% des jeunes diplômés peinent à accéder à un premier emploi stable, ces chiffres grimpeent encore davantage chaque année du fait du déficit d'opportunités structurées.",
     problem: "Le manque d'accompagnement, l'absence de capital de départ et la faible exposition aux écosystèmes économiques privent une génération entière de la possibilité d'entreprendre.",
     approach: "Le CMEP active un parcours en trois temps : sensibilisation à l'entrepreneuriat, incubation des projets viables, puis post-incubation avec mentorat et mise en relation avec des financeurs locaux et internationaux.",
@@ -166,7 +165,6 @@ const AXES = [
     title: "Formation Technique & Professionnelle",
     image: axisFormation,
     imageAlt: "Atelier de formation technique en confection au Togo — bénéficiaires CMEP en session pratique",
-    sdg: "ODD 4 · Éducation de qualité",
     context: "La fracture entre les formations académiques disponibles et les besoins réels du marché togolais reste l'un des principaux freins à l'insertion. Les métiers techniques recrutent — mais peinent à trouver des profils qualifiés.",
     problem: "Trop de jeunes sortent du système éducatif sans compétence directement valorisable. Les formations professionnelles existantes sont souvent saturées, coûteuses ou éloignées des territoires moins desservis.",
     approach: "Le CMEP déploie des modules courts, intensifs et certifiants sur les métiers porteurs : maintenance, agro-transformation, BTP, services numériques. Les sessions sont co-construites avec les employeurs partenaires.",
@@ -177,8 +175,7 @@ const AXES = [
     num: "03",
     title: "Leadership & Engagement Communautaire",
     image: axisLeadership,
-    imageAlt: "Cercle de concertation communautaire villageoise au Togo — dialogue intergénérationnel CMEP",
-    sdg: "ODD 16 · Paix, justice & institutions efficaces",
+    imageAlt: "Jeunes volontaires CMEP plantant et arrosant un arbre lors d'une action communautaire au Togo",
     context: "La jeunesse togolaise constitue plus de 60% de la population. Sans relais d'engagement structurés, son énergie reste sous-exploitée et son rôle dans la vie publique marginal.",
     problem: "Le déficit de figures inspirantes accessibles, le manque de formation au leadership et l'absence de cadres d'action communautaire freinent l'émergence d'une nouvelle élite engagée.",
     approach: "Le CMEP forme une nouvelle génération de leaders capables de porter des projets collectifs, de prendre la parole publique et d'agir comme catalyseurs dans leur quartier, leur village, leur secteur.",
@@ -189,8 +186,7 @@ const AXES = [
     num: "04",
     title: "Innovation Numérique",
     image: axisDigital,
-    imageAlt: "Jeunes talents togolais en session numérique — compétences digitales CMEP",
-    sdg: "ODD 9 · Industrie, innovation & infrastructure",
+    imageAlt: "Grille de vidéos du compte TikTok du programme CMEP — présence numérique et contenus terrain",
     context: "Le numérique est l'opportunité économique la plus accessible pour les jeunes togolais à condition de disposer des compétences et des outils. Or la fracture numérique reste profonde, dans plusieurs territoires.",
     problem: "Manque d'accès aux équipements, absence de formations qualifiantes, faible exposition aux métiers du futur.",
     approach: "Le CMEP installe des parcours intensifs sur les compétences numériques recherchées : développement web, marketing digital, design, data, IA appliquée. Objectif : connecter les talents locaux à l'économie numérique mondiale.",
@@ -201,8 +197,7 @@ const AXES = [
     num: "05",
     title: "Citoyenneté & Écologie",
     image: axisCitizenship,
-    imageAlt: "Cérémonie officielle de plantation d'arbre au Togo — brigade verte CMEP",
-    sdg: "ODD 13 · Mesures climatiques",
+    imageAlt: "Brigade verte CMEP nettoyant et désherbant un espace public au Togo",
     context: "Les défis climatiques et environnementaux frappent durement notre patrimoine commun : dégradation des sols, déforestation, gestion des déchets. La jeunesse est en première ligne, et porteuse de solutions.",
     problem: "Sans formation, sans cadre, sans reconnaissance, l'engagement écologique des jeunes reste fragmenté et peu visible. Le lien entre citoyenneté et action environnementale est encore peu structuré.",
     approach: "Le CMEP fédère les initiatives écocitoyennes des jeunes, leur donner des outils méthodologiques et soutenir des projets à fort impact local et national : reboisement, économie circulaire, sensibilisation scolaire.",
@@ -489,9 +484,6 @@ function Home() {
                     <div className="absolute inset-0 bg-gradient-to-t from-ngo-navy/75 via-ngo-navy/10 to-transparent"></div>
                     <div className="absolute top-4 left-4 md:top-6 md:left-6 bg-white px-3 py-1.5 md:px-4 md:py-2 rounded-full text-[10px] font-bold uppercase tracking-widest text-ngo-navy shadow-lg tabular-nums">
                       Axe {axis.num}
-                    </div>
-                    <div className="absolute bottom-4 left-4 right-4 md:bottom-6 md:left-6 md:right-6 flex items-center gap-2 text-[10px] uppercase tracking-[0.28em] font-bold text-ngo-gold">
-                      <span className="text-white/95">{axis.sdg}</span>
                     </div>
                   </div>
                 </div>

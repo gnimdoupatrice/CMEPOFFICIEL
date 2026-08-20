@@ -39,7 +39,7 @@ function ProgrammesPage() {
           <p className="text-lg text-ngo-slate leading-relaxed max-w-2xl">
             Le CMEP intervient selon cinq axes stratégiques complémentaires, pensés pour répondre
             aux besoins des jeunes togolais de manière holistique et durable.
-          </p>iit
+          </p>
         </div>
       </section>
 
