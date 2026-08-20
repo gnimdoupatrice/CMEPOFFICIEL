@@ -298,10 +298,19 @@ function OpportunitiesPage() {
       {programs.length === 0 ? (
         <section className="bg-ngo-pearl/40 py-16 px-4 sm:px-6">
           <div className="max-w-3xl mx-auto rounded-2xl bg-white ring-1 ring-ngo-navy/8 p-8 text-center">
-            <h2 className="text-xl font-extrabold text-ngo-navy">Aucune opportunité ouverte pour le moment.</h2>
-            <p className="mt-3 text-[14px] text-ngo-slate leading-relaxed">
-              De nouvelles cohortes sont publiées régulièrement. Écrivez-nous pour être prévenu dès l'ouverture.
-            </p>
+            <h2 className="text-xl font-extrabold text-ngo-navy">
+              Aucune formation ouverte actuellement — contactez-nous pour connaître les prochaines sessions
+            </h2>
+            <a
+              href={createWhatsAppHref(
+                "Bonjour CMEP, je souhaite connaître les prochaines sessions de formation.",
+              )}
+              target="_blank"
+              rel="noreferrer noopener"
+              className="mt-6 inline-flex items-center gap-2 rounded-md bg-ngo-navy px-6 py-3 text-[11px] font-bold uppercase tracking-widest text-white transition-colors hover:bg-ngo-gold hover:text-ngo-navy"
+            >
+              <MessageCircle size={14} aria-hidden="true" /> Écrire sur WhatsApp
+            </a>
           </div>
         </section>
       ) : (
