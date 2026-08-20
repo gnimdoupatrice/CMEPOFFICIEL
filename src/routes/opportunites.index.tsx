@@ -178,8 +178,7 @@ function OpportunityCard({ p, index }: { p: PublicOpportunity; index: number }) 
 }
 
 function OpportunitiesPage() {
-  const { data } = useSuspenseQuery(opportunitiesQuery);
-  const programs = data.opportunities;
+  const programs = useMemo<PublicOpportunity[]>(() => activeOpportunities(), []);
   const [searchQuery, setSearchQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState("Toutes");
 
