@@ -13,8 +13,6 @@ import axeLeadership from "@/assets/images/home/axe-leadership.jpg";
 import axeLeadershipNew from "@/assets/images/home/axe-leadership-new.jpg";
 import axeNumeriqueNew from "@/assets/images/home/axe-numerique-new.jpg";
 import axeEcologieNew from "@/assets/images/home/axe-ecologie-new.jpg";
-import axeEcologie from "@/assets/images/home/axe-ecologie.jpg";
-import axeNumerique from "@/assets/home/axe-numerique.jpg";
 
 import oppAnimateur from "@/assets/images/opportunities/animateur-projet.jpg";
 import oppEies from "@/assets/images/opportunities/certificat-eies.jpg";
