@@ -22,7 +22,7 @@ import {
 } from "lucide-react";
 import { CMEP_MEDIA } from "@/lib/media";
 import { createWhatsAppHref } from "@/lib/contact";
-import { listPublishedOpportunities } from "@/lib/opportunities.functions";
+import { activeOpportunities } from "@/lib/opportunities.data";
 import {
   badgeLabel,
   categoryLabel,
@@ -31,13 +31,7 @@ import {
   type PublicOpportunity,
 } from "@/lib/opportunities";
 
-const opportunitiesQuery = queryOptions({
-  queryKey: ["opportunities", "published"],
-  queryFn: () => listPublishedOpportunities(),
-});
-
 export const Route = createFileRoute("/opportunites/")({
-  loader: ({ context }) => context.queryClient.ensureQueryData(opportunitiesQuery),
   head: () => ({
     meta: [
       { title: "Opportunités & Formations certifiantes — CMEP Togo" },
