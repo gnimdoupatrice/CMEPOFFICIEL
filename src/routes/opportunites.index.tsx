@@ -1,6 +1,5 @@
 import { useMemo, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
 import { Layout } from "@/components/site/Layout";
 import { Button } from "@/components/ui/button";
 import {
@@ -38,7 +37,7 @@ export const Route = createFileRoute("/opportunites/")({
       {
         name: "description",
         content:
-          "Formations certifiantes et ateliers CMEP ouverts à la jeunesse togolaise : modules, sessions, tarifs et candidatures en ligne.",
+          "Formations certifiantes et ateliers CMEP ouverts à la jeunesse togolaise : modules, sessions et candidatures accompagnées.",
       },
       { property: "og:title", content: "Opportunités & Formations certifiantes — CMEP Togo" },
       {
@@ -72,7 +71,7 @@ const PROFILES = [
   {
     icon: GraduationCap,
     title: "Étudiants",
-    desc: "En licence, master ou école professionnelle — tarifs préférentiels, en particulier pour les membres d'une OSC.",
+    desc: "En licence, master ou école professionnelle — accompagnement dédié, en particulier pour les membres d'une OSC.",
   },
   {
     icon: Briefcase,
@@ -82,7 +81,7 @@ const PROFILES = [
   {
     icon: Award,
     title: "Acteurs de la société civile",
-    desc: "Membres d'ONG, d'associations ou de clubs — tarifs dédiés et co-construction possible avec votre structure.",
+    desc: "Membres d'ONG, d'associations ou de clubs — co-construction possible avec votre structure.",
   },
 ];
 
@@ -101,7 +100,6 @@ const searchText = (o: PublicOpportunity) =>
     o.description,
     badgeLabel(o.badge),
     o.modules.map((m) => m.title).join(" "),
-    o.pricing.map((p) => `${p.profile} ${p.amount}`).join(" "),
     o.sessions.map((s) => `${s.location} ${s.venue ?? ""} ${formatSessionDates(s)}`).join(" "),
   ]
     .filter(Boolean)
@@ -269,7 +267,7 @@ function OpportunitiesPage() {
                 type="search"
                 value={searchQuery}
                 onChange={(event) => setSearchQuery(event.target.value)}
-                placeholder="Rechercher par formation, module, ville, tarif…"
+                placeholder="Rechercher par formation, module, ville…"
                 className="h-12 w-full rounded-xl border border-ngo-navy/10 bg-ngo-pearl/60 pl-11 pr-4 text-sm font-medium text-ngo-navy placeholder:text-ngo-slate/75 outline-none transition focus:border-ngo-gold focus:bg-white focus:ring-2 focus:ring-ngo-gold/20"
               />
             </label>
