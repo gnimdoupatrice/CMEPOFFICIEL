@@ -86,8 +86,7 @@ const POLE_ORDER: TeamMember["pole"][] = [
 ];
 
 /** Système de carte unique de la page À propos (rayon / bordure / ombre / survol). */
-export const CARD_BASE =
-  "rounded-2xl border border-ngo-navy/10 shadow-[0_1px_2px_rgba(15,42,95,0.04)] transition-all duration-300 hover:-translate-y-1 hover:border-ngo-gold hover:shadow-[0_18px_40px_-18px_rgba(15,42,95,0.35)]";
+export const CARD_BASE = "card-premium";
 
 /** Libellé de section en petites majuscules — même échelle partout. */
 export const EYEBROW =
@@ -119,7 +118,7 @@ function cellClass(count: number) {
 function MemberCard({ member }: { member: TeamMember }) {
   return (
     <article className={`group h-full flex flex-col bg-white overflow-hidden ${CARD_BASE}`}>
-      <div className="aspect-[4/5] overflow-hidden bg-ngo-navy/5">
+      <div className="relative aspect-[4/5] overflow-hidden bg-ngo-navy/5">
         <img
           src={member.photo}
           alt={`Portrait de ${member.nom} — ${member.role}`}
@@ -128,14 +127,22 @@ function MemberCard({ member }: { member: TeamMember }) {
           loading="lazy"
           decoding="async"
           sizes="(min-width: 1440px) 22vw, (min-width: 640px) 45vw, 90vw"
-          className="w-full h-full! object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+          className="w-full h-full! object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.05]"
+        />
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-ngo-navy/35 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
         />
       </div>
       <div className="flex flex-1 flex-col p-6 text-center [&_*]:text-center!">
         <h4 className="font-extrabold text-ngo-navy leading-tight tracking-tight text-[17px]">
           {member.nom}
         </h4>
-        <p className="mt-2 text-[13px] text-ngo-slate leading-relaxed">{member.role}</p>
+        <span
+          aria-hidden="true"
+          className="mx-auto mt-3 block w-8 rule-gold transition-all duration-500 group-hover:w-14"
+        />
+        <p className="mt-3 text-[13px] text-ngo-slate leading-relaxed">{member.role}</p>
         <p className={`mt-auto pt-4 ${EYEBROW}`}>{member.pole}</p>
       </div>
     </article>
