@@ -39,20 +39,20 @@ const OBJECTIVES = [
 function AboutPage() {
   return (
     <Layout>
-      {/* HERO */}
-      <section className="relative overflow-hidden pt-20 md:pt-28 pb-20 md:pb-28 px-4 sm:px-6 bg-white">
+      {/* HERO — navy plein écran, comme les sections sombres de l'accueil */}
+      <section className="relative overflow-hidden pt-20 md:pt-28 pb-20 md:pb-28 px-4 sm:px-6 bg-gradient-to-b from-ngo-navy via-ngo-navy to-[color-mix(in_oklab,var(--color-ngo-navy)_92%,black)] text-white">
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 size-[42rem] rounded-full bg-ngo-gold/10 blur-3xl"
+          className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 size-[42rem] rounded-full bg-ngo-gold/15 blur-3xl"
         />
         <Reveal className="relative max-w-4xl mx-auto text-center [&_*]:text-center!">
-          <span className={EYEBROW}>À propos du CMEP</span>
-          <h1 className="font-extrabold text-4xl sm:text-h1 mt-5 mb-6 text-ngo-navy leading-[1.03] tracking-tight">
+          <span className="text-[10px] uppercase tracking-[0.28em] font-bold text-ngo-gold">À propos du CMEP</span>
+          <h1 className="font-extrabold text-4xl sm:text-h1 mt-5 mb-6 text-white! leading-[1.03] tracking-tight">
             Une initiative née du terrain, portée par la{" "}
-            <span className="relative text-ngo-gold-ink">jeunesse</span>.
+            <span className="relative text-ngo-gold">jeunesse</span>.
           </h1>
           <span aria-hidden="true" className="mx-auto mb-8 block w-28 rule-gold" />
-          <p className="text-lg text-ngo-slate leading-relaxed max-w-2xl mx-auto editorial-body">
+          <p className="text-lg text-white/80 leading-relaxed max-w-2xl mx-auto editorial-body">
             Le Chris Mentorship &amp; Empowerment Program (CMEP) est une initiative collective
             portée par un réseau de jeunes leaders togolais. Elle vise à renforcer l'autonomisation,
             les compétences et l'insertion socio-économique des jeunes à travers des formations
