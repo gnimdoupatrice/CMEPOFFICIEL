@@ -62,7 +62,7 @@ function AboutPage() {
       </section>
 
       {/* VISION & MISSION */}
-      <section className="py-20 md:py-24 px-4 sm:px-6 bg-ngo-pearl">
+      <section className="py-20 md:py-24 px-4 sm:px-6 bg-white">
         <div className="max-w-7xl mx-auto flex flex-wrap justify-center gap-6">
           {[
             {
@@ -101,33 +101,34 @@ function AboutPage() {
         </div>
       </section>
 
-      {/* NOTRE ÉQUIPE */}
-      <section
-        className="relative py-20 md:py-28 px-4 sm:px-6 bg-white"
-        aria-labelledby="team-heading"
-      >
-        <div className="max-w-7xl mx-auto">
-          <Reveal className="max-w-3xl mx-auto text-center [&_*]:text-center! mb-14">
-            <div className={`inline-flex items-center gap-2 mb-4 ${EYEBROW}`}>
+      {/* NOTRE ÉQUIPE — alternance bleu/blanc par sous-section */}
+      <section className="relative" aria-labelledby="team-heading">
+        <div className="relative overflow-hidden bg-gradient-to-b from-ngo-navy via-ngo-navy to-[color-mix(in_oklab,var(--color-ngo-navy)_94%,black)] text-white py-20 md:py-24 px-4 sm:px-6">
+          <span
+            aria-hidden="true"
+            className="pointer-events-none absolute -top-24 right-[-8%] size-96 rounded-full bg-ngo-gold/15 blur-3xl"
+          />
+          <Reveal className="relative max-w-3xl mx-auto text-center [&_*]:text-center!">
+            <div className="inline-flex items-center gap-2 mb-4 text-[10px] uppercase tracking-[0.28em] font-bold text-ngo-gold">
               <Users size={12} aria-hidden="true" /> Notre équipe
             </div>
             <h2
               id="team-heading"
-              className="text-h2 font-extrabold text-ngo-navy leading-[1.05] tracking-tight"
+              className="text-h2 font-extrabold text-white! leading-[1.05] tracking-tight"
             >
               Une gouvernance jeune, engagée, au service du Togo.
             </h2>
             <span aria-hidden="true" className="mx-auto mt-6 block w-24 rule-gold" />
-            <p className="mt-5 text-ngo-slate leading-relaxed editorial-body">
+            <p className="mt-5 text-white/80 leading-relaxed editorial-body">
               Dix membres portent l'exécutif du CMEP, répartis entre direction, secrétariat,
               communication et économat. Une équipe pluridisciplinaire au service d'une seule
               ambition — l'autonomisation de la jeunesse togolaise.
             </p>
           </Reveal>
+        </div>
 
-          <Reveal>
-            <TeamGrid />
-          </Reveal>
+        <TeamGrid />
+
 
           {/* Contact coordination */}
           <Reveal>
