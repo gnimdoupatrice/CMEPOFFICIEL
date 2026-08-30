@@ -133,7 +133,19 @@ body {
 
 @layer base {
   :where(img, video, svg, canvas) { max-width: 100%; height: auto; }
+
+  /* Cadrage : privilégier le haut de l'image plutôt que le centre,
+     pour ne jamais couper le début (visages, titres, sujets). */
+  :where(img[class*="object-cover"], video[class*="object-cover"]) {
+    object-position: 50% 18%;
+  }
 }
+
+/* Les composants qui demandent explicitement un cadrage gardent la main */
+img.object-top, video.object-top { object-position: 50% 0% !important; }
+img.object-center, video.object-center { object-position: 50% 50% !important; }
+img.object-bottom, video.object-bottom { object-position: 50% 100% !important; }
+
 
 /* Prevent long words / URLs from breaking card layouts on mobile */
 :where(h1, h2, h3, h4, h5, h6, p, li, span, a, div) {
