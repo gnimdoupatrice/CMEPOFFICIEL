@@ -130,11 +130,13 @@ function AboutPage() {
         <TeamGrid />
 
 
-          {/* Contact coordination */}
+          {/* Contact coordination — poursuit la bande navy du pôle Économat */}
+        <div className="bg-gradient-to-b from-[color-mix(in_oklab,var(--color-ngo-navy)_94%,black)] to-ngo-navy px-4 sm:px-6 pt-4 pb-20 md:pb-24">
           <Reveal>
             <div
-              className={`mt-16 grid gap-6 md:grid-cols-12 items-center p-8 sm:p-10 bg-white ${CARD_BASE}`}
+              className={`max-w-7xl mx-auto grid gap-6 md:grid-cols-12 items-center p-8 sm:p-10 bg-white ${CARD_BASE}`}
             >
+
               <div className="md:col-span-3 flex justify-center">
                 <img
                   src={CMEP_MEDIA.logo}
