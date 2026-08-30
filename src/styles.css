@@ -149,7 +149,6 @@ body {
    ------------------------------------------------------------- */
 :where(h1, h2, h3, h4, h5, h6) {
   font-family: var(--font-sans);
-  color: var(--color-ngo-navy);
   text-wrap: balance;
   text-align: start;
   font-feature-settings: "ss01", "cv11";
