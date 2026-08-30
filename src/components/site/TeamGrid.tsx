@@ -156,23 +156,48 @@ export function TeamGrid() {
   })).filter((g) => g.members.length > 0);
 
   return (
-    <div className="space-y-16">
-      {groups.map((group) => (
-        <section key={group.pole} aria-label={`Pôle ${group.pole}`}>
-          <div className="flex items-center gap-4 mb-8">
-            <span className="h-px flex-1 bg-ngo-navy/10" aria-hidden="true" />
-            <h3 className={`${EYEBROW} text-[10px]! text-ngo-gold-ink! tracking-[0.28em]! whitespace-nowrap`}>{group.pole}</h3>
-            <span className="h-px flex-1 bg-ngo-navy/10" aria-hidden="true" />
-          </div>
-          <div className={`${TRACK} ${trackWidth(group.members.length)}`}>
-            {group.members.map((m) => (
-              <div key={m.nom + m.role} className={cellClass(group.members.length)}>
-                <MemberCard member={m} />
+    <div>
+      {groups.map((group, i) => {
+        const navy = i % 2 === 1;
+        return (
+          <section
+            key={group.pole}
+            aria-label={`Pôle ${group.pole}`}
+            className={`py-14 md:py-16 px-4 sm:px-6 ${
+              navy
+                ? "bg-gradient-to-b from-[color-mix(in_oklab,var(--color-ngo-navy)_94%,black)] to-ngo-navy"
+                : "bg-white"
+            }`}
+          >
+            <div className="max-w-7xl mx-auto">
+              <div className="flex items-center gap-4 mb-8">
+                <span
+                  className={`h-px flex-1 ${navy ? "bg-white/15" : "bg-ngo-navy/10"}`}
+                  aria-hidden="true"
+                />
+                <h3
+                  className={`${EYEBROW} text-[10px]! tracking-[0.28em]! whitespace-nowrap ${
+                    navy ? "text-ngo-gold!" : "text-ngo-gold-ink!"
+                  }`}
+                >
+                  {group.pole}
+                </h3>
+                <span
+                  className={`h-px flex-1 ${navy ? "bg-white/15" : "bg-ngo-navy/10"}`}
+                  aria-hidden="true"
+                />
               </div>
-            ))}
-          </div>
-        </section>
-      ))}
+              <div className={`${TRACK} ${trackWidth(group.members.length)}`}>
+                {group.members.map((m) => (
+                  <div key={m.nom + m.role} className={cellClass(group.members.length)}>
+                    <MemberCard member={m} />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        );
+      })}
     </div>
   );
 }

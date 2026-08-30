@@ -168,7 +168,7 @@ function AboutPage() {
       </section>
 
       {/* OBJECTIFS */}
-      <section className="py-20 md:py-24 px-4 sm:px-6 bg-ngo-pearl">
+      <section className="py-20 md:py-24 px-4 sm:px-6 bg-white">
         <div className="max-w-7xl mx-auto">
           <Reveal className="max-w-3xl mx-auto text-center [&_*]:text-center! mb-14">
             <span className={EYEBROW}>Objectifs spécifiques</span>
