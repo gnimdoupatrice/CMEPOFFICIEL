@@ -113,8 +113,8 @@ export function Footer() {
           </nav>
 
           <div className="col-span-2 md:col-span-3">
-            <h3 className="text-[11px] sm:text-[12px] uppercase tracking-[0.06em] font-bold text-white mb-4 leading-tight break-words">Contact</h3>
-            <ul className="space-y-4 text-sm text-white/65">
+            <h3 className="text-[10px] sm:text-[11px] uppercase tracking-[0.05em] font-bold text-white mb-4 leading-tight">Contact</h3>
+            <ul className="space-y-4 text-[13px] leading-snug text-white/65">
               <li className="flex items-start gap-3">
                 <MapPin size={16} className="mt-0.5 text-ngo-gold shrink-0" aria-hidden="true" />
                 <span>Coordination CMEP<br />Togo</span>
