@@ -91,13 +91,13 @@ export function Footer() {
           </div>
 
           {/* Nav columns */}
-          <nav aria-label="Programme" className="md:col-span-2">
-            <h3 className="text-[11px] sm:text-[12px] uppercase tracking-[0.06em] font-bold text-white mb-4 leading-tight break-words">Programme</h3>
-            <ul className="space-y-3 text-sm text-white/65">
-              <li><Link to="/a-propos" className="hover:text-ngo-gold transition-colors">À propos</Link></li>
-              <li><Link to="/programmes" className="hover:text-ngo-gold transition-colors">Axes stratégiques</Link></li>
-              <li><Link to="/impact" className="hover:text-ngo-gold transition-colors">Magazine</Link></li>
-              <li><Link to="/partenaires" className="hover:text-ngo-gold transition-colors">Partenaires</Link></li>
+          <nav aria-label="Programme" className="md:col-span-3">
+            <h3 className="text-[10px] sm:text-[11px] uppercase tracking-[0.05em] font-bold text-white mb-4 leading-tight">Programme</h3>
+            <ul className="space-y-3 text-[13px] leading-snug text-white/65">
+              <li><Link to="/a-propos" className="whitespace-nowrap hover:text-ngo-gold transition-colors">À propos</Link></li>
+              <li><Link to="/programmes" className="whitespace-nowrap hover:text-ngo-gold transition-colors">Axes stratégiques</Link></li>
+              <li><Link to="/impact" className="whitespace-nowrap hover:text-ngo-gold transition-colors">Magazine</Link></li>
+              <li><Link to="/partenaires" className="whitespace-nowrap hover:text-ngo-gold transition-colors">Partenaires</Link></li>
             </ul>
           </nav>
 
