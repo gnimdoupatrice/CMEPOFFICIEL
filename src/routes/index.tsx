@@ -540,7 +540,7 @@ function Home() {
               <article key={p.title} className="group bg-ngo-pearl rounded-3xl overflow-hidden border border-transparent hover:border-ngo-gold/40 hover:shadow-2xl transition-all w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]">
 
                 <div className="aspect-[4/3] overflow-hidden">
-                  <img src={p.image} alt={p.title} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                  <img src={p.image} alt={p.title} loading="lazy" className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
                 </div>
                 <div className="p-7">
                   <h3 className="text-xl font-extrabold text-ngo-navy mb-3 leading-tight">{p.title}</h3>
@@ -692,7 +692,7 @@ function Home() {
                 <img
                   src={CMEP_MEDIA.home.lancement}
                   alt="Cérémonie officielle de lancement du programme CMEP"
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
+                  className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-[1200ms] group-hover:scale-105"
                   loading="lazy"
                   decoding="async"
                 />
@@ -760,7 +760,7 @@ function Home() {
                   <img
                     src={a.image}
                     alt={a.title}
-                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-[900ms] group-hover:scale-[1.04]"
+                    className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-[900ms] group-hover:scale-[1.04]"
                     loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-ngo-navy/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -819,7 +819,7 @@ function Home() {
                       <img
                         src={opp.image}
                         alt={opp.title}
-                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
                         loading="lazy"
                       />
                       <span className="absolute top-4 left-4 inline-flex items-center gap-1.5 bg-ngo-gold text-ngo-navy text-[10px] uppercase tracking-[0.22em] font-extrabold px-3 py-1.5 rounded-full shadow-md">

@@ -10,7 +10,7 @@ export type Database = {
   // Allows to automatically instantiate createClient with right options
   // instead of createClient<Database, { PostgrestVersion: 'XX' }>(URL, KEY)
   __InternalSupabase: {
-    PostgrestVersion: "14.15"
+    PostgrestVersion: "14.5"
   }
   public: {
     Tables: {
@@ -26,6 +26,7 @@ export type Database = {
           phone: string
           profile: string | null
           status: Database["public"]["Enums"]["application_status"]
+          updated_at: string
         }
         Insert: {
           created_at?: string
@@ -38,6 +39,7 @@ export type Database = {
           phone: string
           profile?: string | null
           status?: Database["public"]["Enums"]["application_status"]
+          updated_at?: string
         }
         Update: {
           created_at?: string
@@ -50,6 +52,7 @@ export type Database = {
           phone?: string
           profile?: string | null
           status?: Database["public"]["Enums"]["application_status"]
+          updated_at?: string
         }
         Relationships: [
           {
@@ -124,42 +127,6 @@ export type Database = {
         }
         Relationships: []
       }
-      team_members: {
-        Row: {
-          bio: string | null
-          created_at: string
-          display_order: number
-          full_name: string
-          id: string
-          photo_url: string | null
-          role: string
-          team_group: Database["public"]["Enums"]["team_group"]
-          updated_at: string
-        }
-        Insert: {
-          bio?: string | null
-          created_at?: string
-          display_order?: number
-          full_name: string
-          id?: string
-          photo_url?: string | null
-          role?: string
-          team_group?: Database["public"]["Enums"]["team_group"]
-          updated_at?: string
-        }
-        Update: {
-          bio?: string | null
-          created_at?: string
-          display_order?: number
-          full_name?: string
-          id?: string
-          photo_url?: string | null
-          role?: string
-          team_group?: Database["public"]["Enums"]["team_group"]
-          updated_at?: string
-        }
-        Relationships: []
-      }
       user_roles: {
         Row: {
           created_at: string
@@ -201,7 +168,6 @@ export type Database = {
       opportunity_badge: "a_la_une" | "inscriptions_ouvertes" | "cloture"
       opportunity_category: "formation_certifiante" | "atelier_formation"
       opportunity_status: "draft" | "published" | "archived"
-      team_group: "direction" | "secretariat" | "communication" | "economat"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -335,7 +301,6 @@ export const Constants = {
       opportunity_badge: ["a_la_une", "inscriptions_ouvertes", "cloture"],
       opportunity_category: ["formation_certifiante", "atelier_formation"],
       opportunity_status: ["draft", "published", "archived"],
-      team_group: ["direction", "secretariat", "communication", "economat"],
     },
   },
 } as const
