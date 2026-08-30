@@ -33,7 +33,7 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-5 sm:px-6">
         <div className="grid gap-8 sm:gap-12 grid-cols-2 md:grid-cols-12 mb-10 sm:mb-14 text-left">
           {/* Brand + newsletter */}
-          <div className="col-span-2 md:col-span-5">
+          <div className="col-span-2 md:col-span-4">
             <Link to="/" className="inline-flex items-center gap-3 mb-6" aria-label="CMEP — Accueil">
               <img
                 src={CMEP_MEDIA.logo}
