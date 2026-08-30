@@ -40,7 +40,7 @@ function AboutPage() {
   return (
     <Layout>
       {/* HERO */}
-      <section className="relative overflow-hidden pt-20 md:pt-28 pb-20 md:pb-28 px-4 sm:px-6 surface-pearl">
+      <section className="relative overflow-hidden pt-20 md:pt-28 pb-20 md:pb-28 px-4 sm:px-6 bg-white">
         <span
           aria-hidden="true"
           className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 size-[42rem] rounded-full bg-ngo-gold/10 blur-3xl"
@@ -62,7 +62,7 @@ function AboutPage() {
       </section>
 
       {/* VISION & MISSION */}
-      <section className="py-20 md:py-24 px-4 sm:px-6 surface-cream">
+      <section className="py-20 md:py-24 px-4 sm:px-6 bg-ngo-pearl">
         <div className="max-w-7xl mx-auto flex flex-wrap justify-center gap-6">
           {[
             {
@@ -103,7 +103,7 @@ function AboutPage() {
 
       {/* NOTRE ÉQUIPE */}
       <section
-        className="relative py-20 md:py-28 px-4 sm:px-6 surface-pearl"
+        className="relative py-20 md:py-28 px-4 sm:px-6 bg-white"
         aria-labelledby="team-heading"
       >
         <div className="max-w-7xl mx-auto">
@@ -165,7 +165,7 @@ function AboutPage() {
       </section>
 
       {/* OBJECTIFS */}
-      <section className="py-20 md:py-24 px-4 sm:px-6 surface-cream">
+      <section className="py-20 md:py-24 px-4 sm:px-6 bg-ngo-pearl">
         <div className="max-w-7xl mx-auto">
           <Reveal className="max-w-3xl mx-auto text-center [&_*]:text-center! mb-14">
             <span className={EYEBROW}>Objectifs spécifiques</span>
@@ -195,41 +195,39 @@ function AboutPage() {
         </div>
       </section>
 
-      {/* ANCRAGE NATIONAL */}
-      <section className="py-20 md:py-24 px-4 sm:px-6 surface-pearl">
-        <div className="max-w-5xl mx-auto">
-          <Reveal>
-            <div
-              className={`relative overflow-hidden p-10 sm:p-12 md:p-16 surface-navy text-white text-center [&_*]:text-center! ${CARD_BASE}`}
-            >
-              <span
-                aria-hidden="true"
-                className="pointer-events-none absolute -bottom-24 -left-16 size-72 rounded-full bg-ngo-gold/15 blur-3xl"
-              />
-              <div className="relative">
-                <div className="size-14 rounded-2xl bg-ngo-gold text-ngo-navy grid place-items-center mx-auto mb-8 shadow-[0_18px_40px_-16px_rgba(212,162,60,0.85)]">
-                  <MapPin size={22} strokeWidth={2.4} aria-hidden="true" />
-                </div>
-                <span className="text-[10px] uppercase tracking-[0.28em] font-bold text-ngo-gold">
-                  Ancrage national
-                </span>
-                <h2 className="text-2xl sm:text-h2 font-extrabold mt-3 mb-5 leading-tight tracking-tight text-white!">
-                  Un programme togolais, pensé pour passer à l'échelle.
-                </h2>
-                <span aria-hidden="true" className="mx-auto mb-6 block w-20 rule-gold" />
-                <p className="text-white/80 leading-relaxed max-w-2xl mx-auto editorial-body">
-                  Nos actions s'inscrivent dans une dynamique nationale : former, mentorer et
-                  connecter les jeunes partout où les besoins d'accompagnement, d'emploi et de
-                  leadership sont prioritaires.
-                </p>
-              </div>
+      {/* ANCRAGE NATIONAL — section plein écran navy, comme sur l'accueil */}
+      <section className="relative py-20 md:py-28 px-4 sm:px-6 overflow-hidden bg-gradient-to-b from-ngo-navy via-ngo-navy to-[color-mix(in_oklab,var(--color-ngo-navy)_92%,black)] text-white">
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute -top-32 right-[-10%] size-[30rem] rounded-full bg-ngo-gold/15 blur-3xl"
+        />
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute -bottom-32 left-[-10%] size-[26rem] rounded-full bg-ngo-gold/10 blur-3xl"
+        />
+        <div className="relative max-w-4xl mx-auto">
+          <Reveal className="text-center [&_*]:text-center!">
+            <div className="size-14 rounded-2xl bg-ngo-gold text-ngo-navy grid place-items-center mx-auto mb-8 shadow-[0_18px_40px_-16px_rgba(212,162,60,0.85)]">
+              <MapPin size={22} strokeWidth={2.4} aria-hidden="true" />
             </div>
+            <span className="text-[10px] uppercase tracking-[0.28em] font-bold text-ngo-gold">
+              Ancrage national
+            </span>
+            <h2 className="text-2xl sm:text-h2 font-extrabold mt-3 mb-5 leading-tight tracking-tight text-white!">
+              Un programme togolais, pensé pour passer à l'échelle.
+            </h2>
+            <span aria-hidden="true" className="mx-auto mb-6 block w-20 rule-gold" />
+            <p className="text-white/80 leading-relaxed max-w-2xl mx-auto editorial-body">
+              Nos actions s'inscrivent dans une dynamique nationale : former, mentorer et
+              connecter les jeunes partout où les besoins d'accompagnement, d'emploi et de
+              leadership sont prioritaires.
+            </p>
           </Reveal>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-20 md:py-24 px-4 sm:px-6 surface-cream">
+      <section className="py-20 md:py-24 px-4 sm:px-6 bg-white">
         <div className="max-w-3xl mx-auto">
           <Reveal>
             <div className={`p-10 sm:p-12 bg-white text-center [&_*]:text-center! ${CARD_BASE}`}>
