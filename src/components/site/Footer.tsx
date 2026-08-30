@@ -33,7 +33,7 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-5 sm:px-6">
         <div className="grid gap-8 sm:gap-12 grid-cols-2 md:grid-cols-12 mb-10 sm:mb-14 text-left">
           {/* Brand + newsletter */}
-          <div className="col-span-2 md:col-span-5">
+          <div className="col-span-2 md:col-span-4">
             <Link to="/" className="inline-flex items-center gap-3 mb-6" aria-label="CMEP — Accueil">
               <img
                 src={CMEP_MEDIA.logo}
@@ -91,19 +91,19 @@ export function Footer() {
           </div>
 
           {/* Nav columns */}
-          <nav aria-label="Programme" className="md:col-span-2">
-            <h3 className="text-[11px] sm:text-[12px] uppercase tracking-[0.06em] font-bold text-white mb-4 leading-tight break-words">Programme</h3>
-            <ul className="space-y-3 text-sm text-white/65">
-              <li><Link to="/a-propos" className="hover:text-ngo-gold transition-colors">À propos</Link></li>
-              <li><Link to="/programmes" className="hover:text-ngo-gold transition-colors">Axes stratégiques</Link></li>
-              <li><Link to="/impact" className="hover:text-ngo-gold transition-colors">Magazine</Link></li>
-              <li><Link to="/partenaires" className="hover:text-ngo-gold transition-colors">Partenaires</Link></li>
+          <nav aria-label="Programme" className="md:col-span-3">
+            <h3 className="text-[10px] sm:text-[11px] uppercase tracking-[0.05em] font-bold text-white mb-4 leading-tight">Programme</h3>
+            <ul className="space-y-3 text-[13px] leading-snug text-white/65">
+              <li><Link to="/a-propos" className="whitespace-nowrap hover:text-ngo-gold transition-colors">À propos</Link></li>
+              <li><Link to="/programmes" className="whitespace-nowrap hover:text-ngo-gold transition-colors">Axes stratégiques</Link></li>
+              <li><Link to="/impact" className="whitespace-nowrap hover:text-ngo-gold transition-colors">Magazine</Link></li>
+              <li><Link to="/partenaires" className="whitespace-nowrap hover:text-ngo-gold transition-colors">Partenaires</Link></li>
             </ul>
           </nav>
 
           <nav aria-label="Agir" className="md:col-span-2">
-            <h3 className="text-[11px] sm:text-[12px] uppercase tracking-[0.06em] font-bold text-white mb-4 leading-tight break-words">Agir</h3>
-            <ul className="space-y-3 text-sm text-white/65">
+            <h3 className="text-[10px] sm:text-[11px] uppercase tracking-[0.05em] font-bold text-white mb-4 leading-tight">Agir</h3>
+            <ul className="space-y-3 text-[13px] leading-snug text-white/65">
               <li><Link to="/opportunites" className="hover:text-ngo-gold transition-colors">Opportunités</Link></li>
               <li><Link to="/opportunites" className="hover:text-ngo-gold transition-colors">Postuler</Link></li>
               <li><Link to="/partenaires" className="hover:text-ngo-gold transition-colors">Devenir partenaire</Link></li>
@@ -113,8 +113,8 @@ export function Footer() {
           </nav>
 
           <div className="col-span-2 md:col-span-3">
-            <h3 className="text-[11px] sm:text-[12px] uppercase tracking-[0.06em] font-bold text-white mb-4 leading-tight break-words">Contact</h3>
-            <ul className="space-y-4 text-sm text-white/65">
+            <h3 className="text-[10px] sm:text-[11px] uppercase tracking-[0.05em] font-bold text-white mb-4 leading-tight">Contact</h3>
+            <ul className="space-y-4 text-[13px] leading-snug text-white/65">
               <li className="flex items-start gap-3">
                 <MapPin size={16} className="mt-0.5 text-ngo-gold shrink-0" aria-hidden="true" />
                 <span>Coordination CMEP<br />Togo</span>
