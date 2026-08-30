@@ -102,8 +102,8 @@ export function Footer() {
           </nav>
 
           <nav aria-label="Agir" className="md:col-span-2">
-            <h3 className="text-[11px] sm:text-[12px] uppercase tracking-[0.06em] font-bold text-white mb-4 leading-tight break-words">Agir</h3>
-            <ul className="space-y-3 text-sm text-white/65">
+            <h3 className="text-[10px] sm:text-[11px] uppercase tracking-[0.05em] font-bold text-white mb-4 leading-tight">Agir</h3>
+            <ul className="space-y-3 text-[13px] leading-snug text-white/65">
               <li><Link to="/opportunites" className="hover:text-ngo-gold transition-colors">Opportunités</Link></li>
               <li><Link to="/opportunites" className="hover:text-ngo-gold transition-colors">Postuler</Link></li>
               <li><Link to="/partenaires" className="hover:text-ngo-gold transition-colors">Devenir partenaire</Link></li>
