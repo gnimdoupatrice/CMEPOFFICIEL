@@ -40,7 +40,7 @@ function AboutPage() {
   return (
     <Layout>
       {/* HERO */}
-      <section className="relative overflow-hidden pt-20 md:pt-28 pb-20 md:pb-28 px-4 sm:px-6 surface-pearl">
+      <section className="relative overflow-hidden pt-20 md:pt-28 pb-20 md:pb-28 px-4 sm:px-6 bg-white">
         <span
           aria-hidden="true"
           className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 size-[42rem] rounded-full bg-ngo-gold/10 blur-3xl"
@@ -62,7 +62,7 @@ function AboutPage() {
       </section>
 
       {/* VISION & MISSION */}
-      <section className="py-20 md:py-24 px-4 sm:px-6 surface-cream">
+      <section className="py-20 md:py-24 px-4 sm:px-6 bg-ngo-pearl">
         <div className="max-w-7xl mx-auto flex flex-wrap justify-center gap-6">
           {[
             {
@@ -103,7 +103,7 @@ function AboutPage() {
 
       {/* NOTRE ÉQUIPE */}
       <section
-        className="relative py-20 md:py-28 px-4 sm:px-6 surface-pearl"
+        className="relative py-20 md:py-28 px-4 sm:px-6 bg-white"
         aria-labelledby="team-heading"
       >
         <div className="max-w-7xl mx-auto">
@@ -165,7 +165,7 @@ function AboutPage() {
       </section>
 
       {/* OBJECTIFS */}
-      <section className="py-20 md:py-24 px-4 sm:px-6 surface-cream">
+      <section className="py-20 md:py-24 px-4 sm:px-6 bg-ngo-pearl">
         <div className="max-w-7xl mx-auto">
           <Reveal className="max-w-3xl mx-auto text-center [&_*]:text-center! mb-14">
             <span className={EYEBROW}>Objectifs spécifiques</span>
