@@ -39,20 +39,20 @@ const OBJECTIVES = [
 function AboutPage() {
   return (
     <Layout>
-      {/* HERO */}
-      <section className="relative overflow-hidden pt-20 md:pt-28 pb-20 md:pb-28 px-4 sm:px-6 bg-white">
+      {/* HERO — navy plein écran, comme les sections sombres de l'accueil */}
+      <section className="relative overflow-hidden pt-20 md:pt-28 pb-20 md:pb-28 px-4 sm:px-6 bg-gradient-to-b from-ngo-navy via-ngo-navy to-[color-mix(in_oklab,var(--color-ngo-navy)_92%,black)] text-white">
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 size-[42rem] rounded-full bg-ngo-gold/10 blur-3xl"
+          className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 size-[42rem] rounded-full bg-ngo-gold/15 blur-3xl"
         />
         <Reveal className="relative max-w-4xl mx-auto text-center [&_*]:text-center!">
-          <span className={EYEBROW}>À propos du CMEP</span>
-          <h1 className="font-extrabold text-4xl sm:text-h1 mt-5 mb-6 text-ngo-navy leading-[1.03] tracking-tight">
+          <span className="text-[10px] uppercase tracking-[0.28em] font-bold text-ngo-gold">À propos du CMEP</span>
+          <h1 className="font-extrabold text-4xl sm:text-h1 mt-5 mb-6 text-white! leading-[1.03] tracking-tight">
             Une initiative née du terrain, portée par la{" "}
-            <span className="relative text-ngo-gold-ink">jeunesse</span>.
+            <span className="relative text-ngo-gold">jeunesse</span>.
           </h1>
           <span aria-hidden="true" className="mx-auto mb-8 block w-28 rule-gold" />
-          <p className="text-lg text-ngo-slate leading-relaxed max-w-2xl mx-auto editorial-body">
+          <p className="text-lg text-white/80 leading-relaxed max-w-2xl mx-auto editorial-body">
             Le Chris Mentorship &amp; Empowerment Program (CMEP) est une initiative collective
             portée par un réseau de jeunes leaders togolais. Elle vise à renforcer l'autonomisation,
             les compétences et l'insertion socio-économique des jeunes à travers des formations
@@ -62,7 +62,7 @@ function AboutPage() {
       </section>
 
       {/* VISION & MISSION */}
-      <section className="py-20 md:py-24 px-4 sm:px-6 bg-ngo-pearl">
+      <section className="py-20 md:py-24 px-4 sm:px-6 bg-white">
         <div className="max-w-7xl mx-auto flex flex-wrap justify-center gap-6">
           {[
             {
@@ -101,39 +101,42 @@ function AboutPage() {
         </div>
       </section>
 
-      {/* NOTRE ÉQUIPE */}
-      <section
-        className="relative py-20 md:py-28 px-4 sm:px-6 bg-white"
-        aria-labelledby="team-heading"
-      >
-        <div className="max-w-7xl mx-auto">
-          <Reveal className="max-w-3xl mx-auto text-center [&_*]:text-center! mb-14">
-            <div className={`inline-flex items-center gap-2 mb-4 ${EYEBROW}`}>
+      {/* NOTRE ÉQUIPE — alternance bleu/blanc par sous-section */}
+      <section className="relative" aria-labelledby="team-heading">
+        <div className="relative overflow-hidden bg-gradient-to-b from-ngo-navy via-ngo-navy to-[color-mix(in_oklab,var(--color-ngo-navy)_94%,black)] text-white py-20 md:py-24 px-4 sm:px-6">
+          <span
+            aria-hidden="true"
+            className="pointer-events-none absolute -top-24 right-[-8%] size-96 rounded-full bg-ngo-gold/15 blur-3xl"
+          />
+          <Reveal className="relative max-w-3xl mx-auto text-center [&_*]:text-center!">
+            <div className="inline-flex items-center gap-2 mb-4 text-[10px] uppercase tracking-[0.28em] font-bold text-ngo-gold">
               <Users size={12} aria-hidden="true" /> Notre équipe
             </div>
             <h2
               id="team-heading"
-              className="text-h2 font-extrabold text-ngo-navy leading-[1.05] tracking-tight"
+              className="text-h2 font-extrabold text-white! leading-[1.05] tracking-tight"
             >
               Une gouvernance jeune, engagée, au service du Togo.
             </h2>
             <span aria-hidden="true" className="mx-auto mt-6 block w-24 rule-gold" />
-            <p className="mt-5 text-ngo-slate leading-relaxed editorial-body">
+            <p className="mt-5 text-white/80 leading-relaxed editorial-body">
               Dix membres portent l'exécutif du CMEP, répartis entre direction, secrétariat,
               communication et économat. Une équipe pluridisciplinaire au service d'une seule
               ambition — l'autonomisation de la jeunesse togolaise.
             </p>
           </Reveal>
+        </div>
 
-          <Reveal>
-            <TeamGrid />
-          </Reveal>
+        <TeamGrid />
 
-          {/* Contact coordination */}
+
+          {/* Contact coordination — poursuit la bande navy du pôle Économat */}
+        <div className="bg-gradient-to-b from-ngo-navy to-[color-mix(in_oklab,var(--color-ngo-navy)_92%,black)] px-4 sm:px-6 pt-4 pb-20 md:pb-24">
           <Reveal>
             <div
-              className={`mt-16 grid gap-6 md:grid-cols-12 items-center p-8 sm:p-10 bg-white ${CARD_BASE}`}
+              className={`max-w-7xl mx-auto grid gap-6 md:grid-cols-12 items-center p-8 sm:p-10 bg-white ${CARD_BASE}`}
             >
+
               <div className="md:col-span-3 flex justify-center">
                 <img
                   src={CMEP_MEDIA.logo}
@@ -165,7 +168,7 @@ function AboutPage() {
       </section>
 
       {/* OBJECTIFS */}
-      <section className="py-20 md:py-24 px-4 sm:px-6 bg-ngo-pearl">
+      <section className="py-20 md:py-24 px-4 sm:px-6 bg-white">
         <div className="max-w-7xl mx-auto">
           <Reveal className="max-w-3xl mx-auto text-center [&_*]:text-center! mb-14">
             <span className={EYEBROW}>Objectifs spécifiques</span>
