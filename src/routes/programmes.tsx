@@ -102,7 +102,7 @@ function ProgrammesPage() {
           </p>
           <Link
             to="/opportunites"
-            className="inline-flex items-center gap-2 bg-ngo-gold text-ngo-navy px-8 py-4 min-h-12 font-bold uppercase tracking-widest text-xs rounded-md hover:bg-ngo-navy hover:text-white transition-colors"
+            className="inline-flex items-center gap-2 bg-ngo-gold text-ngo-navy px-8 py-4 min-h-12 font-bold uppercase tracking-widest text-xs rounded-md hover:bg-white transition-colors"
           >
             Voir les opportunités <ArrowRight size={14} aria-hidden="true" />
           </Link>

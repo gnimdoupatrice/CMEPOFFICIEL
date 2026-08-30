@@ -28,13 +28,13 @@ function ContactPage() {
   return (
     <Layout>
       {/* HERO */}
-      <section className="pt-32 pb-20 px-6 bg-ngo-pearl border-b border-ngo-navy/5">
+      <section className="pt-32 pb-20 px-6 bg-ngo-navy border-b border-white/10">
         <div className="max-w-7xl mx-auto">
           <span className="text-ngo-gold font-bold uppercase tracking-[0.25em] text-[11px]">Contact</span>
-          <h1 className="font-extrabold text-h1 mt-5 mb-8 text-ngo-navy max-w-4xl">
+          <h1 className="font-extrabold text-h1 mt-5 mb-8 text-white max-w-4xl">
             Bâtissons <span className="text-ngo-gold">ensemble</span>.
           </h1>
-          <p className="text-lg text-ngo-slate leading-relaxed max-w-2xl">
+          <p className="text-lg text-white/70 leading-relaxed max-w-2xl">
             Une question, une candidature, un partenariat, une demande presse ? L'équipe de coordination
             CMEP vous répond sous 48 heures ouvrées, où que vous soyez au Togo.
           </p>
@@ -46,22 +46,28 @@ function ContactPage() {
         <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-8">
           {/* Channels */}
           <div className="lg:col-span-5 space-y-4">
-            {CHANNELS.map((c) => {
+            {CHANNELS.map((c, i) => {
+              const dark = i % 2 === 0;
               const Inner = (
                 <>
-                  <div className="size-11 rounded-xl bg-ngo-navy text-white grid place-items-center shrink-0 group-hover:bg-ngo-gold group-hover:text-ngo-navy transition-colors">
+                  <div className={`size-11 rounded-xl grid place-items-center shrink-0 transition-colors ${
+                    dark
+                      ? "bg-ngo-gold text-ngo-navy group-hover:bg-white"
+                      : "bg-ngo-navy text-white group-hover:bg-ngo-gold group-hover:text-ngo-navy"
+                  }`}>
                     <c.icon size={18} strokeWidth={2.2} />
                   </div>
                   <div className="min-w-0">
                     <div className="text-[10px] uppercase tracking-[0.25em] font-bold text-ngo-gold mb-1.5">{c.label}</div>
-                    <div className="text-[15px] font-bold text-ngo-navy leading-snug break-words whitespace-pre-line">
+                    <div className={`text-[15px] font-bold leading-snug break-words whitespace-pre-line ${dark ? "text-white" : "text-ngo-navy"}`}>
                       {c.value}
                     </div>
                   </div>
                 </>
               );
-              const className =
-                "group flex items-start gap-5 p-7 bg-ngo-pearl border border-ngo-navy/10 hover:border-ngo-gold hover:shadow-xl transition-all rounded-2xl";
+              const className = `group flex items-start gap-5 p-7 border hover:border-ngo-gold hover:shadow-xl transition-all rounded-2xl ${
+                dark ? "bg-ngo-navy border-white/10" : "bg-ngo-pearl border-ngo-navy/10"
+              }`;
               return c.href ? (
                 <a key={c.label} href={c.href} className={className}>
                   {Inner}
