@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createFileRoute, useNavigate, useSearch } from "@tanstack/react-router";
 import { supabase } from "@/integrations/supabase/client";
 import { lovable } from "@/integrations/lovable";
@@ -35,6 +35,12 @@ function AuthPage() {
   const [loading, setLoading] = useState(false);
 
   const target = search.redirect.startsWith("/") ? search.redirect : "/admin";
+
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data }) => {
+      if (data.session) navigate({ to: target, replace: true });
+    });
+  }, [navigate, target]);
 
   async function handleSubmit(event: React.FormEvent) {
     event.preventDefault();

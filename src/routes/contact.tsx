@@ -20,7 +20,7 @@ export const Route = createFileRoute("/contact")({
 const CHANNELS = [
   { icon: Mail, label: "Email", value: "chrismentorshipempowermentprog@gmail.com", href: "mailto:chrismentorshipempowermentprog@gmail.com" },
   { icon: Phone, label: "Téléphone", value: "+228 90 51 00 88", href: "tel:+22890510088" },
-  { icon: MessageCircle, label: "Échange direct", value: "+228 96 89 87 17", href: createWhatsAppHref("Bonjour CMEP, je souhaite échanger avec la coordination.") },
+  { icon: MessageCircle, label: "WhatsApp", value: "+228 90 51 00 88", href: createWhatsAppHref("Bonjour CMEP, je souhaite échanger avec la coordination.") },
   { icon: MapPin, label: "Adresse", value: "Coordination CMEP\nRépublique Togolaise" },
 ];
 

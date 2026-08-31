@@ -525,7 +525,7 @@ function FAQPage() {
                     </span>
                     <div className="min-w-0 flex-1">
                       <div className="text-[10px] uppercase tracking-[0.22em] text-white/55 font-bold">Échange direct</div>
-                      <div className="text-[14px] font-semibold">+228 96 89 87 17</div>
+                      <div className="text-[14px] font-semibold">+228 90 51 00 88</div>
                     </div>
                     <ArrowUpRight size={16} className="text-white/40 group-hover:text-ngo-gold transition-colors shrink-0" />
                   </a>
