@@ -10,6 +10,8 @@ import {
   adminUpdateApplicationStatus,
   getAdminStatus,
 } from "@/lib/admin.functions";
+import { adminDeleteArticle, adminListArticles } from "@/lib/articles.functions";
+import { articleStatusLabel } from "@/lib/articles";
 import { APPLICATION_STATUSES, applicationStatusLabel, categoryLabel, formatDate, statusLabel } from "@/lib/opportunities";
 import { Layout } from "@/components/site/Layout";
 import { Button } from "@/components/ui/button";
@@ -44,6 +46,8 @@ function AdminDashboard() {
   const removeOpportunity = useServerFn(adminDeleteOpportunity);
   const updateStatus = useServerFn(adminUpdateApplicationStatus);
   const signCv = useServerFn(adminSignCv);
+  const listArticles = useServerFn(adminListArticles);
+  const removeArticle = useServerFn(adminDeleteArticle);
 
   const adminQuery = useQuery({
     queryKey: ["admin", "status"],
@@ -74,6 +78,11 @@ function AdminDashboard() {
   const applicationsQuery = useQuery({
     queryKey: ["admin", "applications"],
     queryFn: () => listApplications(),
+    enabled: adminQuery.data?.isAdmin === true,
+  });
+  const articlesQuery = useQuery({
+    queryKey: ["admin", "articles"],
+    queryFn: () => listArticles(),
     enabled: adminQuery.data?.isAdmin === true,
   });
 
@@ -144,8 +153,20 @@ function AdminDashboard() {
     void queryClient.invalidateQueries({ queryKey: ["admin", "applications"] });
   }
 
+  async function handleDeleteArticle(id: string, title: string) {
+    if (!window.confirm(`Supprimer définitivement l'article « ${title} » ?`)) return;
+    const result = await removeArticle({ data: { id } });
+    if (!result.ok) {
+      toast.error(result.error ?? "Suppression impossible.");
+      return;
+    }
+    toast.success("Article supprimé.");
+    void queryClient.invalidateQueries({ queryKey: ["admin", "articles"] });
+  }
+
   const opportunities = opportunitiesQuery.data?.opportunities ?? [];
   const applications = applicationsQuery.data?.applications ?? [];
+  const articles = articlesQuery.data?.articles ?? [];
 
   return (
     <Layout>
@@ -157,7 +178,7 @@ function AdminDashboard() {
               Gestion des opportunités
             </h1>
             <p className="mt-2 text-[13px] text-ngo-slate">
-              {opportunities.length} opportunité(s) · {applications.length} candidature(s)
+              {opportunities.length} opportunité(s) · {applications.length} candidature(s) · {articles.length} article(s)
             </p>
           </div>
           <div className="flex flex-wrap gap-2">
@@ -166,6 +187,12 @@ function AdminDashboard() {
               className="inline-flex items-center gap-2 bg-ngo-navy text-white px-5 py-3 rounded-md font-bold uppercase tracking-widest text-[11px] hover:bg-ngo-gold hover:text-ngo-navy transition-colors"
             >
               <Plus size={14} aria-hidden="true" /> Nouvelle opportunité
+            </Link>
+            <Link
+              to="/admin/articles/nouvelle"
+              className="inline-flex items-center gap-2 bg-ngo-gold text-ngo-navy px-5 py-3 rounded-md font-bold uppercase tracking-widest text-[11px] hover:bg-ngo-navy hover:text-white transition-colors"
+            >
+              <Plus size={14} aria-hidden="true" /> Nouvel article
             </Link>
             <Button
               variant="outline"
@@ -218,6 +245,51 @@ function AdminDashboard() {
                     <Pencil size={13} aria-hidden="true" /> Modifier
                   </Link>
                   <Button variant="ghost" className="text-red-600" onClick={() => handleDelete(o.id, o.title)}>
+                    <Trash2 size={14} aria-hidden="true" />
+                  </Button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white py-10 px-4 sm:px-6 border-b border-ngo-navy/8">
+        <div className="max-w-6xl mx-auto space-y-4">
+          <h2 className="text-[11px] uppercase tracking-[0.22em] font-bold text-ngo-navy">Articles</h2>
+          {articlesQuery.isLoading && <p className="text-sm text-ngo-slate">Chargement…</p>}
+          {articles.length === 0 && !articlesQuery.isLoading && (
+            <div className="rounded-2xl bg-ngo-pearl/60 p-6 text-sm text-ngo-slate">
+              Aucun article pour l'instant. Cliquez sur « Nouvel article » pour commencer.
+            </div>
+          )}
+          <div className="grid gap-3">
+            {articles.map((a) => (
+              <div key={a.id} className="rounded-2xl bg-white ring-1 ring-ngo-navy/8 p-4 sm:p-5 flex flex-wrap items-center gap-4">
+                <div className="min-w-0 flex-1">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className={`px-2 py-0.5 rounded text-[10px] uppercase tracking-[0.18em] font-extrabold ${statusStyles[a.status] ?? ""}`}>
+                      {articleStatusLabel(a.status)}
+                    </span>
+                    <span className="text-[10px] uppercase tracking-[0.18em] font-bold text-ngo-gold">{a.category}</span>
+                    {a.featured && (
+                      <span className="text-[10px] uppercase tracking-[0.18em] font-bold text-ngo-navy">À la une</span>
+                    )}
+                  </div>
+                  <h3 className="mt-2 font-extrabold text-ngo-navy text-[15px] leading-snug break-words">{a.title}</h3>
+                  <p className="mt-1 text-[11.5px] text-ngo-slate">
+                    /impact/{a.slug} {a.date_label ? `· ${a.date_label}` : ""} {a.location ? `· ${a.location}` : ""}
+                  </p>
+                </div>
+                <div className="flex gap-2">
+                  <Link
+                    to="/admin/articles/$id"
+                    params={{ id: a.id }}
+                    className="inline-flex items-center gap-2 border border-ngo-navy/15 text-ngo-navy px-4 py-2.5 rounded-md font-bold uppercase tracking-widest text-[11px] hover:border-ngo-gold"
+                  >
+                    <Pencil size={13} aria-hidden="true" /> Modifier
+                  </Link>
+                  <Button variant="ghost" className="text-red-600" onClick={() => handleDeleteArticle(a.id, a.title)}>
                     <Trash2 size={14} aria-hidden="true" />
                   </Button>
                 </div>
