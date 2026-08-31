@@ -14,6 +14,60 @@ export type Database = {
   }
   public: {
     Tables: {
+      articles: {
+        Row: {
+          body: Json
+          category: string
+          cover_url: string | null
+          created_at: string
+          date_label: string
+          excerpt: string
+          featured: boolean
+          focal: string | null
+          id: string
+          location: string
+          slug: string
+          sort_order: number
+          status: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          body?: Json
+          category?: string
+          cover_url?: string | null
+          created_at?: string
+          date_label?: string
+          excerpt?: string
+          featured?: boolean
+          focal?: string | null
+          id?: string
+          location?: string
+          slug: string
+          sort_order?: number
+          status?: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          body?: Json
+          category?: string
+          cover_url?: string | null
+          created_at?: string
+          date_label?: string
+          excerpt?: string
+          featured?: boolean
+          focal?: string | null
+          id?: string
+          location?: string
+          slug?: string
+          sort_order?: number
+          status?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       certificates: {
         Row: {
           course_id: string
