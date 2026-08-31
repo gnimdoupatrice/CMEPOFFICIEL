@@ -153,8 +153,20 @@ function AdminDashboard() {
     void queryClient.invalidateQueries({ queryKey: ["admin", "applications"] });
   }
 
+  async function handleDeleteArticle(id: string, title: string) {
+    if (!window.confirm(`Supprimer définitivement l'article « ${title} » ?`)) return;
+    const result = await removeArticle({ data: { id } });
+    if (!result.ok) {
+      toast.error(result.error ?? "Suppression impossible.");
+      return;
+    }
+    toast.success("Article supprimé.");
+    void queryClient.invalidateQueries({ queryKey: ["admin", "articles"] });
+  }
+
   const opportunities = opportunitiesQuery.data?.opportunities ?? [];
   const applications = applicationsQuery.data?.applications ?? [];
+  const articles = articlesQuery.data?.articles ?? [];
 
   return (
     <Layout>
