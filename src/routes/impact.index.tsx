@@ -3,8 +3,28 @@ import { Layout } from "@/components/site/Layout";
 import { useMemo, useState } from "react";
 import { ArrowRight, ArrowUpRight, Search, MapPin, TrendingUp, Newspaper, Radio, Bookmark } from "lucide-react";
 import { EDITORIAL_ARTICLES, type EditorialArticle } from "@/lib/editorial";
+import { listPublishedArticles } from "@/lib/articles.functions";
 
 export const Route = createFileRoute("/impact/")({
+  loader: async () => {
+    try {
+      return await listPublishedArticles();
+    } catch {
+      return { articles: [] };
+    }
+  },
+  errorComponent: () => (
+    <Layout>
+      <div className="max-w-2xl mx-auto px-4 py-32 text-center text-ngo-slate text-sm">
+        Contenu momentanément indisponible.
+      </div>
+    </Layout>
+  ),
+  notFoundComponent: () => (
+    <Layout>
+      <div className="max-w-2xl mx-auto px-4 py-32 text-center text-ngo-slate text-sm">Page introuvable.</div>
+    </Layout>
+  ),
   head: () => ({
     meta: [
       { title: "Retours d'activités — Magazine CMEP" },
