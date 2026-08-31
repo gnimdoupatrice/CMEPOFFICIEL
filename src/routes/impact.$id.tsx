@@ -1,13 +1,21 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { Layout } from "@/components/site/Layout";
 import { ArrowLeft, ArrowUpRight, MapPin, CalendarDays, Tag, ArrowRight } from "lucide-react";
-import { EDITORIAL_ARTICLES, getArticle } from "@/lib/editorial";
+import { mergeEditorialArticles, type EditorialArticle } from "@/lib/editorial";
+import { listPublishedArticles } from "@/lib/articles.functions";
 
 export const Route = createFileRoute("/impact/$id")({
-  loader: ({ params }) => {
-    const article = getArticle(params.id);
+  loader: async ({ params }) => {
+    let published: EditorialArticle[] = [];
+    try {
+      published = (await listPublishedArticles()).articles as unknown as EditorialArticle[];
+    } catch {
+      published = [];
+    }
+    const all = mergeEditorialArticles(published);
+    const article = all.find((a) => a.id === params.id);
     if (!article) throw notFound();
-    return { article };
+    return { article, all };
   },
   head: ({ loaderData }) => {
     const a = loaderData?.article;
@@ -28,8 +36,8 @@ export const Route = createFileRoute("/impact/$id")({
 });
 
 function ArticlePage() {
-  const { article } = Route.useLoaderData();
-  const others = EDITORIAL_ARTICLES.filter((a) => a.id !== article.id).slice(0, 3);
+  const { article, all } = Route.useLoaderData();
+  const others = all.filter((a) => a.id !== article.id).slice(0, 3);
   const paragraphs = article.body.filter((b) => b.type === "p");
   const pullQuote = paragraphs.length > 2 ? (paragraphs[paragraphs.length - 1] as { text: string }).text : null;
 
