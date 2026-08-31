@@ -33,8 +33,8 @@ function EditOpportunityPage() {
         id: row.id,
         title: row.title,
         slug: row.slug,
-        category: row.category,
-        badge: row.badge,
+        category: row.category as OpportunityInput["category"],
+        badge: row.badge as OpportunityInput["badge"],
         cover_image: row.cover_image,
         short_description: row.short_description ?? "",
         description: row.description ?? "",
@@ -42,9 +42,9 @@ function EditOpportunityPage() {
         registration_deadline: row.registration_deadline,
         modules: (row.modules as unknown as OpportunityModule[]) ?? [],
         pricing: (row.pricing as unknown as OpportunityPricing[]) ?? [],
-        application_mode: row.application_mode,
+        application_mode: row.application_mode as OpportunityInput["application_mode"],
         whatsapp_message: row.whatsapp_message,
-        status: row.status,
+        status: row.status as OpportunityInput["status"],
         sort_order: row.sort_order ?? 0,
       }
     : undefined;
