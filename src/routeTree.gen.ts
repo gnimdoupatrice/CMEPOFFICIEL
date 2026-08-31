@@ -31,6 +31,7 @@ import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authentic
 import { Route as OpportunitesSlugCandidaterRouteImport } from './routes/opportunites.$slug.candidater'
 import { Route as AuthenticatedAdminOpportunitesNouvelleRouteImport } from './routes/_authenticated/admin.opportunites.nouvelle'
 import { Route as AuthenticatedAdminOpportunitesIdRouteImport } from './routes/_authenticated/admin.opportunites.$id'
+import { Route as AuthenticatedAdminArticlesNouvelleRouteImport } from './routes/_authenticated/admin.articles.nouvelle'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
@@ -144,6 +145,12 @@ const AuthenticatedAdminOpportunitesIdRoute =
     path: '/admin/opportunites/$id',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const AuthenticatedAdminArticlesNouvelleRoute =
+  AuthenticatedAdminArticlesNouvelleRouteImport.update({
+    id: '/admin/articles/nouvelle',
+    path: '/admin/articles/nouvelle',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -165,6 +172,7 @@ export interface FileRoutesByFullPath {
   '/opportunites/$slug/candidater': typeof OpportunitesSlugCandidaterRoute
   '/admin/': typeof AuthenticatedAdminIndexRoute
   '/opportunites/$slug/': typeof OpportunitesSlugIndexRoute
+  '/admin/articles/nouvelle': typeof AuthenticatedAdminArticlesNouvelleRoute
   '/admin/opportunites/$id': typeof AuthenticatedAdminOpportunitesIdRoute
   '/admin/opportunites/nouvelle': typeof AuthenticatedAdminOpportunitesNouvelleRoute
 }
@@ -186,6 +194,7 @@ export interface FileRoutesByTo {
   '/opportunites/$slug/candidater': typeof OpportunitesSlugCandidaterRoute
   '/admin': typeof AuthenticatedAdminIndexRoute
   '/opportunites/$slug': typeof OpportunitesSlugIndexRoute
+  '/admin/articles/nouvelle': typeof AuthenticatedAdminArticlesNouvelleRoute
   '/admin/opportunites/$id': typeof AuthenticatedAdminOpportunitesIdRoute
   '/admin/opportunites/nouvelle': typeof AuthenticatedAdminOpportunitesNouvelleRoute
 }
@@ -211,6 +220,7 @@ export interface FileRoutesById {
   '/opportunites/$slug/candidater': typeof OpportunitesSlugCandidaterRoute
   '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
   '/opportunites/$slug/': typeof OpportunitesSlugIndexRoute
+  '/_authenticated/admin/articles/nouvelle': typeof AuthenticatedAdminArticlesNouvelleRoute
   '/_authenticated/admin/opportunites/$id': typeof AuthenticatedAdminOpportunitesIdRoute
   '/_authenticated/admin/opportunites/nouvelle': typeof AuthenticatedAdminOpportunitesNouvelleRoute
 }
@@ -236,6 +246,7 @@ export interface FileRouteTypes {
     | '/opportunites/$slug/candidater'
     | '/admin/'
     | '/opportunites/$slug/'
+    | '/admin/articles/nouvelle'
     | '/admin/opportunites/$id'
     | '/admin/opportunites/nouvelle'
   fileRoutesByTo: FileRoutesByTo
@@ -257,6 +268,7 @@ export interface FileRouteTypes {
     | '/opportunites/$slug/candidater'
     | '/admin'
     | '/opportunites/$slug'
+    | '/admin/articles/nouvelle'
     | '/admin/opportunites/$id'
     | '/admin/opportunites/nouvelle'
   id:
@@ -281,6 +293,7 @@ export interface FileRouteTypes {
     | '/opportunites/$slug/candidater'
     | '/_authenticated/admin/'
     | '/opportunites/$slug/'
+    | '/_authenticated/admin/articles/nouvelle'
     | '/_authenticated/admin/opportunites/$id'
     | '/_authenticated/admin/opportunites/nouvelle'
   fileRoutesById: FileRoutesById
@@ -458,17 +471,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminOpportunitesIdRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/admin/articles/nouvelle': {
+      id: '/_authenticated/admin/articles/nouvelle'
+      path: '/admin/articles/nouvelle'
+      fullPath: '/admin/articles/nouvelle'
+      preLoaderRoute: typeof AuthenticatedAdminArticlesNouvelleRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
   }
 }
 
 interface AuthenticatedRouteRouteChildren {
   AuthenticatedAdminIndexRoute: typeof AuthenticatedAdminIndexRoute
+  AuthenticatedAdminArticlesNouvelleRoute: typeof AuthenticatedAdminArticlesNouvelleRoute
   AuthenticatedAdminOpportunitesIdRoute: typeof AuthenticatedAdminOpportunitesIdRoute
   AuthenticatedAdminOpportunitesNouvelleRoute: typeof AuthenticatedAdminOpportunitesNouvelleRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedAdminIndexRoute: AuthenticatedAdminIndexRoute,
+  AuthenticatedAdminArticlesNouvelleRoute:
+    AuthenticatedAdminArticlesNouvelleRoute,
   AuthenticatedAdminOpportunitesIdRoute: AuthenticatedAdminOpportunitesIdRoute,
   AuthenticatedAdminOpportunitesNouvelleRoute:
     AuthenticatedAdminOpportunitesNouvelleRoute,
