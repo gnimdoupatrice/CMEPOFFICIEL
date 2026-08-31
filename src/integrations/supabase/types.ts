@@ -14,6 +14,56 @@ export type Database = {
   }
   public: {
     Tables: {
+      applications: {
+        Row: {
+          created_at: string
+          cv_url: string | null
+          email: string
+          full_name: string
+          id: string
+          motivation: string | null
+          opportunity_id: string | null
+          phone: string
+          profile: string | null
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          cv_url?: string | null
+          email: string
+          full_name: string
+          id?: string
+          motivation?: string | null
+          opportunity_id?: string | null
+          phone: string
+          profile?: string | null
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          cv_url?: string | null
+          email?: string
+          full_name?: string
+          id?: string
+          motivation?: string | null
+          opportunity_id?: string | null
+          phone?: string
+          profile?: string | null
+          status?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "applications_opportunity_id_fkey"
+            columns: ["opportunity_id"]
+            isOneToOne: false
+            referencedRelation: "opportunities"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       articles: {
         Row: {
           body: Json
@@ -312,6 +362,69 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      opportunities: {
+        Row: {
+          application_mode: string
+          badge: string | null
+          category: string
+          cover_image: string | null
+          created_at: string
+          description: string
+          id: string
+          modules: Json
+          pricing: Json
+          registration_deadline: string | null
+          sessions: Json
+          short_description: string
+          slug: string
+          sort_order: number
+          status: string
+          title: string
+          updated_at: string
+          whatsapp_message: string | null
+        }
+        Insert: {
+          application_mode?: string
+          badge?: string | null
+          category?: string
+          cover_image?: string | null
+          created_at?: string
+          description?: string
+          id?: string
+          modules?: Json
+          pricing?: Json
+          registration_deadline?: string | null
+          sessions?: Json
+          short_description?: string
+          slug: string
+          sort_order?: number
+          status?: string
+          title: string
+          updated_at?: string
+          whatsapp_message?: string | null
+        }
+        Update: {
+          application_mode?: string
+          badge?: string | null
+          category?: string
+          cover_image?: string | null
+          created_at?: string
+          description?: string
+          id?: string
+          modules?: Json
+          pricing?: Json
+          registration_deadline?: string | null
+          sessions?: Json
+          short_description?: string
+          slug?: string
+          sort_order?: number
+          status?: string
+          title?: string
+          updated_at?: string
+          whatsapp_message?: string | null
+        }
+        Relationships: []
       }
       pickup_requests: {
         Row: {
