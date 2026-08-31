@@ -8,7 +8,7 @@ type ArticleRow = Database["public"]["Tables"]["articles"]["Row"];
 const PUBLIC_SELECT = "id,slug,title,excerpt,category,date_label,location,cover_url,focal,body,featured,sort_order,created_at";
 
 async function signArticleCovers(paths: (string | null)[]): Promise<Record<string, string>> {
-  const unique = [...new Set(paths.filter((p): p is string => Boolean(p) && !p.startsWith("http")))];
+  const unique = [...new Set(paths.filter((p): p is string => typeof p === "string" && p.length > 0 && !p.startsWith("http")))];
   if (unique.length === 0) return {};
   try {
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
