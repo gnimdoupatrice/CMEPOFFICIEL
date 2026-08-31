@@ -1,8 +1,9 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Menu, X, ArrowRight, Globe, ChevronDown } from "lucide-react";
+import { Menu, X, ArrowRight, Globe, ChevronDown, ShieldCheck } from "lucide-react";
 import { CMEP_MEDIA } from "@/lib/media";
 import { createWhatsAppHref } from "@/lib/contact";
+import { supabase } from "@/integrations/supabase/client";
 
 const primaryLinks = [
   { to: "/" as const, label: { fr: "Accueil", en: "Home" } },
