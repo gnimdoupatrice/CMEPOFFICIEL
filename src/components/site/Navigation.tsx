@@ -1,8 +1,9 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Menu, X, ArrowRight, Globe, ChevronDown } from "lucide-react";
+import { Menu, X, ArrowRight, Globe, ChevronDown, ShieldCheck } from "lucide-react";
 import { CMEP_MEDIA } from "@/lib/media";
 import { createWhatsAppHref } from "@/lib/contact";
+import { supabase } from "@/integrations/supabase/client";
 
 const primaryLinks = [
   { to: "/" as const, label: { fr: "Accueil", en: "Home" } },
@@ -19,6 +20,21 @@ export function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [lang, setLang] = useState<"fr" | "en">("fr");
   const [langOpen, setLangOpen] = useState(false);
+  const [signedIn, setSignedIn] = useState(false);
+
+  useEffect(() => {
+    let active = true;
+    supabase.auth.getSession().then(({ data }) => {
+      if (active) setSignedIn(Boolean(data.session));
+    });
+    const { data: sub } = supabase.auth.onAuthStateChange((_event, session) => {
+      setSignedIn(Boolean(session));
+    });
+    return () => {
+      active = false;
+      sub.subscription.unsubscribe();
+    };
+  }, []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -104,6 +120,15 @@ export function Navigation() {
 
           <span className="h-6 w-px bg-ngo-navy/10" aria-hidden="true" />
 
+          {signedIn && (
+            <Link
+              to="/admin"
+              className="inline-flex items-center gap-1.5 px-3 py-2 min-h-11 rounded-md text-[12px] font-bold uppercase tracking-wider text-ngo-navy hover:bg-ngo-pearl transition-colors whitespace-nowrap"
+            >
+              <ShieldCheck size={14} aria-hidden="true" /> Admin
+            </Link>
+          )}
+
           <a
             href={createWhatsAppHref("Bonjour CMEP, je souhaite rejoindre le programme.")}
             target="_blank"
@@ -159,6 +184,18 @@ export function Navigation() {
                 </Link>
               </li>
             ))}
+            {signedIn && (
+              <li>
+                <Link
+                  to="/admin"
+                  onClick={() => setOpen(false)}
+                  className="flex items-center justify-between py-4 min-h-12 text-[16px] font-semibold text-ngo-navy active:bg-ngo-pearl -mx-5 px-5 transition-colors"
+                >
+                  <span className="inline-flex items-center gap-2"><ShieldCheck size={16} aria-hidden="true" /> Administration</span>
+                  <ArrowRight size={18} className="text-ngo-slate" aria-hidden="true" />
+                </Link>
+              </li>
+            )}
           </ul>
 
           <div className="mt-5 flex items-center gap-2" role="group" aria-label="Langue">
