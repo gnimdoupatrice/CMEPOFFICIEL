@@ -133,9 +133,10 @@ function AdminDashboard() {
             <Button
               variant="outline"
               onClick={async () => {
-                await supabase.auth.signOut();
+                await queryClient.cancelQueries();
                 queryClient.clear();
-                navigate({ to: "/auth", search: { redirect: "/admin" } });
+                await supabase.auth.signOut();
+                navigate({ to: "/auth", search: { redirect: "/admin" }, replace: true });
               }}
             >
               <LogOut size={14} aria-hidden="true" /> Déconnexion
