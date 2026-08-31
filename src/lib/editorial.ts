@@ -178,3 +178,15 @@ export const EDITORIAL_ARTICLES: EditorialArticle[] = [
 export function getArticle(id: string) {
   return EDITORIAL_ARTICLES.find((a) => a.id === id);
 }
+
+/**
+ * Fusionne les articles publiés depuis la base avec les articles statiques.
+ * Les articles de la base ont la priorité (même identifiant = même article).
+ */
+export function mergeEditorialArticles(
+  dbArticles: readonly EditorialArticle[] | undefined | null,
+): EditorialArticle[] {
+  const db = (dbArticles ?? []).filter((a) => a && a.id);
+  const ids = new Set(db.map((a) => a.id));
+  return [...db, ...EDITORIAL_ARTICLES.filter((a) => !ids.has(a.id))];
+}

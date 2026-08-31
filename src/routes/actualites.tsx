@@ -18,9 +18,17 @@ import {
   ChevronRight,
 } from "lucide-react";
 import { CMEP_MEDIA } from "@/lib/media";
-import { EDITORIAL_ARTICLES } from "@/lib/editorial";
+import { mergeEditorialArticles, type EditorialArticle } from "@/lib/editorial";
+import { listPublishedArticles } from "@/lib/articles.functions";
 
 export const Route = createFileRoute("/actualites")({
+  loader: async () => {
+    try {
+      return await listPublishedArticles();
+    } catch {
+      return { articles: [] };
+    }
+  },
   head: () => ({
     meta: [
       { title: "Actualités & Opportunités — Newsroom CMEP Togo" },
@@ -45,7 +53,8 @@ export const Route = createFileRoute("/actualites")({
 
 const newsFeatured = CMEP_MEDIA.team;
 
-const EDITORIAL_NEWS = EDITORIAL_ARTICLES.slice(0, 4).map((article, index) => ({
+function buildEditorialNews(articles: EditorialArticle[]) {
+  return articles.slice(0, 4).map((article, index) => ({
   img: article.image,
   category: article.category,
   kicker: index === 0 ? "Dossier institutionnel" : "À lire",
@@ -55,8 +64,9 @@ const EDITORIAL_NEWS = EDITORIAL_ARTICLES.slice(0, 4).map((article, index) => ({
   location: article.location,
   id: article.id,
   focal: article.focal,
-  size: index === 0 ? "wide" : index === 1 ? "tall" : "square",
-}));
+    size: index === 0 ? "wide" : index === 1 ? "tall" : "square",
+  }));
+}
 
 const OPPORTUNITIES = [
   {
@@ -127,6 +137,10 @@ const FIELD_DISPATCHES = [
 ];
 
 function NewsroomPage() {
+  const loaderData = Route.useLoaderData();
+  const EDITORIAL_NEWS = buildEditorialNews(
+    mergeEditorialArticles(loaderData?.articles as unknown as EditorialArticle[] | undefined),
+  );
   return (
     <Layout>
       {/* ───────────────────── FEATURED STORY HERO — immersif plein écran ───────────────────── */}
