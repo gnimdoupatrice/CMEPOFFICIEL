@@ -178,7 +178,7 @@ function AdminDashboard() {
               Gestion des opportunités
             </h1>
             <p className="mt-2 text-[13px] text-ngo-slate">
-              {opportunities.length} opportunité(s) · {applications.length} candidature(s)
+              {opportunities.length} opportunité(s) · {applications.length} candidature(s) · {articles.length} article(s)
             </p>
           </div>
           <div className="flex flex-wrap gap-2">
@@ -187,6 +187,12 @@ function AdminDashboard() {
               className="inline-flex items-center gap-2 bg-ngo-navy text-white px-5 py-3 rounded-md font-bold uppercase tracking-widest text-[11px] hover:bg-ngo-gold hover:text-ngo-navy transition-colors"
             >
               <Plus size={14} aria-hidden="true" /> Nouvelle opportunité
+            </Link>
+            <Link
+              to="/admin/articles/nouvelle"
+              className="inline-flex items-center gap-2 bg-ngo-gold text-ngo-navy px-5 py-3 rounded-md font-bold uppercase tracking-widest text-[11px] hover:bg-ngo-navy hover:text-white transition-colors"
+            >
+              <Plus size={14} aria-hidden="true" /> Nouvel article
             </Link>
             <Button
               variant="outline"
