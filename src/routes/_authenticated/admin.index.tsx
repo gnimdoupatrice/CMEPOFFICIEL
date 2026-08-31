@@ -10,6 +10,8 @@ import {
   adminUpdateApplicationStatus,
   getAdminStatus,
 } from "@/lib/admin.functions";
+import { adminDeleteArticle, adminListArticles } from "@/lib/articles.functions";
+import { articleStatusLabel } from "@/lib/articles";
 import { APPLICATION_STATUSES, applicationStatusLabel, categoryLabel, formatDate, statusLabel } from "@/lib/opportunities";
 import { Layout } from "@/components/site/Layout";
 import { Button } from "@/components/ui/button";

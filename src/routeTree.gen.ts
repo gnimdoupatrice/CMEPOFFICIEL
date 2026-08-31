@@ -32,6 +32,7 @@ import { Route as OpportunitesSlugCandidaterRouteImport } from './routes/opportu
 import { Route as AuthenticatedAdminOpportunitesNouvelleRouteImport } from './routes/_authenticated/admin.opportunites.nouvelle'
 import { Route as AuthenticatedAdminOpportunitesIdRouteImport } from './routes/_authenticated/admin.opportunites.$id'
 import { Route as AuthenticatedAdminArticlesNouvelleRouteImport } from './routes/_authenticated/admin.articles.nouvelle'
+import { Route as AuthenticatedAdminArticlesIdRouteImport } from './routes/_authenticated/admin.articles.$id'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
@@ -151,6 +152,12 @@ const AuthenticatedAdminArticlesNouvelleRoute =
     path: '/admin/articles/nouvelle',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const AuthenticatedAdminArticlesIdRoute =
+  AuthenticatedAdminArticlesIdRouteImport.update({
+    id: '/admin/articles/$id',
+    path: '/admin/articles/$id',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -172,6 +179,7 @@ export interface FileRoutesByFullPath {
   '/opportunites/$slug/candidater': typeof OpportunitesSlugCandidaterRoute
   '/admin/': typeof AuthenticatedAdminIndexRoute
   '/opportunites/$slug/': typeof OpportunitesSlugIndexRoute
+  '/admin/articles/$id': typeof AuthenticatedAdminArticlesIdRoute
   '/admin/articles/nouvelle': typeof AuthenticatedAdminArticlesNouvelleRoute
   '/admin/opportunites/$id': typeof AuthenticatedAdminOpportunitesIdRoute
   '/admin/opportunites/nouvelle': typeof AuthenticatedAdminOpportunitesNouvelleRoute
@@ -194,6 +202,7 @@ export interface FileRoutesByTo {
   '/opportunites/$slug/candidater': typeof OpportunitesSlugCandidaterRoute
   '/admin': typeof AuthenticatedAdminIndexRoute
   '/opportunites/$slug': typeof OpportunitesSlugIndexRoute
+  '/admin/articles/$id': typeof AuthenticatedAdminArticlesIdRoute
   '/admin/articles/nouvelle': typeof AuthenticatedAdminArticlesNouvelleRoute
   '/admin/opportunites/$id': typeof AuthenticatedAdminOpportunitesIdRoute
   '/admin/opportunites/nouvelle': typeof AuthenticatedAdminOpportunitesNouvelleRoute
@@ -220,6 +229,7 @@ export interface FileRoutesById {
   '/opportunites/$slug/candidater': typeof OpportunitesSlugCandidaterRoute
   '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
   '/opportunites/$slug/': typeof OpportunitesSlugIndexRoute
+  '/_authenticated/admin/articles/$id': typeof AuthenticatedAdminArticlesIdRoute
   '/_authenticated/admin/articles/nouvelle': typeof AuthenticatedAdminArticlesNouvelleRoute
   '/_authenticated/admin/opportunites/$id': typeof AuthenticatedAdminOpportunitesIdRoute
   '/_authenticated/admin/opportunites/nouvelle': typeof AuthenticatedAdminOpportunitesNouvelleRoute
@@ -246,6 +256,7 @@ export interface FileRouteTypes {
     | '/opportunites/$slug/candidater'
     | '/admin/'
     | '/opportunites/$slug/'
+    | '/admin/articles/$id'
     | '/admin/articles/nouvelle'
     | '/admin/opportunites/$id'
     | '/admin/opportunites/nouvelle'
@@ -268,6 +279,7 @@ export interface FileRouteTypes {
     | '/opportunites/$slug/candidater'
     | '/admin'
     | '/opportunites/$slug'
+    | '/admin/articles/$id'
     | '/admin/articles/nouvelle'
     | '/admin/opportunites/$id'
     | '/admin/opportunites/nouvelle'
@@ -293,6 +305,7 @@ export interface FileRouteTypes {
     | '/opportunites/$slug/candidater'
     | '/_authenticated/admin/'
     | '/opportunites/$slug/'
+    | '/_authenticated/admin/articles/$id'
     | '/_authenticated/admin/articles/nouvelle'
     | '/_authenticated/admin/opportunites/$id'
     | '/_authenticated/admin/opportunites/nouvelle'
@@ -478,11 +491,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminArticlesNouvelleRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/admin/articles/$id': {
+      id: '/_authenticated/admin/articles/$id'
+      path: '/admin/articles/$id'
+      fullPath: '/admin/articles/$id'
+      preLoaderRoute: typeof AuthenticatedAdminArticlesIdRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
   }
 }
 
 interface AuthenticatedRouteRouteChildren {
   AuthenticatedAdminIndexRoute: typeof AuthenticatedAdminIndexRoute
+  AuthenticatedAdminArticlesIdRoute: typeof AuthenticatedAdminArticlesIdRoute
   AuthenticatedAdminArticlesNouvelleRoute: typeof AuthenticatedAdminArticlesNouvelleRoute
   AuthenticatedAdminOpportunitesIdRoute: typeof AuthenticatedAdminOpportunitesIdRoute
   AuthenticatedAdminOpportunitesNouvelleRoute: typeof AuthenticatedAdminOpportunitesNouvelleRoute
@@ -490,6 +511,7 @@ interface AuthenticatedRouteRouteChildren {
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedAdminIndexRoute: AuthenticatedAdminIndexRoute,
+  AuthenticatedAdminArticlesIdRoute: AuthenticatedAdminArticlesIdRoute,
   AuthenticatedAdminArticlesNouvelleRoute:
     AuthenticatedAdminArticlesNouvelleRoute,
   AuthenticatedAdminOpportunitesIdRoute: AuthenticatedAdminOpportunitesIdRoute,
