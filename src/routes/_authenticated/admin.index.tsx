@@ -45,7 +45,27 @@ function AdminDashboard() {
   const updateStatus = useServerFn(adminUpdateApplicationStatus);
   const signCv = useServerFn(adminSignCv);
 
-  const adminQuery = useQuery({ queryKey: ["admin", "status"], queryFn: () => status() });
+  const adminQuery = useQuery({
+    queryKey: ["admin", "status"],
+    retry: 1,
+    queryFn: async () => {
+      try {
+        return await status();
+      } catch (err) {
+        // Repli : si l'appel serveur échoue (jeton non transmis en production),
+        // on vérifie le rôle directement depuis la session du navigateur.
+        const { data: userData } = await supabase.auth.getUser();
+        const user = userData.user;
+        if (!user) throw err;
+        const { data: isAdmin, error } = await supabase.rpc("has_role", {
+          _user_id: user.id,
+          _role: "admin",
+        });
+        if (error) throw err;
+        return { isAdmin: Boolean(isAdmin), userId: user.id };
+      }
+    },
+  });
   const opportunitiesQuery = useQuery({
     queryKey: ["admin", "opportunities"],
     queryFn: () => listOpportunities(),
