@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Layout } from "@/components/site/Layout";
 import { useMemo, useState } from "react";
 import { ArrowRight, ArrowUpRight, Search, MapPin, TrendingUp, Newspaper, Radio, Bookmark } from "lucide-react";
-import { EDITORIAL_ARTICLES, type EditorialArticle } from "@/lib/editorial";
+import { mergeEditorialArticles, type EditorialArticle } from "@/lib/editorial";
 import { listPublishedArticles } from "@/lib/articles.functions";
 
 export const Route = createFileRoute("/impact/")({
@@ -42,19 +42,26 @@ export const Route = createFileRoute("/impact/")({
 
 type Article = EditorialArticle;
 
-const CATEGORIES = ["Toutes", "Reportage", "Retour d'activité"] as const;
-
-const ARTICLES: Article[] = EDITORIAL_ARTICLES;
+const BASE_CATEGORIES = ["Reportage", "Retour d'activité"] as const;
 
 function MagazinePage() {
   const [q, setQ] = useState("");
-  const [cat, setCat] = useState<(typeof CATEGORIES)[number]>("Toutes");
+  const [cat, setCat] = useState<string>("Toutes");
+  const loaderData = Route.useLoaderData();
+  const ARTICLES: Article[] = useMemo(
+    () => mergeEditorialArticles(loaderData?.articles as EditorialArticle[] | undefined),
+    [loaderData],
+  );
+  const CATEGORIES = useMemo(
+    () => ["Toutes", ...new Set([...BASE_CATEGORIES, ...ARTICLES.map((a) => a.category)])],
+    [ARTICLES],
+  );
 
   const filtered = useMemo(() => {
     const norm = q.trim().toLowerCase();
     return ARTICLES.filter((a) => (cat === "Toutes" || a.category === cat))
       .filter((a) => !norm || a.title.toLowerCase().includes(norm) || a.excerpt.toLowerCase().includes(norm));
-  }, [q, cat]);
+  }, [q, cat, ARTICLES]);
 
   const featured = filtered.find((a) => a.featured) ?? filtered[0];
   const rest = filtered.filter((a) => a.id !== featured?.id);
