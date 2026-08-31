@@ -80,6 +80,11 @@ function AdminDashboard() {
     queryFn: () => listApplications(),
     enabled: adminQuery.data?.isAdmin === true,
   });
+  const articlesQuery = useQuery({
+    queryKey: ["admin", "articles"],
+    queryFn: () => listArticles(),
+    enabled: adminQuery.data?.isAdmin === true,
+  });
 
   if (adminQuery.isLoading) {
     return (
