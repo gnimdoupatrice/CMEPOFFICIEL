@@ -120,6 +120,15 @@ export function Navigation() {
 
           <span className="h-6 w-px bg-ngo-navy/10" aria-hidden="true" />
 
+          {signedIn && (
+            <Link
+              to="/admin"
+              className="inline-flex items-center gap-1.5 px-3 py-2 min-h-11 rounded-md text-[12px] font-bold uppercase tracking-wider text-ngo-navy hover:bg-ngo-pearl transition-colors whitespace-nowrap"
+            >
+              <ShieldCheck size={14} aria-hidden="true" /> Admin
+            </Link>
+          )}
+
           <a
             href={createWhatsAppHref("Bonjour CMEP, je souhaite rejoindre le programme.")}
             target="_blank"
