@@ -137,6 +137,10 @@ const FIELD_DISPATCHES = [
 ];
 
 function NewsroomPage() {
+  const loaderData = Route.useLoaderData();
+  const EDITORIAL_NEWS = buildEditorialNews(
+    mergeEditorialArticles(loaderData?.articles as unknown as EditorialArticle[] | undefined),
+  );
   return (
     <Layout>
       {/* ───────────────────── FEATURED STORY HERO — immersif plein écran ───────────────────── */}
