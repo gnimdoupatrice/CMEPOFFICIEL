@@ -184,6 +184,18 @@ export function Navigation() {
                 </Link>
               </li>
             ))}
+            {signedIn && (
+              <li>
+                <Link
+                  to="/admin"
+                  onClick={() => setOpen(false)}
+                  className="flex items-center justify-between py-4 min-h-12 text-[16px] font-semibold text-ngo-navy active:bg-ngo-pearl -mx-5 px-5 transition-colors"
+                >
+                  <span className="inline-flex items-center gap-2"><ShieldCheck size={16} aria-hidden="true" /> Administration</span>
+                  <ArrowRight size={18} className="text-ngo-slate" aria-hidden="true" />
+                </Link>
+              </li>
+            )}
           </ul>
 
           <div className="mt-5 flex items-center gap-2" role="group" aria-label="Langue">
