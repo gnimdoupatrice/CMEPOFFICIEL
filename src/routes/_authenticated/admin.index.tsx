@@ -91,8 +91,25 @@ function AdminDashboard() {
         <div className="max-w-2xl mx-auto px-4 py-32 text-center">
           <h1 className="text-2xl font-extrabold text-ngo-navy">Accès non autorisé</h1>
           <p className="mt-3 text-[14px] text-ngo-slate">
-            Votre compte n'a pas les droits d'administration. Contactez la coordination CMEP.
+            Compte connecté : {adminQuery.data?.userId ?? "session introuvable"}. Si vous venez de recevoir les droits,
+            reconnectez-vous pour rafraîchir votre session.
           </p>
+          <div className="mt-6 flex justify-center gap-2">
+            <Button variant="outline" onClick={() => adminQuery.refetch()}>
+              Réessayer
+            </Button>
+            <Button
+              variant="ghost"
+              onClick={async () => {
+                await queryClient.cancelQueries();
+                queryClient.clear();
+                await supabase.auth.signOut();
+                navigate({ to: "/auth", search: { redirect: "/admin" }, replace: true });
+              }}
+            >
+              <LogOut size={14} aria-hidden="true" /> Se reconnecter
+            </Button>
+          </div>
         </div>
       </Layout>
     );
