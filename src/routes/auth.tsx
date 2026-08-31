@@ -36,6 +36,12 @@ function AuthPage() {
 
   const target = search.redirect.startsWith("/") ? search.redirect : "/admin";
 
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data }) => {
+      if (data.session) navigate({ to: target, replace: true });
+    });
+  }, [navigate, target]);
+
   async function handleSubmit(event: React.FormEvent) {
     event.preventDefault();
     setLoading(true);
