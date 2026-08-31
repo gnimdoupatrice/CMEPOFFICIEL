@@ -46,6 +46,8 @@ function AdminDashboard() {
   const removeOpportunity = useServerFn(adminDeleteOpportunity);
   const updateStatus = useServerFn(adminUpdateApplicationStatus);
   const signCv = useServerFn(adminSignCv);
+  const listArticles = useServerFn(adminListArticles);
+  const removeArticle = useServerFn(adminDeleteArticle);
 
   const adminQuery = useQuery({
     queryKey: ["admin", "status"],
