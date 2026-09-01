@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import { useNavigate } from "@tanstack/react-router";
 import { supabase } from "@/integrations/supabase/client";
@@ -49,7 +49,10 @@ export function ArticleForm({ initial }: { initial?: ArticleInput }) {
   const [coverPreview, setCoverPreview] = useState<string | null>(null);
   const [uploading, setUploading] = useState(false);
   const [saving, setSaving] = useState(false);
+  const [autoState, setAutoState] = useState<"idle" | "saving" | "saved">("idle");
   const [slugTouched, setSlugTouched] = useState(Boolean(initial?.slug));
+  const localPreview = useRef<string | null>(null);
+  const dirty = useRef(false);
 
   useEffect(() => {
     const path = form.cover_url;
@@ -57,20 +60,26 @@ export function ArticleForm({ initial }: { initial?: ArticleInput }) {
       setCoverPreview(null);
       return;
     }
-    if (path.startsWith("http")) {
+    if (path.startsWith("http") || path.startsWith("blob:")) {
       setCoverPreview(path);
       return;
     }
     let active = true;
-    void signCover({ data: { path } }).then((res) => {
-      if (active) setCoverPreview(res.url);
-    });
+    void signCover({ data: { path } })
+      .then((res) => {
+        // Repli sur l'aperçu local si la signature échoue.
+        if (active && res.url) setCoverPreview(res.url);
+      })
+      .catch(() => {
+        if (active && localPreview.current) setCoverPreview(localPreview.current);
+      });
     return () => {
       active = false;
     };
   }, [form.cover_url, signCover]);
 
   function update<K extends keyof ArticleInput>(key: K, value: ArticleInput[K]) {
+    dirty.current = true;
     setForm((prev) => ({ ...prev, [key]: value }));
   }
 
@@ -84,6 +93,11 @@ export function ArticleForm({ initial }: { initial?: ArticleInput }) {
       return;
     }
     setUploading(true);
+    // Aperçu immédiat, sans attendre la signature du fichier distant.
+    if (localPreview.current) URL.revokeObjectURL(localPreview.current);
+    localPreview.current = URL.createObjectURL(file);
+    setCoverPreview(localPreview.current);
+
     const ext = file.name.split(".").pop()?.toLowerCase() ?? "jpg";
     const path = `${crypto.randomUUID()}.${ext}`;
     const { error } = await supabase.storage.from("article-images").upload(path, file, {
@@ -92,37 +106,81 @@ export function ArticleForm({ initial }: { initial?: ArticleInput }) {
     });
     setUploading(false);
     if (error) {
-      toast.error("Échec du téléversement de l'image.");
+      toast.error(`Échec du téléversement : ${error.message}`);
       return;
     }
     update("cover_url", path);
     toast.success("Image de couverture ajoutée.");
   }
 
+  const persist = useCallback(
+    async (status: ArticleInput["status"]) => {
+      const parsed = articleInputSchema.safeParse({
+        ...form,
+        status,
+        slug: form.slug || slugifyArticle(form.title),
+        body: textToBlocks(bodyText),
+      });
+      if (!parsed.success) {
+        return { ok: false as const, error: parsed.error.issues[0]?.message ?? "Formulaire incomplet." };
+      }
+      try {
+        const result = await save({ data: parsed.data });
+        if (!result.ok) return { ok: false as const, error: result.error ?? "Enregistrement impossible." };
+        if (result.id && !form.id) setForm((prev) => ({ ...prev, id: result.id as string }));
+        return { ok: true as const, error: null };
+      } catch (err) {
+        return { ok: false as const, error: err instanceof Error ? err.message : "Enregistrement impossible." };
+      }
+    },
+    [bodyText, form, save],
+  );
+
+  // Sauvegarde automatique en brouillon (1,5 s après la dernière modification).
+  useEffect(() => {
+    if (!dirty.current) return;
+    if (form.status === "published") return;
+    if (form.title.trim().length < 1) return;
+    const timer = setTimeout(async () => {
+      setAutoState("saving");
+      const res = await persist("draft");
+      setAutoState(res.ok ? "saved" : "idle");
+      if (!res.ok) toast.error(res.error);
+    }, 1500);
+    return () => clearTimeout(timer);
+  }, [form, bodyText, persist]);
+
+  // Avertit si l'on quitte pendant une sauvegarde en cours.
+  useEffect(() => {
+    function onBeforeUnload(e: BeforeUnloadEvent) {
+      if (autoState === "saving") e.preventDefault();
+    }
+    window.addEventListener("beforeunload", onBeforeUnload);
+    return () => window.removeEventListener("beforeunload", onBeforeUnload);
+  }, [autoState]);
+
   async function handleSubmit(event: React.FormEvent) {
     event.preventDefault();
-    const parsed = articleInputSchema.safeParse({
-      ...form,
-      slug: form.slug || slugifyArticle(form.title),
-      body: textToBlocks(bodyText),
-    });
-    if (!parsed.success) {
-      toast.error(parsed.error.issues[0]?.message ?? "Formulaire incomplet.");
-      return;
-    }
     setSaving(true);
-    const result = await save({ data: parsed.data });
+    const result = await persist(form.status);
     setSaving(false);
     if (!result.ok) {
-      toast.error(result.error ?? "Enregistrement impossible.");
+      toast.error(result.error);
       return;
     }
-    toast.success("Article enregistré.");
+    toast.success(form.status === "published" ? "Article publié." : "Article enregistré en brouillon.");
     navigate({ to: "/admin" });
   }
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
+      <p className="text-[11px] text-ngo-slate" aria-live="polite">
+        {autoState === "saving"
+          ? "Sauvegarde automatique en cours…"
+          : autoState === "saved"
+            ? "Brouillon enregistré automatiquement."
+            : "Vos modifications sont enregistrées automatiquement en brouillon."}
+      </p>
       <div className={sectionClass}>
         <p className={legendClass}>Informations principales</p>
         <div className="grid sm:grid-cols-2 gap-4">
@@ -134,6 +192,7 @@ export function ArticleForm({ initial }: { initial?: ArticleInput }) {
               maxLength={240}
               onChange={(e) => {
                 const value = e.target.value;
+                dirty.current = true;
                 setForm((prev) => ({ ...prev, title: value, slug: slugTouched ? prev.slug : slugifyArticle(value) }));
               }}
               required
@@ -266,12 +325,19 @@ export function ArticleForm({ initial }: { initial?: ArticleInput }) {
             maxLength={600}
             value={form.excerpt}
             onChange={(e) => update("excerpt", e.target.value)}
-            required
           />
         </div>
         <div className="space-y-1.5">
           <Label htmlFor="body">Corps de l'article</Label>
-          <Textarea id="body" rows={16} value={bodyText} onChange={(e) => setBodyText(e.target.value)} required />
+          <Textarea
+            id="body"
+            rows={16}
+            value={bodyText}
+            onChange={(e) => {
+              dirty.current = true;
+              setBodyText(e.target.value);
+            }}
+          />
           <p className="text-[11px] text-ngo-slate">
             Séparez les paragraphes par une ligne vide. Commencez une ligne par « - » pour créer une liste à puces.
           </p>
@@ -280,7 +346,7 @@ export function ArticleForm({ initial }: { initial?: ArticleInput }) {
 
       <div className="flex flex-wrap gap-3">
         <Button type="submit" disabled={saving || uploading}>
-          {saving ? "Enregistrement…" : "Enregistrer l'article"}
+          {saving ? "Enregistrement…" : form.status === "published" ? "Publier l'article" : "Enregistrer le brouillon"}
         </Button>
         <Button type="button" variant="outline" onClick={() => navigate({ to: "/admin" })}>
           Annuler
