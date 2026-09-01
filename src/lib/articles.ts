@@ -14,26 +14,37 @@ export const articleBlockSchema = z.union([
   z.object({ type: z.literal("ul"), items: z.array(z.string().trim().min(1).max(1000)).min(1).max(30) }),
 ]);
 
-export const articleInputSchema = z.object({
-  id: z.string().uuid().optional(),
-  title: z.string().trim().min(5, "Titre obligatoire").max(240),
-  slug: z
-    .string()
-    .trim()
-    .min(3, "Lien obligatoire")
-    .max(200)
-    .regex(/^[a-z0-9-]+$/, "Lien invalide (lettres minuscules, chiffres et tirets)"),
-  excerpt: z.string().trim().min(10, "Chapô obligatoire").max(600),
-  category: z.string().trim().min(2).max(60),
-  date_label: z.string().trim().max(80).default(""),
-  location: z.string().trim().max(120).default(""),
-  cover_url: z.string().trim().max(500).nullable().optional(),
-  focal: z.string().trim().max(40).nullable().optional(),
-  body: z.array(articleBlockSchema).min(1, "Ajoutez au moins un paragraphe").max(80),
-  featured: z.boolean().default(false),
-  status: z.enum(["draft", "published", "archived"]),
-  sort_order: z.number().int().min(0).max(9999).default(0),
-});
+export const articleInputSchema = z
+  .object({
+    id: z.string().uuid().optional(),
+    title: z.string().trim().min(1, "Titre obligatoire").max(240),
+    slug: z
+      .string()
+      .trim()
+      .min(3, "Lien obligatoire")
+      .max(200)
+      .regex(/^[a-z0-9-]+$/, "Lien invalide (lettres minuscules, chiffres et tirets)"),
+    excerpt: z.string().trim().max(600).default(""),
+    category: z.string().trim().min(2).max(60),
+    date_label: z.string().trim().max(80).default(""),
+    location: z.string().trim().max(120).default(""),
+    cover_url: z.string().trim().max(500).nullable().optional(),
+    focal: z.string().trim().max(40).nullable().optional(),
+    body: z.array(articleBlockSchema).max(80).default([]),
+    featured: z.boolean().default(false),
+    status: z.enum(["draft", "published", "archived"]),
+    sort_order: z.number().int().min(0).max(9999).default(0),
+  })
+  // Les brouillons sont enregistrés même incomplets ; la publication exige un contenu complet.
+  .superRefine((value, ctx) => {
+    if (value.status !== "published") return;
+    if (value.title.length < 5)
+      ctx.addIssue({ code: "custom", path: ["title"], message: "Titre trop court pour publier." });
+    if (value.excerpt.length < 10)
+      ctx.addIssue({ code: "custom", path: ["excerpt"], message: "Chapô obligatoire pour publier." });
+    if (value.body.length < 1)
+      ctx.addIssue({ code: "custom", path: ["body"], message: "Ajoutez au moins un paragraphe pour publier." });
+  });
 
 export type ArticleInput = z.infer<typeof articleInputSchema>;
 export type ArticleBlockInput = z.infer<typeof articleBlockSchema>;
