@@ -91,7 +91,7 @@ function ProgrammesPage() {
         </div>
       </section>
 
-      {/* CTA cta nbnhhvhjvbjkbknknnnl,lm,
+      {/* CTA cta m,
        */}
       <section className="py-20 md:py-24 px-4 sm:px-6 bg-ngo-navy">
         <div className="max-w-3xl mx-auto text-center">
