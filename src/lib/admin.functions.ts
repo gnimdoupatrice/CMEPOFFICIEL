@@ -196,3 +196,35 @@ export const adminDuplicateOpportunity = createServerFn({ method: "POST" })
     if (insertError) return { ok: false, id: null, error: insertError.message };
     return { ok: true, id: (inserted as { id: string }).id, error: null as string | null };
   });
+
+// Publier / dépublier une opportunité directement depuis le tableau de bord.
+export const adminSetOpportunityStatus = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((data: { id: string; status: "draft" | "published" | "archived" }) => ({
+    id: String(data.id),
+    status: data.status,
+  }))
+  .handler(async ({ data, context }) => {
+    await (await import("@/lib/opportunities.server")).assertAdmin(context);
+    if (data.status === "published") {
+      const { data: row } = await context.supabase
+        .from("opportunities")
+        .select("title, short_description, description, sessions")
+        .eq("id", data.id)
+        .maybeSingle();
+      const current = row as { title: string; short_description: string; description: string; sessions: unknown } | null;
+      if (!current) return { ok: false, error: "Opportunité introuvable." };
+      const sessions = Array.isArray(current.sessions) ? (current.sessions as { location?: string }[]) : [];
+      if (
+        current.title.trim().length < 3 ||
+        (current.short_description ?? "").trim().length < 10 ||
+        (current.description ?? "").trim().length < 20 ||
+        !sessions.some((s) => (s.location ?? "").trim().length > 0)
+      ) {
+        return { ok: false, error: "Contenu incomplet : ouvrez la fiche pour la compléter avant publication." };
+      }
+    }
+    const { error } = await context.supabase.from("opportunities").update({ status: data.status }).eq("id", data.id);
+    if (error) return { ok: false, error: error.message };
+    return { ok: true, error: null as string | null };
+  });
