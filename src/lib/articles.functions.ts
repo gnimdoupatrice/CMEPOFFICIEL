@@ -130,3 +130,30 @@ export const adminSignArticleCover = createServerFn({ method: "POST" })
     const { data: signed } = await context.supabase.storage.from("article-images").createSignedUrl(data.path, 3600);
     return { url: signed?.signedUrl ?? null };
   });
+
+// Publier / dépublier un article directement depuis le tableau de bord.
+export const adminSetArticleStatus = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((data: { id: string; status: "draft" | "published" | "archived" }) => ({
+    id: String(data.id),
+    status: data.status,
+  }))
+  .handler(async ({ data, context }) => {
+    await (await import("@/lib/opportunities.server")).assertAdmin(context);
+    if (data.status === "published") {
+      const { data: row } = await context.supabase
+        .from("articles")
+        .select("title, excerpt, body")
+        .eq("id", data.id)
+        .maybeSingle();
+      const current = row as { title: string; excerpt: string; body: unknown } | null;
+      if (!current) return { ok: false, error: "Article introuvable." };
+      const blocks = Array.isArray(current.body) ? current.body : [];
+      if (current.title.trim().length < 5 || (current.excerpt ?? "").trim().length < 10 || blocks.length < 1) {
+        return { ok: false, error: "Contenu incomplet : ouvrez l'article pour le compléter avant publication." };
+      }
+    }
+    const { error } = await context.supabase.from("articles").update({ status: data.status }).eq("id", data.id);
+    if (error) return { ok: false, error: error.message };
+    return { ok: true, error: null as string | null };
+  });

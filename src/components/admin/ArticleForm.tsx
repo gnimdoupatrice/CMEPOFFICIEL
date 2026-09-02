@@ -49,6 +49,7 @@ export function ArticleForm({ initial }: { initial?: ArticleInput }) {
   const [coverPreview, setCoverPreview] = useState<string | null>(null);
   const [uploading, setUploading] = useState(false);
   const [saving, setSaving] = useState(false);
+  const [errors, setErrors] = useState<string[]>([]);
   const [autoState, setAutoState] = useState<"idle" | "saving" | "saved">("idle");
   const [slugTouched, setSlugTouched] = useState(Boolean(initial?.slug));
   const localPreview = useRef<string | null>(null);
@@ -122,15 +123,22 @@ export function ArticleForm({ initial }: { initial?: ArticleInput }) {
         body: textToBlocks(bodyText),
       });
       if (!parsed.success) {
-        return { ok: false as const, error: parsed.error.issues[0]?.message ?? "Formulaire incomplet." };
+        const messages = parsed.error.issues.map((i) => i.message);
+        return { ok: false as const, error: messages[0] ?? "Formulaire incomplet.", errors: messages };
       }
       try {
         const result = await save({ data: parsed.data });
-        if (!result.ok) return { ok: false as const, error: result.error ?? "Enregistrement impossible." };
+        if (!result.ok)
+          return {
+            ok: false as const,
+            error: result.error ?? "Enregistrement impossible.",
+            errors: [result.error ?? "Enregistrement impossible."],
+          };
         if (result.id && !form.id) setForm((prev) => ({ ...prev, id: result.id as string }));
-        return { ok: true as const, error: null };
+        return { ok: true as const, error: null, errors: [] as string[] };
       } catch (err) {
-        return { ok: false as const, error: err instanceof Error ? err.message : "Enregistrement impossible." };
+        const message = err instanceof Error ? err.message : "Enregistrement impossible.";
+        return { ok: false as const, error: message, errors: [message] };
       }
     },
     [bodyText, form, save],
@@ -159,17 +167,23 @@ export function ArticleForm({ initial }: { initial?: ArticleInput }) {
     return () => window.removeEventListener("beforeunload", onBeforeUnload);
   }, [autoState]);
 
-  async function handleSubmit(event: React.FormEvent) {
-    event.preventDefault();
+  async function submitWith(status: ArticleInput["status"]) {
     setSaving(true);
-    const result = await persist(form.status);
+    const result = await persist(status);
     setSaving(false);
+    setErrors(result.errors);
     if (!result.ok) {
       toast.error(result.error);
       return;
     }
-    toast.success(form.status === "published" ? "Article publié." : "Article enregistré en brouillon.");
+    if (status !== form.status) setForm((prev) => ({ ...prev, status }));
+    toast.success(status === "published" ? "Article publié." : "Article enregistré en brouillon.");
     navigate({ to: "/admin" });
+  }
+
+  async function handleSubmit(event: React.FormEvent) {
+    event.preventDefault();
+    await submitWith(form.status);
   }
 
   return (
@@ -178,9 +192,19 @@ export function ArticleForm({ initial }: { initial?: ArticleInput }) {
         {autoState === "saving"
           ? "Sauvegarde automatique en cours…"
           : autoState === "saved"
-            ? "Brouillon enregistré automatiquement."
+            ? "Brouillon enregistré automatiquement. Retrouvez-le dans le tableau de bord, onglet « Brouillons »."
             : "Vos modifications sont enregistrées automatiquement en brouillon."}
       </p>
+      {errors.length > 0 && (
+        <div role="alert" className="rounded-xl border border-red-200 bg-red-50 p-4 text-[12.5px] text-red-700">
+          <p className="font-bold">Impossible d'enregistrer :</p>
+          <ul className="mt-1 list-disc pl-5 space-y-0.5">
+            {errors.map((message) => (
+              <li key={message}>{message}</li>
+            ))}
+          </ul>
+        </div>
+      )}
       <div className={sectionClass}>
         <p className={legendClass}>Informations principales</p>
         <div className="grid sm:grid-cols-2 gap-4">
@@ -345,10 +369,18 @@ export function ArticleForm({ initial }: { initial?: ArticleInput }) {
       </div>
 
       <div className="flex flex-wrap gap-3">
-        <Button type="submit" disabled={saving || uploading}>
-          {saving ? "Enregistrement…" : form.status === "published" ? "Publier l'article" : "Enregistrer le brouillon"}
+        <Button type="button" disabled={saving || uploading} onClick={() => void submitWith("published")}>
+          {saving ? "Enregistrement…" : "Publier l'article"}
         </Button>
-        <Button type="button" variant="outline" onClick={() => navigate({ to: "/admin" })}>
+        <Button type="button" variant="outline" disabled={saving || uploading} onClick={() => void submitWith("draft")}>
+          Enregistrer le brouillon
+        </Button>
+        {form.status === "published" && (
+          <Button type="button" variant="ghost" disabled={saving} onClick={() => void submitWith("draft")}>
+            Dépublier
+          </Button>
+        )}
+        <Button type="button" variant="ghost" onClick={() => navigate({ to: "/admin" })}>
           Annuler
         </Button>
       </div>

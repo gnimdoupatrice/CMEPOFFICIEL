@@ -27,8 +27,9 @@ export const APPLICATION_STATUSES = [
   { value: "refusee", label: "Refusée" },
 ] as const;
 
+// Les brouillons acceptent des champs incomplets ; la publication est vérifiée plus bas.
 export const sessionSchema = z.object({
-  location: z.string().trim().min(1, "Ville obligatoire").max(120),
+  location: z.string().trim().max(120).default(""),
   venue: z.string().trim().max(200).optional().default(""),
   start_date: z.string().trim().max(40).optional().default(""),
   end_date: z.string().trim().max(40).optional().default(""),
@@ -36,32 +37,44 @@ export const sessionSchema = z.object({
 
 export const moduleSchema = z.object({
   order: z.number().int().min(1),
-  title: z.string().trim().min(1, "Titre du module obligatoire").max(240),
+  title: z.string().trim().max(240).default(""),
 });
 
 export const pricingSchema = z.object({
-  profile: z.string().trim().min(1, "Profil obligatoire").max(160),
+  profile: z.string().trim().max(160).default(""),
   amount: z.number().int().min(0).max(100000000),
 });
 
-export const opportunityInputSchema = z.object({
-  id: z.string().uuid().optional(),
-  title: z.string().trim().min(3, "Titre obligatoire").max(200),
-  slug: z.string().trim().min(3).max(200).regex(/^[a-z0-9-]+$/, "Lien invalide"),
-  category: z.enum(["formation_certifiante", "atelier_formation"]),
-  badge: z.enum(["a_la_une", "inscriptions_ouvertes", "cloture"]).nullable().optional(),
-  cover_image: z.string().trim().max(500).nullable().optional(),
-  short_description: z.string().trim().max(400).default(""),
-  description: z.string().trim().max(6000).default(""),
-  sessions: z.array(sessionSchema).max(20).default([]),
-  registration_deadline: z.string().trim().max(20).nullable().optional(),
-  modules: z.array(moduleSchema).max(60).default([]),
-  pricing: z.array(pricingSchema).max(20).default([]),
-  application_mode: z.enum(["whatsapp", "form"]),
-  whatsapp_message: z.string().trim().max(600).nullable().optional(),
-  status: z.enum(["draft", "published", "archived"]),
-  sort_order: z.number().int().min(0).max(9999).default(0),
-});
+export const opportunityInputSchema = z
+  .object({
+    id: z.string().uuid().optional(),
+    title: z.string().trim().min(1, "Titre obligatoire").max(200),
+    slug: z.string().trim().min(3, "Lien obligatoire").max(200).regex(/^[a-z0-9-]+$/, "Lien invalide"),
+    category: z.enum(["formation_certifiante", "atelier_formation"]),
+    badge: z.enum(["a_la_une", "inscriptions_ouvertes", "cloture"]).nullable().optional(),
+    cover_image: z.string().trim().max(500).nullable().optional(),
+    short_description: z.string().trim().max(400).default(""),
+    description: z.string().trim().max(6000).default(""),
+    sessions: z.array(sessionSchema).max(20).default([]),
+    registration_deadline: z.string().trim().max(20).nullable().optional(),
+    modules: z.array(moduleSchema).max(60).default([]),
+    pricing: z.array(pricingSchema).max(20).default([]),
+    application_mode: z.enum(["whatsapp", "form"]),
+    whatsapp_message: z.string().trim().max(600).nullable().optional(),
+    status: z.enum(["draft", "published", "archived"]),
+    sort_order: z.number().int().min(0).max(9999).default(0),
+  })
+  .superRefine((value, ctx) => {
+    if (value.status !== "published") return;
+    if (value.title.trim().length < 3)
+      ctx.addIssue({ code: "custom", path: ["title"], message: "Titre trop court pour publier." });
+    if (value.short_description.trim().length < 10)
+      ctx.addIssue({ code: "custom", path: ["short_description"], message: "Accroche courte obligatoire pour publier." });
+    if (value.description.trim().length < 20)
+      ctx.addIssue({ code: "custom", path: ["description"], message: "Description complète obligatoire pour publier." });
+    if (!value.sessions.some((s) => s.location.trim().length > 0))
+      ctx.addIssue({ code: "custom", path: ["sessions"], message: "Renseignez au moins une session avec une ville." });
+  });
 
 export type OpportunityInput = z.infer<typeof opportunityInputSchema>;
 
