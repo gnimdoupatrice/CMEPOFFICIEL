@@ -369,10 +369,18 @@ export function ArticleForm({ initial }: { initial?: ArticleInput }) {
       </div>
 
       <div className="flex flex-wrap gap-3">
-        <Button type="submit" disabled={saving || uploading}>
-          {saving ? "Enregistrement…" : form.status === "published" ? "Publier l'article" : "Enregistrer le brouillon"}
+        <Button type="button" disabled={saving || uploading} onClick={() => void submitWith("published")}>
+          {saving ? "Enregistrement…" : "Publier l'article"}
         </Button>
-        <Button type="button" variant="outline" onClick={() => navigate({ to: "/admin" })}>
+        <Button type="button" variant="outline" disabled={saving || uploading} onClick={() => void submitWith("draft")}>
+          Enregistrer le brouillon
+        </Button>
+        {form.status === "published" && (
+          <Button type="button" variant="ghost" disabled={saving} onClick={() => void submitWith("draft")}>
+            Dépublier
+          </Button>
+        )}
+        <Button type="button" variant="ghost" onClick={() => navigate({ to: "/admin" })}>
           Annuler
         </Button>
       </div>
