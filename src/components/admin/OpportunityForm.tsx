@@ -49,9 +49,13 @@ export function OpportunityForm({ initial }: { initial?: OpportunityInput }) {
   const [coverPreview, setCoverPreview] = useState<string | null>(null);
   const [uploading, setUploading] = useState(false);
   const [saving, setSaving] = useState(false);
+  const [errors, setErrors] = useState<string[]>([]);
+  const [autoState, setAutoState] = useState<"idle" | "saving" | "saved">("idle");
   const [slugTouched, setSlugTouched] = useState(Boolean(initial?.slug));
   const [showPreview, setShowPreview] = useState(false);
   const dropRef = useRef<HTMLLabelElement>(null);
+  const localPreview = useRef<string | null>(null);
+  const dirty = useRef(false);
 
   const previewInput = useMemo<OpportunityInput>(
     () => ({
@@ -63,20 +67,31 @@ export function OpportunityForm({ initial }: { initial?: OpportunityInput }) {
   );
 
   useEffect(() => {
-    if (!form.cover_image) {
+    const path = form.cover_image;
+    if (!path) {
       setCoverPreview(null);
       return;
     }
+    if (path.startsWith("http") || path.startsWith("blob:")) {
+      setCoverPreview(path);
+      return;
+    }
     let active = true;
-    signCover({ data: { path: form.cover_image } }).then((res) => {
-      if (active) setCoverPreview(res.url);
-    });
+    void signCover({ data: { path } })
+      .then((res) => {
+        // Repli sur l'aperçu local si la signature échoue.
+        if (active && res.url) setCoverPreview(res.url);
+      })
+      .catch(() => {
+        if (active && localPreview.current) setCoverPreview(localPreview.current);
+      });
     return () => {
       active = false;
     };
   }, [form.cover_image, signCover]);
 
   function update<K extends keyof OpportunityInput>(key: K, value: OpportunityInput[K]) {
+    dirty.current = true;
     setForm((prev) => ({ ...prev, [key]: value }));
   }
 
@@ -90,6 +105,11 @@ export function OpportunityForm({ initial }: { initial?: OpportunityInput }) {
       return;
     }
     setUploading(true);
+    // Aperçu immédiat, sans attendre la signature du fichier distant.
+    if (localPreview.current) URL.revokeObjectURL(localPreview.current);
+    localPreview.current = URL.createObjectURL(file);
+    setCoverPreview(localPreview.current);
+
     const ext = file.name.split(".").pop()?.toLowerCase() ?? "jpg";
     const path = `${crypto.randomUUID()}.${ext}`;
     const { error } = await supabase.storage.from("opportunity-covers").upload(path, file, {
@@ -98,34 +118,82 @@ export function OpportunityForm({ initial }: { initial?: OpportunityInput }) {
     });
     setUploading(false);
     if (error) {
-      toast.error("Échec du téléversement de l'image.");
+      toast.error(`Échec du téléversement : ${error.message}`);
       return;
     }
     update("cover_image", path);
     toast.success("Image de couverture ajoutée.");
   }
 
+  const persist = useCallback(
+    async (status: OpportunityInput["status"]) => {
+      const parsed = opportunityInputSchema.safeParse({
+        ...form,
+        status,
+        slug: form.slug || slugify(form.title),
+        registration_deadline: form.registration_deadline || null,
+        modules: form.modules.map((m, i) => ({ ...m, order: i + 1 })),
+      });
+      if (!parsed.success) {
+        const messages = parsed.error.issues.map((i) => i.message);
+        return { ok: false as const, error: messages[0] ?? "Formulaire incomplet.", errors: messages };
+      }
+      try {
+        const result = await save({ data: parsed.data });
+        if (!result.ok) {
+          const message = result.error ?? "Enregistrement impossible.";
+          return { ok: false as const, error: message, errors: [message] };
+        }
+        if (result.id && !form.id) setForm((prev) => ({ ...prev, id: result.id as string }));
+        return { ok: true as const, error: null, errors: [] as string[] };
+      } catch (err) {
+        const message = err instanceof Error ? err.message : "Enregistrement impossible.";
+        return { ok: false as const, error: message, errors: [message] };
+      }
+    },
+    [form, save],
+  );
+
+  // Sauvegarde automatique en brouillon (1,5 s après la dernière modification).
+  useEffect(() => {
+    if (!dirty.current) return;
+    if (form.status === "published") return;
+    if (form.title.trim().length < 1) return;
+    const timer = setTimeout(async () => {
+      setAutoState("saving");
+      const res = await persist("draft");
+      setAutoState(res.ok ? "saved" : "idle");
+      if (!res.ok) setErrors(res.errors);
+    }, 1500);
+    return () => clearTimeout(timer);
+  }, [form, persist]);
+
+  // Avertit si l'on quitte pendant une sauvegarde en cours.
+  useEffect(() => {
+    function onBeforeUnload(e: BeforeUnloadEvent) {
+      if (autoState === "saving") e.preventDefault();
+    }
+    window.addEventListener("beforeunload", onBeforeUnload);
+    return () => window.removeEventListener("beforeunload", onBeforeUnload);
+  }, [autoState]);
+
+  async function submitWith(status: OpportunityInput["status"]) {
+    setSaving(true);
+    const result = await persist(status);
+    setSaving(false);
+    setErrors(result.errors);
+    if (!result.ok) {
+      toast.error(result.error);
+      return;
+    }
+    if (status !== form.status) setForm((prev) => ({ ...prev, status }));
+    toast.success(status === "published" ? "Opportunité publiée." : "Brouillon enregistré.");
+    navigate({ to: "/admin" });
+  }
+
   async function handleSubmit(event: React.FormEvent) {
     event.preventDefault();
-    const parsed = opportunityInputSchema.safeParse({
-      ...form,
-      slug: form.slug || slugify(form.title),
-      registration_deadline: form.registration_deadline || null,
-      modules: form.modules.map((m, i) => ({ ...m, order: i + 1 })),
-    });
-    if (!parsed.success) {
-      toast.error(parsed.error.issues[0]?.message ?? "Formulaire incomplet.");
-      return;
-    }
-    setSaving(true);
-    const result = await save({ data: parsed.data });
-    setSaving(false);
-    if (!result.ok) {
-      toast.error(result.error ?? "Enregistrement impossible.");
-      return;
-    }
-    toast.success("Opportunité enregistrée.");
-    navigate({ to: "/admin" });
+    await submitWith(form.status);
   }
 
   return (
