@@ -166,17 +166,23 @@ export function ArticleForm({ initial }: { initial?: ArticleInput }) {
     return () => window.removeEventListener("beforeunload", onBeforeUnload);
   }, [autoState]);
 
-  async function handleSubmit(event: React.FormEvent) {
-    event.preventDefault();
+  async function submitWith(status: ArticleInput["status"]) {
     setSaving(true);
-    const result = await persist(form.status);
+    const result = await persist(status);
     setSaving(false);
+    setErrors(result.errors);
     if (!result.ok) {
       toast.error(result.error);
       return;
     }
-    toast.success(form.status === "published" ? "Article publié." : "Article enregistré en brouillon.");
+    if (status !== form.status) setForm((prev) => ({ ...prev, status }));
+    toast.success(status === "published" ? "Article publié." : "Article enregistré en brouillon.");
     navigate({ to: "/admin" });
+  }
+
+  async function handleSubmit(event: React.FormEvent) {
+    event.preventDefault();
+    await submitWith(form.status);
   }
 
   return (
@@ -185,9 +191,19 @@ export function ArticleForm({ initial }: { initial?: ArticleInput }) {
         {autoState === "saving"
           ? "Sauvegarde automatique en cours…"
           : autoState === "saved"
-            ? "Brouillon enregistré automatiquement."
+            ? "Brouillon enregistré automatiquement. Retrouvez-le dans le tableau de bord, onglet « Brouillons »."
             : "Vos modifications sont enregistrées automatiquement en brouillon."}
       </p>
+      {errors.length > 0 && (
+        <div role="alert" className="rounded-xl border border-red-200 bg-red-50 p-4 text-[12.5px] text-red-700">
+          <p className="font-bold">Impossible d'enregistrer :</p>
+          <ul className="mt-1 list-disc pl-5 space-y-0.5">
+            {errors.map((message) => (
+              <li key={message}>{message}</li>
+            ))}
+          </ul>
+        </div>
+      )}
       <div className={sectionClass}>
         <p className={legendClass}>Informations principales</p>
         <div className="grid sm:grid-cols-2 gap-4">
