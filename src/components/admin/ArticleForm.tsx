@@ -49,6 +49,7 @@ export function ArticleForm({ initial }: { initial?: ArticleInput }) {
   const [coverPreview, setCoverPreview] = useState<string | null>(null);
   const [uploading, setUploading] = useState(false);
   const [saving, setSaving] = useState(false);
+  const [errors, setErrors] = useState<string[]>([]);
   const [autoState, setAutoState] = useState<"idle" | "saving" | "saved">("idle");
   const [slugTouched, setSlugTouched] = useState(Boolean(initial?.slug));
   const localPreview = useRef<string | null>(null);
