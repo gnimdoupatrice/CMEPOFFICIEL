@@ -122,15 +122,22 @@ export function ArticleForm({ initial }: { initial?: ArticleInput }) {
         body: textToBlocks(bodyText),
       });
       if (!parsed.success) {
-        return { ok: false as const, error: parsed.error.issues[0]?.message ?? "Formulaire incomplet." };
+        const messages = parsed.error.issues.map((i) => i.message);
+        return { ok: false as const, error: messages[0] ?? "Formulaire incomplet.", errors: messages };
       }
       try {
         const result = await save({ data: parsed.data });
-        if (!result.ok) return { ok: false as const, error: result.error ?? "Enregistrement impossible." };
+        if (!result.ok)
+          return {
+            ok: false as const,
+            error: result.error ?? "Enregistrement impossible.",
+            errors: [result.error ?? "Enregistrement impossible."],
+          };
         if (result.id && !form.id) setForm((prev) => ({ ...prev, id: result.id as string }));
-        return { ok: true as const, error: null };
+        return { ok: true as const, error: null, errors: [] as string[] };
       } catch (err) {
-        return { ok: false as const, error: err instanceof Error ? err.message : "Enregistrement impossible." };
+        const message = err instanceof Error ? err.message : "Enregistrement impossible.";
+        return { ok: false as const, error: message, errors: [message] };
       }
     },
     [bodyText, form, save],
