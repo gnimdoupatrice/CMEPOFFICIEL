@@ -187,6 +187,19 @@ export function mergeEditorialArticles(
   dbArticles: readonly EditorialArticle[] | undefined | null,
 ): EditorialArticle[] {
   const db = (dbArticles ?? []).filter((a) => a && a.id);
-  const ids = new Set(db.map((a) => a.id));
-  return [...db, ...EDITORIAL_ARTICLES.filter((a) => !ids.has(a.id))];
+  const localMap = new Map(EDITORIAL_ARTICLES.map((a) => [a.id, a]));
+
+  // Pour chaque article de la base, si son image est vide, on récupère l'image locale d'origine
+  const mergedDb = db.map((article) => {
+    if (!article.image) {
+      const local = localMap.get(article.id);
+      if (local?.image) {
+        return { ...article, image: local.image };
+      }
+    }
+    return article;
+  });
+
+  const ids = new Set(mergedDb.map((a) => a.id));
+  return [...mergedDb, ...EDITORIAL_ARTICLES.filter((a) => !ids.has(a.id))];
 }
