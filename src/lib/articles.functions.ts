@@ -23,6 +23,21 @@ async function signArticleCovers(paths: (string | null)[]): Promise<Record<strin
 
 function toPublicArticle(row: Partial<ArticleRow>, signed: Record<string, string>): PublicArticle {
   const cover = row.cover_url ?? null;
+  let imageUrl = "";
+
+  if (cover) {
+    if (cover.startsWith("http")) {
+      imageUrl = cover;
+    } else if (signed[cover]) {
+      imageUrl = signed[cover];
+    } else {
+      // Repli direct sur l'URL publique Supabase si la signature échoue
+      const baseUrl = process.env.SUPABASE_URL || "https://gyjwskyxsqnfhxjoxzpf.supabase.co";
+      const cleanBase = baseUrl.replace(/\/rest\/v1\/?$/, "").replace(/\/$/, "");
+      imageUrl = `${cleanBase}/storage/v1/object/public/article-images/${cover}`;
+    }
+  }
+
   return {
     id: row.slug ?? String(row.id),
     title: row.title ?? "",
@@ -30,7 +45,7 @@ function toPublicArticle(row: Partial<ArticleRow>, signed: Record<string, string
     category: row.category ?? "Actualité",
     date: row.date_label ?? "",
     location: row.location ?? "",
-    image: cover ? (cover.startsWith("http") ? cover : (signed[cover] ?? "")) : "",
+    image: imageUrl,
     focal: row.focal ?? undefined,
     body: Array.isArray(row.body) ? (row.body as unknown as ArticleBlockInput[]) : [],
     featured: Boolean(row.featured),
