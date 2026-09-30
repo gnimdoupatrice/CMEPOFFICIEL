@@ -56,7 +56,7 @@ export const opportunityInputSchema = z
     short_description: z.string().trim().max(400).default(""),
     description: z.string().trim().max(6000).default(""),
     sessions: z.array(sessionSchema).max(20).default([]),
-    registration_deadline: z.string().trim().max(20).nullable().optional(),
+    registration_deadline: z.string().trim().max(120).nullable().optional(),
     modules: z.array(moduleSchema).max(60).default([]),
     pricing: z.array(pricingSchema).max(20).default([]),
     application_mode: z.enum(["whatsapp", "form"]),
